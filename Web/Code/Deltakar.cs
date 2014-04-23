@@ -23,7 +23,7 @@ namespace KjeringiData
         public Boolean Bedrift { get; set; }
         public Boolean Super { get; set; }
 
-        public List<String> Medlemmer { get; }
+        //public List<String> Medlemmer { get; }
         protected List<Passering> Passeringar { get; set; }
     }
 
@@ -31,7 +31,7 @@ namespace KjeringiData
     {
         public Plassering Location { get; set; }
         public int EmitID { get; set; }
-        public DateTime Passering { get; set; }
+        public DateTime Tid { get; set; }
     }
 
     public class Plassering
@@ -44,13 +44,13 @@ namespace KjeringiData
 
     public class Konkurranse
     {
-        public List<Klasse> Klassar { get; }
-        public List<Deltakar> Deltagarar { get; }
-        public List<Plassering> Plasseringar { get; }
+        //public List<Klasse> Klassar { get; }
+        //public List<Deltakar> Deltagarar { get; }
+        //public List<Plassering> Plasseringar { get; }
 
-        public List<Passering> Passeringar { get; }
+        //public List<Passering> Passeringar { get; }
 
-        public Dictionary<int, Deltakar> DeltagarEtterEmitId { get; }
+        //public Dictionary<int, Deltakar> DeltagarEtterEmitId { get; }
     }
 
 }

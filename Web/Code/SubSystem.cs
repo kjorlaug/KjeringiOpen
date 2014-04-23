@@ -5,9 +5,9 @@ using System.Web;
 
 namespace KjeringiData
 {
-    public class ChatUser
+    public class SubSystem
     {
         public string Id { get; set; }        
-        public string Username { get; set; }
+        public string SystemName { get; set; }
     }
 }

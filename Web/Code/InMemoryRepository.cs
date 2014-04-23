@@ -6,7 +6,7 @@ namespace KjeringiData
 {
     public class InMemoryRepository
     {
-        private static ICollection<ChatUser> _connectedUsers;
+        private static ICollection<SubSystem> _connectedSystems;
         private static Dictionary<string, string> _mappings;
         private static InMemoryRepository _instance = null;
         private static readonly int max_random = 3;
@@ -24,7 +24,7 @@ namespace KjeringiData
 
         private InMemoryRepository()
         {
-            _connectedUsers = new List<ChatUser>();
+            _connectedSystems = new List<SubSystem>();
             _mappings = new Dictionary<string, string>();
         }
 
@@ -32,21 +32,21 @@ namespace KjeringiData
 
         #region Repository methods
 
-        public IQueryable<ChatUser> Users { get { return _connectedUsers.AsQueryable(); } }
+        public IQueryable<SubSystem> Systems { get { return _connectedSystems.AsQueryable(); } }
 
-        public void Add(ChatUser user)
+        public void Add(SubSystem sys)
         {
-            _connectedUsers.Add(user);
+            _connectedSystems.Add(sys);
         }
 
-        public void Remove(ChatUser user)
+        public void Remove(SubSystem sys)
         {
-            _connectedUsers.Remove(user);
+            _connectedSystems.Remove(sys);
         }
 
-        public string GetRandomizedUsername(string username)
+        public string GetRandomizedName(string name)
         {
-            string tempUsername = username;
+            string tempName = name;
             int newRandom = max_random, oldRandom = 0;
             int loops = 0;
             Random random = new Random();
@@ -57,11 +57,11 @@ namespace KjeringiData
                     oldRandom = newRandom;
                     newRandom *= 2;
                 }
-                username = tempUsername + "_" + random.Next(oldRandom, newRandom).ToString();
+                name = tempName + "_" + random.Next(oldRandom, newRandom).ToString();
                 loops++;
-            } while (GetInstance().Users.Where(u => u.Username.Equals(username)).ToList().Count > 0);
+            } while (GetInstance().Systems.Where(u => u.SystemName.Equals(name)).ToList().Count > 0);
 
-            return username;
+            return name;
         }
 
         public void AddMapping(string connectionId, string userId)
@@ -72,11 +72,11 @@ namespace KjeringiData
             }
         }
 
-        public string GetUserByConnectionId(string connectionId)
+        public string GetSystemByConnectionId(string connectionId)
         {
-            string userId = null;
-            _mappings.TryGetValue(connectionId, out userId);            
-            return userId;
+            string sysId = null;
+            _mappings.TryGetValue(connectionId, out sysId);            
+            return sysId;
         }
 
         #endregion

@@ -27,14 +27,14 @@ namespace Web.Hubs
         /// <returns></returns>
         public override Task OnDisconnected()
         {
-            string userId = _repository.GetUserByConnectionId(Context.ConnectionId);
-            if (userId != null)
+            string sysId = _repository.GetSystemByConnectionId(Context.ConnectionId);
+            if (sysId != null)
             {
-                ChatUser user = _repository.Users.Where(u => u.Id == userId).FirstOrDefault();
-                if (user != null)
+                SubSystem sys = _repository.Systems.Where(u => u.Id == sysId).FirstOrDefault();
+                if (sys != null)
                 {
-                    _repository.Remove(user);
-                    return Clients.All.leaves(user.Id, user.Username, DateTime.Now);
+                    _repository.Remove(sys);
+                    return Clients.All.leaves(sys.Id, sys.SystemName, DateTime.Now);
                 }
             }
 
@@ -45,20 +45,20 @@ namespace Web.Hubs
 
         public void Joined()
         {
-            ChatUser user = new ChatUser()
+            SubSystem sys = new SubSystem()
             {
                 //Id = Context.ConnectionId,                
                 Id = Guid.NewGuid().ToString(),
-                Username = Clients.Caller.username
+                SystemName = Clients.Caller.username
             };
-            _repository.Add(user);
-            _repository.AddMapping(Context.ConnectionId, user.Id);
-            Clients.All.joins(user.Id, Clients.Caller.username, DateTime.Now);
+            _repository.Add(sys);
+            _repository.AddMapping(Context.ConnectionId, sys.Id);
+            Clients.All.joins(sys.Id, Clients.Caller.username, DateTime.Now);
         }
 
-        public ICollection<ChatUser> GetConnectedUsers()
+        public ICollection<SubSystem> GetConnectedSystems()
         {
-            return _repository.Users.ToList<ChatUser>();
+            return _repository.Systems.ToList<SubSystem>();
         }
 
 

@@ -1,31 +1,89 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Status page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="row">
+    <div class="col-md-4" id="systems-list">
+        <h2>System online:</h2>
+        <ul data-bind="foreach: systems">
+            <li class="sys-box"><span class="sys-box-name" data-bind="text: sysname"></span></li>
+        </ul>
+    </div>
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+    </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+<script type="text/javascript" src="@Url.Content("~/scripts/model.js")"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var users = new Kjeringi.connectedSystemViewModel();
+        var currentUser = new Kjeringi.system(@Html.Raw(Json.Encode("Statusscreen - " + Request.UserHostName))); // The username chose by the user is stored in the model
+
+        // Proxy creation
+        var chatHub = $.connection.resultatServiceHub; // chatHub is the name of the Hub as declared in server side code
+        chatHub.state.username = currentUser.sysname; // This is the round-trip state
+
+        //// Client-side event handlers, as declared inside the  Hub
+        //chatHub.client.onMessageReceived = function (message) {
+        //    var date = new Date();
+        //    date.setISO8601(message.Timestamp);
+        //    chat.messages.push(new chatR.chatMessage(message.Username, message.Content, date));//new Date(message.Timestamp)));
+        //    $("#chat-list").scrollTo('max');
+        //}
+
+        chatHub.client.leaves = function (userId, username, timestamp) {
+            var disconnectedUser = new Kjeringi.system(username, userId);
+            users.customRemove(disconnectedUser);
+        }
+
+        chatHub.client.joins = function (userId, username, timestamp) {
+            var connectedUser = new Kjeringi.system(username, userId);
+            users.systems.push(connectedUser);
+        }
+
+        //function sendMessageContent() {
+        //    var content = $("#compose-box").val();
+        //    if (content != "" && content != null) {
+        //        var msg = new chatR.chatMessage(currentUser.username, content);
+        //        chatHub.server.send(msg).done(function () {
+        //            $("#compose-box").val("");
+        //        }).fail(function (e) {
+        //            alert("Could not connect to server");
+        //        });
+        //    }
+        //}
+
+        //$("#send-btn").click(function () {
+        //    sendMessageContent();
+        //});
+
+        //// Handles Enter keystroke press event
+        //$('#compose-box').keypress(function (e) {
+        //    if (e.which == 13) {
+        //        sendMessageContent();
+        //    }
+        //});
+
+        ko.applyBindings(users, $("#systems-list")[0]);
+        //ko.applyBindings(chat, $("#chat-list")[0]);
+
+        // Step 1: Start the connection
+        // Step 2: Get all currenlty connected users
+        // Step 3: Join to the chat and nmotify all the clients (me included) that there is a new user connected
+        $.connection.hub.start()
+                    .done(function () {
+                        chatHub.server.getConnectedSystems()
+                                    .done(function (connectedUsers) {
+                                        ko.utils.arrayForEach(connectedUsers, function (item) {
+                                            users.systems.push(new Kjeringi.system(item.SystemName, item.Id));
+                                        });
+                                    }).done(function () {
+                                        chatHub.server.joined();
+                                    });
+                    });
+    });
+
+</script>
