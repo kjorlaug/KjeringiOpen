@@ -1,3 +1,0 @@
-C:\Prosjekt\KjeringiOpen\TestConsole\bin\Debug\TestConsole.exe.config
-C:\Prosjekt\KjeringiOpen\TestConsole\obj\Debug\TestConsole.exe
-C:\Prosjekt\KjeringiOpen\TestConsole\obj\Debug\TestConsole.pdb
