@@ -1,0 +1,13 @@
+C:\Users\rkj\Desktop\KjeringiOpenApp\TestConsole\bin\Release\TestConsole.exe.config
+C:\Users\rkj\Desktop\KjeringiOpenApp\TestConsole\bin\Release\TestConsole.exe
+C:\Users\rkj\Desktop\KjeringiOpenApp\TestConsole\bin\Release\TestConsole.pdb
+C:\Users\rkj\Desktop\KjeringiOpenApp\TestConsole\bin\Release\EmitReaderLib.dll
+C:\Users\rkj\Desktop\KjeringiOpenApp\TestConsole\bin\Release\Microsoft.AspNet.SignalR.Client.dll
+C:\Users\rkj\Desktop\KjeringiOpenApp\TestConsole\bin\Release\Newtonsoft.Json.dll
+C:\Users\rkj\Desktop\KjeringiOpenApp\TestConsole\bin\Release\EmitReaderLib.pdb
+C:\Users\rkj\Desktop\KjeringiOpenApp\TestConsole\bin\Release\Microsoft.AspNet.SignalR.Client.xml
+C:\Users\rkj\Desktop\KjeringiOpenApp\TestConsole\bin\Release\Newtonsoft.Json.xml
+C:\Users\rkj\Desktop\KjeringiOpenApp\TestConsole\obj\Release\TestConsole.csprojResolveAssemblyReference.cache
+C:\Users\rkj\Desktop\KjeringiOpenApp\TestConsole\obj\Release\TestConsole.exe
+C:\Users\rkj\Desktop\KjeringiOpenApp\TestConsole\obj\Release\TestConsole.pdb
+C:\Users\rkj\Desktop\KjeringiOpenApp\TestConsole\bin\Release\MySql.Data.dll

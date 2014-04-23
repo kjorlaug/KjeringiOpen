@@ -1,0 +1,9 @@
+C:\Users\rkj\Desktop\KjeringiOpenApp\EmitReader\bin\Release\EmitReaderLib.dll
+C:\Users\rkj\Desktop\KjeringiOpenApp\EmitReader\bin\Release\EmitReaderLib.pdb
+C:\Users\rkj\Desktop\KjeringiOpenApp\EmitReader\bin\Release\Microsoft.AspNet.SignalR.Client.dll
+C:\Users\rkj\Desktop\KjeringiOpenApp\EmitReader\bin\Release\Newtonsoft.Json.dll
+C:\Users\rkj\Desktop\KjeringiOpenApp\EmitReader\bin\Release\Microsoft.AspNet.SignalR.Client.xml
+C:\Users\rkj\Desktop\KjeringiOpenApp\EmitReader\bin\Release\Newtonsoft.Json.xml
+C:\Users\rkj\Desktop\KjeringiOpenApp\EmitReader\obj\Release\EmitReaderLib.dll
+C:\Users\rkj\Desktop\KjeringiOpenApp\EmitReader\obj\Release\EmitReaderLib.pdb
+C:\Users\rkj\Desktop\KjeringiOpenApp\EmitReader\bin\Release\MySql.Data.dll

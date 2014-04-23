@@ -1,0 +1,9 @@
+c:\Prosjekt\KjeringiOpen\PrintConsole\bin\Debug\PrintConsole.exe.config
+c:\Prosjekt\KjeringiOpen\PrintConsole\bin\Debug\PrintConsole.exe
+c:\Prosjekt\KjeringiOpen\PrintConsole\bin\Debug\PrintConsole.pdb
+c:\Prosjekt\KjeringiOpen\PrintConsole\obj\Debug\PrintConsole.exe
+c:\Prosjekt\KjeringiOpen\PrintConsole\obj\Debug\PrintConsole.pdb
+c:\Prosjekt\KjeringiOpen\PrintConsole\bin\Debug\Microsoft.AspNet.SignalR.Client.dll
+c:\Prosjekt\KjeringiOpen\PrintConsole\bin\Debug\Newtonsoft.Json.dll
+c:\Prosjekt\KjeringiOpen\PrintConsole\bin\Debug\Microsoft.AspNet.SignalR.Client.xml
+c:\Prosjekt\KjeringiOpen\PrintConsole\bin\Debug\Newtonsoft.Json.xml
