@@ -34,7 +34,7 @@ namespace Web.Hubs
                 if (sys != null)
                 {
                     _repository.Remove(sys);
-                    return Clients.All.leaves(sys.Id, sys.SystemName, DateTime.Now);
+                    return Clients.All.leaves(sys.Id, sys.SystemName, DateTime.Now.ToShortTimeString());
                 }
             }
 
@@ -49,11 +49,12 @@ namespace Web.Hubs
             {
                 //Id = Context.ConnectionId,                
                 Id = Guid.NewGuid().ToString(),
-                SystemName = Clients.Caller.username
+                SystemName = Clients.Caller.username,
+                TimeStamp = DateTime.Now.ToShortTimeString()
             };
             _repository.Add(sys);
             _repository.AddMapping(Context.ConnectionId, sys.Id);
-            Clients.All.joins(sys.Id, Clients.Caller.username, DateTime.Now);
+            Clients.All.joins(sys.Id, sys.SystemName, sys.TimeStamp);
         }
 
         public ICollection<SubSystem> GetConnectedSystems()

@@ -9,5 +9,6 @@ namespace KjeringiData
     {
         public string Id { get; set; }        
         public string SystemName { get; set; }
+        public string TimeStamp { get; set; }
     }
 }

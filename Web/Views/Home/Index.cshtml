@@ -3,13 +3,17 @@
 }
 
 <div class="row">
-    <div class="col-md-4" id="systems-list">
+    <div class="col-md-4" id="online-systems-list">
         <h2>System online:</h2>
-        <ul data-bind="foreach: systems">
-            <li class="sys-box"><span class="sys-box-name" data-bind="text: sysname"></span></li>
+        <ul data-bind="foreach: online">
+            <li class="sys-box"><span class="sys-box-name" data-bind="text:timestamp"></span> - <span class="sys-box-name" data-bind="text: sysname"></span></li>
         </ul>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4" id="offline-systems-list">
+        <h2>System offline:</h2>
+        <ul data-bind="foreach: offline">
+            <li class="sys-box"><span class="sys-box-name" data-bind="text:timestamp"></span> - <span class="sys-box-name" data-bind="text: sysname"></span></li>
+        </ul>
     </div>
     <div class="col-md-4">
     </div>
@@ -19,69 +23,37 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-        var users = new Kjeringi.connectedSystemViewModel();
-        var currentUser = new Kjeringi.system(@Html.Raw(Json.Encode("Statusscreen - " + Request.UserHostName))); // The username chose by the user is stored in the model
+        var systems = new Kjeringi.connectedSystemViewModel();
+        var currentSystem = new Kjeringi.system(@Html.Raw(Json.Encode("Statusscreen - " + Request.UserHostName))); // The username chose by the user is stored in the model
 
         // Proxy creation
-        var chatHub = $.connection.resultatServiceHub; // chatHub is the name of the Hub as declared in server side code
-        chatHub.state.username = currentUser.sysname; // This is the round-trip state
+        var hub = $.connection.resultatServiceHub; 
+        hub.state.username = currentSystem.sysname; 
 
-        //// Client-side event handlers, as declared inside the  Hub
-        //chatHub.client.onMessageReceived = function (message) {
-        //    var date = new Date();
-        //    date.setISO8601(message.Timestamp);
-        //    chat.messages.push(new chatR.chatMessage(message.Username, message.Content, date));//new Date(message.Timestamp)));
-        //    $("#chat-list").scrollTo('max');
-        //}
-
-        chatHub.client.leaves = function (userId, username, timestamp) {
-            var disconnectedUser = new Kjeringi.system(username, userId);
-            users.customRemove(disconnectedUser);
+        hub.client.leaves = function (userId, username, timestamp) {
+            var disconnectedUser = new Kjeringi.system(username, userId, timestamp);
+            systems.customRemoveOnline(disconnectedUser);
+            systems.offline.push(disconnectedUser);
         }
 
-        chatHub.client.joins = function (userId, username, timestamp) {
-            var connectedUser = new Kjeringi.system(username, userId);
-            users.systems.push(connectedUser);
+        hub.client.joins = function (userId, username, timestamp) {
+            var connectedUser = new Kjeringi.system(username, userId, timestamp);
+            systems.online.push(connectedUser);
+            systems.customRemoveOffline(connectedUser);
         }
 
-        //function sendMessageContent() {
-        //    var content = $("#compose-box").val();
-        //    if (content != "" && content != null) {
-        //        var msg = new chatR.chatMessage(currentUser.username, content);
-        //        chatHub.server.send(msg).done(function () {
-        //            $("#compose-box").val("");
-        //        }).fail(function (e) {
-        //            alert("Could not connect to server");
-        //        });
-        //    }
-        //}
+        ko.applyBindings(systems, $("#online-systems-list")[0]);
+        ko.applyBindings(systems, $("#offline-systems-list")[0]);
 
-        //$("#send-btn").click(function () {
-        //    sendMessageContent();
-        //});
-
-        //// Handles Enter keystroke press event
-        //$('#compose-box').keypress(function (e) {
-        //    if (e.which == 13) {
-        //        sendMessageContent();
-        //    }
-        //});
-
-        ko.applyBindings(users, $("#systems-list")[0]);
-        //ko.applyBindings(chat, $("#chat-list")[0]);
-
-        // Step 1: Start the connection
-        // Step 2: Get all currenlty connected users
-        // Step 3: Join to the chat and nmotify all the clients (me included) that there is a new user connected
         $.connection.hub.start()
                     .done(function () {
-                        chatHub.server.getConnectedSystems()
-                                    .done(function (connectedUsers) {
-                                        ko.utils.arrayForEach(connectedUsers, function (item) {
-                                            users.systems.push(new Kjeringi.system(item.SystemName, item.Id));
+                        hub.server.getConnectedSystems()
+                                    .done(function (connectedsystems) {
+                                        ko.utils.arrayForEach(connectedsystems, function (item) {
+                                            systems.online.push(new Kjeringi.system(item.SystemName, item.Id, item.TimeStamp));
                                         });
                                     }).done(function () {
-                                        chatHub.server.joined();
+                                        hub.server.joined();
                                     });
                     });
     });
