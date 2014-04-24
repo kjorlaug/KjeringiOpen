@@ -28,7 +28,7 @@
 
         // Proxy creation
         var hub = $.connection.resultatServiceHub; 
-        hub.state.username = currentSystem.sysname; 
+        hub.state.username = "rune var her"; 
 
         hub.client.leaves = function (userId, username, timestamp) {
             var disconnectedUser = new Kjeringi.system(username, userId, timestamp);

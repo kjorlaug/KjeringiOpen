@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,14 +16,20 @@ namespace EmitReaderLib
 
         public SignalWorker()
         {
-            myHubConn = new HubConnection("http://localhost:53130/");
+            String hub = ConfigurationManager.AppSettings["hub"];
+            String name = ConfigurationManager.AppSettings["name"];
+
+            myHubConn = new HubConnection(hub);
             myHub = myHubConn.CreateHubProxy("resultatServiceHub");
-            myHubConn.Start().Wait();
+
+            myHubConn.Start()
+                .ContinueWith((prevTask) => {
+                    myHub.Invoke("Join", "EmitReader - " + name);
+                }).Wait();
         }
 
         public void ProcessData(EmitData data)
         {
-
             myHub.Invoke("SendPassering", new object[] { data }).ContinueWith(task =>
                  {
                      if (task.IsFaulted)

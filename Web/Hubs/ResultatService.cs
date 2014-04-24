@@ -57,6 +57,20 @@ namespace Web.Hubs
             Clients.All.joins(sys.Id, sys.SystemName, sys.TimeStamp);
         }
 
+        public void Join(String name)
+        {
+            SubSystem sys = new SubSystem()
+            {
+                //Id = Context.ConnectionId,                
+                Id = Guid.NewGuid().ToString(),
+                SystemName = name, 
+                TimeStamp = DateTime.Now.ToShortTimeString()
+            };
+            _repository.Add(sys);
+            _repository.AddMapping(Context.ConnectionId, sys.Id);
+            Clients.All.joins(sys.Id, sys.SystemName, sys.TimeStamp);
+        }
+
         public ICollection<SubSystem> GetConnectedSystems()
         {
             return _repository.Systems.ToList<SubSystem>();

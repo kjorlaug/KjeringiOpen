@@ -10,6 +10,7 @@ namespace Web.Controllers
     {
         public ActionResult Index()
         {
+            var test = KjeringiData.Konkurranse.GetInstance;
             return View();
         }
 
