@@ -23,12 +23,6 @@ namespace TestConsole
 
             switch (arg)
             {
-                case "testsignal":
-                    monitor = new EmitMonitor(new TestReader(100), new SignalWorker());
-                    break;
-                case "testsubmit":
-                    monitor = new EmitMonitor(new TestReader(100), new SubmitWorker("http://http://ko.hoo9.com/timer/register"));
-                    break;
                 case "sticksignal":
                     monitor = new EmitMonitor(new Com4UsbSerialReader(), new SignalWorker());
                     break;
@@ -38,7 +32,7 @@ namespace TestConsole
                 default:
                     //monitor = new EmitMonitor(new Com4UsbSerialReader(), new SignalWorker());
                     //monitor = new EmitMonitor(new UsbSerialReader(), new SubmitWorker("http://ko.hoo9.com/timer/register"));
-                    monitor = new EmitMonitor(new UsbSerialReader(), new SignalWorker());
+                    monitor = new EmitMonitor(new MySqlReader(), new SignalWorker());
                     break;
             }
 

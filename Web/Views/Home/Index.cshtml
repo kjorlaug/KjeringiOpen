@@ -19,6 +19,12 @@
     </div>
 </div>
 
+<div id="log" style="height:300px;overflow:auto;">
+    <ul data-bind="foreach: log">
+        <li><span data-bind="text: msg"></span></li>
+    </ul>
+</div>
+
 <script type="text/javascript" src="@Url.Content("~/scripts/model.js")"></script>
 <script type="text/javascript">
 
@@ -28,22 +34,29 @@
 
         // Proxy creation
         var hub = $.connection.resultatServiceHub; 
-        hub.state.username = "rune var her"; 
+        hub.state.username = currentSystem.username; 
 
         hub.client.leaves = function (userId, username, timestamp) {
             var disconnectedUser = new Kjeringi.system(username, userId, timestamp);
             systems.customRemoveOnline(disconnectedUser);
-            systems.offline.push(disconnectedUser);
+            systems.offline.unshift(disconnectedUser);
         }
 
         hub.client.joins = function (userId, username, timestamp) {
             var connectedUser = new Kjeringi.system(username, userId, timestamp);
-            systems.online.push(connectedUser);
             systems.customRemoveOffline(connectedUser);
+            systems.online.unshift(connectedUser);
         }
 
+        hub.client.addLogMessage = function (etappe, emitId, startNummer, namn, time) {
+            var logMessage = new Kjeringi.logMessage(etappe + ' ' + emitId + ' ' + startNummer + ' ' + namn + ' ' + time);
+            if (systems.log.length > 1000)
+                systems.log.slice(-1)[0];
+            systems.log.unshift(logMessage);
+        }
         ko.applyBindings(systems, $("#online-systems-list")[0]);
         ko.applyBindings(systems, $("#offline-systems-list")[0]);
+        ko.applyBindings(systems, $("#log")[0]);
 
         $.connection.hub.start()
                     .done(function () {
@@ -53,7 +66,7 @@
                                             systems.online.push(new Kjeringi.system(item.SystemName, item.Id, item.TimeStamp));
                                         });
                                     }).done(function () {
-                                        hub.server.joined();
+                                        hub.server.join("Status");
                                     });
                     });
     });

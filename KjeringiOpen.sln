@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimerConsole", "TestConsole
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintConsole", "PrintConsole\PrintConsole.csproj", "{3C0493E3-71CC-4370-806D-590CD6729FFE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmsConsole", "SmsConsole\SmsConsole.csproj", "{3F399159-8827-476A-ADF0-6E82B2C00300}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3C0493E3-71CC-4370-806D-590CD6729FFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C0493E3-71CC-4370-806D-590CD6729FFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C0493E3-71CC-4370-806D-590CD6729FFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F399159-8827-476A-ADF0-6E82B2C00300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F399159-8827-476A-ADF0-6E82B2C00300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F399159-8827-476A-ADF0-6E82B2C00300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F399159-8827-476A-ADF0-6E82B2C00300}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

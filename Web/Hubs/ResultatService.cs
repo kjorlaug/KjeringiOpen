@@ -43,20 +43,6 @@ namespace Web.Hubs
 
         #endregion
 
-        public void Joined()
-        {
-            SubSystem sys = new SubSystem()
-            {
-                //Id = Context.ConnectionId,                
-                Id = Guid.NewGuid().ToString(),
-                SystemName = Clients.Caller.username,
-                TimeStamp = DateTime.Now.ToShortTimeString()
-            };
-            _repository.Add(sys);
-            _repository.AddMapping(Context.ConnectionId, sys.Id);
-            Clients.All.joins(sys.Id, sys.SystemName, sys.TimeStamp);
-        }
-
         public void Join(String name)
         {
             SubSystem sys = new SubSystem()
@@ -71,22 +57,26 @@ namespace Web.Hubs
             Clients.All.joins(sys.Id, sys.SystemName, sys.TimeStamp);
         }
 
+        public void AddtoGroup(String name)
+        {
+            Groups.Add(Context.ConnectionId, name);
+        }
+
         public ICollection<SubSystem> GetConnectedSystems()
         {
             return _repository.Systems.ToList<SubSystem>();
         }
 
-
         public void SendPassering(EmitData data)
         {
-            //Clients.All.nyPassering(data.BoxId, data.Time);
-            Clients.All.addNewMessageToPage(data.BoxId.ToString(), data.Time.ToLongTimeString());
-        }
+            // Add new Passering to race
+            ResultatData resultat = Konkurranse.GetInstance.RegistrerPassering(data);
 
-        public void Send(string name, string message)
-        {
-            // Call the addNewMessageToPage method to update clients.
-            Clients.All.addNewMessageToPage(name, message);
+            if (resultat != null)
+            {
+                Clients.All.addLogMessage(resultat.ResultatForEtappe, resultat.EmitID, resultat.Startnummer, resultat.Namn, data.Time.ToLongTimeString());
+                Clients.Group(resultat.ResultatForEtappe).processResultat(resultat);
+            }
         }
     }
 }

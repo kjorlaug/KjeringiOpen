@@ -13,15 +13,47 @@ namespace EmitReaderLib
         public event EventHandler<EmitDataRecievedEventArgs> DataReceived;
 
         protected MySqlConnection conn;
-        protected long lastCount;
-        protected long lastId;
-        protected Boolean stopSignal = false;
+        protected MySqlCommand cmd;
+        protected int tempo = 10;
 
         public MySqlReader()
         {
-            conn = new MySqlConnection("SERVER=localhost;database=kjeringi;uid=kjeringi;pwd=kjeringi;allow user variables=true;");
-            lastCount = 0;
-            lastId = 0;
+            conn = new MySqlConnection("SERVER=localhost;database=kop2014;uid=root;pwd=difi;allow user variables=true;");
+
+            cmd = new MySqlCommand(@"select 
+	                distinct cardid, time, location
+                from (
+	                select 
+		                card + 1000 as cardId,
+		                time,
+		                case 
+			                when location = 78 then 66
+			                when location = 70 then 70
+			                when location = 79 then 72
+			                else location
+		                end as location
+	                from
+		                timers_raw
+	                where
+		                location <> 75
+	                ) as t,
+	                (
+	                select
+		                s.id, chips.chipNumber
+	                from 
+		                kop_station s,
+		                (
+			                select chipNumber from kop_person where superwife = 1 and deleted = 0
+			                union 
+			                select chipNumber from kop_team where deleted = 0
+		                ) as chips
+	                where
+		                s.official = 1
+	                ) as d
+                where
+	                d.chipNumber = t.cardid
+                and t.cardid <> 6107
+                order by 2", conn);
         }
 
         public void Start()
@@ -31,49 +63,43 @@ namespace EmitReaderLib
                 try
                 {
                     conn.Open();
-                    MySqlCommand cmd = new MySqlCommand(sql_count, conn);
-                    long count = (long)cmd.ExecuteScalar();
+                    MySqlDataReader data = cmd.ExecuteReader();
 
-                    if (count > lastCount)
+                    DateTime nextSleep = DateTime.Now;
+                    Boolean init = false;
+
+                    while (data.Read())
                     {
-                        lastCount++;
 
-                        // Get new rows
-                        cmd = new MySqlCommand(sql_newrows, conn);
-                        cmd.Prepare();
-                        cmd.Parameters.AddWithValue("@id", lastId);
+                        DateTime time = DateTime.ParseExact(data.GetString("time"), "HH:mm:ss.FFF", System.Globalization.CultureInfo.InvariantCulture);
+                        if (!init)
+                        {
+                            nextSleep = time.AddSeconds(tempo);
+                            init = true;
+                        }
 
-                        MySqlDataReader r = cmd.ExecuteReader();
-                        r.Read();
-                        lastId = (int)r[0];
-                        r.Close();
+                        if (time < nextSleep)
+                        {
+                            EmitData d = new EmitData()
+                            {
+                                Id = int.Parse(data.GetString("cardid")),
+                                BoxId = int.Parse(data.GetString("location")),
+                                Time = time
+                            };
+                            EventHandler<EmitDataRecievedEventArgs> handler = DataReceived;
 
-                        MySqlCommand dataCmd = new MySqlCommand(String.Format(sql_data, lastId, lastId), conn);
-                        MySqlDataReader data = dataCmd.ExecuteReader();
-                        if (!data.Read())
-                            throw new Exception("No data?");
-                        data.NextResult();
-                        data.Read();
+                            if (handler != null)
+                                handler(this, new EmitDataRecievedEventArgs(d));
 
-                        EmitData d = new EmitData();
-                        d.Id = (int)data["ident"];
-                        //d.Time = data.GetTimeSpan("time_time");
-                        d.Position = (long)data["pos"];
-                        d.FirstName = (String)data["firstName"];
-                        d.LastName = (String)data["surname"];
-                        d.TeamName = (String)data["teamName"];
-                        d.ClassCode = (String)data["classCode"];
-                        d.Leg = (int)data["leg"];
-                        d.LegTime = data.GetTimeSpan("time_diff");
-                        d.TotalTime = data.GetTimeSpan("time_time");
-
-                        EventHandler<EmitDataRecievedEventArgs> handler = DataReceived;
-
-                        if (handler != null)
-                            handler(this, new EmitDataRecievedEventArgs(d));
-
-                        data.Close();
+                        }
+                        else
+                        {
+                            System.Threading.Thread.Sleep(1000);
+                            nextSleep = time.AddSeconds(tempo);
+                        }
                     }
+                    data.Close();
+                    conn.Close();
                 }
                 catch (Exception ex)
                 {
@@ -83,53 +109,11 @@ namespace EmitReaderLib
                 {
                     conn.Close();
                 }
-            }).ContinueWith((t) =>
-            {
-                if (!stopSignal)
-                {
-                    System.Threading.Thread.Sleep(1000);
-                    Start();
-                }
             });
         }
 
         public void Stop()
         {
-            stopSignal = true;
         }
-
-        protected String sql_count = @"SELECT count(id) FROM 2012_timers";
-        protected String sql_newrows = @"SELECT id FROM (SELECT id FROM 2012_timers WHERE id > @id AND active = 1 order by id) t LIMIT 1";
-
-        protected String sql_data = @"
-            set @rownum := 0;
-            select @classCode := classCode, @leg := leg from (
-	            select 
-		            t.id, t.ident, p.id as personId, p.firstName, p.surname, 'Superkjerring' as teamName, p.personClassCode as classCode, t.time_time, t.leg
-	            from 
-		            2012_timers t inner join 2012_person p on t.ident = p.cardid
-	            union all
-	            select
-		            t.id, t.ident, team.id as personId, p.firstName, p.surname, team.name as teamName, team.teamClassCode as classCode, t.time_time, t.leg
-	            from
-		            (2012_timers t inner join 2012_team team on t.ident = team.cardid) inner join 2012_person p on (p.teamId = team.id and p.sprintNumber = t.leg)
-            ) t where t.id = {0};
-            select classTotals.*, ifnull(timediff(classTotals.time_time, (select min(time_time) from 2012_timers where ident = classTotals.ident and leg = classTotals.leg - 1)), classTotals.time_time) as time_diff from (
-	            select @rownum := @rownum + 1 as pos, totals.* from (
-		            select 
-			            t.id, t.ident, p.id as personId, p.firstName, p.surname, 'Superkjerring' as teamName, p.personClassCode as classCode, t.time_time, t.leg
-		            from 
-			            2012_timers t inner join 2012_person p on t.ident = p.cardid
-		            union all
-		            select
-			            t.id, t.ident, team.id as personId, p.firstName, p.surname, team.name as teamName, team.teamClassCode as classCode, t.time_time, t.leg
-		            from
-			            (2012_timers t inner join 2012_team team on t.ident = team.cardid) inner join 2012_person p on (p.teamId = team.id and p.sprintNumber = t.leg)
-	            ) as totals
-	            where
-		            totals.classCode = @classCode and leg = @leg
-	            order by totals.time_time
-            ) as classTotals
-            where classTotals.id = {1};";
     }
 }

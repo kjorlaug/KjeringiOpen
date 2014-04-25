@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using MySql.Data.MySqlClient;
+using EmitReaderLib;
 
 namespace KjeringiData
 {
@@ -17,6 +18,11 @@ namespace KjeringiData
 
     public class Deltakar
     {
+        public Deltakar()
+        {
+            Passeringar = new List<Passering>();
+        }
+
         public int Startnummer { get; set; }
         public int EmitID { get; set; }
 
@@ -28,7 +34,7 @@ namespace KjeringiData
         public Boolean Super { get; set; }
 
         public List<String> Medlemmer { get; set; }
-        protected List<Passering> Passeringar { get; set; }
+        public List<Passering> Passeringar { get; protected set; }
     }
 
     public class Passering
@@ -56,17 +62,84 @@ namespace KjeringiData
 
         public static Konkurranse GetInstance {
             get {
-                /*if (theInstance == null)
-                {*/
+                if (theInstance == null)
+                {
                     theInstance = new Konkurranse();
                     theInstance.Build();
-                //}
+                }
                 return theInstance;
+            }
+        }
+
+        public ResultatData RegistrerPassering(EmitData data)
+        {
+            try
+            {
+                Plassering plassering = Plasseringar.Find(x => x.BoksId.Equals(data.BoxId));
+                Deltakar deltakar = DeltagarEtterEmitId[data.Id];
+
+                Passering passering = new Passering()
+                {
+                    EmitID = data.Id,
+                    Location = plassering,
+                    Tid = data.Time
+                };
+
+                // duplikat?
+                if (this.Passeringar.Find(p => p.EmitID == passering.EmitID && p.Location.BoksId == passering.Location.BoksId) != null)
+                    return null;
+
+                this.Passeringar.Add(passering);
+                deltakar.Passeringar.Add(passering);
+
+                // Create resultatdata
+                ResultatData d = new ResultatData();
+
+                d.ResultatForEtappe = passering.Location.Namn;
+                d.Namn = deltakar.Namn;
+                d.Telefonnummer = deltakar.Telefon;
+                d.Startnummer = deltakar.Startnummer.ToString();
+                d.EmitID = deltakar.EmitID.ToString();
+                d.Offisiell = plassering.Offisiell;
+
+                d.Klasse = deltakar.Klasse.Namn;
+
+                if (!deltakar.Super)
+                    d.Medlemmer = deltakar.Medlemmer;
+                else
+                    d.Medlemmer = new List<string>();
+
+                List<Passering> filtert = deltakar.Passeringar.FindAll(x => x.Location.Offisiell).OrderBy(y => y.Tid).ToList<Passering>();
+                DateTime start = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 13, 14, 0);
+
+                d.Etappetider = new List<string>();
+                TimeSpan totalTid = new TimeSpan(0);
+                foreach (Passering pass in filtert) { 
+                    d.Etappetider.Add((pass.Tid - start).ToString("c"));
+                    totalTid += (pass.Tid - start);
+                    start = pass.Tid;
+                }
+
+                d.TotalTid = totalTid.ToString("c");
+               
+                List<Deltakar> KlasseListe = DeltakarListeEtterKlasse[deltakar.Klasse].FindAll(x => x.Passeringar.Exists(y => y.Location.BoksId == passering.Location.BoksId)).ToList<Deltakar>();
+                KlasseListe = KlasseListe.OrderBy(x => x.Passeringar.Find(y => y.Location.BoksId == passering.Location.BoksId).Tid).ToList<Deltakar>();
+
+                d.PlasseringIKlasse = KlasseListe.FindIndex(x => x.EmitID == deltakar.EmitID) + 1;
+
+                return d;
+            }
+            catch (Exception ex)
+            {
+                // Something went wrong...
+                return null;
             }
         }
 
         // Build content in singleton
         protected void Build() {
+            Passeringar = new List<Passering>();
+            
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["kjeringi"].ConnectionString);
 
             conn.Open();
@@ -180,10 +253,29 @@ namespace KjeringiData
         public List<Deltakar> Deltagarar { get; protected set; }
         public List<Plassering> Plasseringar { get; protected set; }
 
-        //public List<Passering> Passeringar { get; }
+        public List<Passering> Passeringar { get; protected set; }
 
         public Dictionary<int, Deltakar> DeltagarEtterEmitId { get; protected set; }
         public Dictionary<Klasse, List<Deltakar>> DeltakarListeEtterKlasse { get; protected set; }
     }
 
+    public class ResultatData
+    {
+        public String ResultatForEtappe { get; set; }
+        public Boolean Offisiell { get; set; }
+
+        public String Namn { get; set; }
+        public String Telefonnummer { get; set; }
+
+        public String EmitID { get; set; }
+        public String Startnummer { get; set; }
+
+        public List<String> Medlemmer { get; set; }
+        public List<String> Etappetider { get; set; }
+
+        public String TotalTid { get; set; }
+
+        public String Klasse {get;set;}
+        public int PlasseringIKlasse { get; set; }
+    }
 }

@@ -38,7 +38,7 @@ namespace EmitReaderLib
                      }
                      else
                      {
-                         Console.WriteLine("Successfully called MethodOnServer");
+                         Console.WriteLine("Successfully " + data.Time.ToShortTimeString());
                      }
                  });
         }
