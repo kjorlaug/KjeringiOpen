@@ -20,7 +20,7 @@ namespace EmitReaderLib
 
         public UsbSerialReader()
         {
-            ComPortNo = "COM6";
+            ComPortNo = "COM9";
         }
 
         public void Start()

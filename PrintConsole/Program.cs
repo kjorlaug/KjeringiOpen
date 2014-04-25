@@ -13,6 +13,9 @@ namespace PrintConsole
 {
     class Program
     {
+
+        static Queue<String> printQueue = new Queue<string>();
+
         static void Main(string[] args)
         {
             String hub = ConfigurationManager.AppSettings["hub"];
@@ -34,47 +37,45 @@ namespace PrintConsole
 
             myHub.On<KjeringiData.ResultatData>("processResultat", (data) =>
             {
-                PrinterSettings ps = new PrinterSettings();
-
-                StringBuilder sb = new StringBuilder(HtmlTemplate.Template);
+                StringBuilder sb = new StringBuilder(HtmlTemplate.Template.Replace("#startnummer#", data.Startnummer).Replace("#brikke#", data.EmitID));
 
                 sb.Append(data.Namn);
-                sb.Append("<br/><br/>");
+                sb.Append("<br><br>");
 
                 sb.Append(data.Klasse);
                 sb.Append(" - ");
                 sb.Append(data.PlasseringIKlasse);
-                sb.Append(".plass <br/><br/><h3>Etappetider</h3><table id='customers'><tr><th>Veksling</th><th>Utøvar</th><th>Etappetid</th></tr>");
+                sb.Append(".plass <br><br><h3>Etappetider</h3><table id='customers'><tr><th>Veksling</th><th>Ut&oslash;var</th><th>Etappetid</th></tr>");
                 
                 sb.Append("<tr><td>Telemark</td><td>");
-                if (data.Medlemmer.Count > 0)
+                if (data.Medlemmer.Count == 4)
                     sb.Append(data.Medlemmer[0]);
                 sb.Append("</td><td>");
-                if (data.Etappetider.Count > 0)
+                if (data.Etappetider.Count == 4)
                     sb.Append(data.Etappetider[0]);
                 sb.Append("</td></tr>");
 
                 sb.Append("<tr class='alt'><td>Ski</td><td>");
-                if (data.Medlemmer.Count > 1)
+                if (data.Medlemmer.Count == 4)
                     sb.Append(data.Medlemmer[1]);
                 sb.Append("</td><td>");
-                if (data.Etappetider.Count > 1)
+                if (data.Etappetider.Count == 4)
                     sb.Append(data.Etappetider[1]);
                 sb.Append("</td></tr>");
 
                 sb.Append("<tr><td>Springing</td><td>");
-                if (data.Medlemmer.Count > 2)
+                if (data.Medlemmer.Count == 4 )
                     sb.Append(data.Medlemmer[2]);
                 sb.Append("</td><td>");
-                if (data.Etappetider.Count > 2)
+                if (data.Etappetider.Count == 4)
                     sb.Append(data.Etappetider[2]);
                 sb.Append("</td></tr>");
 
                 sb.Append("<tr class='alt'><td>Sykling</td><td>");
-                if (data.Medlemmer.Count > 3)
+                if (data.Medlemmer.Count == 4)
                     sb.Append(data.Medlemmer[3]);
                 sb.Append("</td><td>");
-                if (data.Etappetider.Count > 3)
+                if (data.Etappetider.Count == 4)
                     sb.Append(data.Etappetider[3]);
                 sb.Append("</td></tr>");
 
@@ -83,14 +84,17 @@ namespace PrintConsole
                 sb.Append(data.TotalTid);
                 sb.Append("</th></th>");
 
-                sb.Append("</table></div></body></html>");
+                sb.Append("</table></div><footer></footer></body></html>");
 
-                System.IO.StreamWriter sw = new System.IO.StreamWriter(@"c:\temp\" + data.EmitID + ".html", false, System.Text.UTF8Encoding.UTF8);
+                String file = @"c:\temp\" + data.EmitID + ".html";
+
+                System.IO.StreamWriter sw = new System.IO.StreamWriter(file, false, System.Text.UTF8Encoding.UTF8);
                 sw.Write(sb.ToString());
                 sw.Close();
 
-                //RawPrinterHelper.SendStringToPrinter(ps.PrinterName, "");
-                Console.WriteLine("Printed");
+                PrinterSettings ps = new PrinterSettings();
+                RawPrinterHelper.SendFileToPrinter(ps.PrinterName, file);
+
             });
 
             myHubConn.Start().ContinueWith(task =>

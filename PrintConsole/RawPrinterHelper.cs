@@ -53,7 +53,7 @@ namespace PrintConsole
             bool bSuccess = false; // Assume failure unless you specifically succeed.
 
             di.pDocName = "My C#.NET RAW Document";
-            di.pDataType = "RAW";
+            di.pDataType = "RAW";         
 
             // Open the printer.
             if (OpenPrinter(szPrinterName.Normalize(), out hPrinter, IntPtr.Zero))
@@ -66,9 +66,10 @@ namespace PrintConsole
                     {
                         // Write your bytes.
                         bSuccess = WritePrinter(hPrinter, pBytes, dwCount, out dwWritten);
-                        EndPagePrinter(hPrinter);
+                        bSuccess = EndPagePrinter(hPrinter);
                     }
-                    EndDocPrinter(hPrinter);
+                    bSuccess = EndPagePrinter(hPrinter);
+                    bSuccess = EndDocPrinter(hPrinter);
                 }
                 ClosePrinter(hPrinter);
             }
