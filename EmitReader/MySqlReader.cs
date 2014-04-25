@@ -14,7 +14,7 @@ namespace EmitReaderLib
 
         protected MySqlConnection conn;
         protected MySqlCommand cmd;
-        protected int tempo = 10;
+        protected int tempo = 30;
 
         public MySqlReader()
         {

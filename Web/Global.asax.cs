@@ -16,6 +16,10 @@ namespace Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            
+            // Make sure the app is set up
+            var k = KjeringiData.Konkurranse.GetInstance;
+
         }
     }
 }

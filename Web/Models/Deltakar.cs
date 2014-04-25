@@ -73,8 +73,8 @@ namespace KjeringiData
 
         public ResultatData RegistrerPassering(EmitData data)
         {
-            try
-            {
+            //try
+            //{
                 Plassering plassering = Plasseringar.Find(x => x.BoksId.Equals(data.BoxId));
                 Deltakar deltakar = DeltagarEtterEmitId[data.Id];
 
@@ -128,12 +128,12 @@ namespace KjeringiData
                 d.PlasseringIKlasse = KlasseListe.FindIndex(x => x.EmitID == deltakar.EmitID) + 1;
 
                 return d;
-            }
-            catch (Exception ex)
-            {
-                // Something went wrong...
-                return null;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    // Something went wrong...
+            //    return null;
+            //}
         }
 
         // Build content in singleton
