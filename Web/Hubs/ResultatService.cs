@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using Microsoft.AspNet.SignalR;
 
 using EmitReaderLib;
 using KjeringiData;
+using MySql.Data.MySqlClient;
 
 namespace Web.Hubs
 {
@@ -59,7 +61,7 @@ namespace Web.Hubs
 
         public void AddtoGroup(String name)
         {
-            Groups.Add(Context.ConnectionId, name);
+            Groups.Add(Context.ConnectionId, HttpContext.Current.Server.HtmlDecode(name));
         }
 
         public ICollection<SubSystem> GetConnectedSystems()
@@ -67,16 +69,36 @@ namespace Web.Hubs
             return _repository.Systems.ToList<SubSystem>();
         }
 
+        public ICollection<ResultatData> GetPlassering(String name)
+        {
+            Plassering plassering = Konkurranse.GetInstance.Plasseringar.Find(x => x.Namn.Equals(HttpContext.Current.Server.HtmlDecode(name)));
+            return plassering.Resultat.Take(100).Reverse().ToList<ResultatData>();
+        }
+
         public void SendPassering(EmitData data)
         {
-            // Add new Passering to race
-            ResultatData resultat = Konkurranse.GetInstance.RegistrerPassering(data);
+            // Persist
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["kjeringi"].ConnectionString);
+            conn.Open();
 
-            if (resultat != null)
+            // Insert to timers
+            MySqlCommand cmd = new MySqlCommand(@"insert into timers_raw (year, card, time, location) values (14, " + data.Id.ToString() + ", '" + data.Time.ToString("HH:mm:ss.FFF") + "', " + data.BoxId.ToString() + ");", conn);
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+            try
             {
-                Clients.All.addLogMessage(resultat.ResultatForEtappe, resultat.EmitID, resultat.Startnummer, resultat.Namn, data.Time.ToLongTimeString());
-                Clients.Group(resultat.ResultatForEtappe).processResultat(resultat);
+                // Add new Passering to race
+                ResultatData resultat = Konkurranse.GetInstance.RegistrerPassering(data);
+
+                if (resultat != null)
+                {
+                    Clients.All.addLogMessage(resultat.ResultatForEtappe, resultat.EmitID, resultat.Startnummer, resultat.Namn, data.Time.ToLongTimeString());
+                    Clients.Group(resultat.ResultatForEtappe).processResultat(resultat);
+                }
             }
+            catch (Exception ex) { }
         }
     }
 }

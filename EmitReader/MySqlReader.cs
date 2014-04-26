@@ -14,7 +14,7 @@ namespace EmitReaderLib
 
         protected MySqlConnection conn;
         protected MySqlCommand cmd;
-        protected int tempo = 30;
+        protected int tempo = 10;
 
         public MySqlReader()
         {
@@ -27,8 +27,8 @@ namespace EmitReaderLib
 		                card + 1000 as cardId,
 		                time,
 		                case 
-			                when location = 78 then 66
-			                when location = 70 then 70
+			                when location = 78 then 70
+			                when location = 70 then 71
 			                when location = 79 then 72
 			                else location
 		                end as location

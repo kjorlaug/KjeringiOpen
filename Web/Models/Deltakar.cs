@@ -42,14 +42,23 @@ namespace KjeringiData
         public Plassering Location { get; set; }
         public int EmitID { get; set; }
         public DateTime Tid { get; set; }
+
     }
 
     public class Plassering
     {
+        public Plassering()
+        {
+            Resultat = new Stack<ResultatData>();
+        }
+
         public int BoksId { get; set; }
         public Boolean Offisiell { get; set; }
         public String Namn { get; set; }
         public int Sekvens { get; set; }
+
+        public Stack<ResultatData> Resultat { get; protected set; }
+
     }
 
     public class Konkurranse
@@ -64,11 +73,16 @@ namespace KjeringiData
             get {
                 if (theInstance == null)
                 {
-                    theInstance = new Konkurranse();
-                    theInstance.Build();
+                    Reset();
                 }
                 return theInstance;
             }
+        }
+
+        public static void Reset()
+        {
+            theInstance = new Konkurranse();
+            theInstance.Build();
         }
 
         public ResultatData RegistrerPassering(EmitData data)
@@ -86,8 +100,9 @@ namespace KjeringiData
                 };
 
                 // duplikat?
-                if (this.Passeringar.Find(p => p.EmitID == passering.EmitID && p.Location.BoksId == passering.Location.BoksId) != null)
-                    return null;
+                if (plassering.Offisiell)
+                    if (this.Passeringar.Find(p => p.EmitID == passering.EmitID && p.Location.BoksId == passering.Location.BoksId) != null)
+                        return null;
 
                 this.Passeringar.Add(passering);
                 deltakar.Passeringar.Add(passering);
@@ -96,37 +111,47 @@ namespace KjeringiData
                 ResultatData d = new ResultatData();
 
                 d.ResultatForEtappe = passering.Location.Namn;
-                d.Namn = deltakar.Namn;
+                d.Namn = System.Web.HttpContext.Current.Server.HtmlEncode(deltakar.Namn);
                 d.Telefonnummer = deltakar.Telefon;
                 d.Startnummer = deltakar.Startnummer.ToString();
                 d.EmitID = deltakar.EmitID.ToString();
                 d.Offisiell = plassering.Offisiell;
 
-                d.Klasse = deltakar.Klasse.Namn;
+                d.Klasse = System.Web.HttpContext.Current.Server.HtmlEncode(deltakar.Klasse.Namn);
 
                 if (!deltakar.Super)
-                    d.Medlemmer = deltakar.Medlemmer;
+                {
+                    d.Medlemmer = new List<string>();
+                    foreach (String s in deltakar.Medlemmer)
+                        d.Medlemmer.Add(System.Web.HttpContext.Current.Server.HtmlEncode(s));
+                }
                 else
                     d.Medlemmer = new List<string>();
-
+                                
                 List<Passering> filtert = deltakar.Passeringar.FindAll(x => x.Location.Offisiell).OrderBy(y => y.Tid).ToList<Passering>();
                 DateTime start = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 13, 14, 0);
 
-                d.Etappetider = new List<string>();
+                d.Etappetider = new List<string>(4);
+                d.Etappetider.Add("");
+                d.Etappetider.Add("");
+                d.Etappetider.Add("");
+                d.Etappetider.Add("");
                 TimeSpan totalTid = new TimeSpan(0);
                 foreach (Passering pass in filtert) { 
-                    d.Etappetider.Add((pass.Tid - start).ToString("c"));
+                    d.Etappetider[pass.Location.Sekvens - 1] = (pass.Tid - start).ToString(@"hh\:mm\:ss");
                     totalTid += (pass.Tid - start);
                     start = pass.Tid;
                 }
 
-                d.TotalTid = totalTid.ToString("c");
+                d.TotalTid = totalTid.ToString(@"hh\:mm\:ss");
                
                 List<Deltakar> KlasseListe = DeltakarListeEtterKlasse[deltakar.Klasse].FindAll(x => x.Passeringar.Exists(y => y.Location.BoksId == passering.Location.BoksId)).ToList<Deltakar>();
                 KlasseListe = KlasseListe.OrderBy(x => x.Passeringar.Find(y => y.Location.BoksId == passering.Location.BoksId).Tid).ToList<Deltakar>();
 
                 d.PlasseringIKlasse = KlasseListe.FindIndex(x => x.EmitID == deltakar.EmitID) + 1;
 
+                plassering.Resultat.Push(d);
+                
                 return d;
             //}
             //catch (Exception ex)
@@ -183,7 +208,7 @@ namespace KjeringiData
             DeltakarListeEtterKlasse = new Dictionary<Klasse, List<Deltakar>>();
 
             // Adding supers
-            cmd = new MySqlCommand(@"select startNumber, chipNumber, firstname, surname, personClassCode, phoneNumber from kop_person where superwife = 1 and deleted = 0", conn);
+            cmd = new MySqlCommand(@"select startNumber, chipNumber, firstname, surname, personClassCode, phoneNumber from kop_person where superwife = 1 and deleted = 0 and startnumber is not null and chipnumber is not null", conn);
             data = cmd.ExecuteReader();
 
             while (data.Read())
@@ -208,7 +233,7 @@ namespace KjeringiData
 
             data.Close();
 
-            cmd = new MySqlCommand(@"SELECT t.startNumber, t.chipNumber, t.name, t.teamClassCode, t.companyClass, p.firstname, p.surname, p.phoneNumber, p.sprintNumber FROM kop_team t inner join kop_person p on t.id = p.teamid where t.deleted = 0 order by t.startNumber, p.sprintNumber", conn);
+            cmd = new MySqlCommand(@"SELECT t.startNumber, t.chipNumber, t.name, t.teamClassCode, t.companyClass, p.firstname, p.surname, p.phoneNumber, p.sprintNumber FROM kop_team t inner join kop_person p on t.id = p.teamid where t.deleted = 0 and t.startNumber is not null and t.chipNumber is not null order by t.startNumber, p.sprintNumber", conn);
             data = cmd.ExecuteReader();
 
             data.Read();
@@ -246,6 +271,25 @@ namespace KjeringiData
 
             data.Close();
 
+            // Load any times registered
+            cmd = new MySqlCommand("SELECT card, time, location FROM timers_raw WHERE year = 14 ORDER BY id", conn);
+            data = cmd.ExecuteReader();
+            
+            while (data.Read()) {
+                DateTime time = DateTime.ParseExact(data.GetString("time"), "HH:mm:ss.FFF", System.Globalization.CultureInfo.InvariantCulture);
+                try
+                {
+                    RegistrerPassering(
+                        new EmitData()
+                        {
+                            Id = int.Parse(data.GetString("card")),
+                            BoxId = int.Parse(data.GetString("location")),
+                            Time = time
+                        });
+                }
+                catch (Exception ex) { }
+            }
+            data.Close();
             conn.Close();
         }
 

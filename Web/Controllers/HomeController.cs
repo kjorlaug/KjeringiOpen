@@ -13,9 +13,23 @@ namespace Web.Controllers
             return View();
         }
 
-        public ActionResult Chat()
+        public ActionResult EmitReader()
         {
             return View();
         }
+
+        public ActionResult Station(String name)
+        {
+            ViewBag.Name = name;
+
+            return View();
+        }
+
+        public ActionResult Reset()
+        {
+            KjeringiData.Konkurranse.Reset();
+            return RedirectToAction("Index");
+        }
+
     }
 }

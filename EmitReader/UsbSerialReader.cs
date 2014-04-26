@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Concurrent;
+using System.Configuration;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace EmitReaderLib
 
         public UsbSerialReader()
         {
-            ComPortNo = "COM9";
+            ComPortNo = ConfigurationManager.AppSettings["com"];
         }
 
         public void Start()
@@ -99,12 +100,5 @@ namespace EmitReaderLib
         }
 
 
-    }
-
-    public class Com4UsbSerialReader : UsbSerialReader
-    {
-        public Com4UsbSerialReader() {
-            ComPortNo = "COM4";
-        }
     }
 }

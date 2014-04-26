@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = ViewBag.Name;
+}
+<h3>@ViewBag.Name</h3>
+<div style="min-height:300px">
+    <table class="table table-condensed table-striped" id="res">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Namn</th>
+                <th>Klasse</th>
+                <th>Tid</th>
+                <th>Plass</th>
+            </tr>
+        </thead>       
+        <tbody data-bind ="foreach: resultat">
+            <tr>
+                <td><span data-bind="text: $data.Startnummer"></span></td>
+                <td><span data-bind="html: $data.Namn"></span></td>
+                <td><span data-bind="text: $data.Klasse"></span></td>
+                <td><span data-bind="text: $data.TotalTid"></span></td>
+                <td>
+                    <span class="bagde" data-bind="text: $data.PlasseringIKlasse"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript" src="@Url.Content("~/scripts/model.js")"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var model = new Kjeringi.tickerViewModel();
+
+        $.connection.resultatServiceHub.client.processResultat = function (resultat) {
+            if (model.resultat.length > 100)
+                model.resultat.slice(-1)[0];
+            model.resultat.unshift(resultat);
+        }
+
+        ko.applyBindings(model);
+
+        $.connection.hub.start()
+                    .done(function () {
+                        $.connection.resultatServiceHub.server.getPlassering('@ViewBag.Name')
+                                    .done(function (res) {
+                                        ko.utils.arrayForEach(res, function (resultat) {
+                                            //var m = new Kjeringi.ticker(resultat.Namn, resultat.Klasse, resultat.EmitID, resultat.Startnummer, resultat.Medlemmer, resultat.Etappetider, resultat.TotaltTid, resultat.PlasseringIKlasse);
+                                            //alert(m.TotalTid);
+                                            model.resultat.unshift(resultat);
+                                        });
+                                    }).done(function () {
+                                        $.connection.resultatServiceHub.server.addtoGroup('@ViewBag.Name');
+                                    });
+                    });
+    });
+
+</script>
