@@ -61,7 +61,13 @@ namespace Web.Hubs
 
         public void AddtoGroup(String name)
         {
-            Groups.Add(Context.ConnectionId, HttpContext.Current.Server.HtmlDecode(name));
+            if (String.IsNullOrEmpty(name))
+            {
+                foreach(Plassering p in Konkurranse.GetInstance.Plasseringar)
+                    Groups.Add(Context.ConnectionId, p.Namn);
+            }
+            else
+                Groups.Add(Context.ConnectionId, HttpContext.Current.Server.HtmlDecode(name));
         }
 
         public ICollection<SubSystem> GetConnectedSystems()
@@ -81,11 +87,13 @@ namespace Web.Hubs
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["kjeringi"].ConnectionString);
             conn.Open();
 
-            // Insert to timers
             MySqlCommand cmd = new MySqlCommand(@"insert into timers_raw (year, card, time, location) values (14, " + data.Id.ToString() + ", '" + data.Time.ToString("HH:mm:ss.FFF") + "', " + data.BoxId.ToString() + ");", conn);
             cmd.ExecuteNonQuery();
-
             conn.Close();
+
+            // Send to Erlend
+            SubmitWorker submitter = new SubmitWorker("http://ko.hoo9.com/timer/register");
+            submitter.ProcessData(data);
 
             try
             {

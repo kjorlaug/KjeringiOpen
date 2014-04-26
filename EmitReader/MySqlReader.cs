@@ -14,14 +14,14 @@ namespace EmitReaderLib
 
         protected MySqlConnection conn;
         protected MySqlCommand cmd;
-        protected int tempo = 10;
+        protected int tempo = 120;
 
         public MySqlReader()
         {
             conn = new MySqlConnection("SERVER=localhost;database=kop2014;uid=root;pwd=difi;allow user variables=true;");
 
             cmd = new MySqlCommand(@"select 
-	                distinct cardid, time, location
+	                distinct case when cardid = 6037 then 6001 else cardid end as cardid, time, location
                 from (
 	                select 
 		                card + 1000 as cardId,

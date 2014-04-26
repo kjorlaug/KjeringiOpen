@@ -8,14 +8,15 @@ namespace EmitReaderLib
 {
     public class EmitData
     {
+        public List<int> Testers = new List<int>() { 1999, 6001, 6002, 6003, 6004 };
+
         public EmitData() {}
         public EmitData(int id, int chip, DateTime time, double voltage)
         {
             this.Id = id;
             this.Chip = chip;
             this.Time = time;
-            this.Voltage = voltage;
-            
+            this.Voltage = voltage;           
         }
 
         public int Id { get; set; }
@@ -31,5 +32,13 @@ namespace EmitReaderLib
         public int Leg { get; set; }
         public TimeSpan LegTime { get; set; }
         public TimeSpan TotalTime { get; set; }
+
+        public Boolean Test { 
+            get {
+
+                return Testers.IndexOf(Id) >= 0;
+            } 
+        }
+
     }
 }

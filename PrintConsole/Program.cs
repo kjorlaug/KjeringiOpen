@@ -13,9 +13,6 @@ namespace PrintConsole
 {
     class Program
     {
-
-        static Queue<String> printQueue = new Queue<string>();
-
         static void Main(string[] args)
         {
             String hub = ConfigurationManager.AppSettings["hub"];

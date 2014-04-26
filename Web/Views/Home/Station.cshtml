@@ -3,25 +3,25 @@
 }
 <h3>@ViewBag.Name</h3>
 <div style="min-height:300px">
-    <table class="table table-condensed table-striped" id="res">
+    <table class="table table-condensed" id="res">
         <thead>
             <tr>
                 <th>#</th>
                 <th>Namn</th>
-                <th>Klasse</th>
-                <th>Tid</th>
                 <th>Plass</th>
+                <th>Klasse</th>
+                <th>Etappe</th>
+                <th>Totalt</th>
             </tr>
         </thead>       
         <tbody data-bind ="foreach: resultat">
-            <tr>
+            <tr data-bind="css: {'danger' : ($data.PlasseringIKlasse == 1), 'warning' : ($data.PlasseringIKlasse == 2), 'success' : ($data.PlasseringIKlasse == 3)}">
                 <td><span data-bind="text: $data.Startnummer"></span></td>
-                <td><span data-bind="html: $data.Namn"></span></td>
+                <td><span data-bind="html: $data.Namn" style="font-weight:bold;"></span><span style="padding-left:10px;" data-bind="html: $data.Medlemmer[@ViewBag.Index]"></span></td>
+                <td><span data-bind="text: $data.PlasseringIKlasse"></span></td>
                 <td><span data-bind="text: $data.Klasse"></span></td>
+                <td><span data-bind="text: $data.Etappetider[@ViewBag.Index]"></span></td>
                 <td><span data-bind="text: $data.TotalTid"></span></td>
-                <td>
-                    <span class="bagde" data-bind="text: $data.PlasseringIKlasse"></span>
-                </td>
             </tr>
         </tbody>
     </table>
@@ -46,8 +46,6 @@
                         $.connection.resultatServiceHub.server.getPlassering('@ViewBag.Name')
                                     .done(function (res) {
                                         ko.utils.arrayForEach(res, function (resultat) {
-                                            //var m = new Kjeringi.ticker(resultat.Namn, resultat.Klasse, resultat.EmitID, resultat.Startnummer, resultat.Medlemmer, resultat.Etappetider, resultat.TotaltTid, resultat.PlasseringIKlasse);
-                                            //alert(m.TotalTid);
                                             model.resultat.unshift(resultat);
                                         });
                                     }).done(function () {

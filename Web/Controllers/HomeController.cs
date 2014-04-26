@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using KjeringiData;
+
 namespace Web.Controllers
 {
     public class HomeController : Controller
@@ -21,6 +23,12 @@ namespace Web.Controllers
         public ActionResult Station(String name)
         {
             ViewBag.Name = name;
+
+            Plassering plassering = Konkurranse.GetInstance.Plasseringar.Find(x => x.Namn.Equals(Server.HtmlDecode(name)));
+            if (plassering != null)
+                ViewBag.Index = plassering.Sekvens - 1;
+            else
+                ViewBag.Index = 0;
 
             return View();
         }

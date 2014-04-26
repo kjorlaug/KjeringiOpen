@@ -100,7 +100,7 @@ namespace KjeringiData
                 };
 
                 // duplikat?
-                if (plassering.Offisiell)
+                if (plassering.Offisiell && !data.Test)
                     if (this.Passeringar.Find(p => p.EmitID == passering.EmitID && p.Location.BoksId == passering.Location.BoksId) != null)
                         return null;
 
@@ -149,8 +149,10 @@ namespace KjeringiData
                 KlasseListe = KlasseListe.OrderBy(x => x.Passeringar.Find(y => y.Location.BoksId == passering.Location.BoksId).Tid).ToList<Deltakar>();
 
                 d.PlasseringIKlasse = KlasseListe.FindIndex(x => x.EmitID == deltakar.EmitID) + 1;
+                d.Test = data.Test;
 
-                plassering.Resultat.Push(d);
+                if(!data.Test)
+                    plassering.Resultat.Push(d);
                 
                 return d;
             //}
@@ -321,5 +323,7 @@ namespace KjeringiData
 
         public String Klasse {get;set;}
         public int PlasseringIKlasse { get; set; }
+
+        public Boolean Test { get; set; }
     }
 }
