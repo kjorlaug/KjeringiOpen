@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 using EmitReaderLib;
 
 namespace KjeringiData
@@ -167,30 +167,30 @@ namespace KjeringiData
         protected void Build() {
             Passeringar = new List<Passering>();
             
-            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["kjeringi"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["kjeringi"].ConnectionString);
 
             conn.Open();
 
             // Read klasser
-            MySqlCommand cmd = new MySqlCommand(@"SELECT id, name, official, sequence FROM kop_station", conn);
+            SqlCommand cmd = new SqlCommand(@"SELECT id, name, official, sequence FROM kop_station", conn);
             Plasseringar = new List<Plassering>();
 
-            MySqlDataReader data = cmd.ExecuteReader();
+            SqlDataReader data = cmd.ExecuteReader();
 
             while (data.Read())
             {
                 Plasseringar.Add(new Plassering()
                 {
-                    BoksId = data.GetInt32("id"),
-                    Namn = data.GetString("name"),
-                    Offisiell = data.GetInt32("official").Equals(1),
-                    Sekvens = data.GetInt32("sequence")
+                    BoksId = data.GetInt32(data.GetOrdinal("id")),
+                    Namn = data.GetString(data.GetOrdinal("name")),
+                    Offisiell = data.GetInt32(data.GetOrdinal("official")).Equals(1),
+                    Sekvens = data.GetInt32(data.GetOrdinal("sequence"))
                 });
             }
             data.Close();
 
             // Read klasser
-            cmd = new MySqlCommand(@"SELECT code, name FROM kop_personClass union SELECT code, name FROM kop_teamClass", conn);
+            cmd = new SqlCommand(@"SELECT code, name FROM kop_personClass union SELECT code, name FROM kop_teamClass", conn);
             Klassar = new List<Klasse>();
 
             data = cmd.ExecuteReader();
@@ -199,8 +199,8 @@ namespace KjeringiData
             {
                 Klassar.Add(new Klasse()
                 {
-                    Id = data.GetString("code"),
-                    Namn = data.GetString("name")
+                    Id = data.GetString(data.GetOrdinal("code")),
+                    Namn = data.GetString(data.GetOrdinal("name"))
                 });
             }
             data.Close();
@@ -210,18 +210,18 @@ namespace KjeringiData
             DeltakarListeEtterKlasse = new Dictionary<Klasse, List<Deltakar>>();
 
             // Adding supers
-            cmd = new MySqlCommand(@"select startNumber, chipNumber, firstname, surname, personClassCode, phoneNumber from kop_person where superwife = 1 and deleted = 0 and startnumber is not null and chipnumber is not null", conn);
+            cmd = new SqlCommand(@"select startNumber, chipNumber, firstname, surname, personClassCode, phoneNumber from kop_person where superwife = 1 and deleted = 0 and startnumber is not null and chipnumber is not null", conn);
             data = cmd.ExecuteReader();
 
             while (data.Read())
             {
                 var d = new Deltakar()
                 {
-                    Startnummer = data.GetInt32("startNumber"),
-                    EmitID = data.GetInt32("chipNumber"),
-                    Namn = data.GetString("firstname") + " " + data.GetString("surname"),
-                    Telefon = data.GetString("phoneNumber"),
-                    Klasse = Klassar.Find(x => x.Id.Equals(data.GetString("personClassCode"))),
+                    Startnummer = data.GetInt32(data.GetOrdinal("startNumber")),
+                    EmitID = int.Parse(data.GetString(data.GetOrdinal("chipNumber"))),
+                    Namn = data.GetString(data.GetOrdinal("firstname")) + " " + data.GetString(data.GetOrdinal("surname")),
+                    Telefon = data.GetString(data.GetOrdinal("phoneNumber")),
+                    Klasse = Klassar.Find(x => x.Id.Equals(data.GetString(data.GetOrdinal("personClassCode")))),
                     Bedrift = false,
                     Super = true
                 };
@@ -235,7 +235,7 @@ namespace KjeringiData
 
             data.Close();
 
-            cmd = new MySqlCommand(@"SELECT t.startNumber, t.chipNumber, t.name, t.teamClassCode, t.companyClass, p.firstname, p.surname, p.phoneNumber, p.sprintNumber FROM kop_team t inner join kop_person p on t.id = p.teamid where t.deleted = 0 and t.startNumber is not null and t.chipNumber is not null order by t.startNumber, p.sprintNumber", conn);
+            cmd = new SqlCommand(@"SELECT t.startNumber, t.chipNumber, t.name, t.teamClassCode, t.companyClass, p.firstname, p.surname, p.phoneNumber, p.sprintNumber FROM kop_team t inner join kop_person p on t.id = p.teamid where t.deleted = 0 and t.startNumber is not null and t.chipNumber is not null order by t.startNumber, p.sprintNumber", conn);
             data = cmd.ExecuteReader();
 
             data.Read();
@@ -245,21 +245,21 @@ namespace KjeringiData
             {
                 var d = new Deltakar()
                 {
-                    Startnummer = data.GetInt32("startNumber"),
-                    EmitID = data.GetInt32("chipNumber"),
-                    Namn = data.GetString("name"),
-                    Klasse = Klassar.Find(x => x.Id.Equals(data.GetString("teamClassCode"))),
-                    Bedrift = data.GetInt32("companyClass").Equals(1),
+                    Startnummer = data.GetInt32(data.GetOrdinal("startNumber")),
+                    EmitID = int.Parse(data.GetString(data.GetOrdinal("chipNumber"))),
+                    Namn = data.GetString(data.GetOrdinal("name")),
+                    Klasse = Klassar.Find(x => x.Id.Equals(data.GetString(data.GetOrdinal("teamClassCode")))),
+                    Bedrift = data.GetInt32(data.GetOrdinal("companyClass")).Equals(1),
                     Super = false
                 };
 
                 // Add medlemmer
                 d.Medlemmer = new List<string>();
-                while (moreData && data.GetInt32("startNumber").Equals(d.Startnummer))
+                while (moreData && data.GetInt32(data.GetOrdinal("startNumber")).Equals(d.Startnummer))
                 {
-                    d.Medlemmer.Add(data.GetString("firstName") + " " + data.GetString("surname"));
-                    if (!String.IsNullOrEmpty(data.GetString("phoneNumber")))
-                        d.Telefon += String.IsNullOrEmpty(d.Telefon) ? data.GetString("phoneNumber") : "," + data.GetString("phoneNumber");
+                    d.Medlemmer.Add(data.GetString(data.GetOrdinal("firstName")) + " " + data.GetString(data.GetOrdinal("surname")));
+                    if (!String.IsNullOrEmpty(data.GetString(data.GetOrdinal("phoneNumber"))))
+                        d.Telefon += String.IsNullOrEmpty(d.Telefon) ? data.GetString(data.GetOrdinal("phoneNumber")) : "," + data.GetString(data.GetOrdinal("phoneNumber"));
                     moreData = data.Read();
                 }
 
@@ -274,18 +274,18 @@ namespace KjeringiData
             data.Close();
 
             // Load any times registered
-            cmd = new MySqlCommand("SELECT card, time, location FROM timers_raw WHERE year = 14 ORDER BY id", conn);
+            cmd = new SqlCommand("SELECT card, time, location FROM timers_raw WHERE year = 14 ORDER BY id", conn);
             data = cmd.ExecuteReader();
             
             while (data.Read()) {
-                DateTime time = DateTime.ParseExact(data.GetString("time"), "HH:mm:ss.FFF", System.Globalization.CultureInfo.InvariantCulture);
+                DateTime time = DateTime.ParseExact(data.GetString(data.GetOrdinal("time")), "HH:mm:ss.FFF", System.Globalization.CultureInfo.InvariantCulture);
                 try
                 {
                     RegistrerPassering(
                         new EmitData()
                         {
-                            Id = int.Parse(data.GetString("card")),
-                            BoxId = int.Parse(data.GetString("location")),
+                            Id = (int)data[data.GetOrdinal("card")],
+                            BoxId = (int)data[data.GetOrdinal("location")],
                             Time = time
                         });
                 }
