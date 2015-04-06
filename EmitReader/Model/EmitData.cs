@@ -8,8 +8,6 @@ namespace EmitReaderLib
 {
     public class EmitData
     {
-        public List<int> Testers = new List<int>() { 1999, 6001, 6002, 6003, 6004 };
-
         public EmitData() {}
         public EmitData(int id, int chip, DateTime time, double voltage)
         {
@@ -24,6 +22,7 @@ namespace EmitReaderLib
         public int Chip { get; set; }
         public DateTime Time {get; set;}
         public double Voltage { get; set; }
+
         public long Position { get; set; }
         public String FirstName { get; set; }
         public String LastName { get; set; }

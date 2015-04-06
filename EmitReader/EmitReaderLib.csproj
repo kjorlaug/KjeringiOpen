@@ -52,16 +52,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmitData.cs" />
+    <Compile Include="Model\EmitData.cs" />
     <Compile Include="EmitMonitor.cs" />
-    <Compile Include="MySqlReader.cs" />
-    <Compile Include="UsbSerialReader.cs" />
-    <Compile Include="IEmitReader.cs" />
-    <Compile Include="IWorker.cs" />
+    <Compile Include="Readers\MySqlReader.cs" />
+    <Compile Include="Readers\UsbSerialReader.cs" />
+    <Compile Include="Readers\IEmitReader.cs" />
+    <Compile Include="Workers\IWorker.cs" />
     <Compile Include="LimitConcurrencyLevelTaskScheduler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SignalWorker.cs" />
-    <Compile Include="SubmitWorker.cs" />
+    <Compile Include="Workers\SignalWorker.cs" />
+    <Compile Include="Workers\SubmitWorker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
