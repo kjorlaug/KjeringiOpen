@@ -52,11 +52,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\IRaceBuilder.cs" />
+    <Compile Include="Builders\SqlRaceBuilder2014.cs" />
     <Compile Include="Model\EmitData.cs" />
     <Compile Include="EmitMonitor.cs" />
+    <Compile Include="Model\Participant.cs" />
+    <Compile Include="Model\ParticipantClass.cs" />
+    <Compile Include="Model\Race.cs" />
+    <Compile Include="Model\TimeStation.cs" />
     <Compile Include="Readers\MySqlReader.cs" />
     <Compile Include="Readers\UsbSerialReader.cs" />
     <Compile Include="Readers\IEmitReader.cs" />
+    <Compile Include="Utils\KeyValuePairEnumerableExtensions.cs" />
     <Compile Include="Workers\IWorker.cs" />
     <Compile Include="Utils\LimitConcurrencyLevelTaskScheduler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

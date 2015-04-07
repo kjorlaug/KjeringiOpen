@@ -7,11 +7,12 @@ using EmitReaderLib.Utils;
 
 namespace EmitReaderLib.Model
 {
-    class Participant
+    public class Participant
     {
         public Participant()
         {
             TimeStamps = new SortedDictionary<TimeStation, DateTime>();
+            Telephone = new List<String>();
         }
 
         public int Startnumber { get; set; }

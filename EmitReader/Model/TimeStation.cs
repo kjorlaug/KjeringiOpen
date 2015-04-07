@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmitReaderLib.Model
 {
-    class TimeStation : IComparable<TimeStation>
+    public class TimeStation : IComparable<TimeStation>
     {
         public int Id { get; set; }
 
