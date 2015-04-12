@@ -57,9 +57,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Web\Web.csproj">
-      <Project>{bb8c5bb9-0049-4c01-9c3f-62cab6e2465b}</Project>
-      <Name>Web</Name>
+    <ProjectReference Include="..\EmitReader\EmitReaderLib.csproj">
+      <Project>{fe802a49-18d6-4c87-90fd-ea1ddc59f4a5}</Project>
+      <Name>EmitReaderLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

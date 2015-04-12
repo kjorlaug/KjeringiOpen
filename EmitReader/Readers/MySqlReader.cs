@@ -4,74 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 
 namespace EmitReaderLib
 {
-    public class MySqlReader : IEmitReader
+    public class SqlReader : IEmitReader
     {
         public event EventHandler<EmitDataRecievedEventArgs> DataReceived;
 
-        protected MySqlConnection conn;
-        protected MySqlCommand cmd;
         protected int tempo = 120;
-
-        public MySqlReader()
-        {
-            conn = new MySqlConnection("SERVER=localhost;database=kop2014;uid=root;pwd=difi;allow user variables=true;");
-
-            cmd = new MySqlCommand(@"select 
-	                distinct case when cardid = 6037 then 6001 else cardid end as cardid, time, location
-                from (
-	                select 
-		                card + 1000 as cardId,
-		                time,
-		                case 
-			                when location = 78 then 70
-			                when location = 70 then 71
-			                when location = 79 then 72
-			                else location
-		                end as location
-	                from
-		                timers_raw
-	                where
-		                location <> 75
-	                ) as t,
-	                (
-	                select
-		                s.id, chips.chipNumber
-	                from 
-		                kop_station s,
-		                (
-			                select chipNumber from kop_person where superwife = 1 and deleted = 0
-			                union 
-			                select chipNumber from kop_team where deleted = 0
-		                ) as chips
-	                where
-		                s.official = 1
-	                ) as d
-                where
-	                d.chipNumber = t.cardid
-                and t.cardid <> 6107
-                order by 2", conn);
-        }
 
         public void Start()
         {
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["kjeringi"].ConnectionString);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM timers_raw WHERE location > 0 ORDER BY id", conn);
+
             Task.Factory.StartNew(() =>
             {
                 try
                 {
                     conn.Open();
-                    MySqlDataReader data = cmd.ExecuteReader();
+                    SqlDataReader data = cmd.ExecuteReader();
 
                     DateTime nextSleep = DateTime.Now;
                     Boolean init = false;
 
                     while (data.Read())
                     {
-
-                        DateTime time = DateTime.ParseExact(data.GetString("time"), "HH:mm:ss.FFF", System.Globalization.CultureInfo.InvariantCulture);
+                        DateTime time = DateTime.ParseExact(data["time"].ToString(), "HH:mm:ss.FFF", System.Globalization.CultureInfo.InvariantCulture);
                         if (!init)
                         {
                             nextSleep = time.AddSeconds(tempo);
@@ -82,8 +42,8 @@ namespace EmitReaderLib
                         {
                             EmitData d = new EmitData()
                             {
-                                Id = int.Parse(data.GetString("cardid")),
-                                BoxId = int.Parse(data.GetString("location")),
+                                Id = int.Parse(data["card"].ToString()),
+                                BoxId = int.Parse(data["location"].ToString()),
                                 Time = time
                             };
                             EventHandler<EmitDataRecievedEventArgs> handler = DataReceived;

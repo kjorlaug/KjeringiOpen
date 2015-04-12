@@ -13,6 +13,8 @@ namespace EmitReaderLib.Model
         {
             TimeStamps = new SortedDictionary<TimeStation, DateTime>();
             Telephone = new List<String>();
+            TeamMembers = new List<String>();
+            Classes = new List<ParticipantClass>();
         }
 
         public int Startnumber { get; set; }
@@ -21,7 +23,7 @@ namespace EmitReaderLib.Model
         public String Name { get; set; }
         public List<String> Telephone { get; set; }
 
-        public ParticipantClass Class { get; set; }
+        public List<ParticipantClass> Classes { get; set; }
         public Boolean IsBusiness { get; set; }
         public Boolean IsTeam { get; set; }
         public Boolean IsSuper { get; set; }
@@ -29,7 +31,6 @@ namespace EmitReaderLib.Model
         public List<String> TeamMembers { get; set; }
 
         public SortedDictionary<TimeStation, DateTime> TimeStamps { get; protected set; }
-
         public SortedDictionary<TimeStation, DateTime> OfficialTimeStamps
         {
             get
@@ -37,5 +38,6 @@ namespace EmitReaderLib.Model
                 return TimeStamps.Where(key => key.Key.Official).ToSortedDictionary();
             }
         }
+
     }
 }

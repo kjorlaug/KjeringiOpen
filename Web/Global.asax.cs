@@ -18,7 +18,7 @@ namespace Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             
             // Make sure the app is set up
-            var k = KjeringiData.Konkurranse.GetInstance;
+            var k = KjeringiData.TheRace.Instance;
 
         }
 

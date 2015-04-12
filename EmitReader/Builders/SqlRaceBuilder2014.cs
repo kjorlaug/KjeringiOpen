@@ -49,6 +49,13 @@ namespace EmitReaderLib.Builders
             }
             data.Close();
 
+            // Add static classes
+            var companyClass = new ParticipantClass { Id = "BED", Name = "Bedriftsklasse", Sequence = 100 };
+            var testClass = new ParticipantClass { Id = "TEST", Name = "Testklasse", Sequence = 101 };
+
+            race.Classes.Add(companyClass);
+            race.Classes.Add(testClass);
+
             // Adding supers
             cmd = new SqlCommand(@"select startNumber, chipNumber, firstname, surname, personClassCode, phoneNumber from kop_person where superwife = 1 and deleted = 0 and startnumber is not null and chipnumber is not null", conn);
             data = cmd.ExecuteReader();
@@ -61,7 +68,7 @@ namespace EmitReaderLib.Builders
                     EmitID = int.Parse(data.GetString(data.GetOrdinal("chipNumber"))),
                     Name = data.GetString(data.GetOrdinal("firstname")) + " " + data.GetString(data.GetOrdinal("surname")),
                     Telephone = new List<String>() {data.GetString(data.GetOrdinal("phoneNumber"))},
-                    Class = race.Classes.Find(x => x.Id.Equals(data.GetString(data.GetOrdinal("personClassCode")))),
+                    Classes = new List<ParticipantClass>() {race.Classes.Find(x => x.Id.Equals(data.GetString(data.GetOrdinal("personClassCode"))))},
                     IsTeam = false,
                     IsSuper = true,
                     IsBusiness = false
@@ -84,11 +91,14 @@ namespace EmitReaderLib.Builders
                     EmitID = int.Parse(data.GetString(data.GetOrdinal("chipNumber"))),
                     Name = data.GetString(data.GetOrdinal("firstname")) + " " + data.GetString(data.GetOrdinal("surname")),
                     Telephone = new List<String>() {data.GetString(data.GetOrdinal("phoneNumber"))},
-                    Class = race.Classes.Find(x => x.Id.Equals(data.GetString(data.GetOrdinal("personClassCode")))),
+                    Classes = new List<ParticipantClass> {race.Classes.Find(x => x.Id.Equals(data.GetString(data.GetOrdinal("teamClassCode"))))},
                     IsTeam = true,
                     IsSuper = false,
                     IsBusiness = data.GetInt32(data.GetOrdinal("companyClass")).Equals(1)
                 };
+
+                if (p.IsBusiness)
+                    p.Classes.Add(companyClass);
 
                 // Add medlemmer
                 while (moreData && data.GetInt32(data.GetOrdinal("startNumber")).Equals(p.Startnumber))

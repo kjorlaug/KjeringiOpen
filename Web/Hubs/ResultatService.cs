@@ -7,8 +7,9 @@ using System.Web;
 using Microsoft.AspNet.SignalR;
 
 using EmitReaderLib;
+using EmitReaderLib.Model;
+
 using KjeringiData;
-using MySql.Data.MySqlClient;
 
 namespace Web.Hubs
 {
@@ -63,8 +64,8 @@ namespace Web.Hubs
         {
             if (String.IsNullOrEmpty(name))
             {
-                foreach(Plassering p in Konkurranse.GetInstance.Plasseringar)
-                    Groups.Add(Context.ConnectionId, p.Namn);
+                foreach(TimeStation ts in TheRace.Instance.TimeStations)
+                    Groups.Add(Context.ConnectionId, ts.Name);
             }
             else
                 Groups.Add(Context.ConnectionId, HttpContext.Current.Server.HtmlDecode(name));
@@ -75,35 +76,36 @@ namespace Web.Hubs
             return _repository.Systems.ToList<SubSystem>();
         }
 
-        public ICollection<ResultatData> GetPlassering(String name)
+        public ICollection<Result> GetPlassering(String name)
         {
-            Plassering plassering = Konkurranse.GetInstance.Plasseringar.Find(x => x.Namn.Equals(HttpContext.Current.Server.HtmlDecode(name)));
-            return plassering.Resultat.Take(100).Reverse().ToList<ResultatData>();
+            //Plassering plassering = Konkurranse.GetInstance.Plasseringar.Find(x => x.Namn.Equals(HttpContext.Current.Server.HtmlDecode(name)));
+            //return plassering.Resultat.Take(100).Reverse().ToList<ResultatData>();
+            return null;
         }
 
         public void SendPassering(EmitData data)
         {
-            // Persist
-            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["kjeringi"].ConnectionString);
-            conn.Open();
+            //// Persist
+            //MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["kjeringi"].ConnectionString);
+            //conn.Open();
 
-            MySqlCommand cmd = new MySqlCommand(@"insert into timers_raw (year, card, time, location) values (14, " + data.Id.ToString() + ", '" + data.Time.ToString("HH:mm:ss.FFF") + "', " + data.BoxId.ToString() + ");", conn);
-            cmd.ExecuteNonQuery();
-            conn.Close();
+            //MySqlCommand cmd = new MySqlCommand(@"insert into timers_raw (year, card, time, location) values (14, " + data.Id.ToString() + ", '" + data.Time.ToString("HH:mm:ss.FFF") + "', " + data.BoxId.ToString() + ");", conn);
+            //cmd.ExecuteNonQuery();
+            //conn.Close();
 
-            // Send to Erlend
-            SubmitWorker submitter = new SubmitWorker("http://ko.hoo9.com/timer/register");
-            submitter.ProcessData(data);
+            //// Send to Erlend
+            //SubmitWorker submitter = new SubmitWorker("http://ko.hoo9.com/timer/register");
+            //submitter.ProcessData(data);
 
             try
             {
                 // Add new Passering to race
-                ResultatData resultat = Konkurranse.GetInstance.RegistrerPassering(data);
+                Result resultat = TheRace.Instance.AddPass(data);
 
                 if (resultat != null)
                 {
-                    Clients.All.addLogMessage(resultat.ResultatForEtappe, resultat.EmitID, resultat.Startnummer, resultat.Namn, data.Time.ToLongTimeString());
-                    Clients.Group(resultat.ResultatForEtappe).processResultat(resultat);
+                    Clients.All.addLogMessage(resultat.CurrentSplit, resultat.EmitID, resultat.Startnumber, resultat.Name, data.Time.ToLongTimeString());
+                    Clients.Group(resultat.StationName).processResultat(resultat);
                 }
             }
             catch (Exception ex) { }

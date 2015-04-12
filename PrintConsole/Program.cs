@@ -9,6 +9,9 @@ using System.Drawing;
 using System.Drawing.Printing;
 using Microsoft.AspNet.SignalR.Client;
 
+using EmitReaderLib;
+using EmitReaderLib.Model;
+
 namespace PrintConsole
 {
     class Program
@@ -32,53 +35,53 @@ namespace PrintConsole
                     myHub.Invoke("AddtoGroup", "Mål");
                 }).Wait();
 
-            myHub.On<KjeringiData.ResultatData>("processResultat", (data) =>
+            myHub.On<Result>("processResultat", (data) =>
             {
-                StringBuilder sb = new StringBuilder(HtmlTemplate.Template.Replace("#startnummer#", data.Startnummer).Replace("#brikke#", data.EmitID));
+                StringBuilder sb = new StringBuilder(HtmlTemplate.Template.Replace("#startnummer#", data.Startnumber.ToString()).Replace("#brikke#", data.EmitID.ToString()));
 
-                sb.Append(data.Namn);
+                sb.Append(data.Name);
                 sb.Append("<br><br>");
 
-                sb.Append(data.Klasse);
+                sb.Append(String.Join(", ", data.ParticipantClasses));
                 sb.Append(" - ");
-                sb.Append(data.PlasseringIKlasse);
+                sb.Append(String.Join(", ", data.Positions.Values.ToArray()));
                 sb.Append(".plass <br><br><h3>Etappetider</h3><table id='customers'><tr><th>Veksling</th><th>Ut&oslash;var</th><th>Etappetid</th></tr>");
                 
                 sb.Append("<tr><td>Telemark</td><td>");
-                if (data.Medlemmer.Count == 4)
-                    sb.Append(data.Medlemmer[0]);
+                if (data.TeamMembers.Count == 4)
+                    sb.Append(data.TeamMembers[0]);
                 sb.Append("</td><td>");
-                if (data.Etappetider.Count == 4)
-                    sb.Append(data.Etappetider[0]);
+                if (data.Splits.Count == 4)
+                    sb.Append(data.Splits[0]);
                 sb.Append("</td></tr>");
 
                 sb.Append("<tr class='alt'><td>Ski</td><td>");
-                if (data.Medlemmer.Count == 4)
-                    sb.Append(data.Medlemmer[1]);
+                if (data.TeamMembers.Count == 4)
+                    sb.Append(data.TeamMembers[1]);
                 sb.Append("</td><td>");
-                if (data.Etappetider.Count == 4)
-                    sb.Append(data.Etappetider[1]);
+                if (data.Splits.Count == 4)
+                    sb.Append(data.Splits[1]);
                 sb.Append("</td></tr>");
 
                 sb.Append("<tr><td>Springing</td><td>");
-                if (data.Medlemmer.Count == 4 )
-                    sb.Append(data.Medlemmer[2]);
+                if (data.TeamMembers.Count == 4 )
+                    sb.Append(data.TeamMembers[2]);
                 sb.Append("</td><td>");
-                if (data.Etappetider.Count == 4)
-                    sb.Append(data.Etappetider[2]);
+                if (data.Splits.Count == 4)
+                    sb.Append(data.Splits[2]);
                 sb.Append("</td></tr>");
 
                 sb.Append("<tr class='alt'><td>Sykling</td><td>");
-                if (data.Medlemmer.Count == 4)
-                    sb.Append(data.Medlemmer[3]);
+                if (data.TeamMembers.Count == 4)
+                    sb.Append(data.TeamMembers[3]);
                 sb.Append("</td><td>");
-                if (data.Etappetider.Count == 4)
-                    sb.Append(data.Etappetider[3]);
+                if (data.Splits.Count == 4)
+                    sb.Append(data.Splits[3]);
                 sb.Append("</td></tr>");
 
                 sb.Append("<tr><th>Totaltid</td><td>");
                 sb.Append("</th><th>");
-                sb.Append(data.TotalTid);
+                sb.Append(data.Total);
                 sb.Append("</th></th>");
 
                 sb.Append("</table></div><footer></footer></body></html>");

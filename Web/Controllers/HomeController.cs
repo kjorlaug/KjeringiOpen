@@ -24,10 +24,10 @@ namespace Web.Controllers
         {
             ViewBag.Name = name;
 
-            Plassering plassering = Konkurranse.GetInstance.Plasseringar.Find(x => x.Namn.Equals(Server.HtmlDecode(name)));
-            if (plassering != null)
-                ViewBag.Index = plassering.Sekvens - 1;
-            else
+            //Plassering plassering = Konkurranse.GetInstance.Plasseringar.Find(x => x.Namn.Equals(Server.HtmlDecode(name)));
+            //if (plassering != null)
+            //    ViewBag.Index = plassering.Sekvens - 1;
+            //else
                 ViewBag.Index = 0;
 
             return View();
@@ -35,7 +35,7 @@ namespace Web.Controllers
 
         public ActionResult Reset()
         {
-            KjeringiData.Konkurranse.Reset();
+            //KjeringiData.Konkurranse.Reset();
             return RedirectToAction("Index");
         }
 

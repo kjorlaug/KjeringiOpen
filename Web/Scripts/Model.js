@@ -38,14 +38,14 @@ Kjeringi.connectedSystemViewModel = function () {
 
 Kjeringi.resultatViewModel = function () {
     var self = this;
-    self.Namn = ko.observable("Namn");
+    self.Name = ko.observable("Name");
     self.EmitID = ko.observable("EmitID");
-    self.Startnummer = ko.observable("Startnummer");
-    self.Medlemmer = ko.observableArray();
-    self.Etappetider = ko.observableArray();
-    self.TotalTid = ko.observable("Totaltid");
-    self.Klasse = ko.observable("Klasse");
-    self.PlasseringIKlasse = ko.observable("Plassering");
+    self.Startnumber = ko.observable("Startnumber");
+    self.TeamMembers = ko.observableArray();
+    self.Splits = ko.observableArray();
+    self.Total = ko.observable("Total");
+    self.ParticipantClass = ko.observable("ParticipantClass");
+    self.Position = ko.observable("Position");
 }
 
 Kjeringi.ticker = function (namn, klasse, emitid, startnummer, medlemmer, etappetider, totaltid, plasseringiklasse) {
