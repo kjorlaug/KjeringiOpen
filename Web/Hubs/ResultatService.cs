@@ -28,7 +28,7 @@ namespace Web.Hubs
         /// Fired when a client disconnects from the system. The user associated with the client ID gets deleted from the list of currently connected users.
         /// </summary>
         /// <returns></returns>
-        public override Task OnDisconnected()
+        public override Task OnDisconnected(bool stopCalled)
         {
             string sysId = _repository.GetSystemByConnectionId(Context.ConnectionId);
             if (sysId != null)
@@ -41,7 +41,7 @@ namespace Web.Hubs
                 }
             }
 
-            return base.OnDisconnected();
+            return base.OnDisconnected(stopCalled);
         }
 
         #endregion
