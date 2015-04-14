@@ -46,7 +46,7 @@ namespace EmitReaderLib
                                 Id = int.Parse(data["card"].ToString()),
                                 BoxId = int.Parse(data["location"].ToString()),
                                 Time = time,
-                                Force = true
+                                Force = false
                             };
                             EventHandler<EmitDataRecievedEventArgs> handler = DataReceived;
 

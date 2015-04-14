@@ -79,7 +79,9 @@ namespace EmitReaderLib
                         return null;
                 }
 
-                participant.TimeStamps.Add(timestation, emitdata.Time);
+                if (!participant.TimeStamps.ContainsKey(timestation))
+                    participant.TimeStamps.Add(timestation, emitdata.Time);
+
                 Passes.Add(emitdata);
 
                 var result = BuildResult(emitdata, timestation, participant);
@@ -125,7 +127,7 @@ namespace EmitReaderLib
         }
 
 
-        public ICollection<Result> GetResults(int participantClassId, int timestationId)
+        public ICollection<Result> GetResults(String participantClassId, int timestationId)
         {
             return Results.Where(r => r.TimeStation.Id.Equals(timestationId) && r.ParticipantClasses.Exists(c => c.Id.Equals(participantClassId))).OrderBy(r => r.Total).ToList<Result>();
         }

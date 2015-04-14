@@ -34,10 +34,12 @@ namespace ResultsConsole
                 {
                     foreach (ParticipantClass c in data.ParticipantClasses)
                     {
-                        var results = myHub.Invoke<IEnumerable<Result>>("GetCurrentResults", c.Id, data.TimeStation.Id);
-                        var json = JsonConvert.SerializeObject(results);
-
-                        System.IO.File.WriteAllText(@"c:\temp\" + c.Name + ".json", json);
+                        myHub.Invoke("GetCurrentResults", c.Id, data.TimeStation.Id)
+                            .ContinueWith(results =>
+                            {
+                                var json = JsonConvert.SerializeObject(results);
+                                System.IO.File.WriteAllText(@"c:\temp\" + c.Name + ".json", json);
+                            });
                     }
                 }
             );

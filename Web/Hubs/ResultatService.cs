@@ -98,7 +98,7 @@ namespace Web.Hubs
             //}
         }
 
-        public ICollection<Result> GetCurrentResults(int participantClassId, int timestationId)
+        public ICollection<Result> GetCurrentResults(String participantClassId, int timestationId)
         {
             return TheRace.Instance.GetResults(participantClassId, timestationId);
         }
