@@ -8,8 +8,6 @@ namespace EmitReaderLib.Model
 {
     public class Result 
     {
-        public Boolean Official { get; set; }
-
         public String CurrentSplit
         {
             get {
@@ -20,8 +18,9 @@ namespace EmitReaderLib.Model
             }
         }
 
-        public String Total { get; set; }
-        public String StationName { get; set; }
+        public String TotalString { get; set; }
+        public TimeSpan Total { get; set; }
+        public TimeStation TimeStation { get; set; }
 
         public Dictionary<String, int> Positions { get; set; }
 
@@ -30,12 +29,29 @@ namespace EmitReaderLib.Model
 
         public int EmitID { get; set; }
         public int Startnumber { get; set; }
-        public List<String> ParticipantClasses { get; set; }
+        public List<ParticipantClass> ParticipantClasses { get; set; }
 
         public List<String> TeamMembers { get; set; }
         public List<String> Splits { get; set; }
 
         public Boolean Start { get; set; }
         public List<String> Comments { get; set; }
+
+        public void CalculatePositions(SortedDictionary<ParticipantClass, List<Participant>> ParticipantListByClass, Participant participant)
+        {
+            this.Positions = new Dictionary<String, int>();
+
+            foreach (ParticipantClass c in ParticipantClasses)
+            {
+                this.Positions.Add(
+                    c.Name,
+                    ParticipantListByClass[c]
+                        .Where(p => p.OfficialTimeStamps.ContainsKey(this.TimeStation))
+                        .OrderBy(p => p.OfficialTimeStamps[this.TimeStation])
+                        .ToList<Participant>()
+                        .IndexOf(participant) + 1
+                    );
+            }
+        }
     }
 }

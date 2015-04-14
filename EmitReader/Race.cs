@@ -11,6 +11,9 @@ namespace EmitReaderLib
 {
     public class Race
     {
+        private volatile Boolean resultsVolatile;
+        private object syncRoot = new Object();
+
         public Race(IRaceWriter writer)
         {
             Classes = new List<ParticipantClass>();
@@ -20,8 +23,7 @@ namespace EmitReaderLib
             ParticipantListByClass = new SortedDictionary<ParticipantClass, List<Participant>>();
             Passes = new List<EmitData>();
             Results = new List<Result>();
-            ResultsByClass = new SortedDictionary<ParticipantClass, List<Result>>();
-
+            resultsVolatile = false;
             this.writer = writer;
         }
 
@@ -36,7 +38,6 @@ namespace EmitReaderLib
         protected SortedDictionary<ParticipantClass, List<Participant>> ParticipantListByClass { get; set; }
 
         protected List<Result> Results { get; set; }
-        protected SortedDictionary<ParticipantClass, List<Result>> ResultsByClass { get; set; }
         
         protected IRaceWriter writer { get; set; }
 
@@ -57,6 +58,20 @@ namespace EmitReaderLib
         public Result AddPass(EmitData emitdata) { 
             var participant = ParticipantByEmit[emitdata.Id];
             var timestation = TimeStations.Find(x => x.Id.Equals(emitdata.BoxId));
+
+            writer.PersistPass(emitdata);
+
+            // Force? Delete all passes by chip on that box
+            if (emitdata.Force)
+            {
+                lock (syncRoot)
+                {
+                    resultsVolatile = true;
+                    Passes.RemoveAll(p => p.Id.Equals(emitdata.Id) && p.BoxId.Equals(emitdata.BoxId));
+                    participant.TimeStamps.Remove(timestation);
+                    Results.RemoveAll(r => r.EmitID.Equals(emitdata.Id) && r.TimeStation.Id.Equals(timestation.Id));
+                }
+            }
             
             // Duplicate?
             if (!emitdata.Test && timestation.Official && Passes.Contains(emitdata))
@@ -67,60 +82,53 @@ namespace EmitReaderLib
 
             participant.TimeStamps.Add(timestation, emitdata.Time);
             Passes.Add(emitdata);
-            writer.PersistPass(emitdata);
-
+                       
             var result = BuildResult(emitdata, timestation, participant);
+            result.CalculatePositions(ParticipantListByClass, participant);
 
             Results.Add(result);
-            foreach(ParticipantClass c in participant.Classes) {
-                if (!ResultsByClass.ContainsKey(c))
-                    ResultsByClass.Add(c, new List<Result>());
-                ResultsByClass[c].Add(result);
-            }
 
+            // If results are volatile, we need to recalc positions on affected
+            if (resultsVolatile) {
+                lock (syncRoot)
+                {
+                    // fixed?
+                    if (resultsVolatile)
+                    {
+                        foreach (Result res in Results.Where(r => r.Total.CompareTo(result.Total) > 0))
+                            res.CalculatePositions(ParticipantListByClass, ParticipantByEmit[res.EmitID]);
+                    }
+                    resultsVolatile = false;
+                }
+            }
             return result;
         }
 
         protected Result BuildResult(EmitData pass, TimeStation timestation, Participant participant) {
             var result = new Result {
-                Official = timestation.Official,
-                StationName = timestation.Name,
+                TimeStation = timestation,
                 Name = participant.Name,
                 Telephone = participant.Telephone,
                 EmitID = participant.EmitID,
                 Startnumber = participant.Startnumber,
                 TeamMembers = participant.TeamMembers,
-                ParticipantClasses = participant.Classes.Select(c => c.Name).ToList<String>()
+                ParticipantClasses = participant.Classes
             };
 
             DateTime start = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 13, 14, 0);
             result.Splits = new List<String>();
-            TimeSpan total = new TimeSpan(0);
+            result.Total = new TimeSpan(0);
 
             // Find all splits
             foreach (DateTime split in participant.OfficialTimeStamps.Values) {
                 result.Splits.Add((split - start).ToString(@"hh\:mm\:ss"));
-                total += (split - start);
+                result.Total += (split - start);
                 start = split;
             }
-            result.Total = total.ToString(@"hh\:mm\:ss");
-
-            result.Positions = new Dictionary<String, int>();
-            foreach (ParticipantClass c in participant.Classes)
-            {
-                result.Positions.Add(
-                    c.Name,
-                    ParticipantListByClass[c]
-                        .Where(p => p.OfficialTimeStamps.ContainsKey(timestation))
-                        .OrderBy(p => p.OfficialTimeStamps[timestation])
-                        .ToList<Participant>()
-                        .IndexOf(participant) + 1
-                    );
-            }
-                        
+            result.TotalString = result.Total.ToString(@"hh\:mm\:ss");
+            
             return result;
         }    
-
 
     }
 }

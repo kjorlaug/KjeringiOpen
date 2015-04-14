@@ -109,7 +109,7 @@ namespace Web.Hubs
                 if (resultat != null)
                 {
                     Clients.All.addLogMessage(resultat.CurrentSplit, resultat.EmitID, resultat.Startnumber, resultat.Name, data.Time.ToLongTimeString());
-                    Clients.Group(resultat.StationName).processResultat(resultat);
+                    Clients.Group(resultat.TimeStation.Name).processResultat(resultat);
                 }
             }
             catch (Exception ex) { }
