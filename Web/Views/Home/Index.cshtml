@@ -23,6 +23,13 @@
     </table>
 </div>
 
+<div id="log" style="height:300px;overflow:auto;">
+    <h3>Log</h3>
+    <ul data-bind="foreach: log">
+        <li><span data-bind="text: $data"></span></li>
+    </ul>
+</div>
+
 @section Scripts {
     <script src="~/Scripts/index.js"></script>
 }

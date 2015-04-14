@@ -9,6 +9,8 @@
 
         // Collection of machines that are connected
         self.systems = ko.observableArray();
+
+        self.log = ko.observableArray();
     };
 
     // Instantiate the viewmodel..
@@ -16,6 +18,7 @@
 
     // .. and bind it to the view
     ko.applyBindings(vm, $("#systemStatus")[0]);
+    ko.applyBindings(vm, $("#log")[0]);
 
     // Get a reference to our hub
     var hub = $.connection.resultatServiceHub;
@@ -48,6 +51,15 @@
             }
         }
     };
+
+    // Add handler to recieve log message
+    hub.client.addLogMessage = function (etappe, emitId, startNummer, namn, time) {
+        var logMessage = etappe + ' ' + emitId + ' ' + startNummer + ' ' + namn + ' ' + time;
+        console.log(logMessage);
+        if (vm.log.length > 100)
+            vm.log.slice(-1)[0];
+        vm.log.unshift(logMessage);
+    }
 
     // Start the connection
     $.connection.hub.start().done(function () {

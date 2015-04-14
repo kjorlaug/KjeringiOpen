@@ -80,29 +80,10 @@ namespace Web.Hubs
                 Groups.Add(Context.ConnectionId, name);
         }
 
-        public ICollection<Result> GetPlassering(String name)
-        {
-            //Plassering plassering = Konkurranse.GetInstance.Plasseringar.Find(x => x.Namn.Equals(HttpContext.Current.Server.HtmlDecode(name)));
-            //return plassering.Resultat.Take(100).Reverse().ToList<ResultatData>();
-            return null;
-        }
-
         public void SendPassering(EmitData data)
         {
-            //// Persist
-            //MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["kjeringi"].ConnectionString);
-            //conn.Open();
-
-            //MySqlCommand cmd = new MySqlCommand(@"insert into timers_raw (year, card, time, location) values (14, " + data.Id.ToString() + ", '" + data.Time.ToString("HH:mm:ss.FFF") + "', " + data.BoxId.ToString() + ");", conn);
-            //cmd.ExecuteNonQuery();
-            //conn.Close();
-
-            //// Send to Erlend
-            //SubmitWorker submitter = new SubmitWorker("http://ko.hoo9.com/timer/register");
-            //submitter.ProcessData(data);
-
-            try
-            {
+            //try
+            //{
                 // Add new Passering to race
                 Result resultat = TheRace.Instance.AddPass(data);
 
@@ -111,8 +92,19 @@ namespace Web.Hubs
                     Clients.All.addLogMessage(resultat.CurrentSplit, resultat.EmitID, resultat.Startnumber, resultat.Name, data.Time.ToLongTimeString());
                     Clients.Group(resultat.TimeStation.Name).processResultat(resultat);
                 }
-            }
-            catch (Exception ex) { }
+            //}
+            //catch (Exception ex) { 
+            //    // Duplicate
+            //}
         }
+
+        public ICollection<Result> GetPlassering(String name)
+        {
+            //Plassering plassering = Konkurranse.GetInstance.Plasseringar.Find(x => x.Namn.Equals(HttpContext.Current.Server.HtmlDecode(name)));
+            //return plassering.Resultat.Take(100).Reverse().ToList<ResultatData>();
+            return null;
+        }
+
+
     }
 }

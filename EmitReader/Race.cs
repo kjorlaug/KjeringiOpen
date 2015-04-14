@@ -61,47 +61,41 @@ namespace EmitReaderLib
 
             writer.PersistPass(emitdata);
 
-            // Force? Delete all passes by chip on that box
-            if (emitdata.Force)
+            lock (syncRoot)
             {
-                lock (syncRoot)
+                // Force? Delete all passes by chip on that box
+                if (emitdata.Force)
                 {
                     resultsVolatile = true;
                     Passes.RemoveAll(p => p.Id.Equals(emitdata.Id) && p.BoxId.Equals(emitdata.BoxId));
                     participant.TimeStamps.Remove(timestation);
                     Results.RemoveAll(r => r.EmitID.Equals(emitdata.Id) && r.TimeStation.Id.Equals(timestation.Id));
                 }
-            }
-            
-            // Duplicate?
-            if (!emitdata.Test && timestation.Official && Passes.Contains(emitdata))
-            {
-                if (Passes[Passes.IndexOf(emitdata)].Time < emitdata.Time)
-                    throw new Exception("Duplicate pass");
-            }
 
-            participant.TimeStamps.Add(timestation, emitdata.Time);
-            Passes.Add(emitdata);
-                       
-            var result = BuildResult(emitdata, timestation, participant);
-            result.CalculatePositions(ParticipantListByClass, participant);
-
-            Results.Add(result);
-
-            // If results are volatile, we need to recalc positions on affected
-            if (resultsVolatile) {
-                lock (syncRoot)
+                // Duplicate?
+                if (!emitdata.Test && timestation.Official && Passes.Exists(d => d.Chip.Equals(emitdata.Chip) && d.BoxId.Equals(emitdata.BoxId)))
                 {
-                    // fixed?
-                    if (resultsVolatile)
-                    {
-                        foreach (Result res in Results.Where(r => r.Total.CompareTo(result.Total) > 0))
-                            res.CalculatePositions(ParticipantListByClass, ParticipantByEmit[res.EmitID]);
-                    }
-                    resultsVolatile = false;
+                    if (Passes.First(d => d.Chip.Equals(emitdata.Chip) && d.BoxId.Equals(emitdata.BoxId)).Time <= emitdata.Time)
+                        return null;
                 }
+
+                participant.TimeStamps.Add(timestation, emitdata.Time);
+                Passes.Add(emitdata);
+
+                var result = BuildResult(emitdata, timestation, participant);
+                result.CalculatePositions(ParticipantListByClass, participant);
+
+                Results.Add(result);
+
+                // If results are volatile, we need to recalc positions on affected
+                if (resultsVolatile)
+                {
+                    var volRes = Results.ToList<Result>();
+                    foreach (Result res in volRes.Where(r => r.Total.CompareTo(result.Total) > 0))
+                        res.CalculatePositions(ParticipantListByClass, ParticipantByEmit[res.EmitID]);
+                }
+                return result;
             }
-            return result;
         }
 
         protected Result BuildResult(EmitData pass, TimeStation timestation, Participant participant) {

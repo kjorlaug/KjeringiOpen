@@ -11,7 +11,7 @@ namespace EmitReaderLib.Model
         public String CurrentSplit
         {
             get {
-                if (Splits == null)
+                if (Splits == null || Splits.Count == 0)
                     return "";
                 else
                     return Splits.Last();

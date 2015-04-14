@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmitReaderLib.Model
 {
-    public class TimeStation : IComparable<TimeStation>
+    public class TimeStation : IComparable<TimeStation>, IEqualityComparer<TimeStation>
     {
         public int Id { get; set; }
 
@@ -17,6 +17,16 @@ namespace EmitReaderLib.Model
         public int CompareTo(TimeStation other)
         {
             return this.Sequence.CompareTo(other.Sequence);
+        }
+
+        public bool Equals(TimeStation x, TimeStation y)
+        {
+            return x.Id.Equals(y.Id);
+        }
+
+        public int GetHashCode(TimeStation obj)
+        {
+            return obj.Sequence;
         }
     }
 }
