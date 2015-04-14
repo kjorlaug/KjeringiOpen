@@ -8,7 +8,7 @@ namespace EmitReaderLib.Writers
 {
     public class FooWriter : IRaceWriter
     {
-        public void PersistPass(Model.Pass pass)
+        public void PersistPass(Model.EmitData pass)
         {
             // do nothing
         }

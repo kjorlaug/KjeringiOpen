@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 
+using EmitReaderLib.Model;
+
 namespace EmitReaderLib
 {
     public class UsbSerialReader : IEmitReader

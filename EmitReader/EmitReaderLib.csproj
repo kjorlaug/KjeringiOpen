@@ -60,7 +60,6 @@
     <Compile Include="Model\Participant.cs" />
     <Compile Include="Model\ParticipantClass.cs" />
     <Compile Include="Model\Result.cs" />
-    <Compile Include="Model\Pass.cs" />
     <Compile Include="Race.cs" />
     <Compile Include="Model\TimeStation.cs" />
     <Compile Include="Readers\MySqlReader.cs" />

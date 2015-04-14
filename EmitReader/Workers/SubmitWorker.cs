@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Net;
 using System.IO;
 
+using EmitReaderLib.Model;
+
 namespace EmitReaderLib
 {
     public class SubmitWorker : IWorker

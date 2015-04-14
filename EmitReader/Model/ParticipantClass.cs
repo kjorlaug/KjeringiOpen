@@ -12,6 +12,8 @@ namespace EmitReaderLib.Model
         public String Name { get; set; }
         public int Sequence { get; set; }
 
+        public Boolean Test { get; set; }
+
         public int CompareTo(ParticipantClass other)
         {
             return this.Sequence.CompareTo(other.Sequence);

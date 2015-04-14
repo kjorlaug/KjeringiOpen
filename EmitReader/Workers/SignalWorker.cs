@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR.Client;
 
+using EmitReaderLib.Model;
+
 namespace EmitReaderLib
 {
     public class SignalWorker : IWorker, IDisposable

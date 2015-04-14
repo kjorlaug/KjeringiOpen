@@ -10,6 +10,6 @@ namespace EmitReaderLib.Writers
 {
     public interface IRaceWriter
     {
-        void PersistPass(Pass pass);
+        void PersistPass(EmitData pass);
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using EmitReaderLib.Model;
 using System.Data.SqlClient;
 
 namespace EmitReaderLib

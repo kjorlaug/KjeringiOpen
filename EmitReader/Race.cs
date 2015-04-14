@@ -18,7 +18,10 @@ namespace EmitReaderLib
             TimeStations = new List<TimeStation>();
             ParticipantByEmit = new Dictionary<int, Participant>();
             ParticipantListByClass = new SortedDictionary<ParticipantClass, List<Participant>>();
-            Passes = new List<Pass>();
+            Passes = new List<EmitData>();
+            Results = new List<Result>();
+            ResultsByClass = new SortedDictionary<ParticipantClass, List<Result>>();
+
             this.writer = writer;
         }
 
@@ -28,9 +31,13 @@ namespace EmitReaderLib
         public List<Participant> Participants { get; protected set; }
         public List<TimeStation> TimeStations { get; protected set; }
 
-        protected List<Pass> Passes { get; set; }
+        protected List<EmitData> Passes { get; set; }
         protected Dictionary<int, Participant> ParticipantByEmit { get; set; }
         protected SortedDictionary<ParticipantClass, List<Participant>> ParticipantListByClass { get; set; }
+
+        protected List<Result> Results { get; set; }
+        protected SortedDictionary<ParticipantClass, List<Result>> ResultsByClass { get; set; }
+        
         protected IRaceWriter writer { get; set; }
 
         public void AddParticipant(Participant p)
@@ -51,23 +58,30 @@ namespace EmitReaderLib
             var participant = ParticipantByEmit[emitdata.Id];
             var timestation = TimeStations.Find(x => x.Id.Equals(emitdata.BoxId));
             
-            var pass = new Pass {Station = timestation, EmitID = emitdata.Id, Time = emitdata.Time};
-
             // Duplicate?
-            if (!emitdata.Test && timestation.Official && Passes.Contains(pass))
+            if (!emitdata.Test && timestation.Official && Passes.Contains(emitdata))
             {
-                if (Passes[Passes.IndexOf(pass)].Time < pass.Time)
+                if (Passes[Passes.IndexOf(emitdata)].Time < emitdata.Time)
                     throw new Exception("Duplicate pass");
             }
 
             participant.TimeStamps.Add(timestation, emitdata.Time);
-            Passes.Add(pass);
-            writer.PersistPass(pass);
+            Passes.Add(emitdata);
+            writer.PersistPass(emitdata);
 
-            return BuildResult(pass, timestation, participant);
+            var result = BuildResult(emitdata, timestation, participant);
+
+            Results.Add(result);
+            foreach(ParticipantClass c in participant.Classes) {
+                if (!ResultsByClass.ContainsKey(c))
+                    ResultsByClass.Add(c, new List<Result>());
+                ResultsByClass[c].Add(result);
+            }
+
+            return result;
         }
 
-        public Result BuildResult(Pass pass, TimeStation timestation, Participant participant) {
+        protected Result BuildResult(EmitData pass, TimeStation timestation, Participant participant) {
             var result = new Result {
                 Official = timestation.Official,
                 StationName = timestation.Name,
@@ -106,5 +120,7 @@ namespace EmitReaderLib
                         
             return result;
         }    
+
+
     }
 }
