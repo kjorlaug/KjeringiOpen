@@ -122,7 +122,12 @@ namespace EmitReaderLib
             result.TotalString = result.Total.ToString(@"hh\:mm\:ss");
             
             return result;
-        }    
+        }
 
+
+        public ICollection<Result> GetResults(int participantClassId, int timestationId)
+        {
+            return Results.Where(r => r.TimeStation.Id.Equals(timestationId) && r.ParticipantClasses.Exists(c => c.Id.Equals(participantClassId))).OrderBy(r => r.Total).ToList<Result>();
+        }
     }
 }

@@ -98,6 +98,11 @@ namespace Web.Hubs
             //}
         }
 
+        public ICollection<Result> GetCurrentResults(int participantClassId, int timestationId)
+        {
+            return TheRace.Instance.GetResults(participantClassId, timestationId);
+        }
+
         public ICollection<Result> GetPlassering(String name)
         {
             //Plassering plassering = Konkurranse.GetInstance.Plasseringar.Find(x => x.Namn.Equals(HttpContext.Current.Server.HtmlDecode(name)));
