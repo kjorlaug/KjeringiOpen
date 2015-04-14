@@ -34,5 +34,8 @@ namespace EmitReaderLib.Model
 
         public List<String> TeamMembers { get; set; }
         public List<String> Splits { get; set; }
+
+        public Boolean Start { get; set; }
+        public List<String> Comments { get; set; }
     }
 }

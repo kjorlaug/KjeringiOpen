@@ -15,6 +15,7 @@ namespace EmitReaderLib.Model
             Telephone = new List<String>();
             TeamMembers = new List<String>();
             Classes = new List<ParticipantClass>();
+            Comments = new List<String>();
         }
 
         public int Startnumber { get; set; }
@@ -39,5 +40,7 @@ namespace EmitReaderLib.Model
             }
         }
 
+        public Boolean Star { get; set; }
+        public List<String> Comments { get; set; }
     }
 }
