@@ -1,74 +1,28 @@
 ﻿@{
     ViewBag.Title = "Status page";
 }
-
-<div class="row">
-    <div class="col-md-4" id="online-systems-list">
-        <h2>System online:</h2>
-        <ul data-bind="foreach: online">
-            <li class="sys-box"><span class="sys-box-name" data-bind="text:timestamp"></span> - <span class="sys-box-name" data-bind="text: sysname"></span></li>
-        </ul>
-    </div>
-    <div class="col-md-4" id="offline-systems-list">
-        <h2>System offline:</h2>
-        <ul data-bind="foreach: offline">
-            <li class="sys-box"><span class="sys-box-name" data-bind="text:timestamp"></span> - <span class="sys-box-name" data-bind="text: sysname"></span></li>
-        </ul>
-    </div>
-    <div class="col-md-4">
-    </div>
+<div id="systemStatus">
+    <h5 data-bind="visible: connected">Connected</h5>
+    <table class="table table-striped" border="0">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <th>System</th>
+                <th>Sist endring</th>
+                <th>Status</th>
+            </tr>
+            <!-- ko foreach: systems -->
+            <tr>
+                <td data-bind="text: Id"></td>
+                <td data-bind="text: SystemName"></td>
+                <td data-bind="text: TimeStamp"></td>
+                <td data-bind="text: Connected"></td>
+            </tr>
+            <!-- /ko -->
+        </tbody>
+    </table>
 </div>
 
-<div id="log" style="height:300px;overflow:auto;">
-    <ul data-bind="foreach: log">
-        <li><span data-bind="text: msg"></span></li>
-    </ul>
-</div>
-
-<script type="text/javascript" src="@Url.Content("~/scripts/model.js")"></script>
-<script type="text/javascript">
-
-    $(document).ready(function () {
-        var systems = new Kjeringi.connectedSystemViewModel();
-        var currentSystem = new Kjeringi.system(@Html.Raw(Json.Encode("Statusscreen - " + Request.UserHostName))); // The username chose by the user is stored in the model
-
-        // Proxy creation
-        var hub = $.connection.resultatServiceHub; 
-        hub.state.username = currentSystem.username; 
-
-        hub.client.leaves = function (userId, username, timestamp) {
-            var disconnectedUser = new Kjeringi.system(username, userId, timestamp);
-            systems.customRemoveOnline(disconnectedUser);
-            systems.offline.unshift(disconnectedUser);
-        }
-
-        hub.client.joins = function (userId, username, timestamp) {
-            var connectedUser = new Kjeringi.system(username, userId, timestamp);
-            systems.customRemoveOffline(connectedUser);
-            systems.online.unshift(connectedUser);
-        }
-
-        hub.client.addLogMessage = function (etappe, emitId, startNummer, namn, time) {
-            var logMessage = new Kjeringi.logMessage(etappe + ' ' + emitId + ' ' + startNummer + ' ' + namn + ' ' + time);
-            if (systems.log.length > 1000)
-                systems.log.slice(-1)[0];
-            systems.log.unshift(logMessage);
-        }
-        ko.applyBindings(systems, $("#online-systems-list")[0]);
-        ko.applyBindings(systems, $("#offline-systems-list")[0]);
-        ko.applyBindings(systems, $("#log")[0]);
-
-        $.connection.hub.start()
-                    .done(function () {
-                        hub.server.getConnectedSystems()
-                                    .done(function (connectedsystems) {
-                                        ko.utils.arrayForEach(connectedsystems, function (item) {
-                                            systems.online.push(new Kjeringi.system(item.SystemName, item.Id, item.TimeStamp));
-                                        });
-                                    }).done(function () {
-                                        hub.server.join("Status");
-                                    });
-                    });
-    });
-
-</script>
+@section Scripts {
+    <script src="~/Scripts/index.js"></script>
+}

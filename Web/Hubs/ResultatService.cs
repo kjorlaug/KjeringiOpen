@@ -22,42 +22,51 @@ namespace Web.Hubs
             _repository = InMemoryRepository.GetInstance();
         }
 
-        #region IDisconnect and IConnected event handlers implementation
-
         /// <summary>
         /// Fired when a client disconnects from the system. The user associated with the client ID gets deleted from the list of currently connected users.
         /// </summary>
         /// <returns></returns>
         public override Task OnDisconnected(bool stopCalled)
         {
-            string sysId = _repository.GetSystemByConnectionId(Context.ConnectionId);
-            if (sysId != null)
+            SubSystem sys = _repository.Systems.Where(u => u.Id == Context.ConnectionId).FirstOrDefault();
+            if (sys != null)
             {
-                SubSystem sys = _repository.Systems.Where(u => u.Id == sysId).FirstOrDefault();
-                if (sys != null)
-                {
-                    _repository.Remove(sys);
-                    return Clients.All.leaves(sys.Id, sys.SystemName, DateTime.Now.ToShortTimeString());
-                }
+                _repository.Remove(sys);
+                sys.Connected = false;
+                Clients.All.SystemStatusChanged(sys);
             }
-
             return base.OnDisconnected(stopCalled);
         }
 
-        #endregion
-
+        public override Task OnReconnected()
+        {
+            SubSystem sys = _repository.Systems.Where(u => u.Id == Context.ConnectionId).FirstOrDefault();
+            if (sys != null)
+            {
+                sys.TimeStamp = DateTime.Now.ToShortTimeString();
+                sys.Connected = true;
+                Clients.All.SystemStatusChanged(sys);
+            }
+            return base.OnReconnected();
+        }
+    
         public void Join(String name)
         {
             SubSystem sys = new SubSystem()
             {
-                //Id = Context.ConnectionId,                
-                Id = Guid.NewGuid().ToString(),
+                Id = Context.ConnectionId,
                 SystemName = name, 
-                TimeStamp = DateTime.Now.ToShortTimeString()
+                TimeStamp = DateTime.Now.ToShortTimeString(),
+                Connected = true
             };
+            
             _repository.Add(sys);
-            _repository.AddMapping(Context.ConnectionId, sys.Id);
-            Clients.All.joins(sys.Id, sys.SystemName, sys.TimeStamp);
+            Clients.All.SystemStatusChanged(sys);
+        }
+
+        public ICollection<SubSystem> GetConnectedSystems()
+        {
+            return _repository.Systems.ToList<SubSystem>();
         }
 
         public void AddtoGroup(String name)
@@ -68,12 +77,7 @@ namespace Web.Hubs
                     Groups.Add(Context.ConnectionId, ts.Name);
             }
             else
-                Groups.Add(Context.ConnectionId, HttpContext.Current.Server.HtmlDecode(name));
-        }
-
-        public ICollection<SubSystem> GetConnectedSystems()
-        {
-            return _repository.Systems.ToList<SubSystem>();
+                Groups.Add(Context.ConnectionId, name);
         }
 
         public ICollection<Result> GetPlassering(String name)
