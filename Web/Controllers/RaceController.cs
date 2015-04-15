@@ -15,15 +15,26 @@ namespace Web.Controllers
     {
 
         // GET api/<controller>
-        public IEnumerable<ParticipantClass> Get()
+        public IEnumerable<int> Get()
+        {
+            return new List<int>() { 2014, 2015 };
+        }
+
+        public IEnumerable<ParticipantClass> Get(int year)
         {
             return TheRace.Instance.Classes;            
         }
 
         // GET api/<controller>/5
-        public ICollection<Participant> Get(String id)
+        public ICollection<Participant> Get(int year, String className)
         {
-            return TheRace.Instance.GetResults(id);
+            try {
+                return TheRace.Instance.GetResults(className);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
     }

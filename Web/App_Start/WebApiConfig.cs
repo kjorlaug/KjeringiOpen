@@ -7,7 +7,7 @@ class WebApiConfig
     {
         configuration.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 
-        configuration.Routes.MapHttpRoute("API Default", "api/{controller}/{id}",
-            new { id = RouteParameter.Optional });
+        configuration.Routes.MapHttpRoute("API Default", "api/{controller}/{year}/{className}",
+            new { year = RouteParameter.Optional, className = RouteParameter.Optional });
     }
 }
