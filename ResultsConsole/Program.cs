@@ -23,10 +23,10 @@ namespace ResultsConsole
             myHubConn = new HubConnection(hub);
             myHub = myHubConn.CreateHubProxy("resultatServiceHub");
 
-            myHubConn.Error += ex => Console.WriteLine("SignalR error: {0}", ex.Message);
+            myHubConn.Error += ex => Console.WriteLine("SignalR error: {0}", ex.Message, ex.InnerException);
 
-            //myHubConn.TraceLevel = TraceLevels.All;
-            //myHubConn.TraceWriter = Console.Out;
+            myHubConn.TraceLevel = TraceLevels.None;
+            myHubConn.TraceWriter = Console.Out;
 
             myHubConn.Start()
                 .ContinueWith((prevTask) =>
