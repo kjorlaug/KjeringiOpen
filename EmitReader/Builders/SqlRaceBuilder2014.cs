@@ -97,7 +97,7 @@ namespace EmitReaderLib.Builders
                 {
                     Startnumber = data.GetInt32(data.GetOrdinal("startNumber")),
                     EmitID = int.Parse(data.GetString(data.GetOrdinal("chipNumber"))),
-                    Name = data.GetString(data.GetOrdinal("firstname")) + " " + data.GetString(data.GetOrdinal("surname")),
+                    Name = data.GetString(data.GetOrdinal("name")),
                     Telephone = new List<String>() {data.GetString(data.GetOrdinal("phoneNumber"))},
                     Classes = new List<ParticipantClass> {race.Classes.Find(x => x.Id.Equals(data.GetString(data.GetOrdinal("teamClassCode"))))},
                     IsTeam = true,

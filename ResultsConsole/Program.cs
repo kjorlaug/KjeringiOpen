@@ -25,8 +25,8 @@ namespace ResultsConsole
 
             myHubConn.Error += ex => Console.WriteLine("SignalR error: {0}", ex.Message);
 
-            myHubConn.TraceLevel = TraceLevels.All;
-            myHubConn.TraceWriter = Console.Out;
+            //myHubConn.TraceLevel = TraceLevels.All;
+            //myHubConn.TraceWriter = Console.Out;
 
             myHubConn.Start()
                 .ContinueWith((prevTask) =>

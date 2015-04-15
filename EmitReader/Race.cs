@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using EmitReaderLib.Model;
 using EmitReaderLib.Writers;
+using EmitReaderLib.Utils;
 
 namespace EmitReaderLib
 {
@@ -20,7 +21,7 @@ namespace EmitReaderLib
             Participants = new List<Participant>();
             TimeStations = new List<TimeStation>();
             ParticipantByEmit = new Dictionary<int, Participant>();
-            ParticipantListByClass = new SortedDictionary<ParticipantClass, List<Participant>>(new ParticipantClassComparer());
+            ParticipantListByClass = new Dictionary<String, List<Participant>>();
             Passes = new List<EmitData>();
             Results = new List<Result>();
             resultsVolatile = false;
@@ -35,7 +36,7 @@ namespace EmitReaderLib
 
         protected List<EmitData> Passes { get; set; }
         protected Dictionary<int, Participant> ParticipantByEmit { get; set; }
-        protected SortedDictionary<ParticipantClass, List<Participant>> ParticipantListByClass { get; set; }
+        protected Dictionary<String, List<Participant>> ParticipantListByClass { get; set; }
 
         protected List<Result> Results { get; set; }
         
@@ -47,10 +48,10 @@ namespace EmitReaderLib
 
             foreach (ParticipantClass c in p.Classes)
             {
-                if (!ParticipantListByClass.ContainsKey(c))
-                    ParticipantListByClass.Add(c, new List<Participant>());
+                if (!ParticipantListByClass.ContainsKey(c.Id))
+                    ParticipantListByClass.Add(c.Id, new List<Participant>());
 
-                ParticipantListByClass[c].Add(p);
+                ParticipantListByClass[c.Id].Add(p);
             }
             ParticipantByEmit.Add(p.EmitID, p);
         }
@@ -67,35 +68,76 @@ namespace EmitReaderLib
                 if (emitdata.Force || emitdata.Test)
                 {
                     resultsVolatile = emitdata.Force;
-                    participant.Passes.Remove(timestation);
-                    participant.Positions.Remove(timestation);
+                    participant.Passes.Remove(timestation.Id);
+                    participant.Positions.Remove(timestation.Id);
                 }
 
                 // Duplicate?
-                if (!emitdata.Force && !emitdata.Test && timestation.Official && participant.Passes.ContainsKey(timestation))
+                if (!emitdata.Force && !emitdata.Test && timestation.Official && participant.Passes.ContainsKey(timestation.Id))
                 {
                     return null;
                 }
 
-                participant.Passes.Add(timestation, emitdata);
+                participant.Passes.Add(timestation.Id, emitdata);
 
-                var pos = new ParticipantDictionary();
+                var recalcFor = new List<Participant>();
 
-                if (participant.Passes.Count > 1)
+                if (resultsVolatile)
                 {
                     foreach (ParticipantClass c in participant.Classes)
-                        pos.Add(
-                            c,
-                            ParticipantListByClass[c]
-                                .Where(p => p.Passes.ContainsKey(timestation))
-                                .OrderBy(p => p.Passes[timestation].Time)
-                                .ToList<Participant>()
-                                .IndexOf(participant) + 1
-                        );
+                        recalcFor.AddRange(
+                            ParticipantListByClass[c.Id].Except(recalcFor)
+                            );
                 }
-                
-                participant.Positions.Add(timestation, pos);
+                else
+                    recalcFor.Add(participant);
 
+
+                foreach (Participant par in recalcFor)
+                {
+                    var pos = new Dictionary<String, int>();
+                    var res = new List<Result>();
+
+                    if (par.Passes.Count > 1)
+                    {
+                        foreach (ParticipantClass c in par.Classes)
+                        {
+                            pos.Add(
+                                c.Id,
+                                ParticipantListByClass[c.Id]
+                                    .Where(p => p.Passes.ContainsKey(timestation.Id))
+                                    .OrderBy(p => p.Passes[timestation.Id].Time)
+                                    .ToList<Participant>()
+                                    .IndexOf(participant) + 1
+                            );
+                        }
+                    }
+
+                    par.Positions.Add(timestation.Id, pos);
+
+                    if (par.Passes.Count > 1)
+                        foreach (ParticipantClass c in par.Classes)
+                        {
+                            res.AddRange(
+                                par.Passes
+                                    .Where(p => TimeStations.Find(ts => ts.Id.Equals(p.Key)).Official)
+                                    .OrderBy(p => p.Value.Time)
+                                    .SelectWithPrevious((prev, cur) =>
+                                        new Result()
+                                        {
+                                            Sequence = TimeStations.Find(ts => ts.Id.Equals(cur.Key)).Sequence,
+                                            Leg = TimeStations.Find(ts => ts.Id.Equals(cur.Key)).Name,
+                                            Class = c.Name,
+                                            Name = par.IsSuper ? "" : par.TeamMembers[TimeStations.Find(ts => ts.Id.Equals(cur.Key)).Sequence - 1],
+                                            Time = (cur.Value.Time - prev.Value.Time).ToString(@"hh\:mm\:ss"),
+                                            Position = par.Positions[cur.Key][c.Id]
+                                        }
+                                            )
+                                    .ToList<Result>());
+                        }
+
+                    participant.Splits = res;
+                }
                 return participant;
             }
         }
@@ -108,16 +150,16 @@ namespace EmitReaderLib
             foreach (TimeStation t in TimeStations.Where(ts => ts.Official).Skip(1).OrderByDescending(ts => ts.Sequence))
             {
                 list.AddRange(
-                    ParticipantListByClass[c]
+                    ParticipantListByClass[c.Id]
                         .Except(list)
-                        .Where(p => p.Passes.ContainsKey(t))
-                        .OrderBy(p => p.Passes[t].Time)
+                        .Where(p => p.Passes.ContainsKey(t.Id))
+                        .OrderBy(p => p.Passes[t.Id].Time)
                         .ToList<Participant>()
                 );
             }
 
             list.AddRange(
-                ParticipantListByClass[c]
+                ParticipantListByClass[c.Id]
                     .Except(list)
                     .Where(p => p.Passes.Count == 1)
                     .OrderBy(p => p.Name)
