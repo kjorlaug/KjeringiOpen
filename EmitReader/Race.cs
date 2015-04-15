@@ -20,7 +20,7 @@ namespace EmitReaderLib
             Participants = new List<Participant>();
             TimeStations = new List<TimeStation>();
             ParticipantByEmit = new Dictionary<int, Participant>();
-            ParticipantListByClass = new SortedDictionary<ParticipantClass, List<Participant>>();
+            ParticipantListByClass = new SortedDictionary<ParticipantClass, List<Participant>>(new ParticipantClassComparer());
             Passes = new List<EmitData>();
             Results = new List<Result>();
             resultsVolatile = false;
@@ -55,7 +55,7 @@ namespace EmitReaderLib
             ParticipantByEmit.Add(p.EmitID, p);
         }
 
-        public Result AddPass(EmitData emitdata) { 
+        public Participant AddPass(EmitData emitdata) { 
             var participant = ParticipantByEmit[emitdata.Id];
             var timestation = TimeStations.Find(x => x.Id.Equals(emitdata.BoxId));
 
@@ -64,72 +64,67 @@ namespace EmitReaderLib
             lock (syncRoot)
             {
                 // Force? Delete all passes by chip on that box
-                if (emitdata.Force)
+                if (emitdata.Force || emitdata.Test)
                 {
-                    resultsVolatile = true;
-                    Passes.RemoveAll(p => p.Id.Equals(emitdata.Id) && p.BoxId.Equals(emitdata.BoxId));
-                    participant.TimeStamps.Remove(timestation);
-                    Results.RemoveAll(r => r.EmitID.Equals(emitdata.Id) && r.TimeStation.Id.Equals(timestation.Id));
+                    resultsVolatile = emitdata.Force;
+                    participant.Passes.Remove(timestation);
+                    participant.Positions.Remove(timestation);
                 }
 
                 // Duplicate?
-                if (!emitdata.Test && timestation.Official && Passes.Exists(d => d.Chip.Equals(emitdata.Chip) && d.BoxId.Equals(emitdata.BoxId)))
+                if (!emitdata.Force && !emitdata.Test && timestation.Official && participant.Passes.ContainsKey(timestation))
                 {
-                    if (Passes.First(d => d.Chip.Equals(emitdata.Chip) && d.BoxId.Equals(emitdata.BoxId)).Time <= emitdata.Time)
-                        return null;
+                    return null;
                 }
 
-                if (!participant.TimeStamps.ContainsKey(timestation))
-                    participant.TimeStamps.Add(timestation, emitdata.Time);
+                participant.Passes.Add(timestation, emitdata);
 
-                Passes.Add(emitdata);
+                var pos = new ParticipantDictionary();
 
-                var result = BuildResult(emitdata, timestation, participant);
-                result.CalculatePositions(ParticipantListByClass, participant);
-
-                Results.Add(result);
-
-                // If results are volatile, we need to recalc positions on affected
-                if (resultsVolatile)
+                if (participant.Passes.Count > 1)
                 {
-                    var volRes = Results.ToList<Result>();
-                    foreach (Result res in volRes.Where(r => r.Total.CompareTo(result.Total) > 0))
-                        res.CalculatePositions(ParticipantListByClass, ParticipantByEmit[res.EmitID]);
+                    foreach (ParticipantClass c in participant.Classes)
+                        pos.Add(
+                            c,
+                            ParticipantListByClass[c]
+                                .Where(p => p.Passes.ContainsKey(timestation))
+                                .OrderBy(p => p.Passes[timestation].Time)
+                                .ToList<Participant>()
+                                .IndexOf(participant) + 1
+                        );
                 }
-                return result;
+                
+                participant.Positions.Add(timestation, pos);
+
+                return participant;
             }
         }
 
-        protected Result BuildResult(EmitData pass, TimeStation timestation, Participant participant) {
-            var result = new Result {
-                TimeStation = timestation,
-                Name = participant.Name,
-                Telephone = participant.Telephone,
-                EmitID = participant.EmitID,
-                Startnumber = participant.Startnumber,
-                TeamMembers = participant.TeamMembers,
-                ParticipantClasses = participant.Classes
-            };
-
-            DateTime start = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 13, 14, 0);
-            result.Splits = new List<String>();
-            result.Total = new TimeSpan(0);
-
-            // Find all splits
-            foreach (DateTime split in participant.OfficialTimeStamps.Values) {
-                result.Splits.Add((split - start).ToString(@"hh\:mm\:ss"));
-                result.Total += (split - start);
-                start = split;
-            }
-            result.TotalString = result.Total.ToString(@"hh\:mm\:ss");
-            
-            return result;
-        }
-
-
-        public ICollection<Result> GetResults(String participantClassId, int timestationId)
+        public ICollection<Participant> GetResults(String participantClassId)
         {
-            return Results.Where(r => r.TimeStation.Id.Equals(timestationId) && r.ParticipantClasses.Exists(c => c.Id.Equals(participantClassId))).OrderBy(r => r.Total).ToList<Result>();
+            var c = Classes.First(p => p.Id.Equals(participantClassId));
+            var list = new List<Participant>();
+
+            foreach (TimeStation t in TimeStations.Where(ts => ts.Official).Skip(1).OrderByDescending(ts => ts.Sequence))
+            {
+                list.AddRange(
+                    ParticipantListByClass[c]
+                        .Except(list)
+                        .Where(p => p.Passes.ContainsKey(t))
+                        .OrderBy(p => p.Passes[t].Time)
+                        .ToList<Participant>()
+                );
+            }
+
+            list.AddRange(
+                ParticipantListByClass[c]
+                    .Except(list)
+                    .Where(p => p.Passes.Count == 1)
+                    .OrderBy(p => p.Name)
+                    .ToList<Participant>()
+             );
+
+            return list;
         }
     }
 }

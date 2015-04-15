@@ -22,6 +22,14 @@ namespace EmitReaderLib.Builders
             SqlCommand cmd = new SqlCommand(@"SELECT id, name, official, sequence FROM kop_station", conn);
             SqlDataReader data = cmd.ExecuteReader();
 
+            race.TimeStations.Add(new TimeStation()
+            {
+                Id = -1,
+                Name = "Start",
+                Official = true,
+                Sequence = 1
+            });
+
             while (data.Read())
             {
 
@@ -72,7 +80,7 @@ namespace EmitReaderLib.Builders
                     IsTeam = false,
                     IsSuper = true,
                     IsBusiness = false
-                });                
+                });
             }
 
             data.Close();
@@ -116,6 +124,13 @@ namespace EmitReaderLib.Builders
             data.Close();
             conn.Close();
 
+            foreach (Participant p in race.Participants)
+                race.AddPass(new EmitData()
+                {
+                    BoxId = -1,
+                    Id = p.EmitID,
+                    Time = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 13, 14, 0)
+                });
         }
     }
 }

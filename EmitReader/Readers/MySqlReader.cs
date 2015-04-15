@@ -18,7 +18,7 @@ namespace EmitReaderLib
         public void Start()
         {
             SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["kjeringi"].ConnectionString);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM timers_raw WHERE location > 0 ORDER BY id", conn);
+            SqlCommand cmd = new SqlCommand("SELECT top 3 * FROM timers_raw WHERE location > 0 ORDER BY id", conn);
 
             Task.Factory.StartNew(() =>
             {

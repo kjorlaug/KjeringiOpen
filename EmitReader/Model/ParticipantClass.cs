@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmitReaderLib.Model
 {
-    public class ParticipantClass : IComparable<ParticipantClass>
+    public class ParticipantClass
     {
         public String Id { get; set; }
         public String Name { get; set; }
@@ -14,9 +14,17 @@ namespace EmitReaderLib.Model
 
         public Boolean Test { get; set; }
 
-        public int CompareTo(ParticipantClass other)
+    }
+
+    public class ParticipantClassComparer : Comparer<ParticipantClass>
+    {
+        public override int Compare(ParticipantClass x, ParticipantClass y)
         {
-            return this.Sequence.CompareTo(other.Sequence);
+            if (x.Id.Equals(y.Id))
+                return 0;
+            else
+                return x.Sequence - y.Sequence;
+
         }
     }
 }

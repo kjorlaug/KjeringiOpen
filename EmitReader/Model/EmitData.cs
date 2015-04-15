@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmitReaderLib.Model
 {
-    public class EmitData : IComparable<EmitData>, IEqualityComparer<EmitData>
+    public class EmitData : IComparable
     {
         public EmitData() {}
 
@@ -33,22 +33,14 @@ namespace EmitReaderLib.Model
             } 
         }
 
-        public int CompareTo(EmitData other)
+        public int CompareTo(object obj)
         {
-            if (this.Id.Equals(other.Id))
-                return this.BoxId.CompareTo(other.BoxId);
+            if (obj is EmitData)
+            {
+                return this.Time.CompareTo((obj as EmitData).Time);
+            }
             else
-                return this.Id.CompareTo(other.Id);
-        }
-
-        public bool Equals(EmitData x, EmitData y)
-        {
-            return (x.BoxId.Equals(y.BoxId) && x.Chip.Equals(y.Chip));
-        }
-
-        public int GetHashCode(EmitData obj)
-        {
-            return this.Chip;
+                throw new NotImplementedException();
         }
     }
 }

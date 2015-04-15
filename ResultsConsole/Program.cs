@@ -23,6 +23,11 @@ namespace ResultsConsole
             myHubConn = new HubConnection(hub);
             myHub = myHubConn.CreateHubProxy("resultatServiceHub");
 
+            myHubConn.Error += ex => Console.WriteLine("SignalR error: {0}", ex.Message);
+
+            myHubConn.TraceLevel = TraceLevels.All;
+            myHubConn.TraceWriter = Console.Out;
+
             myHubConn.Start()
                 .ContinueWith((prevTask) =>
                 {
@@ -30,14 +35,15 @@ namespace ResultsConsole
                     myHub.Invoke("AddtoGroup", "");
                 }).Wait();
 
-            myHub.On<Result>("processResultat", (data) =>
+            myHub.On<Participant>("newPass", (data) =>
                 {
-                    foreach (ParticipantClass c in data.ParticipantClasses)
+                    foreach (ParticipantClass c in data.Classes)
                     {
-                        myHub.Invoke("GetCurrentResults", c.Id, data.TimeStation.Id)
-                            .ContinueWith(results =>
+                        myHub.Invoke<ICollection<Participant>>("GetCurrentResults", c.Id)
+                            .ContinueWith((result) => 
                             {
-                                var json = JsonConvert.SerializeObject(results);
+                                var d = result.Result;
+                                var json = JsonConvert.SerializeObject(d, Formatting.Indented);
                                 System.IO.File.WriteAllText(@"c:\temp\" + c.Name + ".json", json);
                             });
                     }

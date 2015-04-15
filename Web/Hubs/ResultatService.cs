@@ -85,12 +85,13 @@ namespace Web.Hubs
             //try
             //{
                 // Add new Passering to race
-                Result resultat = TheRace.Instance.AddPass(data);
+                Participant resultat = TheRace.Instance.AddPass(data);
+                var timestation = TheRace.Instance.TimeStations.First(ts => ts.Id.Equals(data.BoxId));
 
                 if (resultat != null)
                 {
-                    Clients.All.addLogMessage(resultat.CurrentSplit, resultat.EmitID, resultat.Startnumber, resultat.Name, data.Time.ToLongTimeString());
-                    Clients.Group(resultat.TimeStation.Name).processResultat(resultat);
+                    Clients.All.addLogMessage( /*resultat.CurrentSplit */ "", resultat.EmitID, resultat.Startnumber, resultat.Name, data.Time.ToLongTimeString());
+                    Clients.Group(timestation.Name).newPass(resultat);
                 }
             //}
             //catch (Exception ex) { 
@@ -98,9 +99,9 @@ namespace Web.Hubs
             //}
         }
 
-        public ICollection<Result> GetCurrentResults(String participantClassId, int timestationId)
+        public ICollection<Participant> GetCurrentResults(String participantClassId)
         {
-            return TheRace.Instance.GetResults(participantClassId, timestationId);
+            return TheRace.Instance.GetResults(participantClassId);
         }
 
         public ICollection<Result> GetPlassering(String name)
