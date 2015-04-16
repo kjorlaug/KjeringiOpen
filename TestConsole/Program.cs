@@ -15,7 +15,7 @@ namespace TestConsole
         static void Main(string[] args)
         {
 
-            EmitMonitor monitor = new EmitMonitor(new SqlReader() , new SignalWorker());
+            EmitMonitor monitor = new EmitMonitor(new MySqlReader(120, "Kjeringi.2013", new List<String>() {"78", "70", "79", "248"}, "3") , new SignalWorker());
             //EmitMonitor monitor = new EmitMonitor(new UsbSerialReader(), new SignalWorker());
             monitor.StartMonitoring();
 

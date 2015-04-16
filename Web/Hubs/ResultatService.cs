@@ -82,6 +82,7 @@ namespace Web.Hubs
 
         public void SendPassering(EmitData data)
         {
+            (new EmitReaderLib.Writers.MySqlWriter("kjeringi.writer", TheRace.Instance.Name)).PersistPass(data);
             //try
             //{
                 // Add new Passering to race
@@ -90,7 +91,7 @@ namespace Web.Hubs
 
                 if (resultat != null)
                 {
-                    Clients.All.addLogMessage( /*resultat.CurrentSplit */ "", resultat.EmitID, resultat.Startnumber, resultat.Name, data.Time.ToLongTimeString());
+                    Clients.All.addLogMessage(resultat.Splits.Last().Time, resultat.EmitID, resultat.Startnumber, resultat.Name, resultat.EstimatedArrival.ToLongTimeString());
                     Clients.Group(timestation.Name).newPass(resultat);
                 }
             //}

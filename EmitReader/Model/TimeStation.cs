@@ -12,8 +12,11 @@ namespace EmitReaderLib.Model
 
         public Boolean Official { get; set; }
         public Boolean Start { get; set; }
+        public Boolean Finish { get; set; }
         public String Name { get; set; }
         public int Sequence { get; set; }
+        public Double? Progress { get; set; }
+        public int Passes { get; set; }
     }
 
     public class TimestationComparer : Comparer<TimeStation>

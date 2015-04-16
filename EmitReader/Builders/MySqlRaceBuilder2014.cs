@@ -28,7 +28,7 @@ namespace EmitReaderLib.Builders
             conn.Open();
 
             // Adding supers
-            var cmd = new MySqlCommand(@"select startNumber, chipNumber, firstname, surname, personClassCode, ifnull(companyClass, 0) as companyClass, phoneNumber from kop_person where superwife = 1 and deleted = 0 and startnumber is not null and chipnumber is not null", conn);
+            var cmd = new MySqlCommand(@"select startNumber, cardid, firstname, surname, personClassCode, ifnull(companyClass, 0) as companyClass, phoneNumber from " + _year + "_person where superwife = 1 and deleted = 0 and startnumber is not null and cardid is not null", conn);
             var data = cmd.ExecuteReader();
 
             while (data.Read())
@@ -36,7 +36,7 @@ namespace EmitReaderLib.Builders
                 var p = new Participant()
                 {
                     Startnumber = data.GetInt32("startNumber"),
-                    EmitID = int.Parse(data.GetString("chipNumber")),
+                    EmitID = int.Parse(data.GetString("cardid")),
                     Name = data.GetString("firstname") + " " + data.GetString("surname"),
                     Telephone = new List<String>() { data.GetString("phoneNumber") },
                     Classes = new List<ParticipantClass>() { race.Classes.Find(x => x.Id.Equals(data.GetString("personClassCode"))) },
@@ -55,7 +55,7 @@ namespace EmitReaderLib.Builders
             data.Close();
 
             // Adding teams
-            cmd = new MySqlCommand(@"SELECT t.startNumber, t.chipNumber, t.name, t.teamClassCode, t.companyClass, p.firstname, p.surname, p.phoneNumber, p.sprintNumber FROM kop_team t inner join kop_person p on t.id = p.teamid where t.deleted = 0 and t.startNumber is not null and t.chipNumber is not null order by t.startNumber, p.sprintNumber", conn);
+            cmd = new MySqlCommand(@"SELECT t.startNumber, t.cardid, t.name, t.teamClassCode, t.companyClass, p.firstname, p.surname, p.phoneNumber, p.sprintNumber FROM " + _year + "_team t inner join " + _year + "_person p on t.id = p.teamid where t.deleted = 0 and t.startNumber is not null and t.cardid is not null order by t.startNumber, p.sprintNumber", conn);
             data = cmd.ExecuteReader();
 
             data.Read();
@@ -66,7 +66,7 @@ namespace EmitReaderLib.Builders
                 var p = new Participant()
                 {
                     Startnumber = data.GetInt32("startNumber"),
-                    EmitID = int.Parse(data.GetString("chipNumber")),
+                    EmitID = int.Parse(data.GetString("cardid")),
                     Name = data.GetString("name"),
                     Telephone = new List<String>() { data.GetString("phoneNumber").Replace(" ", "") },
                     Classes = new List<ParticipantClass> { race.Classes.Find(x => x.Id.Equals(data.GetString("teamClassCode"))) },

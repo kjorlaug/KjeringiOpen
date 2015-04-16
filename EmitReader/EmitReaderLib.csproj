@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builders\IRaceBuilder.cs" />
+    <Compile Include="Builders\MySqlRaceBuilder2015.cs" />
     <Compile Include="Builders\MySqlRaceBuilder2014.cs" />
     <Compile Include="Builders\SqlRaceBuilder2014.cs" />
     <Compile Include="Model\EmitData.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Workers\SignalWorker.cs" />
     <Compile Include="Workers\SubmitWorker.cs" />
+    <Compile Include="Writers\MySqlWriter.cs" />
     <Compile Include="Writers\FooWriter.cs" />
     <Compile Include="Writers\IRaceWriter.cs" />
   </ItemGroup>

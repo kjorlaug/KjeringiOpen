@@ -18,6 +18,23 @@ namespace KjeringiData
 
         private TheRace() { }
 
+        private static Dictionary<int, Race> history = new Dictionary<int, Race>();
+
+        public static Race Historical(int year)
+        {
+            if (year == int.Parse(Instance.Name))
+                return Instance;
+
+            if (history.ContainsKey(year))
+                return history[year];
+
+            var json = System.IO.File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/2015.json"));
+            var r  = JsonConvert.DeserializeObject<Race>(json);
+
+            history.Add(year, r);
+            return r;
+        }
+
         public static Race Instance
         {
             get
@@ -27,10 +44,12 @@ namespace KjeringiData
                     lock (syncRoot)
                     {
                         if (instance == null) {
-                            var json = System.IO.File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/2014.json"));
+                            //var json = System.IO.File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/2015.json"));
+                            //instance = JsonConvert.DeserializeObject<Race>(json);
+                            //(new EmitReaderLib.Builders.MySqlRaceBuilder2015("kjeringi")).BuildRace(instance);
+                            var json = System.IO.File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/2013.json"));
                             instance = JsonConvert.DeserializeObject<Race>(json);
-                            (new EmitReaderLib.Builders.MySqlRaceBuilder2014("kjeringi", "2014")).BuildRace(instance);
-
+                            (new EmitReaderLib.Builders.MySqlRaceBuilder2014("kjeringi.2013", "2013")).BuildRace(instance);
                         }
                     }
                 }

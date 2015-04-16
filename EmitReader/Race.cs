@@ -53,7 +53,10 @@ namespace EmitReaderLib
             ParticipantByEmit.Add(p.EmitID, p);
         }
 
-        public Participant AddPass(EmitData emitdata) { 
+        public Participant AddPass(EmitData emitdata) {
+            if (!ParticipantByEmit.ContainsKey(emitdata.Id))
+                return null;
+
             var participant = ParticipantByEmit[emitdata.Id];
             var timestation = TimeStations.Find(x => x.Id.Equals(emitdata.BoxId));
 
@@ -132,6 +135,27 @@ namespace EmitReaderLib
                         }
 
                     participant.Splits = res;
+
+                    DateTime startTime = participant.Passes.First().Value.Time;
+                    TimeSpan totalTime = (emitdata.Time - startTime);
+
+                    if (!participant.Finished && !timestation.Start )
+                    {
+                        participant.TotalTime = totalTime.ToString(@"hh\:mm\:ss");
+
+                        if (timestation.Progress.HasValue)
+                        {
+                            long estimate = Convert.ToInt64((totalTime.Ticks / timestation.Progress.Value)*100);
+                            participant.EstimatedArrival = startTime + TimeSpan.FromTicks(estimate);
+                        }
+                    }
+
+                    if (timestation.Finish)
+                    {
+                        participant.Finished = true;
+                        participant.RealArrival = emitdata.Time;
+                    }
+
                 }
                 return participant;
             }

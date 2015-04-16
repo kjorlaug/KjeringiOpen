@@ -5,60 +5,64 @@ using System.Text;
 using System.Threading.Tasks;
 
 using EmitReaderLib.Model;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace EmitReaderLib
 {
-    public class SqlReader : IEmitReader
+    public class MySqlReader : IEmitReader
     {
         public event EventHandler<EmitDataRecievedEventArgs> DataReceived;
 
-        protected int tempo = 120;
+        public MySqlReader(int tempo, String connectionStringName, List<String> locations, String year)
+        {
+            Tempo = tempo;
+            ConnectionStringName = connectionStringName;
+            Locations = locations;
+            Year = year;
+        }
+
+        protected int Tempo { get; set; }
+        protected String ConnectionStringName { get; set; }
+        protected List<String> Locations { get; set; }
+        protected String Year { get; set; }
 
         public void Start()
         {
-            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["kjeringi"].ConnectionString);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM timers_raw WHERE location > 0 ORDER BY id", conn);
+            MySqlConnection conn = new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[ConnectionStringName].ConnectionString);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM timers_raw WHERE year = " + Year + " AND location in (" + String.Join(",", Locations) + ") and card > 5000 ORDER BY id", conn);
 
             Task.Factory.StartNew(() =>
             {
                 try
                 {
                     conn.Open();
-                    SqlDataReader data = cmd.ExecuteReader();
+                    MySqlDataReader data = cmd.ExecuteReader();
 
                     DateTime nextSleep = DateTime.Now;
                     Boolean init = false;
 
                     while (data.Read())
                     {
-                        DateTime time = DateTime.ParseExact(data["time"].ToString(), "HH:mm:ss.FFF", System.Globalization.CultureInfo.InvariantCulture);
-                        if (!init)
-                        {
-                            nextSleep = time.AddSeconds(tempo);
-                            init = true;
-                        }
-
-                        if (time < nextSleep)
+                        DateTime time;
+                        if (DateTime.TryParseExact(data["time"].ToString(), "HH:mm:ss.FFF", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out time))
                         {
                             EmitData d = new EmitData()
-                            {
-                                Id = int.Parse(data["card"].ToString()),
-                                BoxId = int.Parse(data["location"].ToString()),
-                                Time = time,
-                                Force = false
-                            };
+                                {
+                                    Id = int.Parse(data["card"].ToString()),
+                                    BoxId = int.Parse(data["location"].ToString()),
+                                    Time = time,
+                                    Force = false
+                                };
+
                             EventHandler<EmitDataRecievedEventArgs> handler = DataReceived;
 
                             if (handler != null)
                                 handler(this, new EmitDataRecievedEventArgs(d));
-
                         }
                         else
-                        {
-                            System.Threading.Thread.Sleep(1000);
-                            nextSleep = time.AddSeconds(tempo);
-                        }
+                            Console.WriteLine("Unable to parse: " + data["time"].ToString());
+
+                        System.Threading.Thread.Sleep(300);
                     }
                     data.Close();
                     conn.Close();

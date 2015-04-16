@@ -1,5 +1,5 @@
 {
-  "Name": "2014",
+  "Name": "2015",
   "Classes": [
     {
       "Id": "GSJ",
@@ -168,6 +168,66 @@
       "Test": false
     },
     {
+      "Id": "NMG11",
+      "Name": "Gutter 11-12 år",
+      "Sequence": 31,
+      "Test": false
+    },
+    {
+      "Id": "NMG13",
+      "Name": "Gutter 13-14 år",
+      "Sequence": 31,
+      "Test": false
+    },
+    {
+      "Id": "NMG15",
+      "Name": "Gutter 15-16 år",
+      "Sequence": 32,
+      "Test": false
+    },
+    {
+      "Id": "NMG17",
+      "Name": "Menn Junior 17-21 år",
+      "Sequence": 33,
+      "Test": false
+    },
+    {
+      "Id": "NMG22",
+      "Name": "Menn Senior 22 år og eldre",
+      "Sequence": 34,
+      "Test": false
+    },
+    {
+      "Id": "NMJ11",
+      "Name": "Jenter 11-12 år",
+      "Sequence": 35,
+      "Test": false
+    },
+    {
+      "Id": "NMJ13",
+      "Name": "Jenter 13-14 år",
+      "Sequence": 36,
+      "Test": false
+    },
+    {
+      "Id": "NMJ15",
+      "Name": "Jenter 15-16 år",
+      "Sequence": 37,
+      "Test": false
+    },
+    {
+      "Id": "NMJ17",
+      "Name": "Kvinner Junior 17-21 år",
+      "Sequence": 38,
+      "Test": false
+    },
+    {
+      "Id": "NMJ22",
+      "Name": "Kvinner Senior 22 år og eldre",
+      "Sequence": 30,
+      "Test": false
+    },
+    {
       "Id": "TEST",
       "Name": "Testklasse",
       "Sequence": 101,
@@ -191,7 +251,6 @@
     {
       "Id": 70,
       "Official": true,
-      "Progress": 25.0, 
       "Name": "Damefall",
       "Sequence": 1
     },
@@ -199,20 +258,17 @@
       "Id": 71,
       "Official": true,
       "Name": "Kleppa",
-      "Sequence": 2,
-      "Progress": 50.0, 
+      "Sequence": 2
     },
     {
       "Id": 72,
       "Official": true,
       "Name": "Barneskulen",
-      "Sequence": 3,
-      "Progress": 75.0, 
+      "Sequence": 3
     },
     {
       "Id": 73,
       "Official": false,
-      "Progress": 98.0,       
       "Name": "Hamre - mellomstasjon",
       "Sequence": 4
     },
@@ -220,8 +276,7 @@
       "Id": 248,
       "Official": true,
       "Name": "Mål",
-      "Finish": true,
-      "Sequence": 4
+      "Sequence": 5
     }
   ]
 }

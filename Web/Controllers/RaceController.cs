@@ -17,19 +17,19 @@ namespace Web.Controllers
         // GET api/<controller>
         public IEnumerable<int> Get()
         {
-            return new List<int>() { 2014, 2015 };
+            return new List<int>() { 2013, 2014, 2015};
         }
 
         public IEnumerable<ParticipantClass> Get(int year)
         {
-            return TheRace.Instance.Classes;            
+            return TheRace.Historical(year).Classes.OrderBy(p => p.Sequence);            
         }
 
         // GET api/<controller>/5
         public ICollection<Participant> Get(int year, String className)
         {
             try {
-                return TheRace.Instance.GetResults(className);
+                return TheRace.Historical(year).GetResults(className);
             }
             catch (Exception ex)
             {

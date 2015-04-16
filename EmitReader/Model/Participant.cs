@@ -40,10 +40,10 @@ namespace EmitReaderLib.Model
 
         public List<Result> Splits {get;set;}
 
-        public String TeamMember(TimeStation leg)
-        {
-            return "Rune";
-        }
+        public String TotalTime { get; set; }
+        public DateTime EstimatedArrival { get; set; }
+        public DateTime RealArrival { get; set; }
+        public Boolean Finished { get; set; }
 
     }
 }
