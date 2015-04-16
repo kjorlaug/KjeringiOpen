@@ -28,25 +28,25 @@ namespace EmitReaderLib.Builders
             conn.Open();
 
             // Adding supers
-            var cmd = new MySqlCommand(@"select startNumber, chipNumber, firstname, surname, personClassCode, companyClass, phoneNumber from kop_person where superwife = 1 and deleted = 0 and startnumber is not null and chipnumber is not null", conn);
+            var cmd = new MySqlCommand(@"select startNumber, chipNumber, firstname, surname, personClassCode, ifnull(companyClass, 0) as companyClass, phoneNumber from kop_person where superwife = 1 and deleted = 0 and startnumber is not null and chipnumber is not null", conn);
             var data = cmd.ExecuteReader();
 
             while (data.Read())
             {
                 var p = new Participant()
                 {
-                    Startnumber = data.GetInt32(data.GetOrdinal("startNumber")),
-                    EmitID = int.Parse(data.GetString(data.GetOrdinal("chipNumber"))),
-                    Name = data.GetString(data.GetOrdinal("firstname")) + " " + data.GetString(data.GetOrdinal("surname")),
-                    Telephone = new List<String>() { data.GetString(data.GetOrdinal("phoneNumber")) },
-                    Classes = new List<ParticipantClass>() { race.Classes.Find(x => x.Id.Equals(data.GetString(data.GetOrdinal("personClassCode")))) },
+                    Startnumber = data.GetInt32("startNumber"),
+                    EmitID = int.Parse(data.GetString("chipNumber")),
+                    Name = data.GetString("firstname") + " " + data.GetString("surname"),
+                    Telephone = new List<String>() { data.GetString("phoneNumber") },
+                    Classes = new List<ParticipantClass>() { race.Classes.Find(x => x.Id.Equals(data.GetString("personClassCode"))) },
                     IsTeam = false,
                     IsSuper = true,
-                    IsCompany = data.GetInt32(data.GetOrdinal("companyClass")).Equals(1)
+                    IsCompany = data.GetInt32("companyClass").Equals(1)
                 };
                 if (p.IsCompany)
                 {
-                    p.Classes.Add(race.Classes.Find(x => x.Id.Equals(data.GetString(data.GetOrdinal("personClassCode")).Substring(0, 2) + "BED")));
+                    p.Classes.Add(race.Classes.Find(x => x.Id.Equals(data.GetString("personClassCode").Substring(0, 2) + "BED")));
                     p.Classes.Add(race.Classes.Find(x => x.Id.Equals("BED")));
                 }
                 race.AddParticipant(p);
@@ -65,28 +65,28 @@ namespace EmitReaderLib.Builders
             {
                 var p = new Participant()
                 {
-                    Startnumber = data.GetInt32(data.GetOrdinal("startNumber")),
-                    EmitID = int.Parse(data.GetString(data.GetOrdinal("chipNumber"))),
-                    Name = data.GetString(data.GetOrdinal("name")),
-                    Telephone = new List<String>() { data.GetString(data.GetOrdinal("phoneNumber")).Replace(" ", "") },
-                    Classes = new List<ParticipantClass> { race.Classes.Find(x => x.Id.Equals(data.GetString(data.GetOrdinal("teamClassCode")))) },
+                    Startnumber = data.GetInt32("startNumber"),
+                    EmitID = int.Parse(data.GetString("chipNumber")),
+                    Name = data.GetString("name"),
+                    Telephone = new List<String>() { data.GetString("phoneNumber").Replace(" ", "") },
+                    Classes = new List<ParticipantClass> { race.Classes.Find(x => x.Id.Equals(data.GetString("teamClassCode"))) },
                     IsTeam = true,
                     IsSuper = false,
-                    IsCompany = data.GetInt32(data.GetOrdinal("companyClass")).Equals(1)
+                    IsCompany = data.GetInt32("companyClass").Equals(1)
                 };
 
                 if (p.IsCompany)
                 {
-                    p.Classes.Add(race.Classes.Find(x => x.Id.Equals(data.GetString(data.GetOrdinal("teamClassCode")).Substring(0, 2) + "BED")));
+                    p.Classes.Add(race.Classes.Find(x => x.Id.Equals(data.GetString("teamClassCode").Substring(0, 2) + "BED")));
                     p.Classes.Add(race.Classes.Find(x => x.Id.Equals("BED")));
                 }
 
                 // Add medlemmer
-                while (moreData && data.GetInt32(data.GetOrdinal("startNumber")).Equals(p.Startnumber))
+                while (moreData && data.GetInt32("startNumber").Equals(p.Startnumber))
                 {
-                    p.TeamMembers.Add(data.GetString(data.GetOrdinal("firstName")) + " " + data.GetString(data.GetOrdinal("surname")));
-                    if (!String.IsNullOrEmpty(data.GetString(data.GetOrdinal("phoneNumber"))))
-                        p.Telephone.Add(data.GetString(data.GetOrdinal("phoneNumber")).Replace(" ", ""));
+                    p.TeamMembers.Add(data.GetString("firstName") + " " + data.GetString("surname"));
+                    if (!String.IsNullOrEmpty(data.GetString("phoneNumber")))
+                        p.Telephone.Add(data.GetString("phoneNumber").Replace(" ", ""));
                     moreData = data.Read();
                 }
 
