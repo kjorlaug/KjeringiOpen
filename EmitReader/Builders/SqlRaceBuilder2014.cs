@@ -79,7 +79,7 @@ namespace EmitReaderLib.Builders
                     Classes = new List<ParticipantClass>() {race.Classes.Find(x => x.Id.Equals(data.GetString(data.GetOrdinal("personClassCode"))))},
                     IsTeam = false,
                     IsSuper = true,
-                    IsBusiness = false
+                    IsCompany = false
                 });
             }
 
@@ -102,10 +102,10 @@ namespace EmitReaderLib.Builders
                     Classes = new List<ParticipantClass> {race.Classes.Find(x => x.Id.Equals(data.GetString(data.GetOrdinal("teamClassCode"))))},
                     IsTeam = true,
                     IsSuper = false,
-                    IsBusiness = data.GetInt32(data.GetOrdinal("companyClass")).Equals(1)
+                    IsCompany = data.GetInt32(data.GetOrdinal("companyClass")).Equals(1)
                 };
 
-                if (p.IsBusiness)
+                if (p.IsCompany)
                     p.Classes.Add(companyClass);
 
                 // Add medlemmer

@@ -11,6 +11,7 @@ namespace EmitReaderLib.Model
         public int Id { get; set; }
 
         public Boolean Official { get; set; }
+        public Boolean Start { get; set; }
         public String Name { get; set; }
         public int Sequence { get; set; }
     }

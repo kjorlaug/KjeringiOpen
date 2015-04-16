@@ -15,7 +15,7 @@ namespace EmitReaderLib
         private volatile Boolean resultsVolatile;
         private object syncRoot = new Object();
 
-        public Race(IRaceWriter writer)
+        public Race()
         {
             Classes = new List<ParticipantClass>();
             Participants = new List<Participant>();
@@ -25,7 +25,6 @@ namespace EmitReaderLib
             Passes = new List<EmitData>();
             Results = new List<Result>();
             resultsVolatile = false;
-            this.writer = writer;
         }
 
         public String Name { get; set; }
@@ -40,8 +39,6 @@ namespace EmitReaderLib
 
         protected List<Result> Results { get; set; }
         
-        protected IRaceWriter writer { get; set; }
-
         public void AddParticipant(Participant p)
         {
             Participants.Add(p);
@@ -59,8 +56,6 @@ namespace EmitReaderLib
         public Participant AddPass(EmitData emitdata) { 
             var participant = ParticipantByEmit[emitdata.Id];
             var timestation = TimeStations.Find(x => x.Id.Equals(emitdata.BoxId));
-
-            writer.PersistPass(emitdata);
 
             lock (syncRoot)
             {

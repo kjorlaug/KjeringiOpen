@@ -26,7 +26,7 @@ namespace EmitReaderLib.Model
         public List<String> Telephone { get; set; }
 
         public List<ParticipantClass> Classes { get; set; }
-        public Boolean IsBusiness { get; set; }
+        public Boolean IsCompany { get; set; }
         public Boolean IsTeam { get; set; }
         public Boolean IsSuper { get; set; }
 

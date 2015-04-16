@@ -7,6 +7,7 @@ using EmitReaderLib;
 using EmitReaderLib.Builders;
 using EmitReaderLib.Model;
 using EmitReaderLib.Writers;
+using Newtonsoft.Json;
 
 namespace KjeringiData
 {
@@ -26,8 +27,10 @@ namespace KjeringiData
                     lock (syncRoot)
                     {
                         if (instance == null) {
-                            instance = new Race(new FooWriter());
-                            (new EmitReaderLib.Builders.SqlRaceBuilder2014()).BuildRace(instance);
+                            var json = System.IO.File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/2014.json"));
+                            instance = JsonConvert.DeserializeObject<Race>(json);
+                            (new EmitReaderLib.Builders.MySqlRaceBuilder2014("kjeringi", "2014")).BuildRace(instance);
+
                         }
                     }
                 }

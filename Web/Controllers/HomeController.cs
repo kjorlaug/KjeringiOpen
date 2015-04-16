@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 
 using KjeringiData;
+using Newtonsoft.Json;
 
 namespace Web.Controllers
 {
@@ -35,6 +36,15 @@ namespace Web.Controllers
 
         public ActionResult Reset()
         {
+            //KjeringiData.Konkurranse.Reset();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Store()
+        {
+            var json = JsonConvert.SerializeObject(TheRace.Instance, Formatting.Indented);
+            System.IO.File.WriteAllText(Server.MapPath(@"~/App_Data/" + TheRace.Instance.Name + ".json"), json);
+
             //KjeringiData.Konkurranse.Reset();
             return RedirectToAction("Index");
         }

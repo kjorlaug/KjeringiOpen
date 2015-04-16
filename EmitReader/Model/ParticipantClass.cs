@@ -8,9 +8,17 @@ namespace EmitReaderLib.Model
 {
     public class ParticipantClass
     {
+        public ParticipantClass()
+        {
+            Classes = new List<String>();
+        }
+
         public String Id { get; set; }
         public String Name { get; set; }
         public int Sequence { get; set; }
+
+        public Boolean Company { get; set; }
+        public List<String> Classes { get; set; }
 
         public Boolean Test { get; set; }
 
