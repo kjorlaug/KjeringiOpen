@@ -3,55 +3,32 @@
 }
 <h3>@ViewBag.Name</h3>
 <div style="min-height:300px">
-    <table class="table table-condensed" id="res">
+    <table class="table table-striped" id="res">
         <thead>
             <tr>
                 <th>#</th>
                 <th>Namn</th>
-                <th>Plass</th>
                 <th>Klasse</th>
                 <th>Etappe</th>
-                <th>Totalt</th>
+                <th>Total</th>
             </tr>
-        </thead>       
-        <tbody data-bind ="foreach: resultat">
-            <tr data-bind="css: {'danger' : ($data.PlasseringIKlasse == 1), 'warning' : ($data.PlasseringIKlasse == 2), 'success' : ($data.PlasseringIKlasse == 3)}">
-                <td><span data-bind="text: $data.Startnummer"></span></td>
-                <td><span data-bind="html: $data.Namn" style="font-weight:bold;"></span><span style="padding-left:10px;" data-bind="html: $data.Medlemmer[@ViewBag.Index]"></span></td>
-                <td><span data-bind="text: $data.PlasseringIKlasse"></span></td>
-                <td><span data-bind="text: $data.Klasse"></span></td>
-                <td><span data-bind="text: $data.Etappetider[@ViewBag.Index]"></span></td>
-                <td><span data-bind="text: $data.TotalTid"></span></td>
+        </thead>               
+        <tbody data-bind="foreach: results">
+            <tr data-bind="css: {'info' : ($data.Position == 1), 'warning' : ($data.Position == 2), 'success' : ($data.Position == 3)}">
+                <td><span data-bind="text: Position" class="badge"></span></td>
+                <td><span data-bind="visible:Team"><span data-bind="text:Team"></span> : </span><span data-bind="text: Name"></span></td>
+                <td><span data-bind="text: Class"></span></td>
+                <td><span data-bind="text: Time"></span></td>
+                <td><span data-bind="text: Total"></span></td>
             </tr>
         </tbody>
     </table>
 </div>
 
-<script type="text/javascript" src="@Url.Content("~/scripts/model.js")"></script>
-<script type="text/javascript">
-
-    $(document).ready(function () {
-        var model = new Kjeringi.tickerViewModel();
-
-        $.connection.resultatServiceHub.client.processResultat = function (resultat) {
-            if (model.resultat.length > 100)
-                model.resultat.slice(-1)[0];
-            model.resultat.unshift(resultat);
-        }
-
-        ko.applyBindings(model);
-
-        $.connection.hub.start()
-                    .done(function () {
-                        $.connection.resultatServiceHub.server.getPlassering('@ViewBag.Name')
-                                    .done(function (res) {
-                                        ko.utils.arrayForEach(res, function (resultat) {
-                                            model.resultat.unshift(resultat);
-                                        });
-                                    }).done(function () {
-                                        $.connection.resultatServiceHub.server.addtoGroup('@ViewBag.Name');
-                                    });
-                    });
-    });
-
+@section Scripts {
+<script>
+    globalStationId = '@ViewBag.Id';
 </script>
+<script src="~/Scripts/station.js"></script>
+
+    }

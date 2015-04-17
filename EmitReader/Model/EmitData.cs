@@ -26,12 +26,7 @@ namespace EmitReaderLib.Model
 
         public Boolean Force { get;set; }
 
-        public Boolean Test { 
-            get {
-
-                return false; //Testers.IndexOf(Id) >= 0;
-            } 
-        }
+        public Boolean Test { get; set; }
 
         public int CompareTo(object obj)
         {

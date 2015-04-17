@@ -27,11 +27,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Damefall", "Station", "Home", new { name = "Damefall" }, null)</li>
-                    <li>@Html.ActionLink("Øvstestølen", "Station", "Home", new { name = "Øvstestølen" }, null)</li>
-                    <li>@Html.ActionLink("Barneskulen", "Station", "Home", new { name = "Barneskulen" }, null)</li>
-                    <li>@Html.ActionLink("Hamre", "Station", "Home", new { name = "Hamre" }, null)</li>
-                    <li>@Html.ActionLink("Mål", "Station", "Home", new { name = "Mål" }, null)</li>
+                    @foreach (EmitReaderLib.Model.TimeStation ts in KjeringiData.TheRace.Instance.TimeStations.Where(t => t.Official && !t.Start).OrderBy(t => t.Sequence))
+                    {
+                        <li>@Html.ActionLink(ts.Name, "Station", "Home", new { name = ts.Id.ToString() }, null)</li>
+                    }
                     <li>@Html.ActionLink("EmitReader", "EmitReader", "Home")</li>
                 </ul>
             </div>

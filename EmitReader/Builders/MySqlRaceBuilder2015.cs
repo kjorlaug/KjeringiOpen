@@ -11,14 +11,16 @@ namespace EmitReaderLib.Builders
 {
     public class MySqlRaceBuilder2015 : IRaceBuilder
     {
-        public MySqlRaceBuilder2015(String connection)
+        public MySqlRaceBuilder2015(String connection, List<int> testers)
         {
             _conn = connection;
             _year = "2015";
+            Testers = testers;
         }
 
         protected String _conn { get; set; }
         protected String _year{ get; set; }
+        protected List<int> Testers { get; set; }
 
         public void BuildRace(Race race)
         {
@@ -150,6 +152,23 @@ namespace EmitReaderLib.Builders
 
             data.Close();
             conn.Close();
+
+            // Add testers
+            foreach (int testId in Testers)
+            {
+                var parTest = new Participant()
+                {
+                    Startnumber = testId + 4000,
+                    EmitID = testId,
+                    Name = "Test " + testId.ToString(),
+                    Telephone = new List<String>() { "95116354", "95246298" },
+                    Classes = new List<ParticipantClass>() { race.Classes.Find(x => x.Id.Equals("TEST")) },
+                    IsTeam = false,
+                    IsSuper = true,
+                    IsCompany = false                    
+                };
+                race.AddParticipant(parTest);
+            }
 
             foreach (Participant p in race.Participants)
                 race.AddPass(new EmitData()

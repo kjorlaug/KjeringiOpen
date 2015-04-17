@@ -74,7 +74,7 @@ namespace Web.Hubs
             if (String.IsNullOrEmpty(name))
             {
                 foreach(TimeStation ts in TheRace.Instance.TimeStations)
-                    Groups.Add(Context.ConnectionId, ts.Name);
+                    Groups.Add(Context.ConnectionId, ts.Id.ToString());
             }
             else
                 Groups.Add(Context.ConnectionId, name);
@@ -82,9 +82,12 @@ namespace Web.Hubs
 
         public void SendPassering(EmitData data)
         {
-            (new EmitReaderLib.Writers.MySqlWriter("kjeringi.writer", TheRace.Instance.Name)).PersistPass(data);
+            //(new EmitReaderLib.Writers.MySqlWriter("kjeringi.writer", TheRace.Instance.Name)).PersistPass(data);
             //try
             //{
+                // Tester?
+                data.Test = TheRace.Instance.Testers.Contains(data.Id);
+
                 // Add new Passering to race
                 Participant resultat = TheRace.Instance.AddPass(data);
                 var timestation = TheRace.Instance.TimeStations.First(ts => ts.Id.Equals(data.BoxId));
@@ -92,7 +95,7 @@ namespace Web.Hubs
                 if (resultat != null)
                 {
                     Clients.All.addLogMessage(resultat.Splits.Last().Time, resultat.EmitID, resultat.Startnumber, resultat.Name, resultat.EstimatedArrival.ToLongTimeString());
-                    Clients.Group(timestation.Name).newPass(resultat);
+                    Clients.Group(timestation.Id.ToString()).newPass(resultat);
                 }
             //}
             //catch (Exception ex) { 
@@ -105,11 +108,16 @@ namespace Web.Hubs
             return TheRace.Instance.GetResults(participantClassId);
         }
 
-        public ICollection<Result> GetPlassering(String name)
+        public IEnumerable<Result> GetLatestLocationResult(String id)
         {
-            //Plassering plassering = Konkurranse.GetInstance.Plasseringar.Find(x => x.Namn.Equals(HttpContext.Current.Server.HtmlDecode(name)));
-            //return plassering.Resultat.Take(100).Reverse().ToList<ResultatData>();
-            return null;
+            TimeStation ts = TheRace.Instance.TimeStations.Find(t => t.Id.Equals(int.Parse(id)));
+
+            return TheRace.Instance.Participants
+                .Where(p => p.Passes.ContainsKey(ts.Id))
+                .SelectMany(p => p.Splits.Where(s => s.Location == ts.Id))
+                .ToList<Result>()
+                .OrderByDescending(t => t.Ticks)
+                .Take(100);                
         }
 
 

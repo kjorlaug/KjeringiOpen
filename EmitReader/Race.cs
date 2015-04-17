@@ -23,7 +23,7 @@ namespace EmitReaderLib
             ParticipantByEmit = new Dictionary<int, Participant>();
             ParticipantListByClass = new Dictionary<String, List<Participant>>();
             Passes = new List<EmitData>();
-            Results = new List<Result>();
+            //Results = new List<Result>();
             resultsVolatile = false;
         }
 
@@ -33,16 +33,21 @@ namespace EmitReaderLib
         public List<Participant> Participants { get; protected set; }
         public List<TimeStation> TimeStations { get; protected set; }
 
+        public List<int> Testers { get; set; }
+
         protected List<EmitData> Passes { get; set; }
         protected Dictionary<int, Participant> ParticipantByEmit { get; set; }
         protected Dictionary<String, List<Participant>> ParticipantListByClass { get; set; }
-
-        protected List<Result> Results { get; set; }
         
         public void AddParticipant(Participant p)
         {
             Participants.Add(p);
 
+            IndexParticipant(p);
+        }
+
+        protected void IndexParticipant(Participant p)
+        {
             foreach (ParticipantClass c in p.Classes)
             {
                 if (!ParticipantListByClass.ContainsKey(c.Id))
@@ -77,6 +82,26 @@ namespace EmitReaderLib
                 }
 
                 participant.Passes.Add(timestation.Id, emitdata);
+
+                DateTime startTime = participant.Passes.First().Value.Time;
+                TimeSpan totalTime = (emitdata.Time - startTime);
+
+                if (!participant.Finished && !timestation.Start)
+                {
+                    participant.TotalTime = totalTime.ToString(@"hh\:mm\:ss");
+
+                    if (timestation.Progress.HasValue)
+                    {
+                        long estimate = Convert.ToInt64((totalTime.Ticks / timestation.Progress.Value) * 100);
+                        participant.EstimatedArrival = startTime + TimeSpan.FromTicks(estimate);
+                    }
+                }
+
+                if (timestation.Finish)
+                {
+                    participant.Finished = true;
+                    participant.RealArrival = emitdata.Time;
+                }
 
                 var recalcFor = new List<Participant>();
 
@@ -123,39 +148,23 @@ namespace EmitReaderLib
                                     .SelectWithPrevious((prev, cur) =>
                                         new Result()
                                         {
-                                            Sequence = TimeStations.Find(ts => ts.Id.Equals(cur.Key)).Sequence,
-                                            Leg = TimeStations.Find(ts => ts.Id.Equals(cur.Key)).Name,
                                             Class = c.Name,
-                                            Name = par.IsSuper ? "" : par.TeamMembers[TimeStations.Find(ts => ts.Id.Equals(cur.Key)).Sequence - 1],
+                                            EmitId = par.EmitID,
+                                            Sequence = TimeStations.Find(ts => ts.Id.Equals(cur.Key)).Sequence,
+                                            Location = timestation.Id,
+                                            Leg = TimeStations.Find(ts => ts.Id.Equals(cur.Key)).Name,
+                                            Name = par.IsSuper ? par.Name : par.TeamMembers[TimeStations.Find(ts => ts.Id.Equals(cur.Key)).Sequence - 1],
+                                            Team = par.IsSuper ? "" : par.Name,
                                             Time = (cur.Value.Time - prev.Value.Time).ToString(@"hh\:mm\:ss"),
+                                            Ticks = (cur.Value.Time - prev.Value.Time).Ticks,
+                                            Total = par.TotalTime,
                                             Position = par.Positions[cur.Key][c.Id]
-                                        }
+                                        } 
                                             )
                                     .ToList<Result>());
                         }
 
                     participant.Splits = res;
-
-                    DateTime startTime = participant.Passes.First().Value.Time;
-                    TimeSpan totalTime = (emitdata.Time - startTime);
-
-                    if (!participant.Finished && !timestation.Start )
-                    {
-                        participant.TotalTime = totalTime.ToString(@"hh\:mm\:ss");
-
-                        if (timestation.Progress.HasValue)
-                        {
-                            long estimate = Convert.ToInt64((totalTime.Ticks / timestation.Progress.Value)*100);
-                            participant.EstimatedArrival = startTime + TimeSpan.FromTicks(estimate);
-                        }
-                    }
-
-                    if (timestation.Finish)
-                    {
-                        participant.Finished = true;
-                        participant.RealArrival = emitdata.Time;
-                    }
-
                 }
                 return participant;
             }
@@ -186,6 +195,12 @@ namespace EmitReaderLib
              );
 
             return list;
+        }
+
+        public void Initialize()
+        {
+            foreach (Participant p in Participants)
+                IndexParticipant(p);
         }
     }
 }
