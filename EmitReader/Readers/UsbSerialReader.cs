@@ -85,7 +85,7 @@ namespace EmitReaderLib
                                     d.Voltage = double.Parse(s.Substring(1, 3));
                                     break;
                                 case "C":
-                                    d.BoxId = int.Parse(s.Substring(1));
+                                    d.BoxId = GetBoxId(s.Substring(1));
                                     break;
                                 case "S":
                                     d.Chip = int.Parse(s.Substring(1));
@@ -99,6 +99,19 @@ namespace EmitReaderLib
                         handler(this, new EmitDataRecievedEventArgs(d));
                 }
             }
+        }
+
+        private static int GetBoxId(string boxIdFromDevice)
+        {
+            var boxIdSetting = ConfigurationManager.AppSettings["BoxId"];
+            
+            int parseResult;
+            if (string.IsNullOrWhiteSpace(boxIdSetting) || !int.TryParse(boxIdSetting, out parseResult))
+            {
+                return int.Parse(boxIdFromDevice);
+            }
+
+            return int.Parse(boxIdSetting);
         }
     }
 }
