@@ -21,6 +21,16 @@ namespace Web.Controllers
             return View();
         }
 
+        public ActionResult Participants()
+        {            
+            return View();
+        }
+
+        public ActionResult Results()
+        {
+            return View();
+        }
+
         public ActionResult Station(String name)
         {
             ViewBag.StationId = name;

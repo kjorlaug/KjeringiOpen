@@ -175,6 +175,9 @@ namespace EmitReaderLib
             var c = Classes.First(p => p.Id.Equals(participantClassId));
             var list = new List<Participant>();
 
+            if (!ParticipantListByClass.ContainsKey(c.Id))
+                return new List<Participant>();
+
             foreach (TimeStation t in TimeStations.Where(ts => ts.Official).Skip(1).OrderByDescending(ts => ts.Sequence))
             {
                 list.AddRange(
@@ -190,7 +193,7 @@ namespace EmitReaderLib
                 ParticipantListByClass[c.Id]
                     .Except(list)
                     .Where(p => p.Passes.Count == 1)
-                    .OrderBy(p => p.Name)
+                    .OrderBy(p => p.Startnumber)
                     .ToList<Participant>()
              );
 

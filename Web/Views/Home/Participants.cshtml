@@ -1,0 +1,48 @@
+﻿@using EmitReaderLib.Model;
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Namn</th>
+            <th>Kontakt</th>
+            <th>Klasse</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Participant p in KjeringiData.TheRace.Instance.Participants.OrderBy(p => p.Startnumber))
+        {
+            <tr>
+                <td>@p.Startnumber</td>
+                <td>@p.Name</td>
+                <td>
+                    @if (p.IsTeam)
+                    {
+                        <ul>
+                            @for (int i = 0; i < p.TeamMembers.Count; i++)
+                            {
+                                <li>
+                                    @p.TeamMembers[i]
+                                @if (p.Telephone.Count > i)
+                                {
+                                    <span>(@p.Telephone[i])</span>
+                                }
+                            </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        @String.Join(",", p.Telephone)
+                    }
+                </td>
+                <td>
+                    @foreach (ParticipantClass c in p.Classes)
+                    {
+                        <li>@c.Name</li>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

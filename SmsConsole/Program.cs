@@ -67,7 +67,7 @@ namespace SmsConsole
                             {
                                 try
                                 {
-                                    String url = String.Format(@"http://sms.pswin.com/http4sms/send.asp?USER=kjeringiopen&{0}&RCV=47{1}&TXT={2}&snd=Kjeringi", "", tlf, sb.ToString());
+                                    String url = String.Format(@"http://sms.pswin.com/http4sms/send.asp?USER=kjeringiopen&{0}&RCV=47{1}&TXT={2}&snd=Kjeringi", "PW=0DgFPq2k3", tlf, sb.ToString());
                                     WebClient webClient = new WebClient();
                                     Stream stream = webClient.OpenRead(url);
                                     StreamReader reader = new StreamReader(stream);

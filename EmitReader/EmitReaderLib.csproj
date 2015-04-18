@@ -74,9 +74,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Workers\SignalWorker.cs" />
     <Compile Include="Workers\SubmitWorker.cs" />
-    <Compile Include="Writers\MySqlWriter.cs" />
-    <Compile Include="Writers\FooWriter.cs" />
-    <Compile Include="Writers\IRaceWriter.cs" />
+    <Compile Include="Workers\Writers\MySqlWriter.cs" />
+    <Compile Include="Workers\Writers\FooWriter.cs" />
+    <Compile Include="Workers\Writers\IRaceWriter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
