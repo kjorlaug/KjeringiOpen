@@ -31,7 +31,8 @@ namespace EmitReaderLib.Model
         public Boolean IsSuper { get; set; }
 
         public List<String> TeamMembers { get; set; }
-
+        public String CompanyName { get; set;
+        }
         public Boolean Star { get; set; }
         public List<String> Comments { get; set; }
 

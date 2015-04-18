@@ -11,6 +11,7 @@ namespace EmitReaderLib.Model
         public String Class { get; set; }
         public int Sequence { get; set; }
         public int Location { get; set; }
+        public int Startnumber { get; set; }
         public String Leg { get; set; }
         public String Name { get; set; }
         public String Team { get; set; }

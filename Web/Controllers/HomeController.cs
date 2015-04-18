@@ -26,8 +26,20 @@ namespace Web.Controllers
             return View();
         }
 
+        public ActionResult ParticipantsNM()
+        {
+            return View();
+        }
+
         public ActionResult Results()
         {
+            return View();
+        }
+
+        public ActionResult Speaker()
+        {
+            ViewBag.StationFinishId = TheRace.Instance.TimeStations.Find(ts => ts.Finish).Id.ToString();
+            ViewBag.StationIncomingId = TheRace.Instance.TimeStations.Where(ts => ts.Official).OrderByDescending(ts => ts.Sequence).Skip(1).First().Id.ToString();
             return View();
         }
 

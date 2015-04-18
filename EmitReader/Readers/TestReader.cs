@@ -13,12 +13,14 @@ namespace EmitReaderLib
     {
         public event EventHandler<EmitDataRecievedEventArgs> DataReceived;
 
-        public TestReader(List<int> testers)
+        public TestReader(List<int> testers, List<int> stations)
         {
             Testers = testers;
+            Stations = stations;
         }
 
         protected List<int> Testers { get; set; }
+        protected List<int> Stations { get; set; }
 
         public void Start()
         {
@@ -29,20 +31,22 @@ namespace EmitReaderLib
                     foreach(int test in Testers)
                     {
                         DateTime time = DateTime.Now;
-                        EmitData d = new EmitData()
-                            {
-                                Id = test,
-                                BoxId = 248,
-                                Time = DateTime.Now,
-                                Force = false
-                            };
+                        foreach (int box in Stations) { 
+                            EmitData d = new EmitData()
+                                {
+                                    Id = test,
+                                    BoxId = box,
+                                    Time = DateTime.Now,
+                                    Force = false
+                                };
 
-                            EventHandler<EmitDataRecievedEventArgs> handler = DataReceived;
+                                EventHandler<EmitDataRecievedEventArgs> handler = DataReceived;
 
-                            if (handler != null)
-                                handler(this, new EmitDataRecievedEventArgs(d));
+                                if (handler != null)
+                                    handler(this, new EmitDataRecievedEventArgs(d));
 
-                        System.Threading.Thread.Sleep(1000);
+                            System.Threading.Thread.Sleep(1000);
+                        }
                     }
                 }
                 catch (Exception ex)

@@ -1,9 +1,17 @@
 ﻿@{
     ViewBag.Title = ViewBag.Name;
 }
-<h3>@ViewBag.Name</h3>
 <div style="min-height:300px">
-    <table class="table table-striped" id="res">
+    <table class="table table-striped" id="incoming" style="height:200px">
+        <tbody data-bind="foreach: incoming.sort(function(l, r) {l.EstimatedArrival > r.EstimatedArrival})">
+            <tr>
+                <td><span class="badge"></span></td>
+                <td><span data-bind="text: Name"></span><span data-bind="visible:IsTeam"> : <span data-bind="text: TeamMembers[3]"></span></span></td>
+                <td></span></td>
+                <td></span></td>
+                <td><span data-bind="text: EstimatedArrival"></span></td>
+            </tr>
+        </tbody>
         <thead>
             <tr>
                 <th>#</th>
@@ -12,7 +20,7 @@
                 <th>Etappe</th>
                 <th>Total</th>
             </tr>
-        </thead>               
+        </thead>
         <tbody data-bind="foreach: results">
             <tr data-bind="css: {'info' : ($data.Position == 1), 'warning' : ($data.Position == 2), 'success' : ($data.Position == 3)}">
                 <td><span data-bind="text: Position" class="badge"></span></td>
@@ -27,8 +35,9 @@
 
 @section Scripts {
 <script>
-    globalStationId = '@ViewBag.StationId';
+    globalStationFinishId = '@ViewBag.StationFinishId';
+    globalStationIncomingId = '@ViewBag.StationIncomingId';
 </script>
-<script src="~/Scripts/station.js"></script>
+<script src="~/Scripts/speaker.js"></script>
 
     }

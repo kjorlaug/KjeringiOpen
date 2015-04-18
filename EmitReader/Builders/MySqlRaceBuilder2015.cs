@@ -31,7 +31,7 @@ namespace EmitReaderLib.Builders
 
             // Adding supers
             var cmd = new MySqlCommand(@"select 
-	                startNumber, chipNumber, firstname, surname, personClassCode, ifnull(companyClass, 0) as companyClass, phoneNumber, 
+	                startNumber, chipNumber, firstname, surname, personClassCode, ifnull(companyClass, 0) as companyClass, companyName, phoneNumber, 
                 case 
 	                when cupClass = 1 and (2015 - birthyear) in (11,12) then concat('NM', gender, '11')
 	                when cupClass = 1 and (2015 - birthyear) in (13,14) then concat('NM', gender, '13')
@@ -55,7 +55,8 @@ namespace EmitReaderLib.Builders
                     Classes = new List<ParticipantClass>() { race.Classes.Find(x => x.Id.Equals(data.GetString("personClassCode"))) },
                     IsTeam = false,
                     IsSuper = true,
-                    IsCompany = data.GetInt32("companyClass").Equals(1)
+                    IsCompany = data.GetInt32("companyClass").Equals(1),
+                    CompanyName = data.IsDBNull(data.GetOrdinal("companyName")) ? "": data.GetString("companyName")
                 };
                 if (p.IsCompany)
                 {
@@ -72,7 +73,7 @@ namespace EmitReaderLib.Builders
 
             // Add NM Cup
             cmd = new MySqlCommand(@"select 
-	                startNumber, chipNumber, firstname, surname, personClassCode, ifnull(companyClass, 0) as companyClass, phoneNumber, 
+	                startNumber, chipNumber, firstname, surname, personClassCode, ifnull(companyClass, 0) as companyClass, companyName, phoneNumber, 
                 case 
 	                when cupClass = 1 and (2015 - birthyear) in (11,12) then concat('NM', gender, '11')
 	                when cupClass = 1 and (2015 - birthyear) in (13,14) then concat('NM', gender, '13')
@@ -96,7 +97,8 @@ namespace EmitReaderLib.Builders
                     Classes = new List<ParticipantClass>() { race.Classes.Find(x => x.Id.Equals(data.GetString("cupClass"))) },
                     IsTeam = false,
                     IsSuper = true,
-                    IsCompany = data.GetInt32("companyClass").Equals(1)
+                    IsCompany = data.GetInt32("companyClass").Equals(1),
+                    CompanyName = data.IsDBNull(data.GetOrdinal("companyName")) ? "" : data.GetString("companyName")
                 };
                 if (p.IsCompany)
                 {
@@ -161,7 +163,7 @@ namespace EmitReaderLib.Builders
                     Startnumber = testId + 4000,
                     EmitID = testId,
                     Name = "Test " + testId.ToString(),
-                    Telephone = new List<String>() { "95116354", "95246298" },
+                    Telephone = new List<String>() { "95116354", "95246298", "", "41530965", "48021455" },
                     Classes = new List<ParticipantClass>() { race.Classes.Find(x => x.Id.Equals("TEST")) },
                     IsTeam = false,
                     IsSuper = true,

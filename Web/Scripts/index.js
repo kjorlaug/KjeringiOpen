@@ -55,7 +55,6 @@
     // Add handler to recieve log message
     hub.client.addLogMessage = function (etappe, emitId, startNummer, namn, time) {
         var logMessage = etappe + ' ' + emitId + ' ' + startNummer + ' ' + namn + ' ' + time;
-        console.log(logMessage);
         if (vm.log.length > 100)
             vm.log.slice(-1)[0];
         vm.log.unshift(logMessage);

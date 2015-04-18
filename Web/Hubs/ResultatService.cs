@@ -82,7 +82,7 @@ namespace Web.Hubs
 
         public void SendPassering(EmitData data)
         {
-            //(new EmitReaderLib.Writers.MySqlWriter("kjeringi.writer", TheRace.Instance.Name)).PersistPass(data);
+            (new EmitReaderLib.Writers.MySqlWriter("kjeringi.writer", TheRace.Instance.Name)).PersistPass(data);
             //try
             //{
                 // Tester?
@@ -94,7 +94,7 @@ namespace Web.Hubs
 
                 if (resultat != null)
                 {
-                    Clients.All.addLogMessage(resultat.Splits.Last().Time, resultat.EmitID, resultat.Startnumber, resultat.Name, resultat.EstimatedArrival.ToLongTimeString());
+                    Clients.All.addLogMessage(resultat.Splits.Count > 0 ? resultat.Splits.Last().Time : "", resultat.EmitID, resultat.Startnumber, resultat.Name, resultat.EstimatedArrival.ToLongTimeString());
                     Clients.Group(timestation.Id.ToString()).newPass(resultat);
                 }
             //}
@@ -106,6 +106,11 @@ namespace Web.Hubs
         public ICollection<Participant> GetCurrentResults(String participantClassId)
         {
             return TheRace.Instance.GetResults(participantClassId);
+        }
+
+        public ICollection<Participant> GetExpected()
+        {
+            return TheRace.Instance.Participants.Where(p => !p.Finished).OrderByDescending(p => p.EstimatedArrival).Take(20).ToList<Participant>();
         }
 
         public IEnumerable<Result> GetLatestLocationResult(String id)

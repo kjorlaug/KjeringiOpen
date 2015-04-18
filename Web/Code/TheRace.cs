@@ -48,6 +48,7 @@ namespace KjeringiData
                         if (instance == null) {
                             //var json = System.IO.File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/2013.json"));
                             //instance = JsonConvert.DeserializeObject<Race>(json);
+                            //instance.Testers = new List<int>() { 1, 2, 3 };
                             //(new EmitReaderLib.Builders.MySqlRaceBuilder2014("kjeringi.2013", "2013")).BuildRace(instance);
 
                             //var json = System.IO.File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/2014.json"));
@@ -56,7 +57,7 @@ namespace KjeringiData
 
                             var json = System.IO.File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/2015.json"));
                             instance = JsonConvert.DeserializeObject<Race>(json);
-                            instance.Testers = new List<int>() { 1097, 1098, 1099 };
+                            instance.Testers = new List<int>() { 4221, 4222, 4223, 4224, 4225, 4226, 4227, 4228, 4229};
                             (new EmitReaderLib.Builders.MySqlRaceBuilder2015("kjeringi", instance.Testers)).BuildRace(instance);
                         }
                     }
