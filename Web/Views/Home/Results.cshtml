@@ -1,7 +1,8 @@
 ﻿@using EmitReaderLib.Model;
+@using EmitReaderLib;
 @using KjeringiData;
 
-@foreach (ParticipantClass c in TheRace.Instance.Classes.Where(c => !c.Test).OrderBy(c => c.Sequence))
+@foreach (ParticipantClass c in (ViewBag.Race as EmitReaderLib.Race).Classes.Where(c => !c.Test && !c.Id.StartsWith("NM")).OrderBy(c => c.Sequence))
 {
     <h3>@c.Name</h3>
 
@@ -21,13 +22,13 @@
         </thead>
         <tbody>
             @{
-    var res = TheRace.Instance.GetResults(c.Id.ToString());
-    var finish = TheRace.Instance.TimeStations.Where(ts => ts.Finish = true).First();
+    var res = (ViewBag.Race as EmitReaderLib.Race).GetResults(c.Id.ToString());
+    var finish = (ViewBag.Race as EmitReaderLib.Race).TimeStations.Where(ts => ts.Finish = true).First();
 
-    var leg1 = TheRace.Instance.TimeStations.Where(ts => ts.Official && ts.Sequence == 1).First();
-    var leg2 = TheRace.Instance.TimeStations.Where(ts => ts.Official && ts.Sequence == 2).First();
-    var leg3 = TheRace.Instance.TimeStations.Where(ts => ts.Official && ts.Sequence == 3).First();
-    var leg4 = TheRace.Instance.TimeStations.Where(ts => ts.Finish).First();
+    var leg1 = (ViewBag.Race as EmitReaderLib.Race).TimeStations.Where(ts => ts.Official && ts.Sequence == 1).First();
+    var leg2 = (ViewBag.Race as EmitReaderLib.Race).TimeStations.Where(ts => ts.Official && ts.Sequence == 2).First();
+    var leg3 = (ViewBag.Race as EmitReaderLib.Race).TimeStations.Where(ts => ts.Official && ts.Sequence == 3).First();
+    var leg4 = (ViewBag.Race as EmitReaderLib.Race).TimeStations.Where(ts => ts.Finish && ts.Official).First();
 
     // Company class?
     int priceCount = (int)Math.Ceiling(res.Count() / 3.0);
@@ -41,68 +42,67 @@
                         {
                             @p.Positions[leg4.Id][c.Id]
                         }
-                </td>
-                <td>@p.Startnumber</td>
-                <td>@p.Name</td>
-                <td>
-                    @if (!p.IsSuper)
-                    {
-                        @p.TeamMembers[0]
-                        <br/>
-                    }
-                    @if (p.Splits.Exists(r => r.Leg.Equals(leg1.Name) && r.Class.Equals(c.Name)))
-                    {
-                        @p.Splits.Find(r => r.Leg.Equals(leg1.Name) && r.Class.Equals(c.Name)).Time
-                    }
-                </td>
-                <td>
-                    @if (!p.IsSuper)
-                    {
-                        @p.TeamMembers[1]
-                        <br />
-                    }
-                    @if (p.Splits.Exists(r => r.Leg.Equals(leg2.Name) && r.Class.Equals(c.Name)))
-                    {
-                        @p.Splits.Find(r => r.Leg.Equals(leg2.Name) && r.Class.Equals(c.Name)).Time
-                    }
-                </td>
-                <td>
-                    @if (!p.IsSuper)
-                    {
-                        @p.TeamMembers[2]
-                        <br />
-                    }
-                    @if (p.Splits.Exists(r => r.Leg.Equals(leg3.Name) && r.Class.Equals(c.Name)))
-                    {
-                        @p.Splits.Find(r => r.Leg.Equals(leg3.Name) && r.Class.Equals(c.Name)).Time
-                    }
-                </td>
-                <td>
-                    @if (!p.IsSuper)
-                    {
-                        @p.TeamMembers[3]
-                        <br />
-                    }
-                    @if (p.Splits.Exists(r => r.Leg.Equals(leg4.Name) && r.Class.Equals(c.Name)))
-                    {
-                        @p.Splits.Find(r => r.Leg.Equals(leg4.Name) && r.Class.Equals(c.Name)).Time
-                    }
-                </td>
-                <td>
-                    @p.TotalTime
-                </td>
-                <td>
-                    @if (priceCount > pricesSoFar++)
-                    {
-                        <img src="~/Content/Images/award52.png" height="24" />
-                    }
-                </td>
-            </tr>
+                    </td>
+                    <td>@p.Startnumber</td>
+                    <td>@p.Name</td>
+                    <td>
+                        @if (!p.IsSuper)
+                        {
+                            @p.TeamMembers[0]
+                            <br />
+                        }
+                        @if (p.Splits.Exists(r => r.Leg.Equals(leg1.Name) && r.Class.Equals(c.Name)))
+                        {
+                            @p.Splits.Find(r => r.Leg.Equals(leg1.Name) && r.Class.Equals(c.Name)).Time
+                        }
+                    </td>
+                    <td>
+                        @if (!p.IsSuper)
+                        {
+                            @p.TeamMembers[1]
+                            <br />
+                        }
+                        @if (p.Splits.Exists(r => r.Leg.Equals(leg2.Name) && r.Class.Equals(c.Name)))
+                        {
+                            @p.Splits.Find(r => r.Leg.Equals(leg2.Name) && r.Class.Equals(c.Name)).Time
+                        }
+                    </td>
+                    <td>
+                        @if (!p.IsSuper)
+                        {
+                            @p.TeamMembers[2]
+                            <br />
+                        }
+                        @if (p.Splits.Exists(r => r.Leg.Equals(leg3.Name) && r.Class.Equals(c.Name)))
+                        {
+                            @p.Splits.Find(r => r.Leg.Equals(leg3.Name) && r.Class.Equals(c.Name)).Time
+                        }
+                    </td>
+                    <td>
+                        @if (!p.IsSuper)
+                        {
+                            @p.TeamMembers[3]
+                            <br />
+                        }
+                        @if (p.Splits.Exists(r => r.Leg.Equals(leg4.Name) && r.Class.Equals(c.Name)))
+                        {
+                            @p.Splits.Find(r => r.Leg.Equals(leg4.Name) && r.Class.Equals(c.Name)).Time
+                        }
+                    </td>
+                    <td>
+                        @p.TotalTime
+                    </td>
+                    <td>
+                        @if (priceCount > pricesSoFar++)
+                        {
+                            <img src="~/Content/Images/award52.png" height="24" />
+                        }
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
 }
 
 <div>Icons made by <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
-<br/>
-
+<br />

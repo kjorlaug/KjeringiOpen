@@ -31,16 +31,18 @@ namespace EmitReaderLib.Builders
 
             // Adding supers
             var cmd = new MySqlCommand(@"select 
-	                startNumber, chipNumber, firstname, surname, personClassCode, ifnull(companyClass, 0) as companyClass, companyName, phoneNumber, 
-                case 
-	                when cupClass = 1 and (2015 - birthyear) in (11,12) then concat('NM', gender, '11')
-	                when cupClass = 1 and (2015 - birthyear) in (13,14) then concat('NM', gender, '13')
-	                when cupClass = 1 and (2015 - birthyear) in (15,16) then concat('NM', gender, '15')
-	                when cupClass = 1 and (2015 - birthyear) in (17,18,19,20,21) then concat('NM', gender, '17')
-	                when cupClass = 1 and (2015 - birthyear) > 21 then concat('NM', gender, '22')
-	                else null
-                end as cupClass
-                from kop_person where superwife = 1 and deleted = 0 and startnumber is not null and chipnumber is not null", conn);
+	                kop_person.startNumber, kop_person.chipNumber, kop_person.firstname, kop_person.surname, kop_person.personClassCode, ifnull(kop_person.companyClass, ifnull(kop_team.companyClass, 0)) as companyClass, kop_team.companyName, kop_person.phoneNumber, 
+                    case 
+	                    when cupClass = 1 and (2015 - birthyear) in (10, 11,12) then concat('NM', gender, '11')
+	                    when cupClass = 1 and (2015 - birthyear) in (13,14) then concat('NM', gender, '13')
+	                    when cupClass = 1 and (2015 - birthyear) in (15,16) then concat('NM', gender, '15')
+	                    when cupClass = 1 and (2015 - birthyear) in (17,18,19,20,21) then concat('NM', gender, '17')
+	                    when cupClass = 1 and (2015 - birthyear) > 21 then concat('NM', gender, '22')
+	                    else null
+                    end as cupClass
+                from 
+	                kop_person left join kop_team on kop_person.teamid = kop_team.id where superwife = 1 and kop_person.deleted = 0 and kop_person.startnumber is not null and kop_person.chipnumber is not null
+                order by startnumber", conn);
 
             var data = cmd.ExecuteReader();
 
@@ -75,7 +77,7 @@ namespace EmitReaderLib.Builders
             cmd = new MySqlCommand(@"select 
 	                startNumber, chipNumber, firstname, surname, personClassCode, ifnull(companyClass, 0) as companyClass, companyName, phoneNumber, 
                 case 
-	                when cupClass = 1 and (2015 - birthyear) in (11,12) then concat('NM', gender, '11')
+	                when cupClass = 1 and (2015 - birthyear) in (10, 11,12) then concat('NM', gender, '11')
 	                when cupClass = 1 and (2015 - birthyear) in (13,14) then concat('NM', gender, '13')
 	                when cupClass = 1 and (2015 - birthyear) in (15,16) then concat('NM', gender, '15')
 	                when cupClass = 1 and (2015 - birthyear) in (17,18,19,20,21) then concat('NM', gender, '17')
@@ -177,7 +179,7 @@ namespace EmitReaderLib.Builders
                 {
                     BoxId = 1,
                     Id = p.EmitID,
-                    Time = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 13, 14, 0)
+                    Time = new DateTime(2015, 4, 18, 13, 12, 0)
                 });
         }
     }

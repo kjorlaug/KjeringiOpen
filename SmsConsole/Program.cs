@@ -23,6 +23,8 @@ namespace SmsConsole
             String name = ConfigurationManager.AppSettings["name"];
             String smsPass = ConfigurationManager.AppSettings["pass"];
 
+            Boolean copy = true;
+
             HubConnection myHubConn;
             IHubProxy myHub;
 
@@ -33,13 +35,24 @@ namespace SmsConsole
                 .ContinueWith((prevTask) =>
                 {
                     myHub.Invoke("Join", "SMS - " + name);
-                    myHub.Invoke("AddtoGroup", "");
+                    myHub.Invoke("AddtoGroup", "248");
                 }).Wait();
 
             myHub.On<Participant>("newPass", (data) =>
                 {
                     // In production?
                     StringBuilder sb = new StringBuilder();
+
+                    if (copy) {
+                        data.Telephone.Add("95116354");
+                        copy = false;
+                    }
+
+
+
+                    sb.Append("Klasse: ");
+                    sb.Append(data.Classes[0].Name);
+                    sb.Append(" Etapper: ");
 
                     foreach (Result r in data.Splits.Where(r => r.Class.Equals(data.Classes[0].Name)))
                     {
@@ -50,6 +63,9 @@ namespace SmsConsole
                         sb.Append(r.Position);
                         sb.Append(" plass) ");
                     }
+                    sb.Append(" Totaltid: ");
+                    sb.Append(data.TotalTime);
+
                     sb.Append(" SMS-tjenestene levert av Difi i samarbeid med Linkmobility");
 
                     foreach (String tlf in data.Telephone.Distinct())

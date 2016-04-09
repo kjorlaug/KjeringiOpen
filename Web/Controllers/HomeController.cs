@@ -22,7 +22,14 @@ namespace Web.Controllers
         }
 
         public ActionResult Participants()
-        {            
+        {
+            ViewBag.Year = int.Parse(TheRace.Instance.Name);
+            return View();
+        }
+
+        public ActionResult Participants(int id)
+        {
+            ViewBag.Year = id;
             return View();
         }
 
@@ -31,7 +38,23 @@ namespace Web.Controllers
             return View();
         }
 
-        public ActionResult Results()
+        //public ActionResult Results()
+        //{
+        //    ViewBag.Year = int.Parse(TheRace.Instance.Name);
+        //    return View();
+        //}
+
+        public ActionResult Results(int? id)
+        {
+            if (id.HasValue)
+                ViewBag.Race = TheRace.Historical(id.Value);
+            else
+                ViewBag.Race = TheRace.Instance;
+
+            return View();
+        }
+
+        public ActionResult ResultsNM()
         {
             return View();
         }

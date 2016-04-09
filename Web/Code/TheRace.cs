@@ -7,7 +7,9 @@ using EmitReaderLib;
 using EmitReaderLib.Builders;
 using EmitReaderLib.Model;
 using EmitReaderLib.Writers;
+using EmitReaderLib.Workers;
 using Newtonsoft.Json;
+using MySql.Data.MySqlClient;
 
 namespace KjeringiData
 {
@@ -28,13 +30,12 @@ namespace KjeringiData
             if (history.ContainsKey(year))
                 return history[year];
 
-            var json = System.IO.File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/" + year.ToString() + ".json"));
-            var r  = JsonConvert.DeserializeObject<Race>(json);
-
-            r.Initialize();
-
-            history.Add(year, r);
-            return r;
+            lock (syncRoot)
+            {
+                if (!history.ContainsKey(year))
+                    history.Add(year, loadYear(year));
+            }
+            return history[year];
         }
 
         public static Race Instance
@@ -46,25 +47,60 @@ namespace KjeringiData
                     lock (syncRoot)
                     {
                         if (instance == null) {
-                            //var json = System.IO.File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/2013.json"));
-                            //instance = JsonConvert.DeserializeObject<Race>(json);
-                            //instance.Testers = new List<int>() { 1, 2, 3 };
-                            //(new EmitReaderLib.Builders.MySqlRaceBuilder2014("kjeringi.2013", "2013")).BuildRace(instance);
-
-                            //var json = System.IO.File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/2014.json"));
-                            //instance = JsonConvert.DeserializeObject<Race>(json);
-                            //(new EmitReaderLib.Builders.MySqlRaceBuilder2014("kjeringi.2013", "2014")).BuildRace(instance);
-
-                            var json = System.IO.File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/2015.json"));
-                            instance = JsonConvert.DeserializeObject<Race>(json);
-                            instance.Testers = new List<int>() { 4221, 4222, 4223, 4224, 4225, 4226, 4227, 4228, 4229};
-                            (new EmitReaderLib.Builders.MySqlRaceBuilder2015("kjeringi", instance.Testers)).BuildRace(instance);
+                            instance = loadYear(DateTime.Now.Year);
                         }
                     }
                 }
 
                 return instance;
             }
+        }
+
+        protected static Race loadYear(int year)
+        {
+            var jsonFile = System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/" + year.ToString() + ".json");
+
+            if (!System.IO.File.Exists(jsonFile))
+                throw new IndexOutOfRangeException("Unsupported year");
+
+            var json = System.IO.File.ReadAllText(jsonFile);
+
+            var race = JsonConvert.DeserializeObject<Race>(json);
+
+            switch (year)
+            {
+                case 2013:
+                    (new EmitReaderLib.Builders.MySqlRaceBuilder2014("kjeringi.2013", "2013")).BuildRace(race);
+                    break;
+                case 2014:
+                    (new EmitReaderLib.Builders.MySqlRaceBuilder2014("kjeringi.2013", "2014")).BuildRace(race);
+                    break;
+                case 2015:
+                    (new EmitReaderLib.Builders.MySqlRaceBuilder2015("kjeringi", new List<int>())).BuildRace(race);
+                    break;
+            }
+
+            MySqlConnection conn = new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Kjeringi.Writer"].ConnectionString);
+            MySqlCommand cmd = new MySqlCommand("SELECT card, location, concat(curdate(), \" \", time(time)) as time FROM LocationPasses WHERE year = " + year.ToString() + " ORDER BY time", conn);
+
+            conn.Open();
+            var data = cmd.ExecuteReader();
+
+            while (data.Read())
+            {
+                EmitData d = new EmitData()
+                {
+                    Id = data.GetInt16("card"),
+                    BoxId = data.GetInt16("location"),
+                    Time = data.GetDateTime("time"),
+                    Force = false
+                };
+                race.AddPass(d);
+            }
+            data.Close();
+            conn.Close();
+
+            return race;
         }
     }
 }

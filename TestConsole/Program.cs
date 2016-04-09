@@ -16,8 +16,8 @@ namespace TestConsole
         {
 
             //EmitMonitor monitor = new EmitMonitor(new MySqlReader(120, "Kjeringi.2013", new List<String>() {"78", "70", "79", "248"}, "3", "5000", "9999") , new SignalWorker()); // 2013 data
-            //EmitMonitor monitor = new EmitMonitor(new MySqlReader(120, "Kjeringi.2013", new List<String>() { "70", "71", "72", "73", "248" }, "3622", "6010", "9999"), new SignalWorker()); // 2014 data
-            EmitMonitor monitor = new EmitMonitor(new TestReader(new List<int>() {4222}, new List<int>() {70, 71, 72, 248}), new SignalWorker()); // Testers
+            EmitMonitor monitor = new EmitMonitor(new MySqlReader2015(120, "Kjeringi.Writer", "2015"), new SignalWorker()); // 2014 data
+            //EmitMonitor monitor = new EmitMonitor(new TestReader(new List<int>() {4222}, new List<int>() {70, 71, 72, 248}), new SignalWorker()); // Testers
             //EmitMonitor monitor = new EmitMonitor(new UsbSerialReader(), new SignalWorker()); // Live
             monitor.StartMonitoring();
 

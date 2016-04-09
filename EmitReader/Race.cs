@@ -65,15 +65,25 @@ namespace EmitReaderLib
             var participant = ParticipantByEmit[emitdata.Id];
             var timestation = TimeStations.Find(x => x.Id.Equals(emitdata.BoxId));
 
+            // going back in time?
+            if (participant.Passes.Count > 0 && participant.Passes.Last().Value.Time > emitdata.Time)
+                return null;
+
             lock (syncRoot)
             {
                 // Force? Delete all passes by chip on that box
                 if (emitdata.Force || emitdata.Test)
                 {
-                    resultsVolatile = emitdata.Force;
-                    participant.Passes.Remove(timestation.Id);
-                    participant.Positions.Remove(timestation.Id);
+                    try
+                    {
+                        resultsVolatile = emitdata.Force;
+                        participant.Passes.Remove(timestation.Id);
+                        participant.Positions.Remove(timestation.Id);
+                    }
+                    catch (Exception ex) { }
                 }
+                if (emitdata.Test)
+                    return null;
 
                 // Duplicate?
                 if (!emitdata.Force && !emitdata.Test && timestation.Official && participant.Passes.ContainsKey(timestation.Id))
@@ -120,8 +130,9 @@ namespace EmitReaderLib
                 {
                     var pos = new Dictionary<String, int>();
                     var res = new List<Result>();
+                    var passes = par.Passes.Where(p => TimeStations.Find(ts => ts.Id.Equals(p.Key)).Official);
 
-                    if (par.Passes.Count > 1)
+                    if (passes.Count() > 1)
                     {
                         foreach (ParticipantClass c in par.Classes)
                         {
@@ -138,7 +149,7 @@ namespace EmitReaderLib
 
                     par.Positions.Add(timestation.Id, pos);
 
-                    if (par.Passes.Count > 1)
+                    if (passes.Count() > 1)
                         foreach (ParticipantClass c in par.Classes)
                         {
                             res.AddRange(
@@ -153,7 +164,7 @@ namespace EmitReaderLib
                                             Sequence = TimeStations.Find(ts => ts.Id.Equals(cur.Key)).Sequence,
                                             Location = timestation.Id,
                                             Leg = TimeStations.Find(ts => ts.Id.Equals(cur.Key)).Name,
-                                            Name = par.IsSuper ? par.Name : par.TeamMembers[TimeStations.Find(ts => ts.Id.Equals(cur.Key)).Sequence - 1],
+                                            Name = par.IsSuper ? par.Name : par.TeamMembers[TimeStations.Find(ts => ts.Id.Equals(cur.Key)).Leg - 1],
                                             Team = par.IsSuper ? "" : par.Name,
                                             Time = (cur.Value.Time - prev.Value.Time).ToString(@"hh\:mm\:ss"),
                                             Ticks = (cur.Value.Time - prev.Value.Time).Ticks,

@@ -17,6 +17,7 @@ namespace EmitReaderLib.Model
         public int Sequence { get; set; }
         public Double? Progress { get; set; }
         public int Passes { get; set; }
+        public int Leg { get; set; }
     }
 
     public class TimestationComparer : Comparer<TimeStation>

@@ -64,11 +64,13 @@
     <Compile Include="Model\Result.cs" />
     <Compile Include="Race.cs" />
     <Compile Include="Model\TimeStation.cs" />
+    <Compile Include="Readers\MySqlReader2015.cs" />
     <Compile Include="Readers\TestReader.cs" />
     <Compile Include="Readers\MySqlReader.cs" />
     <Compile Include="Readers\UsbSerialReader.cs" />
     <Compile Include="Readers\IEmitReader.cs" />
     <Compile Include="Utils\KeyValuePairEnumerableExtensions.cs" />
+    <Compile Include="Workers\DirectWorker.cs" />
     <Compile Include="Workers\IWorker.cs" />
     <Compile Include="Utils\LimitConcurrencyLevelTaskScheduler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

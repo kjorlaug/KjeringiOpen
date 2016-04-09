@@ -169,61 +169,61 @@
     },
     {
       "Id": "NMG11",
-      "Name": "NM Cup Gutter 11-12 år",
+      "Name": "Gutter 11-12 år",
       "Sequence": 31,
       "Test": false
     },
     {
       "Id": "NMG13",
-      "Name": "NM Cup Gutter 13-14 år",
+      "Name": "Gutter 13-14 år",
       "Sequence": 31,
       "Test": false
     },
     {
       "Id": "NMG15",
-      "Name": "NM Cup Gutter 15-16 år",
+      "Name": "Gutter 15-16 år",
       "Sequence": 32,
       "Test": false
     },
     {
       "Id": "NMG17",
-      "Name": "NM Cup Menn Junior 17-21 år",
+      "Name": "Menn Junior 17-21 år",
       "Sequence": 33,
       "Test": false
     },
     {
       "Id": "NMG22",
-      "Name": "NM Cup Menn Senior 22 år og eldre",
+      "Name": "Menn Senior 22 år og eldre",
       "Sequence": 34,
       "Test": false
     },
     {
       "Id": "NMJ11",
-      "Name": "NM Cup Jenter 11-12 år",
+      "Name": "Jenter 11-12 år",
       "Sequence": 35,
       "Test": false
     },
     {
       "Id": "NMJ13",
-      "Name": "NM Cup Jenter 13-14 år",
+      "Name": "Jenter 13-14 år",
       "Sequence": 36,
       "Test": false
     },
     {
       "Id": "NMJ15",
-      "Name": "NM Cup Jenter 15-16 år",
+      "Name": "Jenter 15-16 år",
       "Sequence": 37,
       "Test": false
     },
     {
       "Id": "NMJ17",
-      "Name": "NM Cup Kvinner Junior 17-21 år",
+      "Name": "Kvinner Junior 17-21 år",
       "Sequence": 38,
       "Test": false
     },
     {
       "Id": "NMJ22",
-      "Name": "NM Cup Kvinner Senior 22 år og eldre",
+      "Name": "Kvinner Senior 22 år og eldre",
       "Sequence": 30,
       "Test": false
     },
@@ -239,11 +239,12 @@
       "Id": 0,
       "Official": false,
       "Name": "EmitReader",
-      "Sequence": 99
+      "Sequence": 99,
+      "Finish": false
     },
     {
       "Id": 1,
-      "Official": false,
+      "Official": true,
       "Start": true,
       "Name": "Start",
       "Sequence": 0
@@ -252,24 +253,28 @@
       "Id": 70,
       "Official": true,
       "Name": "Damefall",
-      "Sequence": 1
+      "Sequence": 1,
+      "Leg": 1
     },
     {
-      "Id": 71,
+      "Id": 73,
       "Official": true,
       "Name": "Kleppa",
-      "Sequence": 2
+      "Sequence": 2,
+      "Leg": 2
     },
     {
       "Id": 72,
       "Official": true,
       "Name": "Barneskulen",
-      "Sequence": 3
+      "Sequence": 3,
+      "Leg": 3
+
     },
     {
-      "Id": 73,
+      "Id": 71,
       "Official": false,
-      "Name": "Hamre - mellomstasjon",
+      "Name": "Hamre",
       "Sequence": 4
     },
     {
@@ -277,6 +282,7 @@
       "Official": true,
       "Name": "Mål",
       "Finish": true,
+      "Leg": 4,
       "Sequence": 5
     }
   ]

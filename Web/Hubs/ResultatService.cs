@@ -82,7 +82,7 @@ namespace Web.Hubs
 
         public void SendPassering(EmitData data)
         {
-            (new EmitReaderLib.Writers.MySqlWriter("kjeringi.writer", TheRace.Instance.Name)).PersistPass(data);
+            //(new EmitReaderLib.Writers.MySqlWriter("kjeringi.writer", TheRace.Instance.Name)).PersistPass(data);
             //try
             //{
                 // Tester?

@@ -272,6 +272,7 @@
       "Name": "Damefall",
       "Sequence": 1,
       "Progress": 25.0,
+      "Leg": 1,
       "Passes": 0
     },
     {
@@ -281,6 +282,7 @@
       "Finish": false,
       "Name": "Kleppa",
       "Sequence": 2,
+      "Leg": 2,
       "Progress": 50.0,
       "Passes": 0
     },
@@ -292,6 +294,7 @@
       "Name": "Barneskulen",
       "Sequence": 3,
       "Progress": 75.0,
+      "Leg": 3,
       "Passes": 0
     },
     {
@@ -302,6 +305,7 @@
       "Name": "Mål",
       "Sequence": 4,
       "Progress": null,
+      "Leg": 4,
       "Passes": 0
     }
   ]
