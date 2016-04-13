@@ -18,7 +18,9 @@ namespace EmitReaderLib.Model
         public String Time { get; set; }
         public String Total { get; set; }
         public long Ticks { get; set; }
+        
         public int Position { get; set; }
+        
         public int EmitId { get; set; }
     }
 }

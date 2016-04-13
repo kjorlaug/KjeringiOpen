@@ -99,7 +99,7 @@ namespace KjeringiData
             }
             data.Close();
             conn.Close();
-
+            
             return race;
         }
     }

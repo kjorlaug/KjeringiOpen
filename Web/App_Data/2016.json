@@ -1,0 +1,229 @@
+{
+  "Name": "2016",
+  "Classes": [
+    {
+      "Id": "GSJ",
+      "Name": "Junior Superkjering gutar",
+      "Sequence": 2,
+      "Test": false
+    },
+    {
+      "Id": "GSS",
+      "Name": "Senior Superkjering herre",
+      "Sequence": 12,
+      "Test": false
+    },
+    {
+      "Id": "GSSV",
+      "Name": "Superveteran Superkjering herre",
+      "Sequence": 22,
+      "Test": false
+    },
+    {
+      "Id": "GSV",
+      "Name": "Veteran Superkjering herre",
+      "Sequence": 17,
+      "Test": false
+    },
+    {
+      "Id": "JSJ",
+      "Name": "Junior Superkjering jenter",
+      "Sequence": 1,
+      "Test": false
+    },
+    {
+      "Id": "JSS",
+      "Name": "Senior Superkjering dame",
+      "Sequence": 11,
+      "Test": false
+    },
+    {
+      "Id": "JSSV",
+      "Name": "Superveteran Superkjering dame",
+      "Sequence": 21,
+      "Test": false
+    },
+    {
+      "Id": "JSV",
+      "Name": "Veteran Superkjering dame",
+      "Sequence": 16,
+      "Test": false
+    },
+    {
+      "Id": "LJJ",
+      "Name": "Junior lag jente",
+      "Sequence": 3,
+      "Test": false
+    },
+    {
+      "Id": "LJS",
+      "Name": "Senior lag dame",
+      "Sequence": 13,
+      "Test": false
+    },
+    {
+      "Id": "LJSV",
+      "Name": "Superveteran lag dame",
+      "Sequence": 23,
+      "Test": false
+    },
+    {
+      "Id": "LJV",
+      "Name": "Veteran lag dame",
+      "Sequence": 18,
+      "Test": false
+    },
+    {
+      "Id": "LKJ",
+      "Name": "Junior lag kombi",
+      "Sequence": 4,
+      "Test": false
+    },
+    {
+      "Id": "LKS",
+      "Name": "Senior lag kombi",
+      "Sequence": 14,
+      "Test": false
+    },
+    {
+      "Id": "LKSV",
+      "Name": "Superveteran lag kombi",
+      "Sequence": 24,
+      "Test": false
+    },
+    {
+      "Id": "LKV",
+      "Name": "Veteran lag kombi",
+      "Sequence": 19,
+      "Test": false
+    },
+    {
+      "Id": "LOJ",
+      "Name": "Junior lag open klasse",
+      "Sequence": 5,
+      "Test": false
+    },
+    {
+      "Id": "LOS",
+      "Name": "Senior lag open klasse",
+      "Sequence": 15,
+      "Test": false
+    },
+    {
+      "Id": "LOSV",
+      "Name": "Superveteran lag open klasse",
+      "Sequence": 25,
+      "Test": false
+    },
+    {
+      "Id": "LOV",
+      "Name": "Veteran lag open klasse",
+      "Sequence": 20,
+      "Test": false
+    },
+    {
+      "Id": "JSBED",
+      "Name": "Bedrift Superkjering Dame",
+      "Sequence": 6,
+      "Company": true,
+      "Classes": [ "JSJ", "JSS", "JSV", "JSSV"],      
+      "Test": false
+    },
+    {
+      "Id": "GSBED",
+      "Name": "Bedrift Superkjering Herre",
+      "Sequence": 7,
+      "Company": true,
+      "Classes": [ "GSJ", "GSS", "GSV", "GSSV"],      
+      "Test": false
+    },
+    {
+      "Id": "LJBED",
+      "Name": "Bedrift lag dame",
+      "Sequence": 8,
+      "Company": true,
+      "Classes": [ "LJJ", "LJS", "LJV", "LJSV"],      
+      "Test": false
+    },
+    {
+      "Id": "LKBED",
+      "Name": "Bedrift lag kombi",
+      "Sequence": 9,
+      "Company": true,
+      "Classes": [ "LKJ", "LKS", "LKV", "LKSV"],      
+      "Test": false
+    },
+    {
+      "Id": "LOBED",
+      "Name": "Bedrift lag open klasse",
+      "Sequence": 10,
+      "Company": true,
+      "Classes": [ "LOJ", "LOS", "LOV", "LOSV"],      
+      "Test": false
+    },
+    {
+      "Id": "BED",
+      "Name": "Bedrift vandrepokal",
+      "Sequence": 30,
+      "Test": false
+    },
+    {
+      "Id": "TEST",
+      "Name": "Testklasse",
+      "Sequence": 101,
+      "Test": true
+    }
+  ],
+  "TimeStations": [
+    {
+      "Id": 0,
+      "Official": false,
+      "Name": "EmitReader",
+      "Sequence": 99,
+      "Finish": false
+    },
+    {
+      "Id": 1,
+      "Official": true,
+      "Start": true,
+      "Name": "Start",
+      "Sequence": 0
+    },
+    {
+      "Id": 70,
+      "Official": true,
+      "Name": "Damefall",
+      "Sequence": 1,
+      "Leg": 1
+    },
+    {
+      "Id": 73,
+      "Official": true,
+      "Name": "Kleppa",
+      "Sequence": 2,
+      "Leg": 2
+    },
+    {
+      "Id": 72,
+      "Official": true,
+      "Name": "Barneskulen",
+      "Sequence": 3,
+      "Leg": 3
+
+    },
+    {
+      "Id": 71,
+      "Official": false,
+      "Name": "Hamre",
+      "Sequence": 4
+    },
+    {
+      "Id": 248,
+      "Official": true,
+      "Name": "Mål",
+      "Finish": true,
+      "Leg": 4,
+      "Sequence": 5
+    }
+  ]
+}
