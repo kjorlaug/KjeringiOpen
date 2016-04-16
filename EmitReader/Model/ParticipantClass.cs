@@ -11,6 +11,7 @@ namespace EmitReaderLib.Model
         public ParticipantClass()
         {
             Classes = new List<String>();
+            Official = true;
         }
 
         public String Id { get; set; }
@@ -19,6 +20,7 @@ namespace EmitReaderLib.Model
 
         public Boolean Company { get; set; }
         public List<String> Classes { get; set; }
+        public Boolean Official { get; set; }
 
         public Boolean Test { get; set; }
 

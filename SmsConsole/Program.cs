@@ -35,7 +35,7 @@ namespace SmsConsole
                 .ContinueWith((prevTask) =>
                 {
                     myHub.Invoke("Join", "SMS - " + name);
-                    myHub.Invoke("AddtoGroup", "248");
+                    myHub.Invoke("AddtoGroup", "");
                 }).Wait();
 
             myHub.On<Participant>("newPass", (data) =>
@@ -43,18 +43,11 @@ namespace SmsConsole
                     // In production?
                     StringBuilder sb = new StringBuilder();
 
-                    if (copy) {
-                        data.Telephone.Add("95116354");
-                        copy = false;
-                    }
-
-
-
                     sb.Append("Klasse: ");
                     sb.Append(data.Classes[0].Name);
                     sb.Append(" Etapper: ");
 
-                    foreach (Result r in data.Splits.Where(r => r.Class.Equals(data.Classes[0].Name)))
+                    foreach (Result r in data.Splits(data.Classes[0].Id))
                     {
                         sb.Append(r.Leg.Replace("å", "a"));
                         sb.Append(" ");
@@ -89,7 +82,6 @@ namespace SmsConsole
 
             myHubConn.Stop();
             Console.WriteLine("Stopped");
-
         }
     }
 }

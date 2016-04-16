@@ -190,29 +190,32 @@
       "Sequence": 0
     },
     {
-      "Id": 70,
+      "Id": 90,
       "Official": true,
-      "Name": "Damefall",
+      "Name": "Telemark",
       "Sequence": 1,
+      "Progress" :  25.0,
       "Leg": 1
     },
     {
-      "Id": 73,
+      "Id": 91,
       "Official": true,
-      "Name": "Kleppa",
+      "Name": "Ski",
       "Sequence": 2,
+      "Progress" :  50.0,
       "Leg": 2
     },
     {
-      "Id": 72,
+      "Id": 92,
       "Official": true,
-      "Name": "Barneskulen",
+      "Name": "Springing",
       "Sequence": 3,
+      "Progress" :  75.0,
       "Leg": 3
 
     },
     {
-      "Id": 71,
+      "Id": 93,
       "Official": false,
       "Name": "Hamre",
       "Sequence": 4
@@ -220,7 +223,7 @@
     {
       "Id": 248,
       "Official": true,
-      "Name": "Mål",
+      "Name": "Sykling",
       "Finish": true,
       "Leg": 4,
       "Sequence": 5

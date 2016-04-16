@@ -16,6 +16,7 @@ using System.Threading;
 using Spire.Pdf;
 using Spire.Pdf.Graphics;
 using Spire.Pdf.Tables;
+using Newtonsoft.Json;
 
 namespace PrintConsole
 {
@@ -25,21 +26,6 @@ namespace PrintConsole
         {
             String hub = ConfigurationManager.AppSettings["hub"];
             String name = ConfigurationManager.AppSettings["name"];
-
-            Participant p = new Participant() {
-                Name = "Test testesen",
-                Startnumber = 1,
-                EmitID = 1,
-                Classes = new List<ParticipantClass>() {new ParticipantClass() {Name = "Test", Id= "test"}},
-                TeamMembers = new List<string>()
-            };
-            p.Positions = new Dictionary<int,Dictionary<string,int>>();
-            p.Positions.Add(248, new Dictionary<string,int>());
-            p.Positions[248].Add("test", 1);
-            //p.Splits = new List<Result>();
-
-            PrintParticiant(p);
-            return;
 
             HubConnection myHubConn;
             IHubProxy myHub;
@@ -51,7 +37,7 @@ namespace PrintConsole
                 .ContinueWith((prevTask) =>
                 {
                     myHub.Invoke("Join", "Printer - " + name);
-                    myHub.Invoke("AddtoGroup", "EmitReader");
+                    myHub.Invoke("AddtoGroup", "0");
                     myHub.Invoke("AddtoGroup", "248");
                 }).Wait();
 
@@ -75,16 +61,15 @@ namespace PrintConsole
 
         private static void PrintParticiant(Participant data)
         {
-
             //Create a pdf document.<br>
             PdfDocument doc = new PdfDocument();
             
             //margin
             PdfUnitConvertor unitCvtr = new PdfUnitConvertor();
             PdfMargins margin = new PdfMargins();
-            margin.Top = unitCvtr.ConvertUnits(2.54f, PdfGraphicsUnit.Centimeter, PdfGraphicsUnit.Point);
+            margin.Top = unitCvtr.ConvertUnits(1f, PdfGraphicsUnit.Centimeter, PdfGraphicsUnit.Point);
             margin.Bottom = margin.Top;
-            margin.Left = unitCvtr.ConvertUnits(3.17f, PdfGraphicsUnit.Centimeter, PdfGraphicsUnit.Point);
+            margin.Left = unitCvtr.ConvertUnits(1f, PdfGraphicsUnit.Centimeter, PdfGraphicsUnit.Point);
             margin.Right = margin.Left;
             
             // Create new page
@@ -93,56 +78,102 @@ namespace PrintConsole
             
             //title
             PdfBrush brush1 = PdfBrushes.Black;
-            PdfTrueTypeFont font1 = new PdfTrueTypeFont(new Font("Arial", 16f, FontStyle.Bold));
-            PdfStringFormat format1 = new PdfStringFormat(PdfTextAlignment.Center);
 
-            //StringBuilder sb = new StringBuilder(HtmlTemplate.Template.Replace("#startnummer#", data.Startnumber.ToString()).Replace("#brikke#", data.EmitID.ToString()));
+            PdfFont font32b = new PdfFont(PdfFontFamily.Helvetica, 40f, PdfFontStyle.Bold); ;
+            PdfFont font32 = new PdfFont(PdfFontFamily.TimesRoman, 32f, PdfFontStyle.Regular);
+            PdfFont font20b = new PdfFont(PdfFontFamily.TimesRoman, 20f, PdfFontStyle.Bold);
+            PdfFont font20 = new PdfFont(PdfFontFamily.TimesRoman, 18f, PdfFontStyle.Regular);
+            PdfStringFormat format1 = new PdfStringFormat(PdfTextAlignment.Left);
 
-            page.Canvas.DrawString(data.Name, font1, brush1, page.Canvas.ClientSize.Width / 2, y, format1);
-            y = y + font1.MeasureString(data.Name, format1).Height + 15;
 
-            StringBuilder sb = new StringBuilder(String.Join(", ", data.Classes.Select(p => p.Name).ToList<String>()));
-            sb.Append(" - ");
-            sb.Append(String.Join(", ", data.Positions[248].Select(p => p.Value.ToString()).ToList<String>()));
-            sb.Append(".plass");
+            //Draw the image
+            PdfImage image = PdfImage.FromFile(@"price.jpg");
+            float width = image.Width;
+            float height = image.Height;
+            float x = page.Canvas.ClientSize.Width - width;
+            page.Canvas.DrawImage(image, x, y, width, height);
 
-            page.Canvas.DrawString(sb.ToString(), font1, brush1, page.Canvas.ClientSize.Width / 2, y, format1);            
-            y += font1.MeasureString(sb.ToString(), format1).Height + 15;
+            page.Canvas.DrawString(data.Splits(data.Classes[0].Id).Last().Position.ToString(), font32b, brush1, x + 60, y + 50, format1);
 
-            page.Canvas.DrawString("Etappetider", font1, brush1, page.Canvas.ClientSize.Width / 2, y, format1);            
-            y += font1.MeasureString("Etappetider", format1).Height + 15;
-            
-            String[][] tableDataSource = new String[][] {
-                new String[] {"Telemark", (data.TeamMembers.Count == 4)? data.TeamMembers[0] : "", (data.Splits.Count == 4) ? data.Splits[0].Time : ""},
-                new String[] {"Ski", (data.TeamMembers.Count == 4)? data.TeamMembers[1] : "", (data.Splits.Count == 4) ? data.Splits[1].Time : ""},
-                new String[] {"Springing", (data.TeamMembers.Count == 4)? data.TeamMembers[2] : "", (data.Splits.Count == 4) ? data.Splits[2].Time : ""},
-                new String[] {"Sykling", (data.TeamMembers.Count == 4)? data.TeamMembers[3] : "", (data.Splits.Count == 4) ? data.Splits[3].Time : ""},
-                new String[] {"Totaltid", "", data.TotalTime}
-            };
+            y = image.Height;
 
-            PdfTable table = new PdfTable();
-            table.Style.CellPadding = 2;
-            table.Style.HeaderSource = PdfHeaderSource.Rows;
-            table.Style.HeaderRowCount = 1;
-            table.Style.ShowHeader = true;
-            table.DataSource = tableDataSource;
+            page.Canvas.DrawString(data.Name, font32b, brush1, 0, y, format1);
 
-            PdfLayoutResult result = table.Draw(page, new PointF(0, y));
-            
-            y = y + result.Bounds.Height + 5;
-            
-            PdfBrush brush2 = PdfBrushes.Gray;
-            PdfTrueTypeFont font2 = new PdfTrueTypeFont(new Font("Arial", 9f));
+            y = y + font32b.MeasureString(data.Name, format1).Height + 15;
+
+            foreach (ParticipantClass c in data.Classes)
+            {
+                StringBuilder sb = new StringBuilder(c.Name);
+                sb.Append(" - ");
+                var res = data.Leg(c.Id, 248);
+                if (res != null)
+                    sb.Append(data.Leg(c.Id, 248).Position);
+                sb.Append(".plass");
+
+                page.Canvas.DrawString(sb.ToString(), font20, brush1, 0, y, format1);
+                y += font20.MeasureString(sb.ToString(), format1).Height + 15;
+            }
+
+            List<String[]> splits = data.Splits(data.Classes[0].Id).Select(p => new String[] {p.Leg, p.IsSuper? "":p.Name, p.Time }).ToList<String[]>();
+            if (splits.Count() > 0)
+            {
+                splits.Add(new String[] { "Totaltid", "", data.TotalTime });
+
+                y = y + 30;
+
+                page.Canvas.DrawString("Etappetider", font20b, brush1, 0, y, format1);
+                y += font20b.MeasureString("Etappetider", format1).Height + 5;
+
+                PdfTable table = new PdfTable();
+                table.Style.BorderPen = new PdfPen(Color.Transparent);
+                table.Style.DefaultStyle.TextBrush = brush1;
+                table.Style.DefaultStyle.Font = font20;
+                table.Style.DefaultStyle.BorderPen = new PdfPen(Color.Transparent);
+                table.Style.CellPadding = 2;
+                table.Style.HeaderSource = PdfHeaderSource.Rows;
+                table.Style.HeaderRowCount = 0;
+                table.Style.ShowHeader = false;
+                table.Style.AlternateStyle = new PdfCellStyle();
+
+                table.Style.AlternateStyle.TextBrush = brush1;
+                table.Style.AlternateStyle.Font = font20;
+                table.Style.AlternateStyle.BackgroundBrush = PdfBrushes.LightGray;
+                table.Style.AlternateStyle.BorderPen = new PdfPen(Color.Transparent);
+
+                table.DataSource = splits.ToArray<String[]>();
+
+                PdfLayoutResult result = table.Draw(page, new PointF(0, y));
+
+                y = y + result.Bounds.Height + 5;
+
+            }
+
+            StringBuilder s = new StringBuilder("Start # ");
+            s.Append(data.Startnumber.ToString());
+            s.Append("    Emit # ");
+            s.Append(data.EmitID.ToString());
+
+            y += 50;
+
+            page.Canvas.DrawString(s.ToString(), font20, brush1, page.Canvas.ClientSize.Width / 2, y, format1);
+
+            y = page.Canvas.ClientSize.Height - 60;
+
+            image = PdfImage.FromFile(@"kjeringi2016_logo-2.png");
+            width = image.Width;
+            height = image.Height;
+            x = page.Canvas.ClientSize.Width - width;
+            page.Canvas.DrawImage(image, 0, y, width, height);
+
+            image = PdfImage.FromFile(@"difi-logo.png");
+            width = image.Width;
+            height = image.Height;
+            x = page.Canvas.ClientSize.Width - width;
+            page.Canvas.DrawImage(image, x, y, width, height);
 
             doc.SaveToFile(@"c:\temp\" + data.EmitID + ".pdf");
             
-            doc.PrintDocument.Print();
-
-            //String file = @"c:\temp\" + data.EmitID + ".html";
-
-            //System.IO.StreamWriter sw = new System.IO.StreamWriter(file, false, System.Text.UTF8Encoding.UTF8);
-            //sw.Write(sb.ToString());
-            //sw.Close();
+            //doc.PrintDocument.Print();
         }
     }
 }

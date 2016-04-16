@@ -19,7 +19,7 @@
 
     // Handle updates
     hub.client.newPass = function (res) {
-        ko.utils.arrayForEach(res.Splits, function (item) {
+        ko.utils.arrayForEach(res._splits, function (item) {
             if (item.Location == globalStationId)
                 vm.results.unshift(item);
         });

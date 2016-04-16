@@ -34,7 +34,8 @@ namespace EmitReaderLib
             myHubConn.Closed += myHubConn_Closed;
 
             myHubConn.Start()
-                .ContinueWith((prevTask) => {
+                .ContinueWith((prevTask) =>
+                {
                     myHub.Invoke("Join", "EmitReader - " + name);
                 }).Wait();
         }

@@ -34,7 +34,7 @@
     <div style='padding-top:10px;width:100%;text-align:center;'>
         <div>
             <div style='padding-top:20px;'>Startnummer:</div>
-            <div style='font-size:50pt' data-bind="text: Startnummer">
+            <div style='font-size:50pt' data-bind="text: Startnumber">
 
             </div>
         </div>
@@ -51,9 +51,9 @@
     <div style='font-size:20pt;text-align:center;width:100%'>
         <h2>Mellombels resultat</h2>
 
-        <div data-bind="text: Namn"></div>
+        <div data-bind="text: Name"></div>
         <div>
-            <span data-bind="text: Klasse"></span> - <span data-bind="text: PlasseringIKlasse"></span>.plass
+             - <span data-bind="text: Position"></span>.plass
         </div>
     </div>
 </div>
@@ -65,14 +65,14 @@
         var model = new Kjeringi.resultatViewModel();
 
         $.connection.resultatServiceHub.client.processResultat = function (resultat) {
-            model.Namn(resultat.Namn);
-            model.Klasse(resultat.Klasse);
+            model.Namn(resultat.Name);
+            model.Klasse(resultat.Class);
             model.EmitID(resultat.EmitID);
-            model.Startnummer(resultat.Startnummer);
-            model.Medlemmer(resultat.Medlemmer);
-            model.Etappetider(resultat.Etappetider);
-            model.TotalTid(resultat.TotaltTid);
-            model.PlasseringIKlasse(resultat.PlasseringIKlasse);
+            model.Startnummer(resultat.Startnumber);
+            model.Medlemmer(resultat.Leg);
+            model.Etappetider(resultat.Time);
+            model.TotalTid(resultat.Total);
+            model.PlasseringIKlasse(resultat.Position);
         }
 
         //ko.applyBindings(systems, $("#offline-systems-list")[0]);
@@ -81,7 +81,7 @@
         $.connection.hub.start()
             .done(function () {
                 $.connection.resultatServiceHub.server.join("EmitDisplay");
-                $.connection.resultatServiceHub.server.addtoGroup("EmitReader");
+                $.connection.resultatServiceHub.server.addtoGroup("0");
             })
     });
 

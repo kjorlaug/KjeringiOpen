@@ -16,10 +16,8 @@ namespace EmitReaderLib.Model
             Classes = new List<ParticipantClass>();
             Comments = new List<String>();
             Passes = new Dictionary<int, EmitData>();
-            //Positions = new Dictionary<int, Dictionary<String, int>>();
+            _splits = new List<Result>();
         }
-
-        internal Race Race { get; set; }
 
         public int Startnumber { get; set; }
         public int EmitID { get; set; }
@@ -34,59 +32,40 @@ namespace EmitReaderLib.Model
 
         public List<String> TeamMembers { get; set; }
         public String CompanyName { get; set; }
+        public String Club { get; set; }
 
         public Boolean Star { get; set; }
         public List<String> Comments { get; set; }
 
-        public Dictionary<int, EmitData> Passes { get; set; }             
+        public Dictionary<int, EmitData> Passes { get; set; }
 
-        //public List<Result> Splits {get;set;}
-        public Dictionary<int, Dictionary<String, int>> Positions { get; set; }
-
-        public List<Result> Splits
+        public bool PassedTimestation(int id)
         {
-            get
-            {
-                List<Result> res = new List<Result>();
+            return Passes.ContainsKey(id);
+        }
 
-                foreach (ParticipantClass c in this.Classes)
-                {
-                    res.AddRange(
-                        this.Passes
-                            .Where(p => Race.TimeStations.Find(ts => ts.Id.Equals(p.Key)).Official)
-                            .OrderBy(p => p.Value.Time)
-                            .SelectWithPrevious((prev, cur) =>
-                                new Result()
-                                {
-                                    Class = c.Name,
-                                    EmitId = this.EmitID,
-                                    Sequence = Race.TimeStations.Find(ts => ts.Id.Equals(cur.Key)).Sequence,
-                                    Location = cur.Key,
-                                    Leg = Race.TimeStations.Find(ts => ts.Id.Equals(cur.Key)).Name,
-                                    Name = this.IsSuper ? this.Name : this.TeamMembers[Race.TimeStations.Find(ts => ts.Id.Equals(cur.Key)).Leg - 1],
-                                    Team = this.IsSuper ? "" : this.Name,
-                                    Time = (cur.Value.Time - prev.Value.Time).ToString(@"hh\:mm\:ss"),
-                                    Ticks = (cur.Value.Time - prev.Value.Time).Ticks,
-                                    Total = this.TotalTime,
-                                    Position = Race.ParticipantListByClass[c.Id]
-                                        .Where(p => p.Passes.ContainsKey(cur.Key))
-                                        .OrderBy(p => p.Passes[cur.Key].Time)
-                                        .ToList<Participant>()
-                                        .IndexOf(this) + 1
+        public Result Leg(String classId, int leg)
+        {
+            return Splits(classId).Where(r => r.Location == leg).FirstOrDefault();
+        }
 
-                                }
-                                    )
-                            .ToList<Result>());
-                }
-                return res;
-            }
+        public List<Result> _splits { get; set; }
+
+        public List<Result> Splits(String classId = "")
+        {
+            if (classId == "")
+                return _splits;
+            else
+                return _splits.Where(r => r.ClassId.Equals(classId)).ToList<Result>();
         }
 
         public String TotalTime { get; set; }
         
         public DateTime EstimatedArrival { get; set; }
         public DateTime RealArrival { get; set; }
-        
+        public long EstimatedTicks { get { return EstimatedArrival.Ticks; } }
+        public String EstimatedTime { get { return EstimatedArrival.ToString(@"hh\:mm\:ss"); } }
+
         public Boolean Finished { get; set; }
 
     }

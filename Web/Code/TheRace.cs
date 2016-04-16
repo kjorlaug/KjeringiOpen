@@ -33,7 +33,7 @@ namespace KjeringiData
             lock (syncRoot)
             {
                 if (!history.ContainsKey(year))
-                    history.Add(year, loadYear(year));
+                    history.Add(year, Race.LoadYear(year, System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/" + year.ToString() + ".json")));
             }
             return history[year];
         }
@@ -47,60 +47,13 @@ namespace KjeringiData
                     lock (syncRoot)
                     {
                         if (instance == null) {
-                            instance = loadYear(DateTime.Now.Year);
+                            instance = Race.LoadYear(DateTime.Now.Year, System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/" + DateTime.Now.Year.ToString() + ".json"));
                         }
                     }
                 }
 
                 return instance;
             }
-        }
-
-        protected static Race loadYear(int year)
-        {
-            var jsonFile = System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/" + year.ToString() + ".json");
-
-            if (!System.IO.File.Exists(jsonFile))
-                throw new IndexOutOfRangeException("Unsupported year");
-
-            var json = System.IO.File.ReadAllText(jsonFile);
-
-            var race = JsonConvert.DeserializeObject<Race>(json);
-
-            switch (year)
-            {
-                case 2013:
-                    (new EmitReaderLib.Builders.MySqlRaceBuilder2014("kjeringi.2013", "2013")).BuildRace(race);
-                    break;
-                case 2014:
-                    (new EmitReaderLib.Builders.MySqlRaceBuilder2014("kjeringi.2013", "2014")).BuildRace(race);
-                    break;
-                case 2015:
-                    (new EmitReaderLib.Builders.MySqlRaceBuilder2015("kjeringi", new List<int>())).BuildRace(race);
-                    break;
-            }
-
-            MySqlConnection conn = new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Kjeringi.Writer"].ConnectionString);
-            MySqlCommand cmd = new MySqlCommand("SELECT card, location, concat(curdate(), \" \", time(time)) as time FROM LocationPasses WHERE year = " + year.ToString() + " ORDER BY time", conn);
-
-            conn.Open();
-            var data = cmd.ExecuteReader();
-
-            while (data.Read())
-            {
-                EmitData d = new EmitData()
-                {
-                    Id = data.GetInt16("card"),
-                    BoxId = data.GetInt16("location"),
-                    Time = data.GetDateTime("time"),
-                    Force = false
-                };
-                race.AddPass(d);
-            }
-            data.Close();
-            conn.Close();
-            
-            return race;
         }
     }
 }

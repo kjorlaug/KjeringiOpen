@@ -9,9 +9,11 @@ namespace EmitReaderLib.Model
     public class Result 
     {
         public String Class { get; set; }
+        public String ClassId { get; set; }
         public int Sequence { get; set; }
         public int Location { get; set; }
         public int Startnumber { get; set; }
+        public Boolean IsSuper { get; set; }
         public String Leg { get; set; }
         public String Name { get; set; }
         public String Team { get; set; }

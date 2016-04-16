@@ -11,10 +11,10 @@ namespace EmitReaderLib.Builders
 {
     public class MySqlRaceBuilder2015 : IRaceBuilder
     {
-        public MySqlRaceBuilder2015(String connection, List<int> testers)
+        public MySqlRaceBuilder2015(String connection, List<int> testers, String year)
         {
             _conn = connection;
-            _year = "2015";
+            _year = year;
             Testers = testers;
         }
 
@@ -31,7 +31,7 @@ namespace EmitReaderLib.Builders
 
             // Adding supers
             var cmd = new MySqlCommand(@"select 
-	                kop_person.startNumber, kop_person.chipNumber, kop_person.firstname, kop_person.surname, kop_person.personClassCode, ifnull(kop_person.companyClass, ifnull(kop_team.companyClass, 0)) as companyClass, kop_team.companyName, kop_person.phoneNumber, 
+	                kop_person.startNumber, kop_person.chipNumber, kop_person.firstname, kop_person.surname, kop_person.personClassCode, ifnull(kop_person.companyClass, ifnull(kop_team.companyClass, 0)) as companyClass, kop_team.companyName, kop_person.phoneNumber, kop_person.club,
                     case 
 	                    when cupClass = 1 and (2015 - birthyear) in (10, 11,12) then concat('NM', gender, '11')
 	                    when cupClass = 1 and (2015 - birthyear) in (13,14) then concat('NM', gender, '13')
@@ -58,12 +58,19 @@ namespace EmitReaderLib.Builders
                     IsTeam = false,
                     IsSuper = true,
                     IsCompany = data.GetInt32("companyClass").Equals(1),
-                    CompanyName = data.IsDBNull(data.GetOrdinal("companyName")) ? "": data.GetString("companyName")
+                    CompanyName = data.IsDBNull(data.GetOrdinal("club")) ? "": data.GetString("club")
                 };
                 if (p.IsCompany)
                 {
                     p.Classes.Add(race.Classes.Find(x => x.Id.Equals(data.GetString("personClassCode").Substring(0, 2) + "BED")));
                     p.Classes.Add(race.Classes.Find(x => x.Id.Equals("BED")));
+                }
+                if (!data.IsDBNull(data.GetOrdinal("club")) && !String.IsNullOrWhiteSpace(data.GetString("club")))
+                {
+                    if (!race.Classes.Exists(x => x.Id.Equals(data.GetString("club"))))
+                        race.Classes.Add(new ParticipantClass() { Id = data.GetString("club"), Official = false, Name = data.GetString("club"), Sequence = race.Classes.Count + 1 });
+                    
+                    p.Classes.Add(race.Classes.Find(x => x.Id.Equals(data.GetString("club"))));
                 }
                 if (!data.IsDBNull(data.GetOrdinal("cupClass")))
                     p.Classes.Add(race.Classes.Find(x => x.Id.Equals(data.GetString("cupClass"))));
@@ -107,6 +114,14 @@ namespace EmitReaderLib.Builders
                     p.Classes.Add(race.Classes.Find(x => x.Id.Equals(data.GetString("personClassCode").Substring(0, 2) + "BED")));
                     p.Classes.Add(race.Classes.Find(x => x.Id.Equals("BED")));
                 }
+                if (!data.IsDBNull(data.GetOrdinal("companyName")) && !String.IsNullOrWhiteSpace(data.GetString("companyName")))
+                {
+                    if (!race.Classes.Exists(x => x.Id.Equals(data.GetString("companyName"))))
+                        race.Classes.Add(new ParticipantClass() { Id = data.GetString("companyName"), Official = false, Name = data.GetString("companyName"), Sequence = race.Classes.Count + 1 });
+
+                    p.Classes.Add(race.Classes.Find(x => x.Id.Equals(data.GetString("companyName"))));
+                }
+
 
                 race.AddParticipant(p);
             }
@@ -162,24 +177,27 @@ namespace EmitReaderLib.Builders
             {
                 var parTest = new Participant()
                 {
-                    Startnumber = testId + 4000,
+                    Startnumber = testId,
                     EmitID = testId,
                     Name = "Test " + testId.ToString(),
                     Telephone = new List<String>() { "95116354", "95246298", "", "41530965", "48021455" },
                     Classes = new List<ParticipantClass>() { race.Classes.Find(x => x.Id.Equals("TEST")) },
-                    IsTeam = false,
-                    IsSuper = true,
+                    IsTeam = true,
+                    TeamMembers = new List<String>() {"Rune Kjørlaug", "Petter Stenstavold", "Erlend Klakegg Bergheim", "Even Østvold"},
+                    IsSuper = false,
                     IsCompany = false                    
                 };
                 race.AddParticipant(parTest);
             }
+
+            race.Testers = Testers;
 
             foreach (Participant p in race.Participants)
                 race.AddPass(new EmitData()
                 {
                     BoxId = 1,
                     Id = p.EmitID,
-                    Time = new DateTime(2015, 4, 18, 13, 12, 0)
+                    Time = new DateTime(2016, 4, 16, 13, 14, 0)
                 });
         }
     }

@@ -1,12 +1,10 @@
 ﻿@using EmitReaderLib.Model;
 
-<table class="table table-striped">
+<table class="table table-striped table-condensed">
     <thead>
         <tr>
             <th>#</th>
-            <th>Brikke</th>
             <th>Namn</th>
-            <th>Kontakt</th>
             <th>Klasse</th>
         </tr>
     </thead>
@@ -15,7 +13,6 @@
         {
             <tr>
                 <td>@p.Startnumber</td>
-                <td>@p.EmitID</td>
                 <td>@p.Name</td>
                 <td>
                     @if (p.IsTeam)
@@ -44,6 +41,7 @@
                         <li>@c.Name</li>
                     }
                 </td>
+                <td>@p.EmitID</td>
             </tr>
         }
     </tbody>

@@ -27,23 +27,6 @@ namespace Web.Controllers
             return View();
         }
 
-        public ActionResult Participants(int id)
-        {
-            ViewBag.Year = id;
-            return View();
-        }
-
-        public ActionResult ParticipantsNM()
-        {
-            return View();
-        }
-
-        //public ActionResult Results()
-        //{
-        //    ViewBag.Year = int.Parse(TheRace.Instance.Name);
-        //    return View();
-        //}
-
         public ActionResult Results(int? id)
         {
             if (id.HasValue)
@@ -61,7 +44,7 @@ namespace Web.Controllers
 
         public ActionResult Speaker()
         {
-            ViewBag.StationFinishId = TheRace.Instance.TimeStations.Find(ts => ts.Finish).Id.ToString();
+            ViewBag.StationFinishId = TheRace.Instance.TimeStations.Where(ts => ts.Finish).First().Id.ToString();
             ViewBag.StationIncomingId = TheRace.Instance.TimeStations.Where(ts => ts.Official).OrderByDescending(ts => ts.Sequence).Skip(1).First().Id.ToString();
             return View();
         }

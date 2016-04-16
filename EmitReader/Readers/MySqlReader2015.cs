@@ -54,7 +54,7 @@ namespace EmitReaderLib
                             if (handler != null)
                                 handler(this, new EmitDataRecievedEventArgs(d));
 
-                        //System.Threading.Thread.Sleep(300);
+                        System.Threading.Thread.Sleep(30);
                     }
                     data.Close();
                     conn.Close();

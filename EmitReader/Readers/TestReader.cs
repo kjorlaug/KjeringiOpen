@@ -28,15 +28,24 @@ namespace EmitReaderLib
             {
                 try
                 {
+                    Dictionary<int, DateTime> timers = new Dictionary<int, DateTime>();
+                    Random rnd = new Random();
+                    
+                    // init start
                     foreach(int test in Testers)
-                    {
-                        DateTime time = DateTime.Now;
-                        foreach (int box in Stations) { 
+                        timers.Add(test, new DateTime(2016,4,16,13,14,00));
+
+
+                    foreach (int box in Stations) { 
+                        foreach(int test in Testers) {
+                            // Leap forward 10-20 min
+                            timers[test] = timers[test].AddSeconds(rnd.Next(600, 1200));
+                            
                             EmitData d = new EmitData()
                                 {
                                     Id = test,
                                     BoxId = box,
-                                    Time = DateTime.Now,
+                                    Time = timers[test],
                                     Force = false
                                 };
 
