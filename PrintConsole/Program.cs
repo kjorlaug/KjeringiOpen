@@ -173,7 +173,7 @@ namespace PrintConsole
 
             doc.SaveToFile(@"c:\temp\" + data.EmitID + ".pdf");
             
-            //doc.PrintDocument.Print();
+            doc.PrintDocument.Print();
         }
     }
 }

@@ -1,0 +1,46 @@
+﻿@using EmitReaderLib.Model;
+@using EmitReaderLib;
+@using KjeringiData;
+
+@{
+    var legs = new List<int>
+        () {
+        (ViewBag.Race as EmitReaderLib.Race).TimeStations.Where(ts => ts.Official && ts.Sequence == 1).First().Id,
+        (ViewBag.Race as EmitReaderLib.Race).TimeStations.Where(ts => ts.Official && ts.Sequence == 2).First().Id,
+        (ViewBag.Race as EmitReaderLib.Race).TimeStations.Where(ts => ts.Official && ts.Sequence == 3).First().Id,
+        (ViewBag.Race as EmitReaderLib.Race).TimeStations.Where(ts => ts.Finish && ts.Official).First().Id
+        };
+}
+    @foreach (int leg in legs)
+    {
+        var name = (ViewBag.Race as EmitReaderLib.Race).TimeStations.Where(ts => ts.Id == leg).First().Name;
+        <h3>@name</h3>
+
+        <table class="table table-striped" style="page-break-after: always;">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Namn</th>
+                    <th>Klasse</th>
+                    <th>Tid</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var res = (ViewBag.Race as EmitReaderLib.Race).Top10Leg(leg);
+                }
+                @foreach (Result r in res)
+                {
+                    <tr>
+                        <td>@r.Startnumber</td>
+                        <td>@r.Name</td>
+                        <td>@r.Class</td>
+                        <td>@r.Time</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <div>Icons made by <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+    <br />

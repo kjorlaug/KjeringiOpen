@@ -111,6 +111,7 @@ namespace EmitReaderLib
                                         Sequence = this.TimeStations.Find(ts => ts.Id.Equals(cur.Key)).Sequence,
                                         Location = cur.Key,
                                         IsSuper = participant.IsSuper,
+                                        Startnumber = participant.Startnumber,
                                         Leg = this.TimeStations.Find(ts => ts.Id.Equals(cur.Key)).Name,
                                         ClassId = c.Id,
                                         Name = participant.IsSuper ? participant.Name : participant.TeamMembers[this.TimeStations.Find(ts => ts.Id.Equals(cur.Key)).Leg - 1],
@@ -231,6 +232,11 @@ namespace EmitReaderLib
                 return ParticipantListByClass[c].Count;
             else
                 return 0;
+        }
+
+        public List<Result> Top10Leg(int timestation)
+        {
+            return Participants.Where(p => !Testers.Contains(p.EmitID)).SelectMany(p => p.Splits(p.Classes[0].Id)).Where(r => r.Location == timestation).OrderBy(r => r.Ticks).Take(10).ToList<Result>();
         }
     }
 }

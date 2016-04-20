@@ -2,7 +2,7 @@
 @using EmitReaderLib;
 @using KjeringiData;
 
-@foreach (ParticipantClass c in (ViewBag.Race as EmitReaderLib.Race).Classes.Where(c => c.Official && !c.Test))    
+@foreach (ParticipantClass c in (ViewBag.Race as EmitReaderLib.Race).Classes.Where(c => !c.Official && !c.Test))    
 {
     var participantCount = (ViewBag.Race as EmitReaderLib.Race).ParticipantClassCount(c.Id);
     <h3>@c.Name (@participantCount)</h3>
@@ -48,7 +48,7 @@
                         }
                     </td>
                     <td>@p.Startnumber</td>
-                    <td>@Html.ActionLink(p.Name, "Download", "Home", new { Year = (ViewBag.Race as EmitReaderLib.Race).Name, Id = p.Startnumber }, null)</td>
+                    <td>@p.Name</td>
 
                     @{
                 filler = 0;

@@ -67,10 +67,13 @@ namespace EmitReaderLib.Builders
                 }
                 if (!data.IsDBNull(data.GetOrdinal("club")) && !String.IsNullOrWhiteSpace(data.GetString("club")))
                 {
-                    if (!race.Classes.Exists(x => x.Id.Equals(data.GetString("club"))))
-                        race.Classes.Add(new ParticipantClass() { Id = data.GetString("club"), Official = false, Name = data.GetString("club"), Sequence = race.Classes.Count + 1 });
+                    var cn = data.GetString("club");
+                    if (cn.StartsWith("SVV"))
+                        cn = "SVV";
+                    if (!race.Classes.Exists(x => x.Id.Equals(cn)))
+                        race.Classes.Add(new ParticipantClass() { Id = cn, Official = false, Name = cn, Sequence = race.Classes.Count + 1 });
                     
-                    p.Classes.Add(race.Classes.Find(x => x.Id.Equals(data.GetString("club"))));
+                    p.Classes.Add(race.Classes.Find(x => x.Id.Equals(cn)));
                 }
                 if (!data.IsDBNull(data.GetOrdinal("cupClass")))
                     p.Classes.Add(race.Classes.Find(x => x.Id.Equals(data.GetString("cupClass"))));
@@ -116,10 +119,14 @@ namespace EmitReaderLib.Builders
                 }
                 if (!data.IsDBNull(data.GetOrdinal("companyName")) && !String.IsNullOrWhiteSpace(data.GetString("companyName")))
                 {
-                    if (!race.Classes.Exists(x => x.Id.Equals(data.GetString("companyName"))))
-                        race.Classes.Add(new ParticipantClass() { Id = data.GetString("companyName"), Official = false, Name = data.GetString("companyName"), Sequence = race.Classes.Count + 1 });
+                    var cn = data.GetString("companyName");
+                    if (cn.StartsWith("SVV"))
+                        cn = "SVV";
 
-                    p.Classes.Add(race.Classes.Find(x => x.Id.Equals(data.GetString("companyName"))));
+                    if (!race.Classes.Exists(x => x.Id.Equals(cn)))
+                        race.Classes.Add(new ParticipantClass() { Id = cn, Official = false, Name = cn, Sequence = race.Classes.Count + 1 });
+
+                    p.Classes.Add(race.Classes.Find(x => x.Id.Equals(cn)));
                 }
 
 
@@ -153,6 +160,14 @@ namespace EmitReaderLib.Builders
                 {
                     p.Classes.Add(race.Classes.Find(x => x.Id.Equals(data.GetString("teamClassCode").Substring(0, 2) + "BED")));
                     p.Classes.Add(race.Classes.Find(x => x.Id.Equals("BED")));
+                }
+                if (p.Name.StartsWith("SVV"))
+                {
+                    String cn = "SVV";
+                    if (!race.Classes.Exists(x => x.Id.Equals(cn)))
+                        race.Classes.Add(new ParticipantClass() { Id = cn, Official = false, Name = cn, Sequence = race.Classes.Count + 1 });
+
+                    p.Classes.Add(race.Classes.Find(x => x.Id.Equals(cn)));
                 }
 
                 // Add medlemmer

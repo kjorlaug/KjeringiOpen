@@ -27,13 +27,17 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @foreach (EmitReaderLib.Model.TimeStation ts in KjeringiData.TheRace.Instance.TimeStations.Where(t => t.Official && !t.Start).OrderBy(t => t.Sequence))
+                    @*@foreach (EmitReaderLib.Model.TimeStation ts in KjeringiData.TheRace.Instance.TimeStations.Where(t => t.Official && !t.Start).OrderBy(t => t.Sequence))
                     {
                         <li>@Html.ActionLink(ts.Name, "Station", "Home", new { name = ts.Id.ToString() }, null)</li>
                     }
-                    <li>@Html.ActionLink("EmitReader", "EmitReader", "Home")</li>
-                    <li>@Html.ActionLink("Resultat", "Results", "Home", new { Id = 2016 }, null)</li>
-                    <li>@Html.ActionLink("Deltakarar", "Participants", "Home")</li>
+                    <li>@Html.ActionLink("EmitReader", "EmitReader", "Home")</li>*@
+                    <li>@Html.ActionLink("2016", "Results", "Home", new { Id = 2016 }, null)</li>
+                    <li>@Html.ActionLink("2015", "Results", "Home", new { Id = 2015 }, null)</li>
+                    <li>@Html.ActionLink("2014", "Results", "Home", new { Id = 2014 }, null)</li>
+                    <li>@Html.ActionLink("2013", "Results", "Home", new { Id = 2013 }, null)</li>
+                    <li>@Html.ActionLink("Bedrifter", "CompanyClass", "Home", new { Id = 2016 }, null)</li>
+                    @*<li>@Html.ActionLink("Deltakarar", "Participants", "Home")</li>*@
                 </ul>
             </div>
         </div>
