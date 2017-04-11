@@ -3,6 +3,8 @@ using Microsoft.Owin;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using System.Diagnostics;
+using System.Threading.Tasks;
+
 [assembly: OwinStartup(typeof(KjeringiData.Startup))]
 
 namespace KjeringiData
@@ -32,7 +34,11 @@ namespace KjeringiData
             HubConfiguration hubConfig = new HubConfiguration();
             hubConfig.EnableJSONP = true;
             hubConfig.EnableDetailedErrors = true;
-            app.MapSignalR(hubConfig);
+
+            var task = Task.Run(() => app.MapSignalR(hubConfig));
+            task.Wait(300);
+            //try again if it fails just to be sure ;)
+            if (task.IsCanceled) Task.Run(() => app.MapSignalR(hubConfig)).Wait(300);
         }
     }
 }

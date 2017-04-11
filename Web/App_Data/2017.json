@@ -1,5 +1,5 @@
 {
-  "Name": "2014",
+  "Name": "2017",
   "Classes": [
     {
       "Id": "GSJ",
@@ -122,7 +122,7 @@
       "Test": false
     },
     {
-      "Id": "SJBED",
+      "Id": "JSBED",
       "Name": "Bedrift Superkjering Dame",
       "Sequence": 6,
       "Company": true,
@@ -146,7 +146,7 @@
       "Test": false
     },
     {
-      "Id": "LJBED",
+      "Id": "LKBED",
       "Name": "Bedrift lag kombi",
       "Sequence": 9,
       "Company": true,
@@ -179,43 +179,53 @@
       "Id": 0,
       "Official": false,
       "Name": "EmitReader",
-      "Sequence": 99
+      "Sequence": 99,
+      "Finish": false
     },
     {
       "Id": 1,
       "Official": true,
-      "Start": true
+      "Start": true,
       "Name": "Start",
       "Sequence": 0
     },
     {
-      "Id": 70,
+      "Id": 90,
       "Official": true,
-      "Name": "Damefall",
-      "Sequence": 1
+      "Name": "Telemark",
+      "Sequence": 1,
+      "Progress" :  25.0,
+      "Leg": 1
     },
     {
-      "Id": 71,
+      "Id": 91,
       "Official": true,
-      "Name": "Kleppa",
-      "Sequence": 2
+      "Name": "Ski",
+      "Sequence": 2,
+      "Progress" :  50.0,
+      "Leg": 2
     },
     {
-      "Id": 72,
+      "Id": 92,
       "Official": true,
-      "Name": "Barneskulen",
-      "Sequence": 3
+      "Name": "Springing",
+      "Sequence": 3,
+      "Progress" :  75.0,
+      "Leg": 3
+
     },
     {
-      "Id": 73,
+      "Id": 93,
       "Official": false,
-      "Name": "Hamre - mellomstasjon",
+      "Name": "Hamre",
       "Sequence": 4
     },
     {
       "Id": 248,
       "Official": true,
-      "Name": "Mål",
+      "Name": "Sykling",
+      "Finish": true,
+      "Leg": 4,
       "Sequence": 5
     }
   ]
