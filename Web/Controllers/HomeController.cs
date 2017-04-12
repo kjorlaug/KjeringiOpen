@@ -20,8 +20,8 @@ namespace Web.Controllers
     {
         public ActionResult Index()
         {
-            return RedirectToAction("Results");
-            //return View();
+            //return RedirectToAction("Results");
+            return View();
         }
 
         public ActionResult EmitReader()

@@ -184,6 +184,7 @@
     <Content Include="Content\Images\finance-and-business4.png" />
     <Content Include="Content\Images\kjeringi2016_logo-2.png" />
     <Content Include="Content\Images\price.jpg" />
+    <Content Include="Content\kjeringi-embedded.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
@@ -254,7 +255,6 @@
     <Content Include="Views\Home\Legs.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
-    <Content Include="Views\Shared\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
