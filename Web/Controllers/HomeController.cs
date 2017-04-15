@@ -65,10 +65,18 @@ namespace Web.Controllers
             return View();
         }
 
-        public ActionResult Speaker()
+        public ActionResult Speaker(int? name)
         {
             ViewBag.StationFinishId = TheRace.Instance.TimeStations.Where(ts => ts.Finish).First().Id.ToString();
             ViewBag.StationIncomingId = TheRace.Instance.TimeStations.Where(ts => ts.Official).OrderByDescending(ts => ts.Sequence).Skip(1).First().Id.ToString();
+
+            if (name.HasValue)
+                ViewBag.StationId = name.ToString();
+            else
+                ViewBag.StationId = ViewBag.StationFinishId;
+
+            ViewBag.StationName = TheRace.Instance.TimeStations.Find(ts => ts.Id.ToString().Equals(ViewBag.StationId)).Name;
+
             return View();
         }
 

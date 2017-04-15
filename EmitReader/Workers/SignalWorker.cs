@@ -61,10 +61,19 @@ namespace EmitReaderLib
                 EmitData dataToSend = ToSend.Peek();
                 try
                 {
-                    myHub.Invoke("SendPassering", new object[] { dataToSend });
-                    lock (lockObj)
-                        ToSend.Dequeue();
-                    Console.WriteLine("Successfully " + dataToSend.Id.ToString());
+                    // Fake dropouts
+                    if (dataToSend.BoxId != 248 && (new Random()).Next(10) == 1)
+                    {
+                        Console.WriteLine("Skipped " + dataToSend.Id.ToString());
+                        lock (lockObj)
+                            ToSend.Dequeue();
+                    }
+                    else {
+                        myHub.Invoke("SendPassering", new object[] { dataToSend });
+                        lock (lockObj)
+                            ToSend.Dequeue();
+                        Console.WriteLine("Successfully " + dataToSend.Id.ToString());
+                    }
                 }
                 catch (Exception ex) {
                     Console.WriteLine("Error - sleeping 3 sec before retry");

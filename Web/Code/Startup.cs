@@ -38,7 +38,7 @@ namespace KjeringiData
             var task = Task.Run(() => app.MapSignalR(hubConfig));
             task.Wait(300);
             //try again if it fails just to be sure ;)
-            if (task.IsCanceled) Task.Run(() => app.MapSignalR(hubConfig)).Wait(300);
+            if (task.IsCanceled) Task.Run(() => app.MapSignalR(hubConfig)).Wait(300);            
         }
     }
 }

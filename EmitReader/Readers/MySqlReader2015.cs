@@ -27,7 +27,7 @@ namespace EmitReaderLib
         public void Start()
         {
             MySqlConnection conn = new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[ConnectionStringName].ConnectionString);
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM LocationPasses WHERE year = " + Year + " ORDER BY time", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM History WHERE year = " + Year + " ORDER BY time", conn);
 
             Task.Factory.StartNew(() =>
             {
@@ -49,12 +49,12 @@ namespace EmitReaderLib
                             Force = false
                         };
 
-                            EventHandler<EmitDataRecievedEventArgs> handler = DataReceived;
+                        EventHandler<EmitDataRecievedEventArgs> handler = DataReceived;
 
-                            if (handler != null)
-                                handler(this, new EmitDataRecievedEventArgs(d));
+                        if (handler != null)
+                            handler(this, new EmitDataRecievedEventArgs(d));
 
-                        System.Threading.Thread.Sleep(30);
+                        System.Threading.Thread.Sleep(50);
                     }
                     data.Close();
                     conn.Close();

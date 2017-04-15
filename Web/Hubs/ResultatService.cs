@@ -83,8 +83,8 @@ namespace Web.Hubs
         public void SendPassering(EmitData data)
         {
             //(new EmitReaderLib.Writers.MySqlWriter("kjeringi.writer", TheRace.Instance.Name)).PersistPass(data);
-            //try
-            //{
+            try
+            {
                 // Tester?
                 data.Test = TheRace.Instance.Testers.Contains(data.Id);
 
@@ -94,17 +94,21 @@ namespace Web.Hubs
 
                 if (resultat != null)
                 {
-                    Clients.All.addLogMessage(resultat.Splits().Count > 0 ? resultat.Splits().Last().Time : "", resultat.EmitID, resultat.Startnumber, resultat.Name, resultat.EstimatedArrival.ToLongTimeString());
+                    Clients.All.addLogMessage(resultat.Splits().Count > 0 ? resultat.Splits().Last().Time : "", resultat.EmitID, resultat.Startnumber, resultat.Name, resultat.EstimatedTime);
                     Clients.Group(timestation.Id.ToString()).newPass(resultat);
                 }
                 else
                 {
                     Clients.All.addLogMessage("No result generated", data.Id, data.BoxId, data.Time, "");
                 }
-            //}
-            //catch (Exception ex) { 
-            //    // Duplicate
-            //}
+
+            //List<RaceEvent> events = TheRace.Instance.AnalyzePass(data);
+
+
+            }
+            catch (Exception ex) { 
+                // Duplicate
+            }
         }
 
         public ICollection<Participant> GetCurrentResults(String participantClassId)
@@ -117,15 +121,16 @@ namespace Web.Hubs
             return TheRace.Instance.Participants.Where(p => !p.Finished && p.Passes.Count > 1).OrderByDescending(p => p.EstimatedArrival).Take(20).ToList<Participant>();
         }
 
-        public IEnumerable<Result> GetLatestLocationResult(String id)
+        public IEnumerable<Participant> GetLatestLocationResult(String id)
         {
             TimeStation ts = TheRace.Instance.TimeStations.Find(t => t.Id.Equals(int.Parse(id)));
 
             return TheRace.Instance.Participants
                 .Where(p => p.Passes.ContainsKey(ts.Id))
-                .SelectMany(p => p.Splits().Where(s => s.Location == ts.Id))
-                .ToList<Result>()
-                .OrderByDescending(t => t.Ticks)
+                //.SelectMany(p => p.Splits().Where(s => s.Location == ts.Id))
+                .OrderByDescending(t => t.CurrentTime)
+                .ToList<Participant>()
+                //.OrderByDescending(t => t._splits.OrderBy(s=>s.Ticks).Last().Ticks)
                 .Take(100);                
         }
 

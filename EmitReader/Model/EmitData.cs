@@ -28,6 +28,8 @@ namespace EmitReaderLib.Model
 
         public Boolean Test { get; set; }
 
+        public Boolean Estimated { get; set; }
+
         public int CompareTo(object obj)
         {
             if (obj is EmitData)

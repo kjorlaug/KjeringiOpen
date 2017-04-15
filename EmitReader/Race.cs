@@ -62,8 +62,8 @@ namespace EmitReaderLib
 
         public Participant AddPass(EmitData emitdata) {
 
-            if (!ParticipantByEmit.ContainsKey(emitdata.Id))
-                return null;
+            //if (!ParticipantByEmit.ContainsKey(emitdata.Id))
+            //    return null;
 
             var participant = ParticipantByEmit[emitdata.Id];
             var timestation = TimeStations.Find(x => x.Id.Equals(emitdata.BoxId));
@@ -76,22 +76,37 @@ namespace EmitReaderLib
             {
                 if (!participant.Passes.ContainsKey(timestation.Id))
                     participant.Passes.Add(timestation.Id, emitdata);
+                else if (participant.Passes[timestation.Id].Estimated || emitdata.Force)
+                    participant.Passes[timestation.Id] = emitdata;
 
                 DateTime startTime = participant.Passes.First().Value.Time;
                 TimeSpan totalTime = (emitdata.Time - startTime);
 
-                if (!participant.Finished && !timestation.Start)
+                if (!participant.Finished && !timestation.Start && timestation.Progress.HasValue)
                 {
+                    double ticksSoFar = (double)totalTime.Ticks;
+                    double estimate = (ticksSoFar / timestation.Progress.Value) * 100;
+
+                    participant.CurrentTime = totalTime;
                     participant.TotalTime = totalTime.ToString(@"hh\:mm\:ss");
+                    participant.EstimatedArrival = TimeSpan.FromTicks((long)estimate);
 
-                    if (timestation.Progress.HasValue)
-                    {
-                        double ticksSoFar = (double) totalTime.Ticks;
-                        double estimate = (ticksSoFar * 100.0) / timestation.Progress.Value;
-
-                        participant.EstimatedArrival = startTime + TimeSpan.FromTicks((long)estimate);
+                    // missing values?
+                    foreach (TimeStation shouldHavePassed in TimeStations.Where(t => t.Sequence < timestation.Sequence && t.Official && t.Progress.HasValue))
+                        if (!participant.Passes.ContainsKey(shouldHavePassed.Id))
+                        {
+                            participant.Passes.Add(
+                                shouldHavePassed.Id,
+                                new EmitData() {
+                                    Estimated = true,
+                                    BoxId = shouldHavePassed.Id,
+                                    Chip = emitdata.Chip,
+                                    Id = emitdata.Id,
+                                    Voltage = emitdata.Voltage,
+                                    Time = startTime + TimeSpan.FromTicks((long)(estimate * (shouldHavePassed.Progress / 100)))
+                                });
+                        }
                     }
-                }
 
                 if (timestation.Official)
                 {
@@ -116,7 +131,8 @@ namespace EmitReaderLib
                                         ClassId = c.Id,
                                         Name = participant.IsSuper ? participant.Name : participant.TeamMembers[this.TimeStations.Find(ts => ts.Id.Equals(cur.Key)).Leg - 1],
                                         Team = participant.IsSuper ? "" : participant.Name,
-                                        Time = (cur.Value.Time - prev.Value.Time).ToString(@"hh\:mm\:ss"),
+                                        Time = (cur.Value.Time - prev.Value.Time).Hours > 0 ? (cur.Value.Time - prev.Value.Time).ToString(@"hh\:mm\:ss") : (cur.Value.Time - prev.Value.Time).ToString(@"mm\:ss"),
+                                        Estimated = (cur.Value.Estimated || prev.Value.Estimated),
                                         Ticks = (cur.Value.Time - prev.Value.Time).Ticks,
                                         Total = participant.TotalTime,
                                         Position = this.ParticipantListByClass[c.Id]
@@ -129,7 +145,23 @@ namespace EmitReaderLib
                                         ).ToList<Result>());
                     }
 
-                    participant._splits = res;
+                    participant._splits = res.OrderBy(r => r.Sequence).ThenBy(r => r.Position).ToList<Result>();
+
+                    participant.LegSplits = new List<string>();
+                    participant.LegEstimated = new List<Boolean>();
+
+                    foreach(TimeStation ts in this.TimeStations.Where(ts => ts.Official && !ts.Start).OrderBy(ts => ts.Sequence)) {
+                        if (participant.Leg(participant.Classes.First().Id, ts.Id) != null)
+                        {
+                            participant.LegSplits.Add(participant.Leg(participant.Classes.First().Id, ts.Id).Time);
+                            participant.LegEstimated.Add(participant.Leg(participant.Classes.First().Id, ts.Id).Estimated);
+                        }
+                        else
+                        {
+                            participant.LegSplits.Add("");
+                            participant.LegEstimated.Add(false);
+                        }
+                    }
                 }
 
                 if (timestation.Finish)

@@ -24,5 +24,7 @@ namespace EmitReaderLib.Model
         public int Position { get; set; }
         
         public int EmitId { get; set; }
+
+        public Boolean Estimated { get; set; }
     }
 }

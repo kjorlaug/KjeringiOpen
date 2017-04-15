@@ -179,6 +179,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\flipclock.css" />
+    <Content Include="Content\flipclock.js" />
+    <Content Include="Content\flipclock.min.js" />
     <Content Include="Content\Images\award52.png" />
     <Content Include="Content\Images\difi-logo.png" />
     <Content Include="Content\Images\finance-and-business4.png" />

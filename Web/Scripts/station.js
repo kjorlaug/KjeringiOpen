@@ -19,17 +19,15 @@
 
     // Handle updates
     hub.client.newPass = function (res) {
-        ko.utils.arrayForEach(res._splits, function (item) {
-            if (item.Location == globalStationId)
-                vm.results.unshift(item);
-        });
+        console.log('newPass');
+        vm.results.unshift(res);
     }
-
 
     // Start the connection
     $.connection.hub.start().done(function () {
         hub.server.getLatestLocationResult(globalStationId)
             .done(function (res) {
+                console.log('getLatest');
                 ko.utils.arrayForEach(res, function (item) {
                     vm.results.push(item);
                 });

@@ -48,10 +48,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>674AB5B6C4747BBA0D48ED87B956C199506CBF71</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>B4B403A900857DF65B87A17B85385C95F45F0D01</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>TimerConsole_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>TimerConsole_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="TimerConsole_1_TemporaryKey.pfx" />
     <None Include="TimerConsole_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

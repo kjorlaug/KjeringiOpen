@@ -16,6 +16,7 @@ namespace EmitReaderLib.Model
             Classes = new List<ParticipantClass>();
             Comments = new List<String>();
             Passes = new Dictionary<int, EmitData>();
+            LegSplits = new List<string>();
             _splits = new List<Result>();
         }
 
@@ -44,12 +45,16 @@ namespace EmitReaderLib.Model
             return Passes.ContainsKey(id);
         }
 
-        public Result Leg(String classId, int leg)
+        public Result Leg(String classId, int location)
         {
-            return Splits(classId).Where(r => r.Location == leg).FirstOrDefault();
+            return Splits(classId).Where(r => r.Location == location).FirstOrDefault();
         }
 
         public List<Result> _splits { get; set; }
+
+        public List<String> LegSplits { get; set; }
+
+        public List<Boolean> LegEstimated { get; set; }
 
         public List<Result> Splits(String classId = "")
         {
@@ -61,12 +66,13 @@ namespace EmitReaderLib.Model
 
         public String TotalTime { get; set; }
         
-        public DateTime EstimatedArrival { get; set; }
+        public TimeSpan EstimatedArrival { get; set; }
         public DateTime RealArrival { get; set; }
         public long EstimatedTicks { get { return EstimatedArrival.Ticks; } }
         public String EstimatedTime { get { return EstimatedArrival.ToString(@"hh\:mm\:ss"); } }
 
         public Boolean Finished { get; set; }
 
+        public TimeSpan CurrentTime { get; internal set; }
     }
 }
