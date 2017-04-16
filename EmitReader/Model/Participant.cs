@@ -18,6 +18,7 @@ namespace EmitReaderLib.Model
             Passes = new Dictionary<int, EmitData>();
             LegSplits = new List<string>();
             _splits = new List<Result>();
+            ShirtSizes = new List<String>();
         }
 
         public int Startnumber { get; set; }
@@ -32,6 +33,7 @@ namespace EmitReaderLib.Model
         public Boolean IsSuper { get; set; }
 
         public List<String> TeamMembers { get; set; }
+        public List<String> ShirtSizes { get; set; }
         public String CompanyName { get; set; }
         public String Club { get; set; }
 

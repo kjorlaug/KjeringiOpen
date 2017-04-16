@@ -82,7 +82,9 @@ namespace Web.Hubs
 
         public void SendPassering(EmitData data)
         {
-            //(new EmitReaderLib.Writers.MySqlWriter("kjeringi.writer", TheRace.Instance.Name)).PersistPass(data);
+            if (!TheRace.Instance.InTestMode)
+                (new EmitReaderLib.Writers.MySqlWriter("kjeringi.writer", TheRace.Instance.Name)).PersistPass(data);
+
             try
             {
                 // Tester?
@@ -106,8 +108,8 @@ namespace Web.Hubs
 
 
             }
-            catch (Exception ex) { 
-                // Duplicate
+            catch (Exception ex) {
+                Clients.All.addLogMessage("Exception: " + ex.Message, data.Id, data.BoxId, data.Time, "");
             }
         }
 

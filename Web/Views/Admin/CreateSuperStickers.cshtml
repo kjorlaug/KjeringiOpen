@@ -1,0 +1,47 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateSuperStickers</title>
+
+    <style>
+    @@page {
+        size: A4;
+        margin: 0px;
+    }
+
+    </style>
+</head>
+<body style="width:595pt">
+    @{ 
+        List<EmitReaderLib.Model.Participant> supers = TempData["supers"] as List<EmitReaderLib.Model.Participant>;
+
+        Boolean alternator = false;
+
+        foreach(EmitReaderLib.Model.Participant super in supers)
+        {
+            for (int x = 0; x < 3; x++)
+            {
+                for (int y = 0; y < 4; y++)
+                {
+                        <div style="width:198pt;height:105pt;top:@(x * 198)pt;left:@((y + (alternator ? 4 : 0)) * 105)pt;float:right;">
+                            <div>@super.Startnumber</div>
+                            <strong>@super.Name</strong>
+                            <div>@super.Telephone[0]</div>
+                        </div>
+                }
+            }
+            alternator = !alternator;
+            if (!alternator)
+            {
+                <div style="page-break-after: always;"></div>
+            }
+        }
+    }
+</body>
+</html>

@@ -165,6 +165,7 @@
     <Compile Include="Code\SubSystem.cs" />
     <Compile Include="Code\InMemoryRepository.cs" />
     <Compile Include="Code\Startup.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RaceController.cs" />
     <Compile Include="Global.asax.cs">
@@ -258,10 +259,12 @@
     <Content Include="Views\Home\Legs.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\CreateSuperStickers.cshtml" />
+    <Content Include="Views\Admin\CreatePackageStickers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

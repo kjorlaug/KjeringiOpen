@@ -40,7 +40,8 @@ namespace EmitReaderLib
         protected List<EmitData> Passes { get; set; }
         protected Dictionary<int, Participant> ParticipantByEmit { get; set; }
         internal Dictionary<String, List<Participant>> ParticipantListByClass { get; set; }
-        
+        public Boolean InTestMode { get; set; }
+
         public void AddParticipant(Participant p)
         {
             Participants.Add(p);
@@ -232,6 +233,9 @@ namespace EmitReaderLib
                     break;
                 case 2016:
                     (new EmitReaderLib.Builders.MySqlRaceBuilder2015("kjeringi.2016", Enumerable.Range(5001, 29).ToList<int>(), "2016")).BuildRace(race);
+                    break;
+                case 2017:
+                    (new EmitReaderLib.Builders.MySqlRaceBuilder2015("kjeringi.2017", Enumerable.Range(5001, 29).ToList<int>(), "2017")).BuildRace(race);
                     break;
             }
 

@@ -1,0 +1,66 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateSuperStickers</title>
+
+    <style>
+    @@page {
+        size: A4;
+        margin: 0px;
+    }
+
+    </style>
+
+    <link href="~/Content/kjeringi-embedded.css" rel="stylesheet">
+</head>
+<body style="width:595pt">
+    @{ 
+        List<EmitReaderLib.Model.Participant> participants = TempData["participants"] as List<EmitReaderLib.Model.Participant>;
+
+        int y = 0;
+        int x = 0;
+
+        foreach (EmitReaderLib.Model.Participant par in participants)
+        {
+            <div style="width:297pt;height:210pt;top:@(x * 297)pt;left:@(y * 212)pt;float:left;">
+                <div style="font-weight:bold;padding-bottom:10px;">@par.Startnumber : @par.Name</div>
+
+                @{  
+                    if (par.IsTeam)
+                    {
+                        <table style="border:0px none;width:280pt">
+                            <tr style="padding-bottom:10px"><td style="border-bottom:1pt dotted black"><i class="icon-Downhill"></i><span style="@((par.Startnumber >= 100 && par.Startnumber < 199)? "font-weight:bold" : "" )"> @par.TeamMembers[0]</span> <span style="@((par.Startnumber >= 100 && par.Startnumber < 199)? "" : "display:none" )">(super: @(par.Startnumber + 1000))</span></td><td style="border-bottom:1pt dotted black;padding-left:10px;">@par.ShirtSizes[0]</td></tr>
+                            <tr style="padding-bottom:10px"><td style="border-bottom:1pt dotted black"><i class="icon-Skiing"></i> @par.TeamMembers[1]</td><td style="border-bottom:1pt dotted black;padding-left:10px;">@par.ShirtSizes[1]</td></tr>
+                            <tr style="padding-bottom:10px"><td style="border-bottom:1pt dotted black"><i class="icon-Running"></i> @par.TeamMembers[2]</td><td style="border-bottom:1pt dotted black;padding-left:10px;">@par.ShirtSizes[2]</td></tr>
+                            <tr style="padding-bottom:10px"><td><i class="icon-cycling"></i> @par.TeamMembers[3]</td><td style="padding-left:10px;">@par.ShirtSizes[3]</td></tr>
+                        </table>
+                    } else
+                    {
+                        <div style="width:80%;text-align:right;">@par.ShirtSizes[0]</div>
+                    }
+                    <div style="width:80%;text-align:right;font-weight:bold;padding-top:10pt;">@par.EmitID</div>
+                }
+            </div>
+
+            x++;
+
+            if (x > 1)
+            {
+                x = 0;
+                y++;
+            }
+
+            if (y > 0 && y % 4 == 0)
+            {
+                <div style="page-break-after: always;"></div>
+            }
+        }
+    }
+</body>
+</html>

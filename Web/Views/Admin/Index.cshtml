@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = ViewBag.StationName;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-block">
+                <h4 class="card-title">
+                    Test-modus
+                </h4>
+                <a class="btn btn-secondary @(((Boolean)TempData["testmode"])? "active btn-info" : "")" role="button" href="@Url.Action("SetTestMode", "Admin")">@if ((Boolean)TempData["testmode"]) {
+                        <i class="fa fa-fw fa-thumbs-o-up"></i>
+                }
+                Testmodus</a>
+                <p class="form-text text-muted">
+                    Medfører at passeringer ikkje blir lagra til database og at sms'ar ikkje blir sendt til andre enn test-gruppa
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-block">
+                <h4 class="card-title">
+                    Nullstilling
+                </h4>
+                <a class="btn btn-primary" role="button" href="@Url.Action("Reset", "Admin")">Les inn database på nytt</a>
+                <p class="form-text text-muted">
+                    Bruk for å lese inn data på nytt ved endringar rett i database
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-block">
+                <h4 class="card-title">
+                    Merkelapper for utskrift
+                </h4>
+                    <a class="btn btn-primary" role="button" target="_blank" href="@Url.Action("CreatePackageStickers", "Admin")">Pakkelapper (2 x 4 per A4)</a>
+                    <a class="btn btn-primary" role="button" target="_blank" href="@Url.Action("CreateSuperStickers", "Admin")">Merkelapper super (3 x 8 per A4)</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-block">
+                <h4 class="card-title">
+                    Tildel start og brikkenummer
+                </h4>
+                @using (Html.BeginForm("AssignNumbers", "Admin", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <label for="cardidseries">Brikkeserier</label>
+                        <textarea id="cardidseries" name="cardidseries" class="form-control" rows="3" placeholder="1001-1099&#10;1100-1199"></textarea>
+                        <button type="submit" class="btn btn-primary">Tildel alle nytt brikkenummer</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <script type="text/javascript">
+                $(function () {
+                    toastr["error"]('@TempData["ErrorMessage"]', "Feil!", { timeOut: 0 });
+                });
+    </script>
+}
+
+}   
+@if (TempData["LogMessage"] != null)
+{
+    <script type="text/javascript">
+        $(function () {
+            toastr["success"]('@TempData["LogMessage"]', "Informasjon");
+        });
+    </script>
+}

@@ -31,7 +31,7 @@ namespace EmitReaderLib.Builders
 
             // Adding supers
             var cmd = new MySqlCommand(@"select 
-	                kop_person.startNumber, kop_person.chipNumber, kop_person.firstname, kop_person.surname, kop_person.personClassCode, ifnull(kop_person.companyClass, ifnull(kop_team.companyClass, 0)) as companyClass, kop_team.companyName, kop_person.phoneNumber, kop_person.club,
+	                kop_person.startNumber, kop_person.chipNumber, kop_person.firstname, ifnull(kop_person.tshirtName, '') as tshirtName, kop_person.surname, kop_person.personClassCode, ifnull(kop_person.companyClass, ifnull(kop_team.companyClass, 0)) as companyClass, kop_team.companyName, kop_person.phoneNumber, kop_person.club,
                     case 
 	                    when cupClass = 1 and (2015 - birthyear) in (10, 11,12) then concat('NM', gender, '11')
 	                    when cupClass = 1 and (2015 - birthyear) in (13,14) then concat('NM', gender, '13')
@@ -58,7 +58,9 @@ namespace EmitReaderLib.Builders
                     IsTeam = false,
                     IsSuper = true,
                     IsCompany = data.GetInt32("companyClass").Equals(1),
-                    CompanyName = data.IsDBNull(data.GetOrdinal("club")) ? "": data.GetString("club")
+                    CompanyName = data.IsDBNull(data.GetOrdinal("club")) ? "": data.GetString("club"),
+                    ShirtSizes = new List<String>() { data.GetString("tShirtName")}
+                    
                 };
                 if (p.IsCompany)
                 {
@@ -136,7 +138,7 @@ namespace EmitReaderLib.Builders
             data.Close();
 
             // Adding teams
-            cmd = new MySqlCommand(@"SELECT t.startNumber, t.chipNumber, t.name, t.teamClassCode, t.companyClass, p.firstname, p.surname, p.phoneNumber, p.sprintNumber FROM kop_team t inner join kop_person p on t.id = p.teamid where t.deleted = 0 and t.startNumber is not null and t.chipNumber is not null order by t.startNumber, p.sprintNumber", conn);
+            cmd = new MySqlCommand(@"SELECT t.startNumber, t.chipNumber, t.name, t.teamClassCode, t.companyClass, p.firstname, p.surname, p.phoneNumber, p.sprintNumber, ifnull(p.tshirtName, '') as tshirtName FROM kop_team t inner join kop_person p on t.id = p.teamid where t.deleted = 0 and t.startNumber is not null and t.chipNumber is not null order by t.startNumber, p.sprintNumber", conn);
             data = cmd.ExecuteReader();
 
             data.Read();
@@ -174,6 +176,7 @@ namespace EmitReaderLib.Builders
                 while (moreData && data.GetInt32("startNumber").Equals(p.Startnumber))
                 {
                     p.TeamMembers.Add(data.GetString("firstName") + " " + data.GetString("surname"));
+                    p.ShirtSizes.Add(data.GetString("tshirtName"));
                     if (!String.IsNullOrEmpty(data.GetString("phoneNumber")))
                         p.Telephone.Add(data.GetString("phoneNumber").Replace(" ", ""));
                     moreData = data.Read();
@@ -198,7 +201,8 @@ namespace EmitReaderLib.Builders
                     Telephone = new List<String>() { "95116354", "95246298", "", "41530965", "48021455" },
                     Classes = new List<ParticipantClass>() { race.Classes.Find(x => x.Id.Equals("TEST")) },
                     IsTeam = true,
-                    TeamMembers = new List<String>() {"Rune Kjørlaug", "Petter Stenstavold", "Erlend Klakegg Bergheim", "Even Østvold"},
+                    TeamMembers = new List<String>() { "Rune Kjørlaug", "Petter Stenstavold", "Erlend Klakegg Bergheim", "Even Østvold" },
+                    ShirtSizes = new List<string>() {"m", "m", "m", "m"},
                     IsSuper = false,
                     IsCompany = false                    
                 };

@@ -217,10 +217,9 @@ namespace Web.Controllers
             x = page.Canvas.ClientSize.Width - width;
             page.Canvas.DrawImage(image, x, y, width, height);
 
-            doc.SaveToFile(@"c:\temp\KjeringiOpen-" + year.ToString() + "_" + id.ToString() + ".pdf");
-
-            return File(@"c:\temp\KjeringiOpen-" + year.ToString() + "_" + id.ToString() + ".pdf", "application/pdf");
+            System.IO.MemoryStream file = new System.IO.MemoryStream();
+            doc.SaveToStream(file);
+            return File(file.ToArray(), "application/pdf");
         }
-
     }
 }
