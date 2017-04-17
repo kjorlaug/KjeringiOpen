@@ -225,6 +225,7 @@
       "Id": 248,
       "Official": true,
       "Name": "Sykling",
+      "Progress" :  100,
       "Finish": true,
       "Leg": 4,
       "Sequence": 5

@@ -43,7 +43,14 @@ namespace PrintConsole
 
             myHub.On<Participant>("newPass", (data) =>
             {
-                PrintParticiant(data);
+                try
+                {
+                    Console.WriteLine("Print " + data.Name);
+                    PrintParticiant(data);
+                } catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             });
 
             myHubConn.Start().ContinueWith(task =>
@@ -63,7 +70,7 @@ namespace PrintConsole
         {
             //Create a pdf document.<br>
             PdfDocument doc = new PdfDocument();
-            
+
             //margin
             PdfUnitConvertor unitCvtr = new PdfUnitConvertor();
             PdfMargins margin = new PdfMargins();
@@ -71,11 +78,11 @@ namespace PrintConsole
             margin.Bottom = margin.Top;
             margin.Left = unitCvtr.ConvertUnits(1f, PdfGraphicsUnit.Centimeter, PdfGraphicsUnit.Point);
             margin.Right = margin.Left;
-            
+
             // Create new page
             PdfPageBase page = doc.Pages.Add(PdfPageSize.A4, margin);
             float y = 10;
-            
+
             //title
             PdfBrush brush1 = PdfBrushes.Black;
 
@@ -84,6 +91,7 @@ namespace PrintConsole
             PdfFont font20b = new PdfFont(PdfFontFamily.TimesRoman, 20f, PdfFontStyle.Bold);
             PdfFont font20 = new PdfFont(PdfFontFamily.TimesRoman, 18f, PdfFontStyle.Regular);
             PdfStringFormat format1 = new PdfStringFormat(PdfTextAlignment.Left);
+            format1.WordWrap = PdfWordWrapType.Word;
 
 
             //Draw the image
@@ -93,7 +101,7 @@ namespace PrintConsole
             float x = page.Canvas.ClientSize.Width - width;
             page.Canvas.DrawImage(image, x, y, width, height);
 
-            page.Canvas.DrawString(data.Splits(data.Classes[0].Id).Last().Position.ToString(), font32b, brush1, x + 60, y + 50, format1);
+            page.Canvas.DrawString(data.Splits(data.Classes[0].Id).Last().Position.ToString() + ".", font32b, brush1, x + 60, y + 50, format1);
 
             y = image.Height;
 
@@ -101,7 +109,7 @@ namespace PrintConsole
 
             y = y + font32b.MeasureString(data.Name, format1).Height + 15;
 
-            foreach (ParticipantClass c in data.Classes)
+            foreach (ParticipantClass c in data.Classes.Where(c => c.Official))
             {
                 StringBuilder sb = new StringBuilder(c.Name);
                 sb.Append(" - ");
@@ -114,7 +122,7 @@ namespace PrintConsole
                 y += font20.MeasureString(sb.ToString(), format1).Height + 15;
             }
 
-            List<String[]> splits = data.Splits(data.Classes[0].Id).Select(p => new String[] {p.Leg, p.IsSuper? "":p.Name, p.Time }).ToList<String[]>();
+            List<String[]> splits = data.Splits(data.Classes[0].Id).Select(p => new String[] { p.Leg, p.IsSuper ? "" : p.Name, (p.Estimated ? "(mangler)" : p.Time) }).ToList<String[]>();
             if (splits.Count() > 0)
             {
                 splits.Add(new String[] { "Totaltid", "", data.TotalTime });
@@ -171,9 +179,13 @@ namespace PrintConsole
             x = page.Canvas.ClientSize.Width - width;
             page.Canvas.DrawImage(image, x, y, width, height);
 
+            //System.IO.MemoryStream file = new System.IO.MemoryStream();
+            //doc.SaveToStream(file);
+            //return File(file.ToArray(), "application/pdf");
+
             doc.SaveToFile(@"c:\temp\" + data.EmitID + ".pdf");
-            
-            doc.PrintDocument.Print();
+
+            //doc.PrintDocument.Print();
         }
     }
 }

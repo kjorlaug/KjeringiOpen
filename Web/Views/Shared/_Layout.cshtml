@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>KjeringiOpen Livesenter</title>
-
+  
     <!-- Bootstrap core CSS -->
     <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/kjeringi-embedded.css" rel="stylesheet">
@@ -22,6 +22,13 @@
     <link href="~/Content/css/sb-admin.css" rel="stylesheet">
     <link href="~/Content/flipclock.css" rel="stylesheet">
 
+    <style media="print">
+          @@page {
+               @@bottom-right {
+                    content: counter(page) "/" counter(pages);
+                }
+          }
+    </style>
     @Styles.Render("~/bundles/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
@@ -34,7 +41,7 @@
 <body>
 
     <!-- Navigation -->
-    <nav id="mainNav" class="navbar static-top navbar-toggleable-md navbar-inverse bg-inverse">
+    <nav id="mainNav" class="navbar static-top navbar-toggleable-md navbar-inverse bg-inverse hide-print">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -45,7 +52,13 @@
                     <a class="nav-link" href="@Url.Action("Speaker", "Home")"><i class="fa fa-fw icon-bullhorn"></i> Live!</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Participants", "Home")"><i class="fa fa-fw icon-list-numbered"></i> Deltakarar</a>
+                    <a class="nav-link" href="@Url.Action("Participants", "Home")"><i class="fa fa-fw icon-th"></i> Deltakarar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Results", "Home")"><i class="fa fa-fw icon-list-numbered"></i> Resultat</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index", "Admin")"><i class="fa fa-fw icon-calendar-check-o"></i> Admin</a>
                 </li>
             </ul>
         </div>

@@ -2,114 +2,51 @@
 @using EmitReaderLib;
 @using KjeringiData;
 
-@foreach (ParticipantClass c in (ViewBag.Race as EmitReaderLib.Race).Classes.Where(c => c.Official && !c.Test))    
+@foreach (ParticipantClass c in (ViewBag.Race as EmitReaderLib.Race).Classes.Where(c => c.Official && !c.Test))
 {
     var participantCount = (ViewBag.Race as EmitReaderLib.Race).ParticipantClassCount(c.Id);
-    <h3>@c.Name (@participantCount)</h3>
-
-    <table class="table table-striped" style="page-break-after: always;">
-        <thead>
-            <tr>
-                <th>Plass</th>
-                <th>#</th>
-                <th>Namn</th>
-                <th>1. etappe</th>
-                <th>2. etappe</th>
-                <th>3. etappe</th>
-                <th>4. etappe</th>
-                <th>Totalttid</th>
-                <th><!-- Bedrift/premie--></th>
-            </tr>
-        </thead>
-        <tbody>
-            @{
     var res = (ViewBag.Race as EmitReaderLib.Race).GetResults(c.Id.ToString());
-    var finish = (ViewBag.Race as EmitReaderLib.Race).TimeStations.Where(ts => ts.Finish = true).First();
 
-    var legs = new List<int>() {
-        (ViewBag.Race as EmitReaderLib.Race).TimeStations.Where(ts => ts.Official && ts.Sequence == 1).First().Id,
-        (ViewBag.Race as EmitReaderLib.Race).TimeStations.Where(ts => ts.Official && ts.Sequence == 2).First().Id,
-        (ViewBag.Race as EmitReaderLib.Race).TimeStations.Where(ts => ts.Official && ts.Sequence == 3).First().Id,
-        (ViewBag.Race as EmitReaderLib.Race).TimeStations.Where(ts => ts.Finish && ts.Official).First().Id
-    };
-
-    // Company class?
     int priceCount = (int)Math.Ceiling(res.Count() / 3.0);
-    int filler = 0;
     var pricesSoFar = 0;
-            }
-            @foreach (Participant p in res)
+
+    <div class="row">
+        <div class="col-md-12 text-center text-info">
+            <p class="h3">@c.Name (@participantCount)</p>
+        </div>
+    </div>
+
+    foreach (Participant p in res)
+    {
+    <div class="row" style="page-break-inside: avoid;">
+        <div class="col-md-1">
+            @if (p.Finished)
             {
-                <tr>
-                    <td>
-                        @if (p.Finished)
-                        {
-                            <span class="badge badge-pill badge-info">@p.Leg(c.Id, legs.Last()).Position</span>
-                        }
-                    </td>
-                    <td>@p.Startnumber</td>
-                    <td>@Html.ActionLink(p.Name, "Download", "Home", new { Year = (ViewBag.Race as EmitReaderLib.Race).Name, Id = p.Startnumber }, null)</td>
-
-                    @{
-                filler = 0;
-                    }
-                    @foreach (Result r in p.Splits(c.Id))
-                    {
-                        for (int f = filler; f < legs.IndexOf(r.Location); f++)
-                        {
-                            filler++;
-
-                            <td>
-                                @if (!r.IsSuper)
-                                {
-                                    @r.Name<br />
-                                }
-                                - manglar -
-                            </td>
-
-                        }
-                        <td>
-                            @if (!r.IsSuper)
-                            {
-                                @r.Name<br />
-                            }
-                            @r.Time
-
-                            @{
-                        filler++;
-                            }
-                        </td>
-                    }
-                    @for (int f = filler; f < 4; f++)
-                    {
-                        filler++;
-                        <td>
-                            @if (!p.IsSuper && p.TeamMembers.Count >= f)
-                            {
-                                @p.TeamMembers[f]<br />
-                            }
-                            - manglar -
-                        </td>
-
-                    }
-
-                    <td>
-                        @p.TotalTime
-                    </td>
-                    <td>
-                        @if (priceCount > pricesSoFar++)
-                        {
-                            <img src="~/Content/Images/award52.png" height="24" />
-                        }
-                    </td>
-                </tr>
+                <span class="badge badge-pill badge-info">@p.Leg(c.Id, 248).Position</span>
             }
-        </tbody>
+            else if (p._splits.Count() > 0)
+            {
+                <span class="badge badge-warning">DNF</span>
+            }
+            else
+            {
+                <span class="badge badge-warning">DNS</span>
+            }
+            @if (priceCount > pricesSoFar++ && p.Finished)
+            {
+                <i class="fa fa-fw icon-award-1"></i>                   
+            }
+        </div>
+        <div class="col-md-11">
+            @{
+                Html.RenderPartial("ParticipantCore", p);
+            }
+        </div>
+    </div>
+    }
+    <div class="row" style="page-break-after:always;">
+        <div class="col-md-12 text-center text-info">
+        </div>
+    </div>
 
-
-
-    </table>
 }
-
-<div>Icons made by <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
-<br />

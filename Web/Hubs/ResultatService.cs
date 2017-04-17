@@ -85,8 +85,8 @@ namespace Web.Hubs
             if (!TheRace.Instance.InTestMode)
                 (new EmitReaderLib.Writers.MySqlWriter("kjeringi.writer", TheRace.Instance.Name)).PersistPass(data);
 
-            try
-            {
+//            try
+  //          {
                 // Tester?
                 data.Test = TheRace.Instance.Testers.Contains(data.Id);
 
@@ -107,10 +107,10 @@ namespace Web.Hubs
             //List<RaceEvent> events = TheRace.Instance.AnalyzePass(data);
 
 
-            }
-            catch (Exception ex) {
-                Clients.All.addLogMessage("Exception: " + ex.Message, data.Id, data.BoxId, data.Time, "");
-            }
+   //         }
+   //         catch (Exception ex) {
+   //             Clients.All.addLogMessage("Exception: " + ex.Message, data.Id, data.BoxId, data.Time, "");
+   //         }
         }
 
         public ICollection<Participant> GetCurrentResults(String participantClassId)

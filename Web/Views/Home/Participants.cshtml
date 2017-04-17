@@ -1,101 +1,48 @@
-﻿@using EmitReaderLib.Model;
+﻿
+<nav class="navbar navbar-light bg-faded sticky-top">
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="text" id="number" placeholder="Søk">
+    </form>
+</nav>
+@{ 
+    List<EmitReaderLib.Model.Participant> participants = TempData["participants"] as List<EmitReaderLib.Model.Participant>;
 
-@foreach (Participant p in KjeringiData.TheRace.Instance.Participants.OrderBy(p => p.Startnumber))
-{
-    <div class="row">
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-8">
-                    <p><span class="badge badge-default">@p.Startnumber</span> <strong>@p.Name</strong> 
-                </div>
-                <div class="col-md-4 text-right">
-                    <strong>@p.TotalTime</strong>
-                </div>
-            </div>
-            <div class="row small">
-                <div class="col-md-1">&nbsp;</div>
-                @if (p.IsTeam)
-                {
-                    <div class="col-md-2">
-                        <dl class="row">
-                            <dd class="col-md-12">
-                                @for (int i = 0; i < p.LegSplits.Count; i++)
-                                {
-                                    if (i == 0)
-                                    { 
-                                        <i class="icon-Downhill"></i>
-                                    }
-                                    if (i == 1)
-                                    {
-                                        <i class="icon-Skiing"></i>
-                                    }
-                                    if (i == 2)
-                                    {
-                                        <i class="icon-Running"></i>
-                                    }
-                                    if (i == 3)
-                                    {
-                                        <i class="icon-cycling"></i>
-                                    }
-                                    if (p.LegEstimated[i])
-                                    {
-                                        <span class="font-italic">@p.LegSplits[i]</span>
-                                    } else
-                                    {
-                                        <span>@p.LegSplits[i]</span>
-                                    }
-                                    
-                                    if (p.LegEstimated[i])
-                                    {
-                                        <span class="badge badge-pill badge-warning">&#8494;</span>
-                                    }
-                                }
-                            </dd>
-                        </dl>
-                    </div>
-                    <div class="col-md-4">
-                        <dl class="row">
-                            @foreach (String member in p.TeamMembers)
-                            {
-                                <dd class="col-md-12">
-                                    <span>@member</span>
-                                </dd>
-                            }
-                        </dl>
-                    </div>
-                }
-                else
-                {
-                    <div class="col-md-3">
-                        <dl class="row">
-                            <dd class="col-md-12">
-                                <i class="icon-Downhill"></i> <span data-bind="text: LegSplits[0], css: { 'font-italic' : LegEstimated[0]}"></span> <span class="badge badge-pill badge-warning" data-bind="visible : LegEstimated[0]">&#8494;</span>
-                            </dd>
-                            <dd class="col-md-12">
-                                <i class="icon-Skiing"></i> <span data-bind="text: LegSplits[1], css: { 'font-italic' : LegEstimated[1]}"></span> <span class="badge badge-pill badge-warning" data-bind="visible : LegEstimated[1]">&#8494;</span>
-                            </dd>
-                        </dl>
-                    </div>
-                    <div class="col-md-3">
-                        <dl class="row">
-                            <dd class="col-md-12">
-                                <i class="icon-Running"></i> <span data-bind="text: LegSplits[2], css: { 'font-italic' : LegEstimated[2]}"></span> <span class="badge badge-pill badge-warning" data-bind="visible : LegEstimated[2]">&#8494;</span>
-                            </dd>
-                            <dd class="col-md-12">
-                                <i class="icon-cycling"></i> <span data-bind="text: LegSplits[3], css: { 'font-italic' : LegEstimated[3]}"></span> <span class="badge badge-pill badge-warning" data-bind="visible : LegEstimated[3]">&#8494;</span>
-                            </dd>
-                        </dl>
-                    </div>
-                }
-                <div class="col-md-5">
-                    <dl class="row" data-bind="foreach: _splits">
-                        <dd class="col-md-12" data-bind="visible:(Location == globalStationId)">
-                            <span class="badge badge-pill" data-bind="css: {'badge-info' : ($data.Position == 1), 'badge-warning' : ($data.Position == 2), 'badge-success' : ($data.Position == 3), 'badge-default' : ($data.Position > 3)}, text: Position"></span> <span data-bind="text:Class"></span>
-                        </dd>
-                    </dl>
-                </div>
-            </div>
-            <hr />
-        </div>
-    </div>
+    foreach (EmitReaderLib.Model.Participant p in participants)
+    {
+        Html.RenderPartial("Participant", p);
+    }
 }
+
+<script>
+    $("#number").keyup(function () {
+        //split the current value of searchInput
+        var data = this.value.toUpperCase().split(" ");
+        //create a jquery object of the rows
+        var jo = $(".participant");
+        if (this.value == "") {
+            jo.show();
+            return;
+        }
+        //hide all the rows
+        jo.hide();
+
+        //Recusively filter the jquery object to get results.
+        jo.filter(function (i, v) {
+            var $t = $(this);
+            for (var d = 0; d < data.length; ++d) {
+                if ($t.text().toUpperCase().indexOf(data[d]) > -1) {
+                    return true;
+                }
+            }
+            return false;
+        }).show();
+    }).focus(function () {
+        this.value = "";
+        $(this).css({
+            "color": "black"
+        });
+        $(this).unbind('focus');
+    }).css({
+        "color": "#C0C0C0"
+        });
+</script>

@@ -11,7 +11,7 @@ namespace EmitReaderLib.Builders
 {
     public class MySqlRaceBuilder2015 : IRaceBuilder
     {
-        public MySqlRaceBuilder2015(String connection, List<int> testers, String year)
+        public MySqlRaceBuilder2015(String connection, List<int> testers, String year, DateTime raceDate)
         {
             _conn = connection;
             _year = year;
@@ -20,6 +20,7 @@ namespace EmitReaderLib.Builders
 
         protected String _conn { get; set; }
         protected String _year{ get; set; }
+        protected DateTime _raceDate { get; set; }
         protected List<int> Testers { get; set; }
 
         public void BuildRace(Race race)
@@ -131,7 +132,6 @@ namespace EmitReaderLib.Builders
                     p.Classes.Add(race.Classes.Find(x => x.Id.Equals(cn)));
                 }
 
-
                 race.AddParticipant(p);
             }
 
@@ -171,6 +171,8 @@ namespace EmitReaderLib.Builders
 
                     p.Classes.Add(race.Classes.Find(x => x.Id.Equals(cn)));
                 }
+                p.TeamMembers = new List<string>();
+                p.ShirtSizes = new List<string>();
 
                 // Add medlemmer
                 while (moreData && data.GetInt32("startNumber").Equals(p.Startnumber))
@@ -211,12 +213,14 @@ namespace EmitReaderLib.Builders
 
             race.Testers = Testers;
 
+            DateTime start = new DateTime(_raceDate.Year, _raceDate.Month, _raceDate.Day, 13, 14, 0);
+
             foreach (Participant p in race.Participants)
                 race.AddPass(new EmitData()
                 {
                     BoxId = 1,
                     Id = p.EmitID,
-                    Time = new DateTime(2016, 4, 16, 13, 14, 0)
+                    Time = start
                 });
         }
     }

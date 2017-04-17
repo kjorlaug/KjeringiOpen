@@ -1,5 +1,5 @@
 {
-  "Name": "2017",
+  "Name": "2016",
   "Classes": [
     {
       "Id": "GSJ",
@@ -194,7 +194,7 @@
       "Official": true,
       "Name": "Telemark",
       "Sequence": 1,
-      "Progress" :  25.0,
+      "Progress" :  16.5,
       "Leg": 1
     },
     {
@@ -202,7 +202,7 @@
       "Official": true,
       "Name": "Ski",
       "Sequence": 2,
-      "Progress" :  50.0,
+      "Progress" :  47.4,
       "Leg": 2
     },
     {
@@ -210,7 +210,7 @@
       "Official": true,
       "Name": "Springing",
       "Sequence": 3,
-      "Progress" :  75.0,
+      "Progress" :  68.6,
       "Leg": 3
 
     },
@@ -218,12 +218,14 @@
       "Id": 93,
       "Official": false,
       "Name": "Hamre",
+      "Progress" :  95.7,
       "Sequence": 4
     },
     {
       "Id": 248,
       "Official": true,
       "Name": "Sykling",
+      "Progress" :  100,
       "Finish": true,
       "Leg": 4,
       "Sequence": 5

@@ -31,31 +31,14 @@ namespace Web.Controllers
 
         public ActionResult Participants()
         {
-            ViewBag.Year = int.Parse(TheRace.Instance.Name);
+            //ViewBag.Data = TheRace.Instance.Participants.OrderBy(p => p.Startnumber).ToList<Participant>();
+            //ViewBag.Year = int.Parse(TheRace.Instance.Name);
+
+            TempData["participants"] = TheRace.Instance.Participants.OrderBy(p => p.Startnumber).ToList<Participant>();
             return View();
         }
 
         public ActionResult Results(int? id)
-        {
-            if (id.HasValue)
-                ViewBag.Race = TheRace.Historical(id.Value);
-            else
-                ViewBag.Race = TheRace.Instance;
-
-            return View();
-        }
-
-        public ActionResult CompanyClass(int? id)
-        {
-            if (id.HasValue)
-                ViewBag.Race = TheRace.Historical(id.Value);
-            else
-                ViewBag.Race = TheRace.Instance;
-
-            return View();
-        }
-
-        public ActionResult Legs(int? id)
         {
             if (id.HasValue)
                 ViewBag.Race = TheRace.Historical(id.Value);
@@ -78,29 +61,6 @@ namespace Web.Controllers
             ViewBag.StationName = TheRace.Instance.TimeStations.Find(ts => ts.Id.ToString().Equals(ViewBag.StationId)).Name;
 
             return View();
-        }
-
-        public ActionResult Station(String name)
-        {
-            ViewBag.StationId = name;
-            ViewBag.StationName = TheRace.Instance.TimeStations.Find(ts => ts.Id.ToString().Equals(name)).Name;
-
-            return View();
-        }
-
-        public ActionResult Reset()
-        {
-            //KjeringiData.Konkurranse.Reset();
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult Store()
-        {
-            var json = JsonConvert.SerializeObject(TheRace.Instance, Formatting.Indented);
-            System.IO.File.WriteAllText(Server.MapPath(@"~/App_Data/" + TheRace.Instance.Name + ".json"), json);
-
-            //KjeringiData.Konkurranse.Reset();
-            return RedirectToAction("Index");
         }
 
         public FileResult Download(int year, int id)
@@ -160,7 +120,7 @@ namespace Web.Controllers
                 y += font20.MeasureString(sb.ToString(), format1).Height + 15;
             }
 
-            List<String[]> splits = data.Splits(data.Classes[0].Id).Select(p => new String[] { p.Leg, p.IsSuper ? "" : p.Name, p.Time }).ToList<String[]>();
+            List<String[]> splits = data.Splits(data.Classes[0].Id).Select(p => new String[] { p.Leg, p.IsSuper ? "" : p.Name, (p.Estimated?"(mangler)": p.Time) }).ToList<String[]>();
             if (splits.Count() > 0)
             {
                 splits.Add(new String[] { "Totaltid", "", data.TotalTime });

@@ -14,7 +14,6 @@ namespace EmitReaderLib
 {
     public class Race
     {
-        private volatile Boolean resultsVolatile;
         private object syncRoot = new Object();
 
         public Race()
@@ -22,10 +21,7 @@ namespace EmitReaderLib
             Classes = new List<ParticipantClass>();
             Participants = new List<Participant>();
             TimeStations = new List<TimeStation>();
-            ParticipantByEmit = new Dictionary<int, Participant>();
-            ParticipantListByClass = new Dictionary<String, List<Participant>>();
             Passes = new List<EmitData>();
-            resultsVolatile = false;
             Testers = new List<int>();
         }
 
@@ -38,35 +34,19 @@ namespace EmitReaderLib
         public List<int> Testers { get; set; }
 
         protected List<EmitData> Passes { get; set; }
-        protected Dictionary<int, Participant> ParticipantByEmit { get; set; }
-        internal Dictionary<String, List<Participant>> ParticipantListByClass { get; set; }
         public Boolean InTestMode { get; set; }
 
         public void AddParticipant(Participant p)
         {
             Participants.Add(p);
-
-            IndexParticipant(p);
-        }
-
-        protected void IndexParticipant(Participant p)
-        {
-            foreach (ParticipantClass c in p.Classes)
-            {
-                if (!ParticipantListByClass.ContainsKey(c.Id))
-                    ParticipantListByClass.Add(c.Id, new List<Participant>());
-
-                ParticipantListByClass[c.Id].Add(p);
-            }
-            ParticipantByEmit.Add(p.EmitID, p);
         }
 
         public Participant AddPass(EmitData emitdata) {
 
-            //if (!ParticipantByEmit.ContainsKey(emitdata.Id))
-            //    return null;
+            if (!Participants.Exists(p => p.EmitID == emitdata.Id))
+                return null;
 
-            var participant = ParticipantByEmit[emitdata.Id];
+            var participant = Participants.Where(p => p.EmitID == emitdata.Id).First();
             var timestation = TimeStations.Find(x => x.Id.Equals(emitdata.BoxId));
 
             //// going back in time?
@@ -83,21 +63,16 @@ namespace EmitReaderLib
                 DateTime startTime = participant.Passes.First().Value.Time;
                 TimeSpan totalTime = (emitdata.Time - startTime);
 
-                if (!participant.Finished && !timestation.Start && timestation.Progress.HasValue)
+                if (!timestation.Start && timestation.Progress.HasValue)
                 {
                     double ticksSoFar = (double)totalTime.Ticks;
                     double estimate = (ticksSoFar / timestation.Progress.Value) * 100;
-
-                    participant.CurrentTime = totalTime;
-                    participant.TotalTime = totalTime.ToString(@"hh\:mm\:ss");
-                    participant.EstimatedArrival = TimeSpan.FromTicks((long)estimate);
 
                     // missing values?
                     foreach (TimeStation shouldHavePassed in TimeStations.Where(t => t.Sequence < timestation.Sequence && t.Official && t.Progress.HasValue))
                         if (!participant.Passes.ContainsKey(shouldHavePassed.Id))
                         {
-                            participant.Passes.Add(
-                                shouldHavePassed.Id,
+                            AddPass(
                                 new EmitData() {
                                     Estimated = true,
                                     BoxId = shouldHavePassed.Id,
@@ -107,7 +82,11 @@ namespace EmitReaderLib
                                     Time = startTime + TimeSpan.FromTicks((long)(estimate * (shouldHavePassed.Progress / 100)))
                                 });
                         }
-                    }
+
+                    participant.CurrentTime = totalTime;
+                    participant.TotalTime = totalTime.ToString(@"hh\:mm\:ss");
+                    participant.EstimatedArrival = TimeSpan.FromTicks((long)estimate);
+                }
 
                 if (timestation.Official)
                 {
@@ -136,8 +115,7 @@ namespace EmitReaderLib
                                         Estimated = (cur.Value.Estimated || prev.Value.Estimated),
                                         Ticks = (cur.Value.Time - prev.Value.Time).Ticks,
                                         Total = participant.TotalTime,
-                                        Position = this.ParticipantListByClass[c.Id]
-                                            .Where(p => p.Passes.ContainsKey(cur.Key))
+                                        Position = this.Participants.Where(p => p.Classes.Exists(pc => pc.Id.Equals(c.Id)) && p.Passes.ContainsKey(cur.Key))
                                             .OrderBy(p => p.Passes[cur.Key].Time)
                                             .ToList<Participant>()
                                             .IndexOf(participant) + 1
@@ -177,42 +155,18 @@ namespace EmitReaderLib
 
         public ICollection<Participant> GetResults(String participantClassId)
         {
-            var c = Classes.First(p => p.Id.Equals(participantClassId));
-            var list = new List<Participant>();
-
-            if (!ParticipantListByClass.ContainsKey(c.Id))
-                return new List<Participant>();
-
-            foreach (TimeStation t in TimeStations.Where(ts => ts.Official && ! ts.Start).OrderByDescending(ts => ts.Sequence))
-            {
-                list.AddRange(
-                    ParticipantListByClass[c.Id]
-                        .Except(list)
-                        .Where(p => p.Passes.ContainsKey(t.Id))
-                        .OrderBy(p => p.Passes[t.Id].Time)
-                        .ToList<Participant>()
-                );
-            }
-
-            list.AddRange(
-                ParticipantListByClass[c.Id]
-                    .Except(list)
-                    .Where(p => p.Passes.Count == 1)
-                    .OrderBy(p => p.Startnumber)
-                    .ToList<Participant>()
-             );
-
-            return list;
+            ParticipantClass pc = Classes.Find(c => c.Id.Equals(participantClassId));
+            return Participants.Where(p => p.Classes.Contains(pc)).OrderBy(p => !p.Finished).ThenBy(p => p.RealArrival).ThenByDescending(p => p._splits.Count()).ThenBy(p => p.Startnumber).ToList<Participant>();
         }
 
         public void Initialize()
         {
-            foreach (Participant p in Participants)
-                IndexParticipant(p);
+            //foreach (Participant p in Participants)
+            //    IndexParticipant(p);
         }
         
         public static Race LoadYear(int year, String jsonFile)
-        {
+        {            
             if (!System.IO.File.Exists(jsonFile))
                 throw new IndexOutOfRangeException("Unsupported year");
 
@@ -220,6 +174,7 @@ namespace EmitReaderLib
 
             var race = JsonConvert.DeserializeObject<Race>(json);
 
+            race.InTestMode = true;
             switch (year)
             {
                 case 2013:
@@ -229,18 +184,18 @@ namespace EmitReaderLib
                     (new EmitReaderLib.Builders.MySqlRaceBuilder2014("kjeringi.2013", "2014")).BuildRace(race);
                     break;
                 case 2015:
-                    (new EmitReaderLib.Builders.MySqlRaceBuilder2015("kjeringi", new List<int>(), "2015")).BuildRace(race);
+                    (new EmitReaderLib.Builders.MySqlRaceBuilder2015("kjeringi", new List<int>(), "2015", new DateTime(2015, 4, 18))).BuildRace(race);
                     break;
                 case 2016:
-                    (new EmitReaderLib.Builders.MySqlRaceBuilder2015("kjeringi.2016", Enumerable.Range(5001, 29).ToList<int>(), "2016")).BuildRace(race);
+                    (new EmitReaderLib.Builders.MySqlRaceBuilder2015("kjeringi.2016", Enumerable.Range(5001, 29).ToList<int>(), "2016", new DateTime(2016, 4, 16))).BuildRace(race);
                     break;
                 case 2017:
-                    (new EmitReaderLib.Builders.MySqlRaceBuilder2015("kjeringi.2017", Enumerable.Range(5001, 29).ToList<int>(), "2017")).BuildRace(race);
+                    (new EmitReaderLib.Builders.MySqlRaceBuilder2015("kjeringi.2017", Enumerable.Range(5001, 29).ToList<int>(), "2017", new DateTime(2017, 4, 22))).BuildRace(race);
                     break;
             }
 
             MySqlConnection conn = new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Kjeringi.Writer"].ConnectionString);
-            MySqlCommand cmd = new MySqlCommand("SELECT card, location, concat(curdate(), \" \", time(time)) as time FROM LocationPasses WHERE year = " + year.ToString() + " ORDER BY time", conn);
+            MySqlCommand cmd = new MySqlCommand("SELECT card, location, time FROM LocationPasses WHERE year = " + year.ToString() + " ORDER BY time", conn);
 
             conn.Open();
             var data = cmd.ExecuteReader();
@@ -258,16 +213,14 @@ namespace EmitReaderLib
             }
             data.Close();
             conn.Close();
-            
+
+            race.InTestMode = false;
             return race;
         }
 
         public int ParticipantClassCount(String c)
         {
-            if (ParticipantListByClass.ContainsKey(c))
-                return ParticipantListByClass[c].Count;
-            else
-                return 0;
+            return Participants.Where(p => p.Classes.Exists(pc => pc.Id.Equals(c))).Count();
         }
 
         public List<Result> Top10Leg(int timestation)

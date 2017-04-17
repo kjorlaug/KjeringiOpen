@@ -17,7 +17,7 @@ namespace Web.Controllers
         // GET api/<controller>
         public IEnumerable<int> Get()
         {
-            return new List<int>() { 2013, 2014, 2015, 2016};
+            return new List<int>() { 2013, 2014, 2015, 2016, 2017};
         }
 
         public IEnumerable<ParticipantClass> Get(int year)

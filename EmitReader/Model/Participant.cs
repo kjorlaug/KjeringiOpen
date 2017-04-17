@@ -7,18 +7,11 @@ using EmitReaderLib.Utils;
 
 namespace EmitReaderLib.Model
 {
-    public class Participant
+    public class Participant : IDisposable
     {
         public Participant()
         {
-            Telephone = new List<String>();
-            TeamMembers = new List<String>();
-            Classes = new List<ParticipantClass>();
-            Comments = new List<String>();
             Passes = new Dictionary<int, EmitData>();
-            LegSplits = new List<string>();
-            _splits = new List<Result>();
-            ShirtSizes = new List<String>();
         }
 
         public int Startnumber { get; set; }
@@ -38,7 +31,6 @@ namespace EmitReaderLib.Model
         public String Club { get; set; }
 
         public Boolean Star { get; set; }
-        public List<String> Comments { get; set; }
 
         public Dictionary<int, EmitData> Passes { get; set; }
 
@@ -64,6 +56,15 @@ namespace EmitReaderLib.Model
                 return _splits;
             else
                 return _splits.Where(r => r.ClassId.Equals(classId)).ToList<Result>();
+        }
+
+        public void Dispose()
+        {
+            Passes = null;
+            _splits = null;
+            TeamMembers = null;
+            Telephone = null;
+            ShirtSizes = null;
         }
 
         public String TotalTime { get; set; }
