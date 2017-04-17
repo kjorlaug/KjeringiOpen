@@ -139,55 +139,58 @@ namespace EmitReaderLib.Builders
 
             // Adding teams
             cmd = new MySqlCommand(@"SELECT t.startNumber, t.chipNumber, t.name, t.teamClassCode, t.companyClass, p.firstname, p.surname, p.phoneNumber, p.sprintNumber, ifnull(p.tshirtName, '') as tshirtName FROM kop_team t inner join kop_person p on t.id = p.teamid where t.deleted = 0 and t.startNumber is not null and t.chipNumber is not null order by t.startNumber, p.sprintNumber", conn);
+
             data = cmd.ExecuteReader();
+            
+            bool moreData = data.Read();
 
-            data.Read();
-            bool moreData = true;
-
-            do
+            if (moreData)
             {
-                var p = new Participant()
+                do
                 {
-                    Startnumber = data.GetInt32("startNumber"),
-                    EmitID = int.Parse(data.GetString("chipNumber")),
-                    Name = data.GetString("name"),
-                    Telephone = new List<String>() { data.GetString("phoneNumber").Replace(" ", "") },
-                    Classes = new List<ParticipantClass> { race.Classes.Find(x => x.Id.Equals(data.GetString("teamClassCode"))) },
-                    IsTeam = true,
-                    IsSuper = false,
-                    IsCompany = data.GetInt32("companyClass").Equals(1)
-                };
+                    var p = new Participant()
+                    {
+                        Startnumber = data.GetInt32("startNumber"),
+                        EmitID = int.Parse(data.GetString("chipNumber")),
+                        Name = data.GetString("name"),
+                        Telephone = new List<String>() { data.GetString("phoneNumber").Replace(" ", "") },
+                        Classes = new List<ParticipantClass> { race.Classes.Find(x => x.Id.Equals(data.GetString("teamClassCode"))) },
+                        IsTeam = true,
+                        IsSuper = false,
+                        IsCompany = data.GetInt32("companyClass").Equals(1)
+                    };
 
-                if (p.IsCompany)
-                {
-                    p.Classes.Add(race.Classes.Find(x => x.Id.Equals(data.GetString("teamClassCode").Substring(0, 2) + "BED")));
-                    p.Classes.Add(race.Classes.Find(x => x.Id.Equals("BED")));
-                }
-                if (p.Name.StartsWith("SVV"))
-                {
-                    String cn = "SVV";
-                    if (!race.Classes.Exists(x => x.Id.Equals(cn)))
-                        race.Classes.Add(new ParticipantClass() { Id = cn, Official = false, Name = cn, Sequence = race.Classes.Count + 1 });
+                    if (p.IsCompany)
+                    {
+                        p.Classes.Add(race.Classes.Find(x => x.Id.Equals(data.GetString("teamClassCode").Substring(0, 2) + "BED")));
+                        p.Classes.Add(race.Classes.Find(x => x.Id.Equals("BED")));
+                    }
+                    if (p.Name.StartsWith("SVV"))
+                    {
+                        String cn = "SVV";
+                        if (!race.Classes.Exists(x => x.Id.Equals(cn)))
+                            race.Classes.Add(new ParticipantClass() { Id = cn, Official = false, Name = cn, Sequence = race.Classes.Count + 1 });
 
-                    p.Classes.Add(race.Classes.Find(x => x.Id.Equals(cn)));
-                }
-                p.TeamMembers = new List<string>();
-                p.ShirtSizes = new List<string>();
+                        p.Classes.Add(race.Classes.Find(x => x.Id.Equals(cn)));
+                    }
+                    p.TeamMembers = new List<string>();
+                    p.ShirtSizes = new List<string>();
 
-                // Add medlemmer
-                while (moreData && data.GetInt32("startNumber").Equals(p.Startnumber))
-                {
-                    p.TeamMembers.Add(data.GetString("firstName") + " " + data.GetString("surname"));
-                    p.ShirtSizes.Add(data.GetString("tshirtName"));
-                    if (!String.IsNullOrEmpty(data.GetString("phoneNumber")))
-                        p.Telephone.Add(data.GetString("phoneNumber").Replace(" ", ""));
-                    moreData = data.Read();
-                }
+                    // Add medlemmer
+                    while (moreData && data.GetInt32("startNumber").Equals(p.Startnumber))
+                    {
+                        p.TeamMembers.Add(data.GetString("firstName") + " " + data.GetString("surname"));
+                        p.ShirtSizes.Add(data.GetString("tshirtName"));
+                        if (!String.IsNullOrEmpty(data.GetString("phoneNumber")))
+                            p.Telephone.Add(data.GetString("phoneNumber").Replace(" ", ""));
+                        moreData = data.Read();
+                    }
 
-                p.Telephone = p.Telephone.Distinct().ToList<String>();
-                race.AddParticipant(p);
+                    p.Telephone = p.Telephone.Distinct().ToList<String>();
+                    race.AddParticipant(p);
 
-            } while (moreData);
+                } while (moreData);
+            }
 
             data.Close();
             conn.Close();

@@ -47,8 +47,8 @@ namespace KjeringiData
                     lock (syncRoot)
                     {
                         if (instance == null) {                            
-                            //instance = Race.LoadYear(DateTime.Now.Year, System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/" + DateTime.Now.Year.ToString() + ".json"));
-                            instance = Race.LoadYear(2016, System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/2016.json"));
+                            instance = Race.LoadYear(DateTime.Now.Year, System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/" + DateTime.Now.Year.ToString() + ".json"));
+                            //instance = Race.LoadYear(2016, System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/2016.json"));
                         }
                     }
                 }
