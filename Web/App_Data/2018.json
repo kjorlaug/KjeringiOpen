@@ -126,7 +126,7 @@
       "Name": "Bedrift Superkjering Dame",
       "Sequence": 6,
       "Company": true,
-      "Classes": [ "JSJ", "JSS", "JSV", "JSSV"],      
+      "Classes": [ "JSJ", "JSS", "JSV", "JSSV" ],
       "Test": false
     },
     {
@@ -134,7 +134,7 @@
       "Name": "Bedrift Superkjering Herre",
       "Sequence": 7,
       "Company": true,
-      "Classes": [ "GSJ", "GSS", "GSV", "GSSV"],      
+      "Classes": [ "GSJ", "GSS", "GSV", "GSSV" ],
       "Test": false
     },
     {
@@ -142,7 +142,7 @@
       "Name": "Bedrift lag dame",
       "Sequence": 8,
       "Company": true,
-      "Classes": [ "LJJ", "LJS", "LJV", "LJSV"],      
+      "Classes": [ "LJJ", "LJS", "LJV", "LJSV" ],
       "Test": false
     },
     {
@@ -150,7 +150,7 @@
       "Name": "Bedrift lag kombi",
       "Sequence": 9,
       "Company": true,
-      "Classes": [ "LKJ", "LKS", "LKV", "LKSV"],      
+      "Classes": [ "LKJ", "LKS", "LKV", "LKSV" ],
       "Test": false
     },
     {
@@ -158,13 +158,73 @@
       "Name": "Bedrift lag open klasse",
       "Sequence": 10,
       "Company": true,
-      "Classes": [ "LOJ", "LOS", "LOV", "LOSV"],      
+      "Classes": [ "LOJ", "LOS", "LOV", "LOSV" ],
       "Test": false
     },
     {
       "Id": "BED",
       "Name": "Bedrift vandrepokal",
       "Sequence": 30,
+      "Test": false
+    },
+    {
+      "Id": "NMG11",
+      "Name": "Gutter 11-12 år",
+      "Sequence": 31,
+      "Test": false
+    },
+    {
+      "Id": "NMG13",
+      "Name": "Gutter 13-14 år",
+      "Sequence": 31,
+      "Test": false
+    },
+    {
+      "Id": "NMG15",
+      "Name": "Gutter 15-16 år",
+      "Sequence": 32,
+      "Test": false
+    },
+    {
+      "Id": "NMG17",
+      "Name": "Menn Junior 17-21 år",
+      "Sequence": 33,
+      "Test": false
+    },
+    {
+      "Id": "NMG22",
+      "Name": "Menn Senior 22 år og eldre",
+      "Sequence": 34,
+      "Test": false
+    },
+    {
+      "Id": "NMJ11",
+      "Name": "Jenter 11-12 år",
+      "Sequence": 35,
+      "Test": false
+    },
+    {
+      "Id": "NMJ13",
+      "Name": "Jenter 13-14 år",
+      "Sequence": 36,
+      "Test": false
+    },
+    {
+      "Id": "NMJ15",
+      "Name": "Jenter 15-16 år",
+      "Sequence": 37,
+      "Test": false
+    },
+    {
+      "Id": "NMJ17",
+      "Name": "Kvinner Junior 17-21 år",
+      "Sequence": 38,
+      "Test": false
+    },
+    {
+      "Id": "NMJ22",
+      "Name": "Kvinner Senior 22 år og eldre",
+      "Sequence": 39,
       "Test": false
     },
     {
