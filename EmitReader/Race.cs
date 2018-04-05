@@ -192,6 +192,9 @@ namespace EmitReaderLib
                 case 2017:
                     (new EmitReaderLib.Builders.MySqlRaceBuilder2015("kjeringi.2017", Enumerable.Range(5001, 29).ToList<int>(), "2017", new DateTime(2017, 4, 22))).BuildRace(race);
                     break;
+                case 2018:
+                    (new EmitReaderLib.Builders.RestRaceBuilder("kjeringi", Enumerable.Range(4480, 20).ToList<int>(), "2018", new DateTime(2018, 4, 14))).BuildRace(race);
+                    break;
             }
 
             MySqlConnection conn = new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Kjeringi.Writer"].ConnectionString);

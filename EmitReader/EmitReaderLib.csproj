@@ -59,7 +59,6 @@
     <Compile Include="Builders\IRaceBuilder.cs" />
     <Compile Include="Builders\MySqlRaceBuilder2015.cs" />
     <Compile Include="Builders\MySqlRaceBuilder2014.cs" />
-    <Compile Include="Builders\SqlRaceBuilder2014.cs" />
     <Compile Include="Model\EmitData.cs" />
     <Compile Include="EmitMonitor.cs" />
     <Compile Include="Model\Participant.cs" />
