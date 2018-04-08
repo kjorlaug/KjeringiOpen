@@ -14,6 +14,9 @@ namespace EmitReaderLib.Model
             Passes = new Dictionary<int, EmitData>();
         }
 
+        public int Id { get; set; }
+        public DateTime Updated { get; set; }
+
         public int Startnumber { get; set; }
         public int EmitID { get; set; }
 

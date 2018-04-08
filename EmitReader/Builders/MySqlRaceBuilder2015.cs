@@ -60,8 +60,7 @@ namespace EmitReaderLib.Builders
                     IsSuper = true,
                     IsCompany = data.GetInt32("companyClass").Equals(1),
                     CompanyName = data.IsDBNull(data.GetOrdinal("club")) ? "": data.GetString("club"),
-                    ShirtSizes = new List<String>() { data.GetString("tShirtName")}
-                    
+                    ShirtSizes = new List<String>() { data.GetString("tShirtName")}                 
                 };
                 if (p.IsCompany)
                 {

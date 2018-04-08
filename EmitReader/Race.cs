@@ -9,6 +9,7 @@ using EmitReaderLib.Writers;
 using EmitReaderLib.Utils;
 using Newtonsoft.Json;
 using MySql.Data.MySqlClient;
+using Newtonsoft.Json.Linq;
 
 namespace EmitReaderLib
 {
@@ -41,10 +42,31 @@ namespace EmitReaderLib
             Participants.Add(p);
         }
 
+        public void AddOrUpdateParticipant(Participant p)
+        {
+            // Already there?
+            Participant par = Participants.Find(pp => pp.Id.Equals(p.Id));
+
+            if (par == null)
+                Participants.Add(p);
+            else {
+                JObject existing = JObject.Parse(JsonConvert.SerializeObject(par));
+                JObject updated = JObject.Parse(JsonConvert.SerializeObject(p));
+                if (!JToken.DeepEquals(existing, updated))
+                {
+                    Participants.Remove(par);
+                    Participants.Add(p);
+                }
+            }
+        }
+
         public Participant AddPass(EmitData emitdata) {
 
             if (!Participants.Exists(p => p.EmitID == emitdata.Id))
                 return null;
+
+            if (Participants.Where(p => p.EmitID == emitdata.Id).Count() > 1)
+                throw new IndexOutOfRangeException();
 
             var participant = Participants.Where(p => p.EmitID == emitdata.Id).First();
             var timestation = TimeStations.Find(x => x.Id.Equals(emitdata.BoxId));
