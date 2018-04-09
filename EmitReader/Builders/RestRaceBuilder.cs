@@ -30,7 +30,7 @@ namespace EmitReaderLib.Builders
         public void BuildRace(Race race)
         {
             // Should load the complete model from persisted state
-            var blob = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=kjeringi2018;AccountKey=KRHeqD+iI5m5ZhCw9y5FmVUoglNkIjpKhJWEX3G61ASeNUELd261wUx0f+oQmhV2Fd7Ycvi3utqIkDY8ZAHPsQ==;EndpointSuffix=core.windows.net");
+            var blob = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=kjeringi2018;AccountKey=Ex59J8C12E//TwKjCA2tQWOi9ddCRZ6wRcjGR2o34h/pU9q+7Gq+7+lNbLMQsujhclbLtTnfO7+1PflJzUk/5Q==;EndpointSuffix=core.windows.net");
 
             CloudBlobClient blobClient = blob.CreateCloudBlobClient();
             CloudBlobContainer container = blobClient.GetContainerReference("racedata");
