@@ -13,6 +13,8 @@ namespace EmitReaderLib.Workers
             Race = race;
         }
 
+        public event EventHandler<LogEventArgs> LogEntry;
+
         protected Race Race { get; set; }
 
         public void ProcessData(Model.EmitData data)        

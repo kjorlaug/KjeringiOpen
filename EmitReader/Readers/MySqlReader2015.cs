@@ -12,6 +12,8 @@ namespace EmitReaderLib
     public class MySqlReader2015 : IEmitReader
     {
         public event EventHandler<EmitDataRecievedEventArgs> DataReceived;
+        public String Port { get; set; }
+        public String BoxId { get; set; }
 
         public MySqlReader2015(int tempo, String connectionStringName, String year)
         {

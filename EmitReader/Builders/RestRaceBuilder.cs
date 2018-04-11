@@ -195,8 +195,6 @@ namespace EmitReaderLib.Builders
                     Time = start
                 });
             }
-
-
         }
 
         private dynamic CallRestService(string uri, string method)

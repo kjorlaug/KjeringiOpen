@@ -7,7 +7,6 @@ using EmitReaderLib;
 using EmitReaderLib.Builders;
 using EmitReaderLib.Model;
 using EmitReaderLib.Writers;
-using EmitReaderLib.Workers;
 using Newtonsoft.Json;
 using MySql.Data.MySqlClient;
 

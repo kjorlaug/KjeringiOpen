@@ -27,6 +27,7 @@ namespace SmsSendMessage
                         String s = "Oppgje startnummer " + p.Startnumber.ToString() + " ved henting. Lykke til i KjeringiOpen 2017 :)  SMS-tjenestene levert av Difi i samarbeid med Linkmobility";
                         try
                         {
+                            // http://simple.pswin.com/?USER=kjeringiopen&PW=0DgFPq2k3&RCV=4795116354&SND=Kjeringi&TXT=Testar litt%0A%0D øæå&ENC=utf-8
                             String url = String.Format(@"http://sms.pswin.com/http4sms/send.asp?USER=kjeringiopen&{0}&RCV=47{1}&TXT={2}&snd=Kjeringi", "PW=0DgFPq2k3", mobil, s);
                             WebClient webClient = new WebClient();
                             Stream stream = webClient.OpenRead(url);

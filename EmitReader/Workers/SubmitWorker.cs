@@ -12,6 +12,7 @@ namespace EmitReaderLib
 {
     public class SubmitWorker : IWorker
     {
+        public event EventHandler<LogEventArgs> LogEntry;
 
         protected TaskFactory factory;
         protected String baseUrl;

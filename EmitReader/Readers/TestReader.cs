@@ -12,6 +12,8 @@ namespace EmitReaderLib
     public class TestReader : IEmitReader
     {
         public event EventHandler<EmitDataRecievedEventArgs> DataReceived;
+        public String Port { get; set; }
+        public String BoxId { get; set; }
 
         public TestReader(List<int> testers, List<int> stations)
         {
@@ -33,7 +35,7 @@ namespace EmitReaderLib
                     
                     // init start
                     foreach(int test in Testers)
-                        timers.Add(test, new DateTime(2016,4,16,13,14,00));
+                        timers.Add(test, new DateTime(2018,4,14,13,14,00));
 
 
                     foreach (int box in Stations) { 

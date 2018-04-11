@@ -19,9 +19,23 @@ namespace EmitReaderLib
         public EmitData Data { get; set; }
     }
 
+    public class LogEventArgs
+    {
+
+        public LogEventArgs(String data)
+        {
+            this.Data = data;
+        }
+
+        public String Data { get; set; }
+    }
+
     public interface IEmitReader
     {
         event EventHandler<EmitDataRecievedEventArgs> DataReceived;
+
+        String Port { get; set; }
+        String BoxId { get; set; }
         void Start();
         void Stop();
     }

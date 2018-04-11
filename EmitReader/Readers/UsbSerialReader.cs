@@ -14,7 +14,10 @@ namespace EmitReaderLib
 {
     public class UsbSerialReader : IEmitReader
     {
-        private SerialPort Port { get; set; }
+        public String Port { get; set; }
+        public String BoxId { get; set; }
+
+        private SerialPort SerialPort { get; set; }
         private StringBuilder buffer = new StringBuilder();
 
         protected String ComPortNo { get; set; }
@@ -23,26 +26,25 @@ namespace EmitReaderLib
 
         public UsbSerialReader()
         {
-            ComPortNo = ConfigurationManager.AppSettings["com"];
         }
 
         public void Start()
         {
-            if (Port == null)
-                Port = new SerialPort(ComPortNo, 115200);
+            if (SerialPort == null)
+                SerialPort = new SerialPort(Port, 115200);
 
             //Port.ReceivedBytesThreshold = 200;
 
-            Port.DataReceived += ProcessDataReceived;
+            SerialPort.DataReceived += ProcessDataReceived;
 
-            if (!Port.IsOpen)
-                Port.Open();
+            if (!SerialPort.IsOpen)
+                SerialPort.Open();
         }
 
         public void Stop()
         {
-            if (Port.IsOpen)
-                Port.Close();
+            if (SerialPort.IsOpen)
+                SerialPort.Close();
         }
 
         protected void ProcessDataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -101,17 +103,11 @@ namespace EmitReaderLib
             }
         }
 
-        private static int GetBoxId(string boxIdFromDevice)
+        private int GetBoxId(string boxIdFromDevice)
         {
-            var boxIdSetting = ConfigurationManager.AppSettings["BoxId"];
-            
-            int parseResult;
-            if (string.IsNullOrWhiteSpace(boxIdSetting) || !int.TryParse(boxIdSetting, out parseResult))
-            {
-                return int.Parse(boxIdFromDevice);
-            }
-
-            return int.Parse(boxIdSetting);
+            if (boxIdFromDevice != BoxId)
+                throw new Exception("BoxId not matching config!");
+            return int.Parse(boxIdFromDevice);
         }
     }
 }

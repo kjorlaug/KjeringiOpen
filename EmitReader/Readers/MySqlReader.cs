@@ -13,6 +13,9 @@ namespace EmitReaderLib
     {
         public event EventHandler<EmitDataRecievedEventArgs> DataReceived;
 
+        public String Port { get; set; }
+        public String BoxId { get; set; }
+
         public MySqlReader(int tempo, String connectionStringName, List<String> locations, String year, String cardStart, String cardEnd)
         {
             Tempo = tempo;

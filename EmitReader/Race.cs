@@ -177,8 +177,7 @@ namespace EmitReaderLib
 
         public ICollection<Participant> GetResults(String participantClassId)
         {
-            ParticipantClass pc = Classes.Find(c => c.Id.Equals(participantClassId));
-            return Participants.Where(p => p.Classes.Contains(pc)).OrderBy(p => !p.Finished).ThenBy(p => p.RealArrival).ThenByDescending(p => p._splits.Count()).ThenBy(p => p.Startnumber).ToList<Participant>();
+            return Participants.Where(p => p.Classes.Exists(pc => pc.Id.Equals(participantClassId))).OrderBy(p => !p.Finished).ThenBy(p => p.RealArrival).ThenByDescending(p => p._splits.Count()).ThenBy(p => p.Startnumber).ToList<Participant>();
         }
 
         public void Initialize()

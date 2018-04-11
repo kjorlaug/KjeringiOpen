@@ -11,3 +11,4 @@ bin
 obj
 /*.suo
 /mysql
+docs
