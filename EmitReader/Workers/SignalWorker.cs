@@ -25,6 +25,9 @@ namespace EmitReaderLib
 
         public void StartWork()
         {
+            if (StatusChange != null)
+                StatusChange(this, new KeyValuePair<Color, string>(Color.Yellow, "Initiating SignalR - contacting hub " + Hub));
+
             myHubConn = new HubConnection(Hub);
             myHub = myHubConn.CreateHubProxy("resultatServiceHub");
 
@@ -33,6 +36,7 @@ namespace EmitReaderLib
             myHubConn.ConnectionSlow += myHubConn_ConnectionSlow;
             myHubConn.Closed += myHubConn_Closed;
 
+            // Listen to newPass to give feedback on things registering.
             myHub.On<Participant>("newPass", (data) =>
             {
                 try
@@ -47,12 +51,50 @@ namespace EmitReaderLib
             });
 
             myHubConn.Start()
-                .ContinueWith((prevTask) =>
+                .ContinueWith((prevTask) =>  // Initialization
                 {
                     if (StatusChange != null)
                         StatusChange(this, new KeyValuePair<Color, string>(Color.Green, "Connected: " + myHubConn.State));
                     myHub.Invoke("Join", "EmitReader - " + Name);
                     myHub.Invoke("AddtoGroup", BoxId.ToString());
+                })
+                .ContinueWith((prevTask) => // Loop forever to process data registered
+                {
+                    while (true)
+                    {
+                        if (sending)
+                        {
+                            return;
+                        }
+
+                        lock (lockObj)
+                        {
+                            sending = true;
+                        }
+
+                        while (ToSend.Count > 0)
+                        {
+                            EmitData dataToSend = ToSend.Peek();
+                            try
+                            {
+                                myHub.Invoke("SendPassering", new object[] { dataToSend });
+                                lock (lockObj)
+                                    ToSend.Dequeue();
+                                Console.WriteLine("Successfully " + dataToSend.Id.ToString());
+                            }
+                            catch (Exception ex)
+                            {
+                                if (StatusChange != null)
+                                    StatusChange(this, new KeyValuePair<Color, string>(Color.Red, "Error sending, retry in 3 sec : " + ex.Message));
+                                System.Threading.Thread.Sleep(3000);
+                            }
+                        }
+                        lock (lockObj)
+                        {
+                            sending = false;
+                        }
+                        System.Threading.Thread.Sleep(1000);
+                    }
                 }).Wait();
         }
 
@@ -61,35 +103,6 @@ namespace EmitReaderLib
             lock (lockObj)
             {
                 ToSend.Enqueue(data);
-            }
-
-            if (sending)
-            {
-                return;
-            }
-
-            lock (lockObj) { 
-                sending = true;
-            }
-
-            while (ToSend.Count > 0)
-            {
-                EmitData dataToSend = ToSend.Peek();
-                try
-                {
-                    myHub.Invoke("SendPassering", new object[] { dataToSend });
-                    lock (lockObj)
-                        ToSend.Dequeue();
-                    Console.WriteLine("Successfully " + dataToSend.Id.ToString());
-                }
-                catch (Exception ex) {
-                    Console.WriteLine("Error - sleeping 3 sec before retry");
-                    System.Threading.Thread.Sleep(3000);
-                }
-            }
-            lock (lockObj)
-            {
-                sending = false;
             }
         }
 

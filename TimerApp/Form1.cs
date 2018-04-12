@@ -1,17 +1,11 @@
 ﻿using EmitReaderLib;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using System.Threading;
+using System.IO.Ports;
 
 namespace TimerApp
 {
@@ -30,9 +24,6 @@ namespace TimerApp
 
         private void SetStatusText(string text)
         {
-            // InvokeRequired required compares the thread ID of the  
-            // calling thread to the thread ID of the creating thread.  
-            // If these threads are different, it returns true.  
             if (this.status.InvokeRequired)
             {
                 StringArgReturningVoidDelegate d = new StringArgReturningVoidDelegate(SetStatusText);
@@ -40,7 +31,7 @@ namespace TimerApp
             }
             else
             {
-                this.status.Text = text;
+                this.lblStatus.Text = text;
             }
         }
         private void SetStatusColor(Color c)
@@ -106,27 +97,65 @@ namespace TimerApp
             AddInboundItem(e.Data);
         }
 
+        private void ToggleGui(Boolean enabled)
+        {
+            ctlBtn.Enabled = enabled;
+            ctlReader.Enabled = enabled;
+            ctlBox.Enabled = enabled;
+            ctlCom.Enabled = enabled;
+        }
+
         private void ctlBtn_Click(object sender, EventArgs e)
         {
-            EmitReader = new TestReader(new List<int>() { 4481 }, new List<int>() { 90, 91, 92, 93, 248 });
+            ToggleGui(false);
+
+            // Selected boxId and name
+            String boxId = ctlBox.SelectedItem.ToString().Split('-')[0].Trim();
+            String boxName = ctlBox.SelectedItem.ToString().Split('-')[1].Trim();
+
             EmitWorker = new SignalWorker()
             {
-                BoxId = "90",
-                Name = "",
+                BoxId = boxId,
+                Name = boxName,
                 Hub = ConfigurationManager.AppSettings["hub"]
             };
 
+            // Live or test reader?
+            if (ctlReader.SelectedIndex == 1)
+                EmitReader = new TestReader(new List<int>() { 4481 }, new List<int>() { int.Parse(boxId) });
+            else
+            {
+                EmitReader = new UsbSerialReader() {
+                    BoxId = boxId,
+                    Port = ctlCom.SelectedIndex >= 0 ? ctlCom.SelectedItem.ToString() : ConfigurationManager.AppSettings["com"]
+                };
+            }
+
             EmitReader.DataReceived += Reader_DataReceived;
-            EmitReader.Port = ConfigurationManager.AppSettings["com"];
-            EmitReader.BoxId = "90";
 
             EmitWorker.StatusChange += EmitWorker_StatusChange;
             EmitWorker.LogEntry += EmitWorker_LogEntry;
+
 
             Thread thread = new Thread(new ThreadStart(EmitWorker.StartWork));
             thread.Start();
 
             EmitReader.Start();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ctlReader.SelectedIndex = 0;
+            ctlBox.SelectedIndex = 0;
+
+            // Iterate and populate with serial ports
+            foreach (String sp in SerialPort.GetPortNames())
+                ctlCom.Items.Add(sp);
+
+            if (!String.IsNullOrEmpty(ConfigurationManager.AppSettings["com"]) && ctlCom.Items.IndexOf(ConfigurationManager.AppSettings["com"]) >= 0)
+                ctlCom.SelectedIndex = ctlCom.Items.IndexOf(ConfigurationManager.AppSettings["com"]);
+            else if (ctlCom.Items.Count > 0)
+                ctlCom.SelectedIndex = 0;
         }
     }
 }

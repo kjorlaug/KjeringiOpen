@@ -53,7 +53,7 @@ namespace EmitReaderLib
 
                                 EventHandler<EmitDataRecievedEventArgs> handler = DataReceived;
 
-                                if (handler != null)
+                                if (handler != null && int.Parse(BoxId) == box)
                                     handler(this, new EmitDataRecievedEventArgs(d));
 
                             System.Threading.Thread.Sleep(1000);

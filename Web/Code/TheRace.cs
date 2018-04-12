@@ -58,6 +58,7 @@ namespace KjeringiData
 
         public static void Reset()
         {
+
             instance = null;
         }
     }

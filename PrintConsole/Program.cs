@@ -178,14 +178,9 @@ namespace PrintConsole
             height = image.Height;
             x = page.Canvas.ClientSize.Width - width;
             page.Canvas.DrawImage(image, x, y, width, height);
-
-            //System.IO.MemoryStream file = new System.IO.MemoryStream();
-            //doc.SaveToStream(file);
-            //return File(file.ToArray(), "application/pdf");
+            doc.PrintDocument.Print();
 
             doc.SaveToFile(@"c:\temp\" + data.EmitID + ".pdf");
-
-            //doc.PrintDocument.Print();
         }
     }
 }

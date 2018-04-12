@@ -43,29 +43,35 @@ namespace SmsConsole
                     // In production?
                     StringBuilder sb = new StringBuilder();
 
-                    sb.Append("Klasse: ");
+                    sb.Append("Mellombels resultat Kjeringi Open 2018 %0A");
+                    sb.Append(data.Name);
+                    sb.Append(" (");
                     sb.Append(data.Classes[0].Name);
-                    sb.Append(" Etapper: ");
+                    sb.Append(")%0AEtapper:%0A");
+
+                    List<String[]> splits = data.Splits(data.Classes[0].Id).Select(p => new String[] { p.Leg, p.IsSuper ? "" : p.Name, (p.Estimated ? "(mangler)" : p.Time) }).ToList<String[]>();
 
                     foreach (Result r in data.Splits(data.Classes[0].Id))
                     {
-                        sb.Append(r.Leg.Replace("å", "a"));
                         sb.Append(" ");
-                        sb.Append(r.Time);
+                        sb.Append(r.Leg);
+                        sb.Append(" ");
+                        sb.Append(r.Estimated ? "(mangler)" : r.Time);
                         sb.Append(" (");
                         sb.Append(r.Position);
-                        sb.Append(" plass) ");
+                        sb.Append(".plass) ");
+                        sb.Append("%0A");
                     }
-                    sb.Append(" Totaltid: ");
+                    sb.Append("Totaltid: ");
                     sb.Append(data.TotalTime);
 
-                    sb.Append(" SMS-tjenestene levert av Difi i samarbeid med Linkmobility");
+                    sb.Append("%0ASMS-tjenestene levert av Difi i samarbeid med Linkmobility");
 
                     foreach (String tlf in data.Telephone.Distinct())
                     {
                         try
                         {
-                            String url = String.Format(@"http://sms.pswin.com/http4sms/send.asp?USER=kjeringiopen&{0}&RCV=47{1}&TXT={2}&snd=Kjeringi", "PW=0DgFPq2k3", tlf, sb.ToString());
+                            String url = String.Format(@"http://simple.pswin.com/?USER=kjeringiopen&{0}&RCV=47{1}&TXT={2}&snd=Kjeringi&ENC=utf-8", "PW=0DgFPq2k3", tlf, sb.ToString());
                             WebClient webClient = new WebClient();
                             Stream stream = webClient.OpenRead(url);
                             StreamReader reader = new StreamReader(stream);

@@ -39,12 +39,12 @@ namespace EmitReaderLib.Builders
                 container.Create();
 
             CloudBlockBlob blockBlob = container.GetBlockBlobReference(_year);
-            if (blockBlob.Exists())
-            {
-                List<Participant> par = JsonConvert.DeserializeObject<List<Participant>>(blockBlob.DownloadText());
-                foreach (Participant p in par)
-                    race.AddParticipant(p);
-            }
+            //if (blockBlob.Exists())
+            //{
+            //    List<Participant> par = JsonConvert.DeserializeObject<List<Participant>>(blockBlob.DownloadText());
+            //    foreach (Participant p in par)
+            //        race.AddParticipant(p);
+            //}
 
             // Sync state with external system
             var supers = CallRestService("https://www.skriki.no/kop18/ipa/allsuper/fetchAll?token=7c24773044681dd6c8c435f726269364f549698436504d09c382639841c408a3", "GET");
@@ -167,7 +167,7 @@ namespace EmitReaderLib.Builders
                     Startnumber = testId,
                     EmitID = testId,
                     Name = "Test " + testId.ToString(),
-                    Telephone = new List<String>() { "95116354", "95246298", "", "41530965", "48021455" },
+                    Telephone = new List<String>() { "95116354" /*, "95246298", "", "41530965", "48021455" */ },
                     Classes = new List<ParticipantClass>() { race.Classes.Find(x => x.Id.Equals("TEST")) },
                     IsTeam = true,
                     TeamMembers = new List<String>() { "Rune Kjørlaug", "Petter Stenstavold", "Erlend Klakegg Bergheim", "Even Østvold" },

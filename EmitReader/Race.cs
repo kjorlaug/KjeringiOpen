@@ -66,7 +66,7 @@ namespace EmitReaderLib
                 return null;
 
             if (Participants.Where(p => p.EmitID == emitdata.Id).Count() > 1)
-                throw new IndexOutOfRangeException();
+                throw new IndexOutOfRangeException(emitdata.Id.ToString());
 
             var participant = Participants.Where(p => p.EmitID == emitdata.Id).First();
             var timestation = TimeStations.Find(x => x.Id.Equals(emitdata.BoxId));
