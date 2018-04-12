@@ -12,7 +12,10 @@
     <style>
     @@page {
         size: A4;
-        margin: 0px;
+        margin-left: 15px;
+        margin-top: 20px;
+        margin-bottom: 0px;
+        margin-right: 0px;
     }
 
     </style>
@@ -28,7 +31,7 @@
 
         foreach (EmitReaderLib.Model.Participant par in participants)
         {
-            <div style="width:297pt;height:210pt;top:@(x * 297)pt;left:@(y * 212)pt;float:left;">
+            <div style="width:297pt;height:210pt;top:@(x * 297)pt;left:@(y * 212)pt;float:left;padding-top: 10pt">
                 <div style="font-weight:bold;padding-bottom:10px;">@par.Startnumber : @par.Name</div>
 
                 @{  
