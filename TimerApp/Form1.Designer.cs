@@ -32,6 +32,7 @@
             this.lstOutbound = new System.Windows.Forms.ListBox();
             this.status = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.ctlBtn = new System.Windows.Forms.Button();
             this.lstInbound = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,8 +40,8 @@
             this.ctlReader = new System.Windows.Forms.ComboBox();
             this.ctlBox = new System.Windows.Forms.ComboBox();
             this.ctlCom = new System.Windows.Forms.ComboBox();
-            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.readWorker = new System.ComponentModel.BackgroundWorker();
+            this.writeWorker = new System.ComponentModel.BackgroundWorker();
             this.status.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,6 +71,16 @@
             this.lblStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 21);
+            // 
+            // toolStripSplitButton1
+            // 
+            this.toolStripSplitButton1.BackColor = System.Drawing.Color.Red;
+            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
+            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(39, 24);
+            this.toolStripSplitButton1.Text = "statusButton";
             // 
             // ctlBtn
             // 
@@ -144,15 +155,10 @@
             this.ctlCom.Size = new System.Drawing.Size(125, 24);
             this.ctlCom.TabIndex = 10;
             // 
-            // toolStripSplitButton1
+            // writeWorker
             // 
-            this.toolStripSplitButton1.BackColor = System.Drawing.Color.Red;
-            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
-            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(39, 24);
-            this.toolStripSplitButton1.Text = "statusButton";
+            this.writeWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.writeWorker_DoWork);
+            this.writeWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.writeWorker_RunWorkerCompleted);
             // 
             // Form1
             // 
@@ -192,6 +198,7 @@
         private System.Windows.Forms.ComboBox ctlCom;
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
         private System.ComponentModel.BackgroundWorker readWorker;
+        private System.ComponentModel.BackgroundWorker writeWorker;
     }
 }
 

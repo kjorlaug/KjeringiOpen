@@ -64,7 +64,7 @@ namespace EmitReaderLib
                 {
                     Console.WriteLine(ex.Message);
                 }
-            });
+            }).Wait();
         }
 
         public void Stop()

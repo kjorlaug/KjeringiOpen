@@ -169,62 +169,74 @@
     },
     {
       "Id": "NMG11",
-      "Name": "Gutter 11-12 år",
+      "Name": "Norgescup Gutter 11-12 år",
       "Sequence": 31,
       "Test": false
     },
     {
       "Id": "NMG13",
-      "Name": "Gutter 13-14 år",
+      "Name": "Norgescup Gutter 13-14 år",
       "Sequence": 31,
       "Test": false
     },
     {
       "Id": "NMG15",
-      "Name": "Gutter 15-16 år",
+      "Name": "Norgescup Gutter 15-16 år",
       "Sequence": 32,
       "Test": false
     },
     {
       "Id": "NMG17",
-      "Name": "Menn Junior 17-21 år",
+      "Name": "Norgescup Menn Junior 17-21 år",
       "Sequence": 33,
       "Test": false
     },
     {
       "Id": "NMG22",
-      "Name": "Menn Senior 22 år og eldre",
+      "Name": "Norgescup Menn Senior 22 år og eldre",
       "Sequence": 34,
       "Test": false
     },
     {
-      "Id": "NMJ11",
-      "Name": "Jenter 11-12 år",
+      "Id": "NMG40",
+      "Name": "Norgescup Menn veteran",
       "Sequence": 35,
       "Test": false
     },
     {
-      "Id": "NMJ13",
-      "Name": "Jenter 13-14 år",
+      "Id": "NMJ11",
+      "Name": "Norgescup Jenter 11-12 år",
       "Sequence": 36,
       "Test": false
     },
     {
-      "Id": "NMJ15",
-      "Name": "Jenter 15-16 år",
+      "Id": "NMJ13",
+      "Name": "Norgescup Jenter 13-14 år",
       "Sequence": 37,
       "Test": false
     },
     {
-      "Id": "NMJ17",
-      "Name": "Kvinner Junior 17-21 år",
+      "Id": "NMJ15",
+      "Name": "Norgescup Jenter 15-16 år",
       "Sequence": 38,
       "Test": false
     },
     {
-      "Id": "NMJ22",
-      "Name": "Kvinner Senior 22 år og eldre",
+      "Id": "NMJ17",
+      "Name": "Norgescup Kvinner Junior 17-21 år",
       "Sequence": 39,
+      "Test": false
+    },
+    {
+      "Id": "NMJ22",
+      "Name": "Norgescup Kvinner Senior 22 år og eldre",
+      "Sequence": 40,
+      "Test": false
+    },
+    {
+      "Id": "NMJ40",
+      "Name": "Norgescup Kvinner Veteran",
+      "Sequence": 41,
       "Test": false
     },
     {

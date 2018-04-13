@@ -17,5 +17,6 @@ namespace EmitReaderLib
 
         event EventHandler<LogEventArgs> LogEntry;
         event EventHandler<KeyValuePair<Color, String>> StatusChange;
+        event EventHandler<Boolean> Ready;
     }
 }

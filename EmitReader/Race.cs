@@ -62,21 +62,19 @@ namespace EmitReaderLib
 
         public Participant AddPass(EmitData emitdata) {
 
+            // Not a valid participant - ignore...
             if (!Participants.Exists(p => p.EmitID == emitdata.Id))
                 return null;
 
-            if (Participants.Where(p => p.EmitID == emitdata.Id).Count() > 1)
-                throw new IndexOutOfRangeException(emitdata.Id.ToString());
-
+            // Find participant
             var participant = Participants.Where(p => p.EmitID == emitdata.Id).First();
+            
+            // And reporting timestation
             var timestation = TimeStations.Find(x => x.Id.Equals(emitdata.BoxId));
-
-            //// going back in time?
-            //if (participant.Passes.Count > 0 && participant.Passes.Last().Value.Time > emitdata.Time)
-            //    return null;
 
             lock (syncRoot)
             {
+                // Update participant
                 if (!participant.Passes.ContainsKey(timestation.Id))
                     participant.Passes.Add(timestation.Id, emitdata);
                 else if (participant.Passes[timestation.Id].Estimated || emitdata.Force)

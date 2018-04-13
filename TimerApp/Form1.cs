@@ -122,7 +122,7 @@ namespace TimerApp
 
             // Live or test reader?
             if (ctlReader.SelectedIndex == 1)
-                EmitReader = new TestReader(new List<int>() { 4481 }, new List<int>() { int.Parse(boxId) });
+                EmitReader = new TestReader(new List<int>() { 4481 }, new List<int>() { int.Parse(boxId) }) { BoxId = boxId };
             else
             {
                 EmitReader = new UsbSerialReader() {
@@ -135,12 +135,17 @@ namespace TimerApp
 
             EmitWorker.StatusChange += EmitWorker_StatusChange;
             EmitWorker.LogEntry += EmitWorker_LogEntry;
+            EmitWorker.Ready += EmitWorker_Ready;
 
+            writeWorker.RunWorkerAsync();
+        }
 
-            Thread thread = new Thread(new ThreadStart(EmitWorker.StartWork));
-            thread.Start();
-
-            EmitReader.Start();
+        private void EmitWorker_Ready(object sender, bool e)
+        {
+            if (e)
+                EmitReader.Start();
+            else
+                ToggleGui(true);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -156,6 +161,17 @@ namespace TimerApp
                 ctlCom.SelectedIndex = ctlCom.Items.IndexOf(ConfigurationManager.AppSettings["com"]);
             else if (ctlCom.Items.Count > 0)
                 ctlCom.SelectedIndex = 0;
+        }
+
+        private void writeWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            EmitWorker.StartWork();
+        }
+
+        private void writeWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            int i = 0;
+            // problems?
         }
     }
 }

@@ -11,6 +11,7 @@ namespace EmitReaderLib
     {
         public event EventHandler<LogEventArgs> LogEntry;
         public event EventHandler<KeyValuePair<Color, string>> StatusChange;
+        public event EventHandler<Boolean> Ready;
 
         private HubConnection myHubConn;
         private IHubProxy myHub;
@@ -60,6 +61,9 @@ namespace EmitReaderLib
                 })
                 .ContinueWith((prevTask) => // Loop forever to process data registered
                 {
+                    if (Ready != null)
+                        Ready(this, true);
+
                     while (true)
                     {
                         if (sending)

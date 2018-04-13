@@ -20,6 +20,7 @@ namespace EmitReaderLib.Builders
             _conn = connection;
             _year = year;
             Testers = testers;
+            _raceDate = raceDate;
         }
 
         protected String _conn { get; set; }
@@ -57,29 +58,15 @@ namespace EmitReaderLib.Builders
                     Updated = (DateTime) t.updated,
                     Startnumber = t.startNumber == null ? -(int)t.id : (int)t.startNumber,
                     EmitID = t.chipNumber == null || t.chipNumber == 0 ? -(int)t.id - 1000 : (int)t.chipNumber,
-                    Name = t.firstname + " " + t.surname,
-                    Telephone = new List<String>() { t.phone.ToString() },
-                    Classes = new List<ParticipantClass>() { race.Classes.Find(x => x.Id.Equals((string)t.classCode)) },
+                    Name = PrettyPrintName(t.firstname.ToString() + " " + t.surname.ToString()),
+                    Telephone = new List<String>() { CleanMobile(t.phone.ToString()) },
+                    Classes = new List<ParticipantClass>(),
                     IsTeam = false,
                     IsSuper = true,
                     IsCompany = false,
                     CompanyName = t.companyName ?? "",
                     ShirtSizes = new List<String>() { (string)t.tshirtCode ?? "" }
                 };
-                if (!String.IsNullOrEmpty(p.CompanyName))
-                {
-                    p.Classes.Add(race.Classes.Find(x => x.Id.Equals("BED")));
-                }
-                if (!String.IsNullOrWhiteSpace(t.club.ToString()))
-                {
-                    var cn = t.club.ToString();
-                    if (cn.StartsWith("SVV") || cn.ToLower().StartsWith("vegil"))
-                        cn = "SVV";
-                    if (!race.Classes.Exists(x => x.Id.Equals(cn)))
-                        race.Classes.Add(new ParticipantClass() { Id = cn, Official = false, Name = cn, Sequence = race.Classes.Count + 1 });
-
-                    p.Classes.Add(race.Classes.Find(x => x.Id.Equals(cn)));
-                }
 
                 /* Add logic on NM */
                 if (t.norwaycup == 1)
@@ -95,9 +82,30 @@ namespace EmitReaderLib.Builders
                         ageGroup = 15;
                     else if (age <= 21)
                         ageGroup = 17;
+                    else if (age >= 40)
+                        ageGroup = 40;
 
                     var cn = "NM" + t.gender + ageGroup.ToString();
                     p.Classes.Add(race.Classes.Find(x => x.Id.Equals(cn)));
+                }
+
+                if (t.notASuper.ToString().Equals("0")) {
+                    p.Classes.Add(race.Classes.Find(x => x.Id.Equals((string)t.classCode)));
+
+                    if (!String.IsNullOrEmpty(p.CompanyName))
+                    {
+                        p.Classes.Add(race.Classes.Find(x => x.Id.Equals(t.classCode.ToString().Substring(0, 2) + "BED")));
+                    }
+                    if (!String.IsNullOrWhiteSpace(t.club.ToString()))
+                    {
+                        var cn = t.club.ToString();
+                        if (cn.StartsWith("SVV") || cn.ToLower().StartsWith("vegil"))
+                            cn = "SVV";
+                        if (!race.Classes.Exists(x => x.Id.Equals(cn)))
+                            race.Classes.Add(new ParticipantClass() { Id = cn, Official = false, Name = cn, Sequence = race.Classes.Count + 1 });
+
+                        p.Classes.Add(race.Classes.Find(x => x.Id.Equals(cn)));
+                    }
                 }
 
                 if (p.EmitID == 0)
@@ -133,13 +141,14 @@ namespace EmitReaderLib.Builders
 
                 foreach (dynamic m in t.members)
                 {
-                    p.TeamMembers.Add((string)m.firstname + " " + (string)m.surname);
-                    p.Telephone.Add((string)m.phone);
+                    p.TeamMembers.Add(PrettyPrintName((string)m.firstname + " " + (string)m.surname));
+                    p.Telephone.Add(CleanMobile((string)m.phone));
                     p.ShirtSizes.Add((string)m.tshirtCode);
                 }
 
                 if (!String.IsNullOrEmpty(p.CompanyName))
                 {
+                    p.Classes.Add(race.Classes.Find(x => x.Id.Equals(t.classCode.ToString().Substring(0, 2) + "BED")));
                     p.Classes.Add(race.Classes.Find(x => x.Id.Equals("BED")));
                 }
                 if (!String.IsNullOrWhiteSpace(t.club.ToString()))
@@ -180,6 +189,15 @@ namespace EmitReaderLib.Builders
 
             race.Testers = Testers;
 
+            //Check for duplicated chips
+            List<string> duplicated = race.Participants.GroupBy(x => x.EmitID)
+              .Where(g => g.Count() > 1)
+              .Select(y => y.Key.ToString())
+              .ToList<string>();
+
+            if (duplicated.Count > 0)
+                throw new Exception("Duplicate chipnumber: " + String.Join(", ", duplicated.ToArray()));
+
             // Create JSON dump and store in blob
             string json = JsonConvert.SerializeObject(race.Participants, Formatting.None);
             blockBlob.UploadTextAsync(json).Wait();
@@ -195,6 +213,31 @@ namespace EmitReaderLib.Builders
                     Time = start
                 });
             }
+        }
+
+        private string PrettyPrintName(string name)
+        {
+            String[] parts = name.Split(' ');
+            parts = parts.Where(x => !string.IsNullOrEmpty(x)).ToArray<String>();
+
+            for (int i = 0; i < parts.Length; i++)
+                parts[i] = parts[i].Substring(0, 1).ToUpper() + parts[i].Substring(1).ToLower();
+
+            return String.Join(" ", parts);
+        }
+
+        private String CleanMobile(String n)
+        {
+            if (String.IsNullOrEmpty(n))
+                return n;
+
+            n = n.Replace(" ", "");
+            //n = n.Replace("+47", "");
+
+            if (!(n.Length == 0 || n.Length == 8))
+                throw new Exception(n);
+
+            return n;
         }
 
         private dynamic CallRestService(string uri, string method)

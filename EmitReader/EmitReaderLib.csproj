@@ -79,9 +79,9 @@
     <Compile Include="Readers\MySqlReader.cs" />
     <Compile Include="Readers\UsbSerialReader.cs" />
     <Compile Include="Readers\IEmitReader.cs" />
-    <Compile Include="Utils\KeyValuePairEnumerableExtensions.cs" />
+    <Compile Include="Readers\Utils\KeyValuePairEnumerableExtensions.cs" />
     <Compile Include="Workers\IWorker.cs" />
-    <Compile Include="Utils\LimitConcurrencyLevelTaskScheduler.cs" />
+    <Compile Include="Readers\Utils\LimitConcurrencyLevelTaskScheduler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Workers\SignalWorker.cs" />
     <Compile Include="Writers\MySqlWriter.cs" />
