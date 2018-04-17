@@ -1,9 +1,9 @@
 ﻿@model EmitReaderLib.Model.Participant
 
 <div class="row participant">
-    <div class="col-md-12">
+    <div class="col-sm-12">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-sm-8">
                 <p>
                     <span class="badge badge-default startnumber">@Model.Startnumber</span>
                     <strong>
@@ -18,50 +18,46 @@
                     </strong>
                 </p>
             </div>
-            <div class="col-md-4 text-right">
-                @if (Model.Classes[0].Id.StartsWith("NM"))
-                {
-                    <strong>@((Model.LegSplits.Count > 0) ? Model.LegSplits[0] : "")</strong><br />
-                }   
-                else if (Model.Finished)
+            <div class="col-sm-4 text-right">
+                @if (Model.Finished)
                 {
                     <strong>@Model.TotalTime</strong><br />
                 }
             </div>
         </div>
-        @if (!Model.Classes[0].Id.StartsWith("NM"))
+        @if (!(Model.Classes[0].Id.StartsWith("NM") && Model.Classes.Count == 1))
         {
             if (!Model.IsTeam)
             {
             <div class="row small">
-                <div class="col-md-2"></div>
-                <div class="col-md-2">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-2">
                     @Html.Raw((Model.LegEstimated.Count() > 0 && Model.LegEstimated[0]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "")
                     <i class="fa fa-fw icon-Downhill"></i> @((Model.LegSplits.Count > 0) ? Model.LegSplits[0] : "")
                 </div>
-                <div class="col-md-2">@Html.Raw((Model.LegEstimated.Count() > 1 && Model.LegEstimated[1]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-Skiing"></i> @((Model.LegSplits.Count > 1) ? Model.LegSplits[1] : "") </div>
-                <div class="col-md-2">@Html.Raw((Model.LegEstimated.Count() > 2 && Model.LegEstimated[2]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-Running"></i> @((Model.LegSplits.Count > 2) ? Model.LegSplits[2] : "") </div>
-                <div class="col-md-2">@Html.Raw((Model.LegEstimated.Count() > 3 && Model.LegEstimated[3]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-cycling"></i> @((Model.LegSplits.Count > 3) ? Model.LegSplits[3] : "") </div>
-                <div class="col-md-2"></div>
+                <div class="col-sm-2">@Html.Raw((Model.LegEstimated.Count() > 1 && Model.LegEstimated[1]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-Skiing"></i> @((Model.LegSplits.Count > 1) ? Model.LegSplits[1] : "") </div>
+                <div class="col-sm-2">@Html.Raw((Model.LegEstimated.Count() > 2 && Model.LegEstimated[2]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-Running"></i> @((Model.LegSplits.Count > 2) ? Model.LegSplits[2] : "") </div>
+                <div class="col-sm-2">@Html.Raw((Model.LegEstimated.Count() > 3 && Model.LegEstimated[3]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-cycling"></i> @((Model.LegSplits.Count > 3) ? Model.LegSplits[3] : "") </div>
+                <div class="col-sm-2"></div>
             </div>
             }
             else
             {
                 <div class="row small">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-2 text-right">@Html.Raw((Model.LegEstimated.Count() > 0 && Model.LegEstimated[0]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-Downhill"></i> @((Model.LegSplits.Count > 0) ? Model.LegSplits[0] : "") </div>
-                    <div class="col-md-2">@Model.TeamMembers[0]</div>
-                    <div class="col-md-2 text-right">@Html.Raw((Model.LegEstimated.Count() > 2 && Model.LegEstimated[2]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-Running"></i> @((Model.LegSplits.Count > 2) ? Model.LegSplits[2] : "") </div>
-                    <div class="col-md-2">@Model.TeamMembers[2]</div>
-                    <div class="col-md-2"></div>
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-2 text-right">@Html.Raw((Model.LegEstimated.Count() > 0 && Model.LegEstimated[0]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-Downhill"></i> @((Model.LegSplits.Count > 0) ? Model.LegSplits[0] : "") </div>
+                    <div class="col-sm-2">@Model.TeamMembers[0]</div>
+                    <div class="col-sm-2 text-right">@Html.Raw((Model.LegEstimated.Count() > 2 && Model.LegEstimated[2]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-Running"></i> @((Model.LegSplits.Count > 2) ? Model.LegSplits[2] : "") </div>
+                    <div class="col-sm-2">@Model.TeamMembers[2]</div>
+                    <div class="col-sm-2"></div>
                 </div>
                 <div class="row small">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-2 text-right">@Html.Raw((Model.LegEstimated.Count() > 1 && Model.LegEstimated[1]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-Skiing"></i> @((Model.LegSplits.Count > 1) ? Model.LegSplits[1] : "") </div>
-                    <div class="col-md-2">@Model.TeamMembers[1]</div>
-                    <div class="col-md-2 text-right">@Html.Raw((Model.LegEstimated.Count() > 3 && Model.LegEstimated[3]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-cycling"></i> @((Model.LegSplits.Count > 3) ? Model.LegSplits[3] : "") </div>
-                    <div class="col-md-2">@Model.TeamMembers[3]</div>
-                    <div class="col-md-2"></div>
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-2 text-right">@Html.Raw((Model.LegEstimated.Count() > 1 && Model.LegEstimated[1]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-Skiing"></i> @((Model.LegSplits.Count > 1) ? Model.LegSplits[1] : "") </div>
+                    <div class="col-sm-2">@Model.TeamMembers[1]</div>
+                    <div class="col-sm-2 text-right">@Html.Raw((Model.LegEstimated.Count() > 3 && Model.LegEstimated[3]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-cycling"></i> @((Model.LegSplits.Count > 3) ? Model.LegSplits[3] : "") </div>
+                    <div class="col-sm-2">@Model.TeamMembers[3]</div>
+                    <div class="col-sm-2"></div>
                 </div>
             }
         }

@@ -35,7 +35,10 @@ namespace SmsConsole
                 .ContinueWith((prevTask) =>
                 {
                     myHub.Invoke("Join", "SMS - " + name);
-                    myHub.Invoke("AddtoGroup", "");
+                    myHub.Invoke("AddtoGroup", "90");
+                    myHub.Invoke("AddtoGroup", "91");
+                    myHub.Invoke("AddtoGroup", "92");
+                    myHub.Invoke("AddtoGroup", "248");
                 }).Wait();
 
             myHub.On<Participant>("newPass", (data) =>

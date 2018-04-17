@@ -1,0 +1,115 @@
+﻿@using EmitReaderLib.Model;
+@{
+    ViewBag.Title = "Topptider";
+
+    var res = (ViewBag.Race as EmitReaderLib.Race).GetBySplits(ViewBag.StationId, ViewBag.ageclass, ViewBag.gender);
+
+    var position = 0;
+
+    int split = 0;
+    if (ViewBag.StationId == 91)
+    {
+        split = 1;
+    }
+    else if (ViewBag.StationId == 92)
+    {
+        split = 2;
+    }
+    else if (ViewBag.StationId == 248)
+    {
+        split = 3;
+    }
+
+}
+
+<div class="row">
+    <div class="col-md-12 flex-first">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="get" class="form-inline">
+                    @Html.Hidden("name", new { ViewBag.StationId })
+
+                    <label for="ageclass">Klasse:</label>
+                    @Html.DropDownList("ageclass", new List<SelectListItem>
+                           {
+                               new SelectListItem { Text = "Alle", Value = "0", Selected = (ViewBag.ageclass == 0)},
+                               new SelectListItem { Text = "Junior", Value = "1", Selected = (ViewBag.ageclass == 1)},
+                               new SelectListItem { Text = "Senior", Value = "2", Selected = (ViewBag.ageclass == 2)},
+                               new SelectListItem { Text = "Veteran", Value = "3", Selected = (ViewBag.ageclass == 3)},
+                               new SelectListItem { Text = "Superveteran", Value = "4", Selected = (ViewBag.ageclass == 4)}
+                           }, new { @onchange = "this.form.submit();", @class = "form-control" })
+
+                    <span style="width:40px">&nbsp;</span>
+                    <label for="gender">Kjønn:</label>
+                    @Html.DropDownList("gender", new List<SelectListItem>
+                           {
+                               new SelectListItem { Text = "Alle", Value = "0", Selected = (ViewBag.gender == 0)},
+                               new SelectListItem { Text = "Menn", Value = "1", Selected = (ViewBag.gender == 1)},
+                               new SelectListItem { Text = "Kvinner", Value = "2", Selected = (ViewBag.gender == 2)}
+                           }, new { @onchange = "this.form.submit();", @class = "form-control" })
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                &nbsp;
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-tabs nav-fill">
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewBag.StationId.Equals(90) ? "active" : "")" href="@Url.Action("TopSplits", "Home", new { name = 90, ageclass = ViewBag.ageclass, gender=ViewBag.gender }, null)"><i class="fa fa-fw icon-Downhill"></i> Telemark</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewBag.StationId.Equals(91) ? "active" : "")" href="@Url.Action("TopSplits", "Home", new { name = 91, ageclass = ViewBag.ageclass, gender=ViewBag.gender  }, null)"><i class="fa fa-fw icon-Skiing"></i> Ski</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewBag.StationId.Equals(92) ? "active" : "")" href="@Url.Action("TopSplits", "Home", new { name = 92, ageclass = ViewBag.ageclass, gender=ViewBag.gender  }, null)"><i class="fa fa-fw icon-Running"></i> Springing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewBag.StationId.Equals(248) ? "active" : "")" href="@Url.Action("TopSplits", "Home", new { name = 248, ageclass = ViewBag.ageclass, gender=ViewBag.gender  }, null)"><i class="fa fa-fw icon-cycling"></i> Sykling</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@foreach (Participant p in res)
+{
+position++;
+<div class="row" style="page-break-inside: avoid;">
+    <div class="col-sm-1">
+        <span class="badge badge-pill badge-info">@position</span>
+    </div>
+    <div class="col-sm-11">
+        <div class="row participant">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <p>
+                            <span class="badge badge-default startnumber">@p.Startnumber</span>
+                            <strong>
+                                @if (p.IsTeam)
+                            {
+                                @p.TeamMembers[split]
+                        }
+                        else
+                        {
+                            @p.Name
+                    }
+
+                            </strong>
+                        </p>
+                    </div>
+                    <div class="col-sm-4 text-right">
+                        <strong>@p._splits[split * p.Classes.Count].Time</strong><br />
+                    </div>
+                </div>
+                <hr />
+            </div>
+        </div>
+    </div>
+</div>
+}

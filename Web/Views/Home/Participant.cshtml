@@ -1,15 +1,15 @@
 ﻿@model EmitReaderLib.Model.Participant
 
-<div class="row participant">
-    <div class="col-md-12">
+<div class="row participant" style="page-break-inside: avoid;">
+    <div class="col-sm-12">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-sm-8">
                 <p>
                     <span class="badge badge-default startnumber">@Model.Startnumber</span> 
                     <strong>@Model.Name</strong> 
                 </p>
             </div>
-            <div class="col-md-4 text-right">
+            <div class="col-sm-4 text-right">
                 @if (Model.Finished)
                 {
                     <strong>@Model.TotalTime</strong><br />
@@ -26,53 +26,53 @@
             </div>
         </div>
         <div class="row small">
-            <div class="col-md-3">
+            <div class="col-sm-3">
                 <dl class="row">
-                    <dd class="col-md-12 text-right">@Html.Raw((Model.LegEstimated.Count() > 0 && Model.LegEstimated[0]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-Downhill"></i> @((Model.LegSplits.Count > 0) ? Model.LegSplits[0] : "") </dd>
-                    <dd class="col-md-12 text-right">@Html.Raw((Model.LegEstimated.Count() > 1 && Model.LegEstimated[1]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-Skiing"></i> @((Model.LegSplits.Count > 1) ? Model.LegSplits[1] : "") </dd>
+                    <dd class="col-sm-12 text-right">@Html.Raw((Model.LegEstimated.Count() > 0 && Model.LegEstimated[0]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-Downhill"></i> @((Model.LegSplits.Count > 0) ? Model.LegSplits[0] : "") </dd>
+                    <dd class="col-sm-12 text-right">@Html.Raw((Model.LegEstimated.Count() > 1 && Model.LegEstimated[1]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-Skiing"></i> @((Model.LegSplits.Count > 1) ? Model.LegSplits[1] : "") </dd>
                     @if (Model.IsTeam)
                     {
-                        <dd class="col-md-12 text-right">@Html.Raw((Model.LegEstimated.Count() > 2 && Model.LegEstimated[2]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-Running"></i> @((Model.LegSplits.Count > 2) ? Model.LegSplits[2] : "") </dd>
-                        <dd class="col-md-12 text-right">@Html.Raw((Model.LegEstimated.Count() > 3 && Model.LegEstimated[3]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-cycling"></i> @((Model.LegSplits.Count > 3) ? Model.LegSplits[3] : "") </dd>
+                        <dd class="col-sm-12 text-right">@Html.Raw((Model.LegEstimated.Count() > 2 && Model.LegEstimated[2]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-Running"></i> @((Model.LegSplits.Count > 2) ? Model.LegSplits[2] : "") </dd>
+                        <dd class="col-sm-12 text-right">@Html.Raw((Model.LegEstimated.Count() > 3 && Model.LegEstimated[3]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-cycling"></i> @((Model.LegSplits.Count > 3) ? Model.LegSplits[3] : "") </dd>
                     }
                 </dl>
             </div>
-            <div class="col-md-3">
+            <div class="col-sm-3">
                 <dl class="row">
                     @if (!Model.IsTeam)
                     {
-                        <dd class="col-md-12">@Html.Raw((Model.LegEstimated.Count() > 2 && Model.LegEstimated[2]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-Running"></i> @((Model.LegSplits.Count > 2) ? Model.LegSplits[2] : "") </dd>
-                        <dd class="col-md-12">@Html.Raw((Model.LegEstimated.Count() > 3 && Model.LegEstimated[3]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-cycling"></i> @((Model.LegSplits.Count > 3) ? Model.LegSplits[3] : "") </dd>
+                        <dd class="col-sm-12">@Html.Raw((Model.LegEstimated.Count() > 2 && Model.LegEstimated[2]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-Running"></i> @((Model.LegSplits.Count > 2) ? Model.LegSplits[2] : "") </dd>
+                        <dd class="col-sm-12">@Html.Raw((Model.LegEstimated.Count() > 3 && Model.LegEstimated[3]) ? "<span class=\"badge badge-pill badge-warning\">&#8494;</span>" : "") <i class="fa fa-fw icon-cycling"></i> @((Model.LegSplits.Count > 3) ? Model.LegSplits[3] : "") </dd>
                     }
                     else
                     {
-                        <dd class="col-md-12" style="border-bottom:1px dotted black">@Model.TeamMembers[0]</dd>
-                        <dd class="col-md-12" style="border-bottom:1px dotted black">@Model.TeamMembers[1]</dd>
-                        <dd class="col-md-12" style="border-bottom:1px dotted black">@Model.TeamMembers[2]</dd>
-                        <dd class="col-md-12">@Model.TeamMembers[3]</dd>
+                        <dd class="col-sm-12" style="border-bottom:1px dotted black">@Model.TeamMembers[0]</dd>
+                        <dd class="col-sm-12" style="border-bottom:1px dotted black">@Model.TeamMembers[1]</dd>
+                        <dd class="col-sm-12" style="border-bottom:1px dotted black">@Model.TeamMembers[2]</dd>
+                        <dd class="col-sm-12">@Model.TeamMembers[3]</dd>
                     }
                 </dl>
             </div>
-            <div class="col-md-2">
+            <div class="col-sm-2">
                 <dl class="row">
-                    <dd class="col-md-12">@(Model.Telephone.Count() > 0 ? Model.Telephone[0] : "")</dd>
+                    <dd class="col-sm-12">@(Model.Telephone.Count() > 0 ? Model.Telephone[0] : "")</dd>
                     @if (Model.IsTeam)
                     {
-                        <dd class="col-md-12">@(Model.Telephone.Count() > 1 ? Model.Telephone[1] : "")</dd>
-                        <dd class="col-md-12">@(Model.Telephone.Count() > 2 ? Model.Telephone[2] : "")</dd>
-                        <dd class="col-md-12">@(Model.Telephone.Count() > 3 ? Model.Telephone[3] : "")</dd>
+                        <dd class="col-sm-12">@(Model.Telephone.Count() > 1 ? Model.Telephone[1] : "")</dd>
+                        <dd class="col-sm-12">@(Model.Telephone.Count() > 2 ? Model.Telephone[2] : "")</dd>
+                        <dd class="col-sm-12">@(Model.Telephone.Count() > 3 ? Model.Telephone[3] : "")</dd>
                     }
                 </dl>
             </div>
-            <div class="col-md-3">
+            <div class="col-sm-3">
                 <dl class="row">
                     @foreach (EmitReaderLib.Model.ParticipantClass c in Model.Classes)
                     {
-                        <dd class="col-md-12">@c.Name</dd>
+                        <dd class="col-sm-12">@c.Name</dd>
                     }
                 </dl>
             </div>
-            <div class="col-md-1 text-right">@Model.EmitID</div>
+            <div class="col-sm-1 text-right">@Model.EmitID</div>
         </div>
         <hr />
     </div>

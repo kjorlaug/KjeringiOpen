@@ -20,8 +20,8 @@ namespace Web.Controllers
     {
         public ActionResult Index()
         {
-            //return RedirectToAction("Results");
-            return View();
+            return RedirectToAction("Results");
+            //return View();
         }
 
         public ActionResult EmitReader()
@@ -44,6 +44,25 @@ namespace Web.Controllers
                 ViewBag.Race = TheRace.Historical(id.Value);
             else
                 ViewBag.Race = TheRace.Instance;
+
+            return View();
+        }
+
+        public ActionResult ResultsNM(int? id)
+        {
+            if (id.HasValue)
+                ViewBag.Race = TheRace.Historical(id.Value);
+            else
+                ViewBag.Race = TheRace.Instance;
+
+            return View();
+        }
+        public ActionResult TopSplits(int? name, int? ageclass, int? gender)
+        {
+            ViewBag.StationId = name ?? 90;
+            ViewBag.ageclass = ageclass ?? 0;
+            ViewBag.gender = gender ?? 0;
+            ViewBag.Race = TheRace.Instance;
 
             return View();
         }

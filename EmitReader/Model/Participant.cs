@@ -28,10 +28,14 @@ namespace EmitReaderLib.Model
         public Boolean IsTeam { get; set; }
         public Boolean IsSuper { get; set; }
 
+        public List<int> Ages { get; set; }
+
         public List<String> TeamMembers { get; set; }
         public List<String> ShirtSizes { get; set; }
         public String CompanyName { get; set; }
         public String Club { get; set; }
+
+        public List<int> Gender { get; set; }
 
         public Boolean Star { get; set; }
 

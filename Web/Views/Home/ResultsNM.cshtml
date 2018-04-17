@@ -1,0 +1,38 @@
+﻿@using EmitReaderLib.Model;
+@using EmitReaderLib;
+@using KjeringiData;
+
+@foreach (ParticipantClass c in (ViewBag.Race as EmitReaderLib.Race).Classes.Where(c => c.Official && !c.Test && c.Id.StartsWith("NM")))
+{
+    var participantCount = (ViewBag.Race as EmitReaderLib.Race).ParticipantClassCount(c.Id);
+    var res = (ViewBag.Race as EmitReaderLib.Race).GetResults(c.Id.ToString()).Where(p => p._splits.Count > 0);
+
+    int priceCount = (int)Math.Ceiling(res.Count() / 3.0);
+    var pricesSoFar = 0;
+
+    <div class="row">
+        <div class="col-sm-12 text-center text-info">
+            <p class="h3">@c.Name (@participantCount)</p>
+        </div>
+    </div>
+
+    foreach (Participant p in res)
+    {
+    <div class="row" style="page-break-inside: avoid;">
+        <div class="col-sm-1">
+            <span class="badge badge-pill badge-info">@p.Leg(c.Id, 90).Position</span>
+        </div>
+        <div class="col-sm-11">
+            @{
+                Html.RenderPartial("ParticipantCoreNM", p);
+            }
+        </div>
+        <hr/>
+    </div>
+    }
+    <div class="row" style="page-break-after:always;">
+        <div class="col-sm-12 text-center text-info">
+        </div>
+    </div>
+
+}

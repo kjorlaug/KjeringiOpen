@@ -175,7 +175,51 @@ namespace EmitReaderLib
 
         public ICollection<Participant> GetResults(String participantClassId)
         {
-            return Participants.Where(p => p.Classes.Exists(pc => pc.Id.Equals(participantClassId))).OrderBy(p => !p.Finished).ThenBy(p => p.RealArrival).ThenByDescending(p => p._splits.Count()).ThenBy(p => p.Startnumber).ToList<Participant>();
+            if (participantClassId.StartsWith("NM"))
+            {
+                return Participants.Where(p => p.Classes.Exists(pc => pc.Id.Equals(participantClassId)))
+                    .OrderBy(p => p._splits.Count() > 0 ? p._splits[0].Ticks : -1)
+                    .ThenByDescending(p => p._splits.Count())
+                    .ThenBy(p => p.Startnumber).ToList<Participant>();
+            }
+            else
+            {
+                return Participants.Where(p => p.Classes.Exists(pc => pc.Id.Equals(participantClassId)))
+                    .OrderBy(p => !p.Finished)
+                    .ThenBy(p => p.RealArrival)
+                    .ThenByDescending(p => p._splits.Count())
+                    .ThenBy(p => p.Startnumber).ToList<Participant>();
+            }
+        }
+
+        public ICollection<Participant> GetBySplits(int stationId, int ageClass, int gender)
+        {
+            int split = 0;
+            if (stationId == 91)
+                split = 1;
+            else if (stationId == 92)
+                split = 2;
+            else if (stationId == 248)
+                split = 3;
+
+            List<Participant> res = Participants.Where(p => p.Finished && !p.Classes.Exists(pc => pc.Id.Equals("TEST")))
+                .OrderBy(p => p._splits[split * p.Classes.Count].Ticks).ToList<Participant>();
+
+            if (ageClass == 1) // Junior 10-16
+                res = res.Where(p => p.Ages[p.IsSuper ? 0 : split] <= 16).ToList<Participant>();
+            else if (ageClass == 2) // Senior 17-39
+                res = res.Where(p => p.Ages[p.IsSuper ? 0 : split] >= 17 && p.Ages[p.IsSuper ? 0 : split] <= 39).ToList<Participant>();
+            else if (ageClass == 3) // Veteran 40-49
+                res = res.Where(p => p.Ages[p.IsSuper ? 0 : split] >= 40 && p.Ages[p.IsSuper ? 0 : split] <= 49).ToList<Participant>();
+            else if (ageClass == 4) // Superveteran 50
+                res = res.Where(p => p.Ages[p.IsSuper ? 0 : split] >= 50).ToList<Participant>();
+
+            if (gender == 1) //men
+                res = res.Where(p => p.Gender[p.IsSuper ? 0 : split] == 1).ToList<Participant>();
+            else if(gender == 2) //women
+                res = res.Where(p => p.Gender[p.IsSuper ? 0 : split] == 2).ToList<Participant>();
+
+            return res;
         }
 
         public void Initialize()

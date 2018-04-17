@@ -325,6 +325,9 @@
     <Content Include="Views\Admin\CreatePackageStickers.cshtml" />
     <Content Include="Views\Home\Participant.cshtml" />
     <Content Include="Views\Home\ParticipantCore.cshtml" />
+    <Content Include="Views\Home\ResultsNM.cshtml" />
+    <Content Include="Views\Home\ParticipantCoreNM.cshtml" />
+    <Content Include="Views\Home\TopSplits.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -127,13 +127,23 @@ namespace Web.Hubs
         {
             TimeStation ts = TheRace.Instance.TimeStations.Find(t => t.Id.Equals(int.Parse(id)));
 
-            return TheRace.Instance.Participants
-                .Where(p => p.Passes.ContainsKey(ts.Id))
-                //.SelectMany(p => p.Splits().Where(s => s.Location == ts.Id))
-                .OrderByDescending(t => t.CurrentTime)
-                .ToList<Participant>()
-                //.OrderByDescending(t => t._splits.OrderBy(s=>s.Ticks).Last().Ticks)
-                .Take(100);                
+            if (id.Equals("93")) // Incoming :)
+            {
+                return TheRace.Instance.Participants
+                    .Where(p => !p.Finished && p.Passes.ContainsKey(ts.Id))
+                    .OrderByDescending(p => p.EstimatedArrival)
+                    .Take(10).ToList<Participant>();
+            }
+            else
+            {
+                return TheRace.Instance.Participants
+                    .Where(p => p.Passes.ContainsKey(ts.Id))
+                    //.SelectMany(p => p.Splits().Where(s => s.Location == ts.Id))
+                    .OrderByDescending(t => t.CurrentTime)
+                    .ToList<Participant>()
+                    //.OrderByDescending(t => t._splits.OrderBy(s=>s.Ticks).Last().Ticks)
+                    .Take(100);
+            }
         }
 
 

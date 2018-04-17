@@ -64,6 +64,8 @@ namespace EmitReaderLib.Builders
                     IsTeam = false,
                     IsSuper = true,
                     IsCompany = false,
+                    Ages = new List<int> { int.Parse(_year) - (int)t.birthYear},
+                    Gender = new List<int> { t.gender.ToString().Equals("J") ? 2 : 1 },
                     CompanyName = t.companyName ?? "",
                     ShirtSizes = new List<String>() { (string)t.tshirtCode ?? "" }
                 };
@@ -111,7 +113,8 @@ namespace EmitReaderLib.Builders
                 if (p.EmitID == 0)
                     throw new IndexOutOfRangeException();
 
-                race.AddOrUpdateParticipant(p);
+                if (p.Startnumber > 0)
+                    race.AddOrUpdateParticipant(p);
             }
 
             // Sync state with external system
@@ -133,7 +136,9 @@ namespace EmitReaderLib.Builders
                     IsCompany = false,
                     CompanyName = t.companyName ?? "",
                     TeamMembers = new List<String>(),
-                    ShirtSizes = new List<String>()
+                    ShirtSizes = new List<String>(),
+                    Ages = new List<int>(),
+                    Gender = new List<int>()
                 };
 
                 if (p.EmitID == 0)
@@ -142,6 +147,8 @@ namespace EmitReaderLib.Builders
                 foreach (dynamic m in t.members)
                 {
                     p.TeamMembers.Add(PrettyPrintName((string)m.firstname + " " + (string)m.surname));
+                    p.Ages.Add(int.Parse(_year) - (int)m.birthYear);
+                    p.Gender.Add(m.gender.ToString().Equals("J") ? 2 : 1);
                     p.Telephone.Add(CleanMobile((string)m.phone));
                     p.ShirtSizes.Add((string)m.tshirtCode);
                 }
@@ -176,14 +183,16 @@ namespace EmitReaderLib.Builders
                     Startnumber = testId,
                     EmitID = testId,
                     Name = "Test " + testId.ToString(),
-                    Telephone = new List<String>() { "95116354" /*, "95246298", "", "41530965", "48021455" */ },
+                    Telephone = new List<String>() { "95116354", "41530965", "48021455" },
                     Classes = new List<ParticipantClass>() { race.Classes.Find(x => x.Id.Equals("TEST")) },
                     IsTeam = true,
                     TeamMembers = new List<String>() { "Rune Kjørlaug", "Petter Stenstavold", "Erlend Klakegg Bergheim", "Even Østvold" },
                     ShirtSizes = new List<string>() { "m", "m", "m", "m" },
                     IsSuper = false,
-                    IsCompany = false
+                    IsCompany = false,
+                    Ages = new List<int>() { 40, 40, 40, 40}
                 };
+
                 race.AddOrUpdateParticipant(parTest);
             }
 
@@ -201,6 +210,9 @@ namespace EmitReaderLib.Builders
             // Create JSON dump and store in blob
             string json = JsonConvert.SerializeObject(race.Participants, Formatting.None);
             blockBlob.UploadTextAsync(json).Wait();
+
+            //// Persist on local disk
+            //File.WriteAllText(@"c:\temp\data.json", json);
 
             DateTime start = new DateTime(_raceDate.Year, _raceDate.Month, _raceDate.Day, 13, 14, 0);
 
