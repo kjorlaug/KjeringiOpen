@@ -31,15 +31,15 @@ namespace EmitReaderLib.Builders
         public void BuildRace(Race race)
         {
             // Should load the complete model from persisted state
-            var blob = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=kjeringi2018;AccountKey=Ex59J8C12E//TwKjCA2tQWOi9ddCRZ6wRcjGR2o34h/pU9q+7Gq+7+lNbLMQsujhclbLtTnfO7+1PflJzUk/5Q==;EndpointSuffix=core.windows.net");
+            //var blob = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=kjeringi2018;AccountKey=Ex59J8C12E//TwKjCA2tQWOi9ddCRZ6wRcjGR2o34h/pU9q+7Gq+7+lNbLMQsujhclbLtTnfO7+1PflJzUk/5Q==;EndpointSuffix=core.windows.net");
 
-            CloudBlobClient blobClient = blob.CreateCloudBlobClient();
-            CloudBlobContainer container = blobClient.GetContainerReference("racedata");
+            //CloudBlobClient blobClient = blob.CreateCloudBlobClient();
+            //CloudBlobContainer container = blobClient.GetContainerReference("racedata");
 
-            if (!container.Exists())
-                container.Create();
+            //if (!container.Exists())
+            //    container.Create();
 
-            CloudBlockBlob blockBlob = container.GetBlockBlobReference(_year);
+            //CloudBlockBlob blockBlob = container.GetBlockBlobReference(_year);
             //if (blockBlob.Exists())
             //{
             //    List<Participant> par = JsonConvert.DeserializeObject<List<Participant>>(blockBlob.DownloadText());
@@ -209,7 +209,7 @@ namespace EmitReaderLib.Builders
 
             // Create JSON dump and store in blob
             string json = JsonConvert.SerializeObject(race.Participants, Formatting.None);
-            blockBlob.UploadTextAsync(json).Wait();
+            //blockBlob.UploadTextAsync(json).Wait();
 
             //// Persist on local disk
             //File.WriteAllText(@"c:\temp\data.json", json);

@@ -8,13 +8,18 @@
                     <span class="badge badge-default startnumber">@Model.Startnumber</span>
                     <strong>
                         @if (Model.Finished)
-                    {
-                        <a href="@Url.Action("Download", new { id = Model.Startnumber, year = ViewBag.Race.Name })">@Model.Name</a>
-                }
-                else
-                {
-                    @Model.Name
-            }
+                        {
+                            <a href="@Url.Action("Download", new { id = Model.Startnumber, year = ViewBag.Race.Name })">@Model.Name</a>
+                        }
+                        else
+                        {
+                            @Model.Name
+                        }
+
+                        @if (!String.IsNullOrEmpty(Model.CompanyName))
+                        {
+                            <span>- @Model.CompanyName</span>
+                        }
                     </strong>
                 </p>
             </div>
