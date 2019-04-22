@@ -227,40 +227,56 @@ namespace EmitReaderLib
             //foreach (Participant p in Participants)
             //    IndexParticipant(p);
         }
-        
+
         public static Race LoadYear(int year, String jsonFile)
-        {            
+        {
             if (!System.IO.File.Exists(jsonFile))
-                throw new IndexOutOfRangeException("Unsupported year");
+                throw new IndexOutOfRangeException("Unsupported year", new Exception(year.ToString()));
 
             var json = System.IO.File.ReadAllText(jsonFile);
 
             var race = JsonConvert.DeserializeObject<Race>(json);
 
+            // Create correct connection string
+            String t = Environment.GetEnvironmentVariable("MYSQLCONNSTR_localdb");
+
+            if (!String.IsNullOrEmpty(t))
+            {
+                t = t.Substring(t.IndexOf(":") + 1);
+                t = t.Substring(0, t.IndexOf(";"));
+
+                t = "Server=127.0.0.1;Port=" + t + ";Uid = azure; Pwd = 6#vWHD_$;";
+            }
+            else
+                t = System.Configuration.ConfigurationManager.ConnectionStrings["Kjeringi"].ConnectionString;
+
             race.InTestMode = true;
             switch (year)
-            {
+            {                
                 case 2013:
-                    (new EmitReaderLib.Builders.MySqlRaceBuilder2014("kjeringi.2013", "2013")).BuildRace(race);
+                    (new EmitReaderLib.Builders.MySqlRaceBuilder2014(t + "Database=kop2015;", "2013")).BuildRace(race);
                     break;
                 case 2014:
-                    (new EmitReaderLib.Builders.MySqlRaceBuilder2014("kjeringi.2013", "2014")).BuildRace(race);
+                    (new EmitReaderLib.Builders.MySqlRaceBuilder2014(t + "Database=kop2015;", "2014")).BuildRace(race);
                     break;
                 case 2015:
-                    (new EmitReaderLib.Builders.MySqlRaceBuilder2015("kjeringi", new List<int>(), "2015", new DateTime(2015, 4, 18))).BuildRace(race);
+                    (new EmitReaderLib.Builders.MySqlRaceBuilder2015(t + "Database=kop2015;", new List<int>(), "2015", new DateTime(2015, 4, 18))).BuildRace(race);
                     break;
                 case 2016:
-                    (new EmitReaderLib.Builders.MySqlRaceBuilder2015("kjeringi.2016", Enumerable.Range(5001, 29).ToList<int>(), "2016", new DateTime(2016, 4, 16))).BuildRace(race);
+                    (new EmitReaderLib.Builders.MySqlRaceBuilder2015(t + "Database=kop2016;", Enumerable.Range(5001, 29).ToList<int>(), "2016", new DateTime(2016, 4, 16))).BuildRace(race);
                     break;
                 case 2017:
-                    (new EmitReaderLib.Builders.MySqlRaceBuilder2015("kjeringi.2017", Enumerable.Range(5001, 29).ToList<int>(), "2017", new DateTime(2017, 4, 22))).BuildRace(race);
+                    (new EmitReaderLib.Builders.MySqlRaceBuilder2015(t + "Database=kop2017;", Enumerable.Range(5001, 29).ToList<int>(), "2017", new DateTime(2017, 4, 22))).BuildRace(race);
                     break;
                 case 2018:
-                    (new EmitReaderLib.Builders.RestRaceBuilder("kjeringi", Enumerable.Range(4480, 20).ToList<int>(), "2018", new DateTime(2018, 4, 14))).BuildRace(race);
+                    (new EmitReaderLib.Builders.JsonRaceBuilder(jsonFile.Replace(".json", "_%source%.json"), Enumerable.Range(4480, 20).ToList<int>(), "2018", new DateTime(2018, 4, 14))).BuildRace(race);
+                    break;
+                case 2019:
+                    (new EmitReaderLib.Builders.RestRaceBuilder("https://www.skriki.no/kop19/ipa/%source%/fetchAll?token=98dbf8596407ab5f896ff5b8e286631c7dc0ed200a610565ae860ad13f75eefa", Enumerable.Range(3681, 20).ToList<int>(), "2019", new DateTime(2019, 4, 27))).BuildRace(race);
                     break;
             }
 
-            MySqlConnection conn = new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Kjeringi.Writer"].ConnectionString);
+            MySqlConnection conn = new MySqlConnection(t + "Database=timers;");
             MySqlCommand cmd = new MySqlCommand("SELECT card, location, time FROM LocationPasses WHERE year = " + year.ToString() + " ORDER BY time", conn);
 
             conn.Open();

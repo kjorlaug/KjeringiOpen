@@ -110,6 +110,8 @@ namespace Web.Controllers
             PdfStringFormat format1 = new PdfStringFormat(PdfTextAlignment.Left);
             format1.WordWrap = PdfWordWrapType.Word;
 
+            // Brand year
+            page.Canvas.DrawString("Kjeringi Open " + year.ToString(), font20b, brush1, 60, y + 60, format1);
 
             //Draw the image
             PdfImage image = PdfImage.FromFile(Server.MapPath("~/Content/Images/price.jpg"));
@@ -139,10 +141,26 @@ namespace Web.Controllers
                 y += font20.MeasureString(sb.ToString(), format1).Height + 15;
             }
 
-            List<String[]> splits = data.Splits(data.Classes[0].Id).Select(p => new String[] { p.Leg, p.IsSuper ? "" : p.Name, (p.Estimated?"(mangler)": p.Time) }).ToList<String[]>();
+            List<String[]> splits = data.Splits(data.Classes[0].Id).Select(p => new String[] { p.IsSuper ? "" : p.Name, p.Leg, (p.Estimated ? "(mangler)" : p.Time) }).ToList<String[]>();
+
             if (splits.Count() > 0)
-            {
-                splits.Add(new String[] { "Totaltid", "", data.TotalTime });
+            {               
+                splits.Add(new String[] { "", "Totaltid", data.TotalTime });
+
+                // Are all names in the splits are empty, remove
+                bool allEmpty = true;
+                foreach (String[] arr in splits)
+                    allEmpty = allEmpty && String.IsNullOrEmpty(arr[0]);
+
+                if (allEmpty)
+                {
+                    for (int i = 0; i < splits.Count; i++)
+                    {
+                        List<String> arr = splits[i].ToList<String>();
+                        arr.RemoveAt(0);
+                        splits[i] = arr.ToArray<String>();    
+                    }
+                }
 
                 y = y + 30;
 
@@ -150,11 +168,13 @@ namespace Web.Controllers
                 y += font20b.MeasureString("Etappetider", format1).Height + 5;
 
                 PdfTable table = new PdfTable();
+
                 table.Style.BorderPen = new PdfPen(Color.Transparent);
                 table.Style.DefaultStyle.TextBrush = brush1;
                 table.Style.DefaultStyle.Font = font20;
                 table.Style.DefaultStyle.BorderPen = new PdfPen(Color.Transparent);
                 table.Style.CellPadding = 2;
+
                 table.Style.HeaderSource = PdfHeaderSource.Rows;
                 table.Style.HeaderRowCount = 0;
                 table.Style.ShowHeader = false;
@@ -165,12 +185,18 @@ namespace Web.Controllers
                 table.Style.AlternateStyle.BackgroundBrush = PdfBrushes.LightGray;
                 table.Style.AlternateStyle.BorderPen = new PdfPen(Color.Transparent);
 
+                table.DataSourceType = PdfTableDataSourceType.TableDirect;
                 table.DataSource = splits.ToArray<String[]>();
+
+                table.Columns[table.Columns.Count - 2].StringFormat = new PdfStringFormat(PdfTextAlignment.Right);
+                table.Columns[table.Columns.Count - 2].Width = 4.0f;
+
+                table.Columns[table.Columns.Count - 1].StringFormat = new PdfStringFormat(PdfTextAlignment.Right);
+                table.Columns[table.Columns.Count - 1].Width = 4.0f;
 
                 PdfLayoutResult result = table.Draw(page, new PointF(0, y));
 
                 y = y + result.Bounds.Height + 5;
-
             }
 
             StringBuilder s = new StringBuilder("Start # ");

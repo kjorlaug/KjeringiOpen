@@ -45,9 +45,12 @@ namespace KjeringiData
                 {
                     lock (syncRoot)
                     {
-                        if (instance == null) {                            
-                            instance = Race.LoadYear(2018, System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/" + DateTime.Now.Year.ToString() + ".json"));
-                            //instance = Race.LoadYear(2016, System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/2016.json"));
+                        if (instance == null) {
+                            int currentYear = DateTime.Now.Year;
+                            if (!System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/" + DateTime.Now.Year.ToString() + ".json")))
+                                currentYear -= 1;
+                            string yearPath = System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/" + currentYear + ".json");
+                            instance = Race.LoadYear(currentYear, yearPath);
                         }
                     }
                 }

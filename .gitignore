@@ -12,3 +12,5 @@ obj
 /*.suo
 /mysql
 docs
+/.vs/slnx.sqlite
+/.vs
