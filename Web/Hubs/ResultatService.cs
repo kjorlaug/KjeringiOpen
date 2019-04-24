@@ -82,11 +82,11 @@ namespace Web.Hubs
 
         public void SendPassering(EmitData data)
         {
-            if (!TheRace.Instance.InTestMode)
-                (new EmitReaderLib.Writers.MySqlWriter("kjeringi.writer", TheRace.Instance.Name)).PersistPass(data);
+            try
+            {
+                if (!TheRace.Instance.InTestMode)
+                    (new EmitReaderLib.Writers.MySqlWriter("kjeringi.writer")).PersistPass(data);
 
-//            try
-  //          {
                 // Tester?
                 data.Test = TheRace.Instance.Testers.Contains(data.Id);
 
@@ -104,13 +104,14 @@ namespace Web.Hubs
                     Clients.All.addLogMessage("No result generated", data.Id, data.BoxId, data.Time, "");
                 }
 
-            //List<RaceEvent> events = TheRace.Instance.AnalyzePass(data);
+                //List<RaceEvent> events = TheRace.Instance.AnalyzePass(data);
 
 
-   //         }
-   //         catch (Exception ex) {
-   //             Clients.All.addLogMessage("Exception: " + ex.Message, data.Id, data.BoxId, data.Time, "");
-   //         }
+            }
+            catch (Exception ex)
+            {
+                Clients.All.addLogMessage("Exception: " + ex.Message, data.Id, data.BoxId, data.Time, "");
+            }
         }
 
         public ICollection<Participant> GetCurrentResults(String participantClassId)

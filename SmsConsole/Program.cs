@@ -46,7 +46,7 @@ namespace SmsConsole
                     // In production?
                     StringBuilder sb = new StringBuilder();
 
-                    sb.Append("Mellombels resultat Kjeringi Open 2018 %0A");
+                    sb.Append("Mellombels resultat Kjeringi Open 2019 %0A");
                     sb.Append(data.Name);
                     sb.Append(" (");
                     sb.Append(data.Classes[0].Name);

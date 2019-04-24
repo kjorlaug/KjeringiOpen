@@ -12,10 +12,24 @@ namespace EmitReaderLib.Writers
     public class MySqlWriter : IRaceWriter
     {
 
-        public MySqlWriter(String connectionName, String year)
+        public MySqlWriter(String connectionName)
         {
-            ConnectionName = connectionName;
-            Year = int.Parse(year);
+            // Create correct connection string
+            String t = Environment.GetEnvironmentVariable("MYSQLCONNSTR_localdb");
+
+            if (!String.IsNullOrEmpty(t))
+            {
+                t = t.Substring(t.IndexOf(":") + 1);
+                t = t.Substring(0, t.IndexOf(";"));
+
+                t = "Server=127.0.0.1;Port=" + t + ";Uid = azure; Pwd = 6#vWHD_$;Database=timers;";
+            }
+            else
+                t = System.Configuration.ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
+
+
+            this.ConnectionName = t;
+            this.Year = DateTime.Now.Year;
         }
 
         protected String ConnectionName { get; set; }
@@ -23,7 +37,7 @@ namespace EmitReaderLib.Writers
 
         public void PersistPass(Model.EmitData pass)
         {
-            MySqlConnection conn = new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[ConnectionName].ConnectionString);
+            MySqlConnection conn = new MySqlConnection(ConnectionName);
             conn.Open();
 
             MySqlCommand cmd = new MySqlCommand("INSERT INTO LocationPasses (`Year`, `Location`, `Card`, `Time`, `Force`, `Test`) VALUES (@year, @location, @card, @time, @force, @test)", conn);

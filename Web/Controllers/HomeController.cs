@@ -21,7 +21,12 @@ namespace Web.Controllers
         public ActionResult Index()
         {
             return RedirectToAction("Results");
-            //return View();
+        }
+
+        public ActionResult Status()
+        {
+            //return RedirectToAction("Results");
+            return View();
         }
 
         public ActionResult EmitReader()
