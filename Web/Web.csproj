@@ -269,10 +269,13 @@
     <Content Include="Content\font-awesome\scss\_screen-reader.scss" />
     <Content Include="Content\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\font-awesome\scss\_variables.scss" />
-    <Content Include="Content\kjeringi.eot" />
     <Content Include="App_Data\2019.json" />
     <Content Include="App_Data\2018_allsuper.json" />
     <Content Include="App_Data\2018_team.json" />
+    <Content Include="Content\kjeringi.eot" />
+    <Content Include="Content\kjeringi.ttf" />
+    <Content Include="Content\kjeringi.woff" />
+    <Content Include="Content\kjeringi.woff2" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\KjeringiOpen - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\ServerDeploy.pubxml" />
@@ -334,6 +337,7 @@
     <Content Include="Views\Home\ResultsNM.cshtml" />
     <Content Include="Views\Home\ParticipantCoreNM.cshtml" />
     <Content Include="Views\Home\TopSplits.cshtml" />
+    <Content Include="Views\Home\Live.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

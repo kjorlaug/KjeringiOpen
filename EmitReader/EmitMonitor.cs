@@ -23,8 +23,13 @@ namespace EmitReaderLib
             if (reader == null)
                 throw new NullReferenceException("No reader");
 
+            // Start worker async
+            System.Threading.Thread workerThread = new System.Threading.Thread(() => { worker.StartWork(); });
+            workerThread.Start();
+
             reader.DataReceived += reader_DataReceived;
             reader.Start();
+            
             isMonitoring = true;
             Console.WriteLine("Started");
         }

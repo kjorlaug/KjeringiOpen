@@ -168,10 +168,10 @@ namespace EmitReaderLib.Builders
                     Startnumber = testId,
                     EmitID = testId,
                     Name = "Test " + testId.ToString(),
-                    Telephone = new List<String>() { "95116354", "41530965", "48021455" },
+                    Telephone = new List<String>() { "95116354", "41530965", "48021455", "90214619" },
                     Classes = new List<ParticipantClass>() { race.Classes.Find(x => x.Id.Equals("TEST")) },
                     IsTeam = true,
-                    TeamMembers = new List<String>() { "Rune Kjørlaug", "Petter Stenstavold", "Erlend Klakegg Bergheim", "Even Østvold" },
+                    TeamMembers = new List<String>() { "Rune Kjørlaug", "Petter Stenstavold", "Even Østvold", "Bård Henjum" },
                     ShirtSizes = new List<string>() { "m", "m", "m", "m" },
                     IsSuper = false,
                     IsCompany = false,
@@ -193,7 +193,7 @@ namespace EmitReaderLib.Builders
                 throw new Exception("Duplicate chipnumber: " + String.Join(", ", duplicated.ToArray()));
 
             // Create JSON dump and store in blob
-            string json = JsonConvert.SerializeObject(race.Participants, Formatting.None);
+            //string json = JsonConvert.SerializeObject(race.Participants, Formatting.None);
             //blockBlob.UploadTextAsync(json).Wait();
 
             //// Persist on local disk

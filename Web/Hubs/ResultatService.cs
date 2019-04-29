@@ -10,6 +10,9 @@ using EmitReaderLib;
 using EmitReaderLib.Model;
 
 using KjeringiData;
+using System.Text;
+using System.Net;
+using System.IO;
 
 namespace Web.Hubs
 {
@@ -90,6 +93,8 @@ namespace Web.Hubs
                 // Tester?
                 data.Test = TheRace.Instance.Testers.Contains(data.Id);
 
+                int[] leaders = GetRaceLeaders().Select(p => p.EmitID).ToArray<int>();
+
                 // Add new Passering to race
                 Participant resultat = TheRace.Instance.AddPass(data);
                 var timestation = TheRace.Instance.TimeStations.First(ts => ts.Id.Equals(data.BoxId));
@@ -98,14 +103,69 @@ namespace Web.Hubs
                 {
                     Clients.All.addLogMessage(resultat.Splits().Count > 0 ? resultat.Splits().Last().Time : "", resultat.EmitID, resultat.Startnumber, resultat.Name, resultat.EstimatedTime);
                     Clients.Group(timestation.Id.ToString()).newPass(resultat);
+
+                    // Change in Race leaders?
+                    int[] newLeaders = GetRaceLeaders().Select(p => p.EmitID).ToArray<int>();
+
+                    if (!leaders.Equals(newLeaders))
+                        Clients.All.addLogMessage("NewRaceLead", resultat.EmitID, resultat.Startnumber, resultat.Name, resultat.EstimatedTime);
+
+                    List<Result> res = resultat._splits.Where(r => r.Location.Equals(data.BoxId)).ToList<Result>();
+
+                    foreach (Result topResult in res.Where(r => r.Position <= 3)) {
+                        Clients.All.addLogMessage("NewTopResult " + topResult.Location + " " + topResult.Position.ToString() + ". " + topResult.Class + " " + topResult.Name, resultat.EmitID, resultat.Startnumber, resultat.Name, resultat.EstimatedTime);
+                    }
+
+                    System.Threading.Tasks.Task.Factory.StartNew(() =>
+                    {
+                        // Send SMS
+                        StringBuilder sb = new StringBuilder();
+
+                        sb.Append("Mellombels resultat Kjeringi Open 2019 %0A");
+                        sb.Append(resultat.Name);
+                        sb.Append(" (");
+                        sb.Append(resultat.Classes[0].Name);
+                        sb.Append(")%0AEtapper:%0A");
+
+                        List<String[]> splits = resultat.Splits(resultat.Classes[0].Id).Select(p => new String[] { p.Leg, p.IsSuper ? "" : p.Name, (p.Estimated ? "(mangler)" : p.Time) }).ToList<String[]>();
+
+                        foreach (Result r in resultat.Splits(resultat.Classes[0].Id))
+                        {
+                            sb.Append(" ");
+                            sb.Append(r.Leg);
+                            sb.Append(" ");
+                            sb.Append(r.Estimated ? "(mangler)" : r.Time);
+                            sb.Append(" (");
+                            sb.Append(r.Position);
+                            sb.Append(".plass) ");
+                            sb.Append("%0A");
+                        }
+                        sb.Append("Totaltid: ");
+                        sb.Append(resultat.TotalTime);
+
+                        sb.Append("%0ASMS-tjenestene levert av Difi i samarbeid med Linkmobility");
+
+                        foreach (String tlf in resultat.Telephone.Distinct())
+                        {
+                            try
+                            {
+                                String url = String.Format(@"http://simple.pswin.com/?USER=kjeringiopen&{0}&RCV=47{1}&TXT={2}&snd=Kjeringi&ENC=utf-8", "PW=0DgFPq2k3", tlf, sb.ToString());
+                                WebClient webClient = new WebClient();
+                                Stream stream = webClient.OpenRead(url);
+                                StreamReader reader = new StreamReader(stream);
+                                String request = reader.ReadToEnd();
+                                Console.WriteLine("Success: " + url);
+                            }
+                            catch (WebException ex)
+                            {
+                            }
+                        }
+                    });
                 }
                 else
                 {
                     Clients.All.addLogMessage("No result generated", data.Id, data.BoxId, data.Time, "");
                 }
-
-                //List<RaceEvent> events = TheRace.Instance.AnalyzePass(data);
-
 
             }
             catch (Exception ex)
@@ -119,9 +179,13 @@ namespace Web.Hubs
             return TheRace.Instance.GetResults(participantClassId);
         }
 
-        public ICollection<Participant> GetExpected()
+        public IEnumerable<Participant> GetRaceLeaders()
         {
-            return TheRace.Instance.Participants.Where(p => !p.Finished && p.Passes.Count > 1).OrderByDescending(p => p.EstimatedArrival).Take(20).ToList<Participant>();
+            return TheRace.Instance.Participants
+                .Where(p => !p.Finished && p.Passes.Count > 1)
+                .OrderByDescending(t => t.Passes.Keys.Max()).ThenBy(t => t.CurrentTime.Ticks)
+                .ToList<Participant>()
+                .Take(10);
         }
 
         public IEnumerable<Participant> GetLatestLocationResult(String id)
@@ -138,15 +202,12 @@ namespace Web.Hubs
             else
             {
                 return TheRace.Instance.Participants
-                    .Where(p => p.Passes.ContainsKey(ts.Id))
-                    //.SelectMany(p => p.Splits().Where(s => s.Location == ts.Id))
-                    .OrderByDescending(t => t.CurrentTime)
+                    .Where(p => p.Passes.Count > 0 && p.Passes.ContainsKey(ts.Id))
+                    .OrderByDescending(t => t._splits.Where(s => s.Location.Equals(ts.Id)).First().TicksSoFar)
                     .ToList<Participant>()
-                    //.OrderByDescending(t => t._splits.OrderBy(s=>s.Ticks).Last().Ticks)
                     .Take(100);
             }
         }
-
 
     }
 }

@@ -84,5 +84,8 @@ namespace EmitReaderLib.Model
         public Boolean Finished { get; set; }
 
         public TimeSpan CurrentTime { get; internal set; }
+
+        public Race Race { get; set; }
+        public bool ShouldSerializeRace() { return false; }
     }
 }

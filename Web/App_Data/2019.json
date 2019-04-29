@@ -195,7 +195,8 @@
       "Name": "Telemark",
       "Sequence": 1,
       "Progress" :  16.5,
-      "Leg": 1
+      "Leg": 1,
+      "Icon": ""
     },
     {
       "Id": 91,

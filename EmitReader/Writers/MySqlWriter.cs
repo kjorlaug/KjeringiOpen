@@ -17,14 +17,14 @@ namespace EmitReaderLib.Writers
             // Create correct connection string
             String t = Environment.GetEnvironmentVariable("MYSQLCONNSTR_localdb");
 
-            if (!String.IsNullOrEmpty(t))
-            {
-                t = t.Substring(t.IndexOf(":") + 1);
-                t = t.Substring(0, t.IndexOf(";"));
+            //if (!String.IsNullOrEmpty(t))
+            //{
+            //    t = t.Substring(t.IndexOf(":") + 1);
+            //    t = t.Substring(0, t.IndexOf(";"));
 
-                t = "Server=127.0.0.1;Port=" + t + ";Uid = azure; Pwd = 6#vWHD_$;Database=timers;";
-            }
-            else
+            //    t = "Server=127.0.0.1;Port=" + t + ";Uid = azure; Pwd = 6#vWHD_$;Database=timers;";
+            //}
+            //else
                 t = System.Configuration.ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
 
 

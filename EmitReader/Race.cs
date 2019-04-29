@@ -24,9 +24,19 @@ namespace EmitReaderLib
             TimeStations = new List<TimeStation>();
             Passes = new List<EmitData>();
             Testers = new List<int>();
+
+            Legs = new Leg[]
+            {
+                new Leg() {Name = "Telemark", Icon = "icon-Downhill", TimestationId = 90 },
+                new Leg() {Name = "Ski", Icon = "icon-Skiing", TimestationId = 91 },
+                new Leg() {Name = "Springing", Icon = "icon-Running",TimestationId = 92 },
+                new Leg() {Name = "Sykling", Icon = "icon-cycling", TimestationId = 248 }
+            };
         }
 
         public String Name { get; set; }
+
+        public Leg[] Legs { get; set; }
 
         public List<ParticipantClass> Classes { get; protected set; }
         public List<Participant> Participants { get; protected set; }
@@ -39,6 +49,7 @@ namespace EmitReaderLib
 
         public void AddParticipant(Participant p)
         {
+            p.Race = this;
             Participants.Add(p);
         }
 
@@ -46,6 +57,7 @@ namespace EmitReaderLib
         {
             // Already there?
             Participant par = Participants.Find(pp => pp.Id.Equals(p.Id));
+            p.Race = this;
 
             if (par == null)
                 Participants.Add(p);
@@ -82,31 +94,7 @@ namespace EmitReaderLib
 
                 DateTime startTime = participant.Passes.First().Value.Time;
                 TimeSpan totalTime = (emitdata.Time - startTime);
-
-                if (!timestation.Start && timestation.Progress.HasValue)
-                {
-                    double ticksSoFar = (double)totalTime.Ticks;
-                    double estimate = (ticksSoFar / timestation.Progress.Value) * 100;
-
-                    // missing values?
-                    foreach (TimeStation shouldHavePassed in TimeStations.Where(t => t.Sequence < timestation.Sequence && t.Official && t.Progress.HasValue))
-                        if (!participant.Passes.ContainsKey(shouldHavePassed.Id))
-                        {
-                            AddPass(
-                                new EmitData() {
-                                    Estimated = true,
-                                    BoxId = shouldHavePassed.Id,
-                                    Chip = emitdata.Chip,
-                                    Id = emitdata.Id,
-                                    Voltage = emitdata.Voltage,
-                                    Time = startTime + TimeSpan.FromTicks((long)(estimate * (shouldHavePassed.Progress / 100)))
-                                });
-                        }
-
-                    participant.CurrentTime = totalTime;
-                    participant.TotalTime = totalTime.ToString(@"hh\:mm\:ss");
-                    participant.EstimatedArrival = TimeSpan.FromTicks((long)estimate);
-                }
+                participant.CurrentTime = totalTime;
 
                 if (timestation.Official)
                 {
@@ -134,6 +122,7 @@ namespace EmitReaderLib
                                         Time = (cur.Value.Time - prev.Value.Time).Hours > 0 ? (cur.Value.Time - prev.Value.Time).ToString(@"hh\:mm\:ss") : (cur.Value.Time - prev.Value.Time).ToString(@"mm\:ss"),
                                         Estimated = (cur.Value.Estimated || prev.Value.Estimated),
                                         Ticks = (cur.Value.Time - prev.Value.Time).Ticks,
+                                        TicksSoFar = (cur.Value.Time - startTime).Ticks,
                                         Total = participant.TotalTime,
                                         Position = this.Participants.Where(p => p.Classes.Exists(pc => pc.Id.Equals(c.Id)) && p.Passes.ContainsKey(cur.Key))
                                             .OrderBy(p => p.Passes[cur.Key].Time)
@@ -143,6 +132,7 @@ namespace EmitReaderLib
                                     }
                                         ).ToList<Result>());
                     }
+                    participant.TotalTime = totalTime.ToString(@"hh\:mm\:ss");
 
                     participant._splits = res.OrderBy(r => r.Sequence).ThenBy(r => r.Position).ToList<Result>();
 
@@ -240,14 +230,14 @@ namespace EmitReaderLib
             // Create correct connection string
             String t = Environment.GetEnvironmentVariable("MYSQLCONNSTR_localdb");
 
-            if (!String.IsNullOrEmpty(t))
-            {
-                t = t.Substring(t.IndexOf(":") + 1);
-                t = t.Substring(0, t.IndexOf(";"));
+            //if (!String.IsNullOrEmpty(t))
+            //{
+            //    t = t.Substring(t.IndexOf(":") + 1);
+            //    t = t.Substring(0, t.IndexOf(";"));
 
-                t = "Server=127.0.0.1;Port=" + t + ";Uid = azure; Pwd = 6#vWHD_$;";
-            }
-            else
+            //    t = "Server=127.0.0.1;Port=" + t + ";Uid = azure; Pwd = 6#vWHD_$;";
+            //}
+            //else
                 t = System.Configuration.ConfigurationManager.ConnectionStrings["Kjeringi"].ConnectionString;
 
             race.InTestMode = true;
@@ -273,6 +263,9 @@ namespace EmitReaderLib
                     break;
                 case 2019:
                     (new EmitReaderLib.Builders.RestRaceBuilder("https://www.skriki.no/kop19/ipa/%source%/fetchAll?token=98dbf8596407ab5f896ff5b8e286631c7dc0ed200a610565ae860ad13f75eefa", Enumerable.Range(3681, 20).ToList<int>(), "2019", new DateTime(2019, 4, 27))).BuildRace(race);
+                    race.Legs[1].Name = "Terrengløp";
+                    race.Legs[1].Icon = "icon-trail";
+
                     break;
             }
 

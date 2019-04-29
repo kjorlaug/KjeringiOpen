@@ -1,0 +1,140 @@
+﻿@{
+    ViewBag.Title = ViewBag.StationName;
+
+    var race = (ViewBag.Race as EmitReaderLib.Race);
+
+}
+
+<div class="row">
+    <div class="col-md-4 col-md-4">
+        <div class="card sticky-top">
+            <div class="card-header">
+                <div class="time-clock" style="zoom:0.3;-moz-transform:scale(0.3)">
+                </div>
+                <hr />
+                <div class="race-clock" style="zoom:0.3;-moz-transform:scale(0.3)">
+                </div>
+            </div>
+            <div class="list-group list-group-flush small" style="display:none;">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 flex-first">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-tabs nav-fill">
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewBag.StationId.Equals("90") ? "active" : "")" href="@Url.Action("Live", "Home", new { name = 90 }, null)"><i class="fa fa-fw @race.Legs[0].Icon"></i> @race.Legs[0].Name</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewBag.StationId.Equals("91") ? "active" : "")" href="@Url.Action("Live", "Home", new { name = 91 }, null)"><i class="fa fa-fw @race.Legs[1].Icon"></i> @race.Legs[1].Name</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewBag.StationId.Equals("92") ? "active" : "")" href="@Url.Action("Live", "Home", new { name = 92 }, null)"><i class="fa fa-fw @race.Legs[2].Icon"></i> @race.Legs[2].Name</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewBag.StationId.Equals("93") ? "active" : "")" href="@Url.Action("Live", "Home", new { name = 93 }, null)"><i class="fa fa-fw @race.Legs[2].Icon"></i> Mot mål</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewBag.StationId.Equals("248") ? "active" : "")" href="@Url.Action("Live", "Home", new { name = 248 }, null)"><i class="fa fa-fw @race.Legs[3].Icon"></i> @race.Legs[3].Name/Målgang</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" data-bind="foreach: results">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p><span class="badge badge-default" data-bind="text: Startnumber"></span> <strong data-bind="visible:IsTeam, text:Name"></strong> <strong data-bind="visible:!IsTeam, text: _splits[_splits.length - 1].Name"></strong></p>
+                    </div>
+                    <div class="col-md-4 text-right">
+                        <strong data-bind="text: TotalTime"></strong><br />
+                    </div>
+                </div>
+                <div class="row small">
+                    <div class="col-md-1">&nbsp;</div>
+                    <!-- ko if: IsTeam != 0 -->
+                    <div class="col-md-2">
+                        <dl class="row" data-bind="foreach: LegSplits">
+                            <dd class="col-md-12">
+                                <!-- ko if: $index() === 0 --><i class="icon-Downhill"></i><!-- /ko -->
+                                <!-- ko if: $index() === 1 --><i class="icon-Skiing"></i><!-- /ko -->
+                                <!-- ko if: $index() === 2 --><i class="icon-Running"></i><!-- /ko -->
+                                <!-- ko if: $index() === 3 --><i class="icon-cycling"></i><!-- /ko -->
+                                <span data-bind="text: $data, css: { 'font-italic' : $parent.LegEstimated[$index]}"></span> <span class="badge badge-pill badge-warning" data-bind="visible : $parent.LegEstimated[$index]">&#8494;</span>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-4">
+                        <dl class="row" data-bind="foreach: TeamMembers">
+                            <dd class="col-md-12">
+                                <span data-bind="text:$data"></span>
+                            </dd>
+                        </dl>
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: IsTeam == 0 -->
+                    <div class="col-md-3">
+                        <dl class="row">
+                            <dd class="col-md-12">
+                                <i class="icon-Downhill"></i> <span data-bind="text: LegSplits[0], css: { 'font-italic' : LegEstimated[0]}"></span> <span class="badge badge-pill badge-warning" data-bind="visible : LegEstimated[0]">&#8494;</span>
+                            </dd>
+                            <dd class="col-md-12">
+                                <i class="icon-Skiing"></i> <span data-bind="text: LegSplits[1], css: { 'font-italic' : LegEstimated[1]}"></span> <span class="badge badge-pill badge-warning" data-bind="visible : LegEstimated[1]">&#8494;</span>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-3">
+                        <dl class="row">
+                            <dd class="col-md-12">
+                                <i class="icon-Running"></i> <span data-bind="text: LegSplits[2], css: { 'font-italic' : LegEstimated[2]}"></span> <span class="badge badge-pill badge-warning" data-bind="visible : LegEstimated[2]">&#8494;</span>
+                            </dd>
+                            <dd class="col-md-12">
+                                <i class="icon-cycling"></i> <span data-bind="text: LegSplits[3], css: { 'font-italic' : LegEstimated[3]}"></span> <span class="badge badge-pill badge-warning" data-bind="visible : LegEstimated[3]">&#8494;</span>
+                            </dd>
+                        </dl>
+                    </div>
+                    <!-- /ko -->
+                    <div class="col-md-5">
+                        <dl class="row" data-bind="foreach: _splits">
+                            <dd class="col-md-12" data-bind="visible:(Location == globalStationId)">
+                                <span class="badge badge-pill" data-bind="css: {'badge-info' : ($data.Position == 1), 'badge-warning' : ($data.Position == 2), 'badge-success' : ($data.Position == 3), 'badge-default' : ($data.Position > 3)}, text: Position"></span> <span data-bind="text:Class"></span>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                @*<pre data-bind="text: ko.toJSON($data, null, 2)"/>*@
+                <hr />
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script>
+    globalStationId = '@ViewBag.StationId';
+
+    $(function () {
+        var d = new Date();
+        var start = new Date().setHours(13, 14, -1);
+
+        var clock = $('.time-clock').FlipClock({
+            clockFace: 'TwentyFourHourClock'
+        });
+        var raceclock = $('.race-clock').FlipClock(((start > d) ? (start - d) : (d - start)) / 1000,
+            {
+                countdown: (start > d),
+                callbacks: {
+                    stop: function () {
+                        raceclock.countdown = false;
+                        raceclock.setTime(0);
+                        setTimeout(function () { raceclock.start(); }, 1000);
+                    }
+                }
+            });
+    });
+    </script>
+    <script src="~/Scripts/station.js"></script>
+
+}

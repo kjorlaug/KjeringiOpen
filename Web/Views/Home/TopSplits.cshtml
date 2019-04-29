@@ -2,23 +2,12 @@
 @{
     ViewBag.Title = "Topptider";
 
-    var res = (ViewBag.Race as EmitReaderLib.Race).GetBySplits(ViewBag.StationId, ViewBag.ageclass, ViewBag.gender);
+    var race = (ViewBag.Race as EmitReaderLib.Race);
+    var res = race.GetBySplits(ViewBag.StationId, ViewBag.ageclass, ViewBag.gender);
 
     var position = 0;
 
-    int split = 0;
-    if (ViewBag.StationId == 91)
-    {
-        split = 1;
-    }
-    else if (ViewBag.StationId == 92)
-    {
-        split = 2;
-    }
-    else if (ViewBag.StationId == 248)
-    {
-        split = 3;
-    }
+    int split = Array.FindIndex(race.Legs, l => l.TimestationId.Equals(ViewBag.StationId));
 
 }
 
@@ -59,16 +48,16 @@
             <div class="col-md-12">
                 <ul class="nav nav-tabs nav-fill">
                     <li class="nav-item">
-                        <a class="nav-link @(ViewBag.StationId.Equals(90) ? "active" : "")" href="@Url.Action("TopSplits", "Home", new { name = 90, ageclass = ViewBag.ageclass, gender=ViewBag.gender }, null)"><i class="fa fa-fw icon-Downhill"></i> Telemark</a>
+                        <a class="nav-link @(split == 0 ? "active" : "")" href="@Url.Action("TopSplits", "Home", new { name = race.Legs[0].TimestationId, ageclass = ViewBag.ageclass, gender=ViewBag.gender }, null)"><i class="fa fa-fw @race.Legs[0].Icon"></i> @race.Legs[0].Name</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @(ViewBag.StationId.Equals(91) ? "active" : "")" href="@Url.Action("TopSplits", "Home", new { name = 91, ageclass = ViewBag.ageclass, gender=ViewBag.gender  }, null)"><i class="fa fa-fw icon-Skiing"></i> Ski</a>
+                        <a class="nav-link @(split == 1 ? "active" : "")" href="@Url.Action("TopSplits", "Home", new { name = race.Legs[1].TimestationId, ageclass = ViewBag.ageclass, gender=ViewBag.gender  }, null)"><i class="fa fa-fw @race.Legs[1].Icon"></i> @race.Legs[1].Name</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @(ViewBag.StationId.Equals(92) ? "active" : "")" href="@Url.Action("TopSplits", "Home", new { name = 92, ageclass = ViewBag.ageclass, gender=ViewBag.gender  }, null)"><i class="fa fa-fw icon-Running"></i> Springing</a>
+                        <a class="nav-link @(split == 2 ? "active" : "")" href="@Url.Action("TopSplits", "Home", new { name = race.Legs[2].TimestationId, ageclass = ViewBag.ageclass, gender=ViewBag.gender  }, null)"><i class="fa fa-fw @race.Legs[2].Icon"></i> @race.Legs[2].Name</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @(ViewBag.StationId.Equals(248) ? "active" : "")" href="@Url.Action("TopSplits", "Home", new { name = 248, ageclass = ViewBag.ageclass, gender=ViewBag.gender  }, null)"><i class="fa fa-fw icon-cycling"></i> Sykling</a>
+                        <a class="nav-link @(split == 3 ? "active" : "")" href="@Url.Action("TopSplits", "Home", new { name = race.Legs[3].TimestationId, ageclass = ViewBag.ageclass, gender=ViewBag.gender  }, null)"><i class="fa fa-fw @race.Legs[3].Icon"></i> @race.Legs[3].Name</a>
                     </li>
                 </ul>
             </div>

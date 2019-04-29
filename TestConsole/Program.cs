@@ -1,4 +1,5 @@
-﻿    using System;
+﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,12 +15,31 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
+            var t = ConfigurationManager.ConnectionStrings["Kjeringi"].ConnectionString;
+            t += t + "Database=timers;";
 
-            //EmitMonitor monitor = new EmitMonitor(new MySqlReader(120, "Kjeringi.2013", new List<String>() {"78", "70", "79", "248"}, "3", "5000", "9999") , new SignalWorker()); // 2013 data
-            //EmitMonitor monitor = new EmitMonitor(new MySqlReader2015(120, "Kjeringi.Writer", "2016"), new SignalWorker()); // 2014 data
-            EmitMonitor monitor = new EmitMonitor(new TestReader(new List<int>() { 4481 }, new List<int>() { 90, 91, 92, 93, 248}), new SignalWorker()); // Testers
-            //EmitMonitor monitor = new EmitMonitor(new UsbSerialReader(), new SignalWorker()); // Live
-            //EmitMonitor monitor = new EmitMonitor(new UsbSerialReader(), new SubmitWorker("http://ko.hoo9.com")); // Live
+            EmitMonitor monitor = new EmitMonitor(
+                new MySqlTestReader(
+                    100, t,
+                    @"select 
+	                    Location, Card, Time, case when timediff(Time, prevTime) < 0 then Time else timediff(Time,prevTime) end as diffTime
+                    from (
+                    SELECT 
+	                    Location, 
+                        Card-700 as Card, 
+                        Time, 
+                        (select max(Time) as prevTime from timers.locationpasses where year = 2018 and Time < p.Time) as prevTime
+                    FROM timers.locationpasses p
+                    where 
+	                    year = 2018 and Time > '2018-04-14 13:14:00' order by Time) t;", new DateTime(2019, 4, 27)
+                    ), 
+                new SignalWorker()
+                {
+                    BoxId = "99",
+                    Name = "Test 2019",
+                    Hub = ConfigurationManager.AppSettings["hub"]
+                }); // Testers
+
             monitor.StartMonitoring();
 
             Console.ReadLine();

@@ -6,9 +6,6 @@
     <div class="col-md-4 col-md-4">
         <div class="card sticky-top">
             <div class="card-header">
-                <div class="time-clock" style="zoom:0.3;-moz-transform:scale(0.3)">
-                </div>
-                <hr />
                 <div class="race-clock" style="zoom:0.3;-moz-transform:scale(0.3)">
                 </div>
             </div>
@@ -18,35 +15,13 @@
     </div>
     <div class="col-md-8 flex-first">
         <div class="row">
-            <div class="col-md-12">
-                <ul class="nav nav-tabs nav-fill">
-                    <li class="nav-item">
-                        <a class="nav-link @(ViewBag.StationId.Equals("90") ? "active" : "")" href="@Url.Action("Speaker", "Home", new { name = 90 }, null)"><i class="fa fa-fw icon-Downhill"></i> Telemark</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @(ViewBag.StationId.Equals("91") ? "active" : "")" href="@Url.Action("Speaker", "Home", new { name = 91 }, null)"><i class="fa fa-fw icon-Skiing"></i> Ski</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @(ViewBag.StationId.Equals("92") ? "active" : "")" href="@Url.Action("Speaker", "Home", new { name = 92 }, null)"><i class="fa fa-fw icon-Running"></i> Springing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @(ViewBag.StationId.Equals("93") ? "active" : "")" href="@Url.Action("Speaker", "Home", new { name = 93 }, null)"><i class="fa fa-fw icon-Running"></i> Mot mål</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @(ViewBag.StationId.Equals("248") ? "active" : "")" href="@Url.Action("Speaker", "Home", new { name = 248 }, null)"><i class="fa fa-fw icon-cycling"></i> Sykling/Målgang</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-md-12" data-bind="foreach: results">
                 <div class="row">
                     <div class="col-md-8">
                         <p><span class="badge badge-default" data-bind="text: Startnumber"></span> <strong data-bind="visible:IsTeam, text:Name"></strong> <strong data-bind="visible:!IsTeam, text: _splits[_splits.length - 1].Name"></strong></p>
                     </div>
                     <div class="col-md-4 text-right">
-                        <strong data-bind="text: TotalTime"></strong><br/>
-                        <span data-bind="text: EstimatedTime"></span>
+                        <strong data-bind="text: CurrentTime"></strong><br/>
                     </div>
                 </div>
                 <div class="row small">
@@ -95,13 +70,12 @@
                     <!-- /ko -->
                     <div class="col-md-5">
                         <dl class="row" data-bind="foreach: _splits">
-                            <dd class="col-md-12" data-bind="visible:(Location == globalStationId)">
+                            <dd class="col-md-12" data-bind="visible:($data.Position <= 3)">
                                 <span class="badge badge-pill" data-bind="css: {'badge-info' : ($data.Position == 1), 'badge-warning' : ($data.Position == 2), 'badge-success' : ($data.Position == 3), 'badge-default' : ($data.Position > 3)}, text: Position"></span> <span data-bind="text:Class"></span>
                             </dd>
                         </dl>
                     </div>
                 </div>
-                @*<pre data-bind="text: ko.toJSON($data, null, 2)"/>*@
                 <hr/>
             </div>
         </div>
@@ -117,9 +91,6 @@
         var d = new Date();
         var start = new Date().setHours(13, 14, -1);
 
-        var clock = $('.time-clock').FlipClock({
-            clockFace: 'TwentyFourHourClock'
-        });
         var raceclock = $('.race-clock').FlipClock(((start > d) ? (start - d) : (d - start)) / 1000,
             {
                 countdown: (start > d),
@@ -132,7 +103,8 @@
                 }
             });
     });
+
 </script>
-<script src="~/Scripts/station.js"></script>
+<script src="~/Scripts/speaker.js"></script>
 
 }
