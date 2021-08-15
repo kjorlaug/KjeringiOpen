@@ -1,0 +1,30 @@
+{
+  "dependencies": {},
+  "parameters": {
+    "KjeringiOpen.resourceName": {
+      "Name": "KjeringiOpen.resourceName",
+      "Type": null,
+      "Value": "KjeringiOpen"
+    },
+    "KjeringiOpen.resourceGroupLocation": {
+      "Name": "KjeringiOpen.resourceGroupLocation",
+      "Type": null,
+      "Value": "northeurope"
+    },
+    "KjeringiOpen.subscriptionId": {
+      "Name": "KjeringiOpen.subscriptionId",
+      "Type": "subscription",
+      "Value": "67a854bb-bdb1-4a47-8ad6-c6b1c17ad9f7"
+    },
+    "KjeringiOpen.resourceGroupName": {
+      "Name": "KjeringiOpen.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "Kjeringi"
+    },
+    "subscriptionId": {
+      "Name": "subscriptionId",
+      "Type": "subscription",
+      "Value": "67a854bb-bdb1-4a47-8ad6-c6b1c17ad9f7"
+    }
+  }
+}

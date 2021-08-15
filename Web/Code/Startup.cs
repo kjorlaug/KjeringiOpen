@@ -28,17 +28,19 @@ namespace KjeringiData
     {
         public void Configuration(IAppBuilder app)
         {
+            app.MapSignalR();
+
             // Any connection or hub wire up and configuration should go here
             GlobalHost.HubPipeline.AddModule(new ErrorHandlingPipelineModule()); 
 
-            HubConfiguration hubConfig = new HubConfiguration();
-            hubConfig.EnableJSONP = true;
-            hubConfig.EnableDetailedErrors = true;
+            //HubConfiguration hubConfig = new HubConfiguration();
+            //hubConfig.EnableJSONP = true;
+            //hubConfig.EnableDetailedErrors = true;
 
-            var task = Task.Run(() => app.MapSignalR(hubConfig));
-            task.Wait(300);
-            //try again if it fails just to be sure ;)
-            if (task.IsCanceled) Task.Run(() => app.MapSignalR(hubConfig)).Wait(300);            
+            //var task = Task.Run(() => app.MapSignalR(hubConfig));
+            //task.Wait(300);
+            ////try again if it fails just to be sure ;)
+            //if (task.IsCanceled) Task.Run(() => app.MapSignalR(hubConfig)).Wait(300);            
         }
     }
 }

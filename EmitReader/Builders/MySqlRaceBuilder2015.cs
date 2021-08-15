@@ -27,7 +27,7 @@ namespace EmitReaderLib.Builders
         {
             race.Name = _year;
 
-            MySqlConnection conn = new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[_conn].ConnectionString);
+            MySqlConnection conn = new MySqlConnection(_conn);
             conn.Open();
 
             // Adding supers

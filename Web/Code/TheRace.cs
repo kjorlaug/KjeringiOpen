@@ -47,7 +47,7 @@ namespace KjeringiData
                     {
                         if (instance == null) {
                             int currentYear = DateTime.Now.Year;
-                            if (!System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/" + DateTime.Now.Year.ToString() + ".json")))
+                            while (!System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/" + currentYear.ToString() + ".json")) && currentYear >= 2000)
                                 currentYear -= 1;
                             string yearPath = System.Web.HttpContext.Current.Server.MapPath(@"~/App_Data/" + currentYear + ".json");
                             instance = Race.LoadYear(currentYear, yearPath);

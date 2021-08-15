@@ -218,6 +218,27 @@ namespace EmitReaderLib
             //    IndexParticipant(p);
         }
 
+        private static string NormalizeAzureInAppConnString(string raw)
+        {
+            string conn = string.Empty;
+            try
+            {
+                var dict =
+                     raw.Split(';')
+                         .Where(kvp => kvp.Contains('='))
+                         .Select(kvp => kvp.Split(new char[] { '=' }, 2))
+                         .ToDictionary(kvp => kvp[0].Trim(), kvp => kvp[1].Trim(), StringComparer.InvariantCultureIgnoreCase);
+                var ds = dict["Data Source"];
+                var dsa = ds.Split(':');
+                conn = $"Server={dsa[0]};Port={dsa[1]};Uid={dict["User Id"]};Pwd={dict["Password"]};SslMode=none;";
+            }
+            catch
+            {
+                throw new Exception("unexpected connection string: datasource is empty or null");
+            }
+            return conn;
+        }
+
         public static Race LoadYear(int year, String jsonFile)
         {
             if (!System.IO.File.Exists(jsonFile))
@@ -228,16 +249,10 @@ namespace EmitReaderLib
             var race = JsonConvert.DeserializeObject<Race>(json);
 
             // Create correct connection string
-            String t = Environment.GetEnvironmentVariable("MYSQLCONNSTR_localdb");
+            //String t = Environment.GetEnvironmentVariable("MYSQLCONNSTR_localdb");
+            String t = NormalizeAzureInAppConnString(System.Configuration.ConfigurationManager.ConnectionStrings["localdb"].ConnectionString);
 
-            //if (!String.IsNullOrEmpty(t))
-            //{
-            //    t = t.Substring(t.IndexOf(":") + 1);
-            //    t = t.Substring(0, t.IndexOf(";"));
-
-            //    t = "Server=127.0.0.1;Port=" + t + ";Uid = azure; Pwd = 6#vWHD_$;";
-            //}
-            //else
+            if (String.IsNullOrEmpty(t))
                 t = System.Configuration.ConfigurationManager.ConnectionStrings["Kjeringi"].ConnectionString;
 
             race.InTestMode = true;
@@ -262,32 +277,57 @@ namespace EmitReaderLib
                     (new EmitReaderLib.Builders.JsonRaceBuilder(jsonFile.Replace(".json", "_%source%.json"), Enumerable.Range(4480, 20).ToList<int>(), "2018", new DateTime(2018, 4, 14))).BuildRace(race);
                     break;
                 case 2019:
-                    (new EmitReaderLib.Builders.RestRaceBuilder("https://www.skriki.no/kop19/ipa/%source%/fetchAll?token=98dbf8596407ab5f896ff5b8e286631c7dc0ed200a610565ae860ad13f75eefa", Enumerable.Range(3681, 20).ToList<int>(), "2019", new DateTime(2019, 4, 27))).BuildRace(race);
+                    (new EmitReaderLib.Builders.JsonRaceBuilder(jsonFile.Replace(".json", "_%source%.json"), Enumerable.Range(3681, 20).ToList<int>(), "2019", new DateTime(2019, 4, 27))).BuildRace(race);
                     race.Legs[1].Name = "Terrengløp";
                     race.Legs[1].Icon = "icon-trail";
-
                     break;
+                    //case 2019:
+                    //    (new EmitReaderLib.Builders.RestRaceBuilder("https://www.skriki.no/kop19/ipa/%source%/fetchAll?token=98dbf8596407ab5f896ff5b8e286631c7dc0ed200a610565ae860ad13f75eefa", Enumerable.Range(3681, 20).ToList<int>(), "2019", new DateTime(2019, 4, 27))).BuildRace(race);
+                    //    race.Legs[1].Name = "Terrengløp";
+                    //    race.Legs[1].Icon = "icon-trail";
+
+                    //    break;
             }
 
-            MySqlConnection conn = new MySqlConnection(t + "Database=timers;");
-            MySqlCommand cmd = new MySqlCommand("SELECT card, location, time FROM LocationPasses WHERE year = " + year.ToString() + " ORDER BY time", conn);
+            var resultsFile = jsonFile.Replace(".json", "_results.json");
 
-            conn.Open();
-            var data = cmd.ExecuteReader();
-
-            while (data.Read())
+            if (System.IO.File.Exists(resultsFile))
             {
-                EmitData d = new EmitData()
+                var results = JArray.Parse(System.IO.File.ReadAllText(resultsFile));
+
+                foreach (dynamic r in results.Children<JObject>())
                 {
-                    Id = data.GetInt16("card"),
-                    BoxId = data.GetInt16("location"),
-                    Time = data.GetDateTime("time"),
-                    Force = false
-                };
-                race.AddPass(d);
+                    EmitData d = new EmitData()
+                    {
+                        Id = (int)r.Card,
+                        BoxId = (int)r.Location,
+                        Time = (DateTime)r.Time
+                    };
+                    race.AddPass(d);
+                }
+
             }
-            data.Close();
-            conn.Close();
+
+
+            //MySqlConnection conn = new MySqlConnection(t + "Database=timers;");
+            //MySqlCommand cmd = new MySqlCommand("SELECT card, location, time FROM LocationPasses WHERE year = " + year.ToString() + " ORDER BY time", conn);
+
+            //conn.Open();
+            //var data = cmd.ExecuteReader();
+
+            //while (data.Read())
+            //{
+            //    EmitData d = new EmitData()
+            //    {
+            //        Id = data.GetInt16("card"),
+            //        BoxId = data.GetInt16("location"),
+            //        Time = data.GetDateTime("time"),
+            //        Force = false
+            //    };
+            //    race.AddPass(d);
+            //}
+            //data.Close();
+            //conn.Close();
 
             race.InTestMode = false;
             return race;

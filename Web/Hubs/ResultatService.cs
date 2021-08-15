@@ -116,51 +116,51 @@ namespace Web.Hubs
                         Clients.All.addLogMessage("NewTopResult " + topResult.Location + " " + topResult.Position.ToString() + ". " + topResult.Class + " " + topResult.Name, resultat.EmitID, resultat.Startnumber, resultat.Name, resultat.EstimatedTime);
                     }
 
-                    System.Threading.Tasks.Task.Factory.StartNew(() =>
-                    {
-                        // Send SMS
-                        StringBuilder sb = new StringBuilder();
+                    //System.Threading.Tasks.Task.Factory.StartNew(() =>
+                    //{
+                    //    // Send SMS
+                    //    StringBuilder sb = new StringBuilder();
 
-                        sb.Append("Mellombels resultat Kjeringi Open 2019 %0A");
-                        sb.Append(resultat.Name);
-                        sb.Append(" (");
-                        sb.Append(resultat.Classes[0].Name);
-                        sb.Append(")%0AEtapper:%0A");
+                    //    sb.Append("Mellombels resultat Kjeringi Open 2019 %0A");
+                    //    sb.Append(resultat.Name);
+                    //    sb.Append(" (");
+                    //    sb.Append(resultat.Classes[0].Name);
+                    //    sb.Append(")%0AEtapper:%0A");
 
-                        List<String[]> splits = resultat.Splits(resultat.Classes[0].Id).Select(p => new String[] { p.Leg, p.IsSuper ? "" : p.Name, (p.Estimated ? "(mangler)" : p.Time) }).ToList<String[]>();
+                    //    List<String[]> splits = resultat.Splits(resultat.Classes[0].Id).Select(p => new String[] { p.Leg, p.IsSuper ? "" : p.Name, (p.Estimated ? "(mangler)" : p.Time) }).ToList<String[]>();
 
-                        foreach (Result r in resultat.Splits(resultat.Classes[0].Id))
-                        {
-                            sb.Append(" ");
-                            sb.Append(r.Leg);
-                            sb.Append(" ");
-                            sb.Append(r.Estimated ? "(mangler)" : r.Time);
-                            sb.Append(" (");
-                            sb.Append(r.Position);
-                            sb.Append(".plass) ");
-                            sb.Append("%0A");
-                        }
-                        sb.Append("Totaltid: ");
-                        sb.Append(resultat.TotalTime);
+                    //    foreach (Result r in resultat.Splits(resultat.Classes[0].Id))
+                    //    {
+                    //        sb.Append(" ");
+                    //        sb.Append(r.Leg);
+                    //        sb.Append(" ");
+                    //        sb.Append(r.Estimated ? "(mangler)" : r.Time);
+                    //        sb.Append(" (");
+                    //        sb.Append(r.Position);
+                    //        sb.Append(".plass) ");
+                    //        sb.Append("%0A");
+                    //    }
+                    //    sb.Append("Totaltid: ");
+                    //    sb.Append(resultat.TotalTime);
 
-                        sb.Append("%0ASMS-tjenestene levert av Difi i samarbeid med Linkmobility");
+                    //    sb.Append("%0ASMS-tjenestene levert av Difi i samarbeid med Linkmobility");
 
-                        foreach (String tlf in resultat.Telephone.Distinct())
-                        {
-                            try
-                            {
-                                String url = String.Format(@"http://simple.pswin.com/?USER=kjeringiopen&{0}&RCV=47{1}&TXT={2}&snd=Kjeringi&ENC=utf-8", "PW=0DgFPq2k3", tlf, sb.ToString());
-                                WebClient webClient = new WebClient();
-                                Stream stream = webClient.OpenRead(url);
-                                StreamReader reader = new StreamReader(stream);
-                                String request = reader.ReadToEnd();
-                                Console.WriteLine("Success: " + url);
-                            }
-                            catch (WebException ex)
-                            {
-                            }
-                        }
-                    });
+                    //    foreach (String tlf in resultat.Telephone.Distinct())
+                    //    {
+                    //        try
+                    //        {
+                    //            String url = String.Format(@"http://simple.pswin.com/?USER=kjeringiopen&{0}&RCV=47{1}&TXT={2}&snd=Kjeringi&ENC=utf-8", "PW=0DgFPq2k3", tlf, sb.ToString());
+                    //            WebClient webClient = new WebClient();
+                    //            Stream stream = webClient.OpenRead(url);
+                    //            StreamReader reader = new StreamReader(stream);
+                    //            String request = reader.ReadToEnd();
+                    //            Console.WriteLine("Success: " + url);
+                    //        }
+                    //        catch (WebException ex)
+                    //        {
+                    //        }
+                    //    }
+                    //});
                 }
                 else
                 {
