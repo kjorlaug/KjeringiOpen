@@ -1,1 +1,6284 @@
-[{"Id":23297,"Year":2019,"Location":90,"Card":3335,"Time":"2019-04-27T13:26:59.33","Force":false,"Test":false},{"Id":23298,"Year":2019,"Location":90,"Card":3448,"Time":"2019-04-27T13:27:20.87","Force":false,"Test":false},{"Id":23299,"Year":2019,"Location":90,"Card":3449,"Time":"2019-04-27T13:27:21.01","Force":false,"Test":false},{"Id":23300,"Year":2019,"Location":90,"Card":3453,"Time":"2019-04-27T13:27:42.25","Force":false,"Test":false},{"Id":23301,"Year":2019,"Location":90,"Card":3351,"Time":"2019-04-27T13:27:43.17","Force":false,"Test":false},{"Id":23302,"Year":2019,"Location":90,"Card":3369,"Time":"2019-04-27T13:28:05.18","Force":false,"Test":false},{"Id":23303,"Year":2019,"Location":90,"Card":3366,"Time":"2019-04-27T13:28:27.94","Force":false,"Test":false},{"Id":23304,"Year":2019,"Location":90,"Card":3470,"Time":"2019-04-27T13:28:57.32","Force":false,"Test":false},{"Id":23305,"Year":2019,"Location":90,"Card":3469,"Time":"2019-04-27T13:29:20.57","Force":false,"Test":false},{"Id":23306,"Year":2019,"Location":90,"Card":3468,"Time":"2019-04-27T13:30:05.03","Force":false,"Test":false},{"Id":23307,"Year":2019,"Location":90,"Card":3479,"Time":"2019-04-27T13:30:06","Force":false,"Test":false},{"Id":23308,"Year":2019,"Location":90,"Card":3370,"Time":"2019-04-27T13:30:06.44","Force":false,"Test":false},{"Id":23309,"Year":2019,"Location":90,"Card":3314,"Time":"2019-04-27T13:30:08.02","Force":false,"Test":false},{"Id":23310,"Year":2019,"Location":90,"Card":3436,"Time":"2019-04-27T13:30:11.12","Force":false,"Test":false},{"Id":23311,"Year":2019,"Location":90,"Card":3341,"Time":"2019-04-27T13:30:12.76","Force":false,"Test":false},{"Id":23312,"Year":2019,"Location":90,"Card":3311,"Time":"2019-04-27T13:30:16.08","Force":false,"Test":false},{"Id":23313,"Year":2019,"Location":90,"Card":3400,"Time":"2019-04-27T13:30:16.71","Force":false,"Test":false},{"Id":23314,"Year":2019,"Location":90,"Card":3337,"Time":"2019-04-27T13:30:17.4","Force":false,"Test":false},{"Id":23315,"Year":2019,"Location":90,"Card":3347,"Time":"2019-04-27T13:30:33.15","Force":false,"Test":false},{"Id":23316,"Year":2019,"Location":90,"Card":3435,"Time":"2019-04-27T13:30:38.65","Force":false,"Test":false},{"Id":23317,"Year":2019,"Location":90,"Card":3361,"Time":"2019-04-27T13:30:40.32","Force":false,"Test":false},{"Id":23318,"Year":2019,"Location":90,"Card":3456,"Time":"2019-04-27T13:30:39.62","Force":false,"Test":false},{"Id":23319,"Year":2019,"Location":90,"Card":3324,"Time":"2019-04-27T13:30:41.23","Force":false,"Test":false},{"Id":23320,"Year":2019,"Location":90,"Card":3348,"Time":"2019-04-27T13:30:50.62","Force":false,"Test":false},{"Id":23321,"Year":2019,"Location":90,"Card":3392,"Time":"2019-04-27T13:30:46.61","Force":false,"Test":false},{"Id":23322,"Year":2019,"Location":90,"Card":3303,"Time":"2019-04-27T13:30:58.95","Force":false,"Test":false},{"Id":23323,"Year":2019,"Location":90,"Card":3406,"Time":"2019-04-27T13:31:29.77","Force":false,"Test":false},{"Id":23324,"Year":2019,"Location":90,"Card":3408,"Time":"2019-04-27T13:31:30.02","Force":false,"Test":false},{"Id":23325,"Year":2019,"Location":90,"Card":3407,"Time":"2019-04-27T13:31:29.86","Force":false,"Test":false},{"Id":23326,"Year":2019,"Location":90,"Card":3415,"Time":"2019-04-27T13:31:44.46","Force":false,"Test":false},{"Id":23327,"Year":2019,"Location":90,"Card":3414,"Time":"2019-04-27T13:31:55.24","Force":false,"Test":false},{"Id":23328,"Year":2019,"Location":90,"Card":3413,"Time":"2019-04-27T13:31:54.94","Force":false,"Test":false},{"Id":23329,"Year":2019,"Location":90,"Card":3416,"Time":"2019-04-27T13:32:09.93","Force":false,"Test":false},{"Id":23330,"Year":2019,"Location":90,"Card":3417,"Time":"2019-04-27T13:32:10.44","Force":false,"Test":false},{"Id":23331,"Year":2019,"Location":90,"Card":3398,"Time":"2019-04-27T13:32:17.81","Force":false,"Test":false},{"Id":23332,"Year":2019,"Location":90,"Card":3399,"Time":"2019-04-27T13:32:18.41","Force":false,"Test":false},{"Id":23333,"Year":2019,"Location":90,"Card":3359,"Time":"2019-04-27T13:32:22.15","Force":false,"Test":false},{"Id":23334,"Year":2019,"Location":90,"Card":3349,"Time":"2019-04-27T13:32:44.05","Force":false,"Test":false},{"Id":23335,"Year":2019,"Location":90,"Card":3437,"Time":"2019-04-27T13:32:50.27","Force":false,"Test":false},{"Id":23336,"Year":2019,"Location":90,"Card":3390,"Time":"2019-04-27T13:32:53.85","Force":false,"Test":false},{"Id":23337,"Year":2019,"Location":90,"Card":3454,"Time":"2019-04-27T13:32:55.06","Force":false,"Test":false},{"Id":23338,"Year":2019,"Location":90,"Card":3340,"Time":"2019-04-27T13:32:56.44","Force":false,"Test":false},{"Id":23339,"Year":2019,"Location":90,"Card":3312,"Time":"2019-04-27T13:32:59.25","Force":false,"Test":false},{"Id":23340,"Year":2019,"Location":90,"Card":3465,"Time":"2019-04-27T13:33:04.26","Force":false,"Test":false},{"Id":23341,"Year":2019,"Location":90,"Card":3464,"Time":"2019-04-27T13:33:05.56","Force":false,"Test":false},{"Id":23342,"Year":2019,"Location":90,"Card":3315,"Time":"2019-04-27T13:33:16.13","Force":false,"Test":false},{"Id":23343,"Year":2019,"Location":90,"Card":3380,"Time":"2019-04-27T13:33:31.25","Force":false,"Test":false},{"Id":23344,"Year":2019,"Location":90,"Card":3404,"Time":"2019-04-27T13:33:37.67","Force":false,"Test":false},{"Id":23345,"Year":2019,"Location":90,"Card":3352,"Time":"2019-04-27T13:33:42.97","Force":false,"Test":false},{"Id":23346,"Year":2019,"Location":90,"Card":3339,"Time":"2019-04-27T13:33:44.57","Force":false,"Test":false},{"Id":23347,"Year":2019,"Location":90,"Card":3371,"Time":"2019-04-27T13:33:46.16","Force":false,"Test":false},{"Id":23348,"Year":2019,"Location":90,"Card":3350,"Time":"2019-04-27T13:33:46.91","Force":false,"Test":false},{"Id":23349,"Year":2019,"Location":90,"Card":3346,"Time":"2019-04-27T13:33:49.89","Force":false,"Test":false},{"Id":23350,"Year":2019,"Location":90,"Card":3440,"Time":"2019-04-27T13:34:01.01","Force":false,"Test":false},{"Id":23351,"Year":2019,"Location":90,"Card":3441,"Time":"2019-04-27T13:34:01.07","Force":false,"Test":false},{"Id":23352,"Year":2019,"Location":91,"Card":3351,"Time":"2019-04-27T13:34:02.33","Force":false,"Test":false},{"Id":23353,"Year":2019,"Location":91,"Card":3453,"Time":"2019-04-27T13:34:12.29","Force":false,"Test":false},{"Id":23354,"Year":2019,"Location":91,"Card":3335,"Time":"2019-04-27T13:34:18.3","Force":false,"Test":false},{"Id":23355,"Year":2019,"Location":90,"Card":3368,"Time":"2019-04-27T13:34:37.95","Force":false,"Test":false},{"Id":23356,"Year":2019,"Location":90,"Card":3463,"Time":"2019-04-27T13:34:58.75","Force":false,"Test":false},{"Id":23357,"Year":2019,"Location":90,"Card":3452,"Time":"2019-04-27T13:34:59.29","Force":false,"Test":false},{"Id":23358,"Year":2019,"Location":90,"Card":3355,"Time":"2019-04-27T13:35:28.8","Force":false,"Test":false},{"Id":23359,"Year":2019,"Location":90,"Card":3466,"Time":"2019-04-27T13:35:31.8","Force":false,"Test":false},{"Id":23360,"Year":2019,"Location":90,"Card":3467,"Time":"2019-04-27T13:35:31.96","Force":false,"Test":false},{"Id":23361,"Year":2019,"Location":91,"Card":3369,"Time":"2019-04-27T13:35:37.1","Force":false,"Test":false},{"Id":23362,"Year":2019,"Location":90,"Card":3424,"Time":"2019-04-27T13:35:41.16","Force":false,"Test":false},{"Id":23363,"Year":2019,"Location":90,"Card":3423,"Time":"2019-04-27T13:35:41.71","Force":false,"Test":false},{"Id":23364,"Year":2019,"Location":91,"Card":3449,"Time":"2019-04-27T13:35:50.56","Force":false,"Test":false},{"Id":23365,"Year":2019,"Location":90,"Card":3462,"Time":"2019-04-27T13:35:50.26","Force":false,"Test":false},{"Id":23366,"Year":2019,"Location":90,"Card":3322,"Time":"2019-04-27T13:35:54.4","Force":false,"Test":false},{"Id":23367,"Year":2019,"Location":90,"Card":3434,"Time":"2019-04-27T13:35:56.14","Force":false,"Test":false},{"Id":23368,"Year":2019,"Location":90,"Card":3304,"Time":"2019-04-27T13:35:59.37","Force":false,"Test":false},{"Id":23369,"Year":2019,"Location":90,"Card":3459,"Time":"2019-04-27T13:36:01.08","Force":false,"Test":false},{"Id":23370,"Year":2019,"Location":90,"Card":3354,"Time":"2019-04-27T13:36:05.53","Force":false,"Test":false},{"Id":23371,"Year":2019,"Location":91,"Card":3366,"Time":"2019-04-27T13:36:06.98","Force":false,"Test":false},{"Id":23372,"Year":2019,"Location":90,"Card":3418,"Time":"2019-04-27T13:36:07.99","Force":false,"Test":false},{"Id":23373,"Year":2019,"Location":91,"Card":3448,"Time":"2019-04-27T13:36:15.53","Force":false,"Test":false},{"Id":23374,"Year":2019,"Location":90,"Card":3473,"Time":"2019-04-27T13:36:14.74","Force":false,"Test":false},{"Id":23375,"Year":2019,"Location":90,"Card":3474,"Time":"2019-04-27T13:36:14.93","Force":false,"Test":false},{"Id":23376,"Year":2019,"Location":91,"Card":3479,"Time":"2019-04-27T13:36:30.98","Force":false,"Test":false},{"Id":23377,"Year":2019,"Location":90,"Card":3412,"Time":"2019-04-27T13:36:34.53","Force":false,"Test":false},{"Id":23378,"Year":2019,"Location":90,"Card":3411,"Time":"2019-04-27T13:36:34.76","Force":false,"Test":false},{"Id":23379,"Year":2019,"Location":91,"Card":3470,"Time":"2019-04-27T13:36:37.17","Force":false,"Test":false},{"Id":23380,"Year":2019,"Location":91,"Card":3469,"Time":"2019-04-27T13:36:37.61","Force":false,"Test":false},{"Id":23381,"Year":2019,"Location":91,"Card":3468,"Time":"2019-04-27T13:36:38.45","Force":false,"Test":false},{"Id":23382,"Year":2019,"Location":91,"Card":3341,"Time":"2019-04-27T13:36:46.48","Force":false,"Test":false},{"Id":23383,"Year":2019,"Location":90,"Card":3471,"Time":"2019-04-27T13:36:49.91","Force":false,"Test":false},{"Id":23384,"Year":2019,"Location":90,"Card":3472,"Time":"2019-04-27T13:36:50.15","Force":false,"Test":false},{"Id":23385,"Year":2019,"Location":90,"Card":3360,"Time":"2019-04-27T13:36:55.39","Force":false,"Test":false},{"Id":23386,"Year":2019,"Location":90,"Card":3420,"Time":"2019-04-27T13:37:07.48","Force":false,"Test":false},{"Id":23387,"Year":2019,"Location":90,"Card":3419,"Time":"2019-04-27T13:37:08.19","Force":false,"Test":false},{"Id":23388,"Year":2019,"Location":90,"Card":3443,"Time":"2019-04-27T13:37:11.63","Force":false,"Test":false},{"Id":23389,"Year":2019,"Location":90,"Card":3389,"Time":"2019-04-27T13:37:12.32","Force":false,"Test":false},{"Id":23390,"Year":2019,"Location":90,"Card":3388,"Time":"2019-04-27T13:37:12.37","Force":false,"Test":false},{"Id":23391,"Year":2019,"Location":91,"Card":3337,"Time":"2019-04-27T13:37:21.25","Force":false,"Test":false},{"Id":23392,"Year":2019,"Location":91,"Card":3314,"Time":"2019-04-27T13:37:26.12","Force":false,"Test":false},{"Id":23393,"Year":2019,"Location":90,"Card":3397,"Time":"2019-04-27T13:37:25.46","Force":false,"Test":false},{"Id":23394,"Year":2019,"Location":90,"Card":3394,"Time":"2019-04-27T13:37:33.49","Force":false,"Test":false},{"Id":23395,"Year":2019,"Location":91,"Card":3436,"Time":"2019-04-27T13:37:38.41","Force":false,"Test":false},{"Id":23396,"Year":2019,"Location":91,"Card":3347,"Time":"2019-04-27T13:37:40.24","Force":false,"Test":false},{"Id":23397,"Year":2019,"Location":90,"Card":3455,"Time":"2019-04-27T13:37:48.28","Force":false,"Test":false},{"Id":23398,"Year":2019,"Location":90,"Card":3338,"Time":"2019-04-27T13:37:58.15","Force":false,"Test":false},{"Id":23399,"Year":2019,"Location":90,"Card":3384,"Time":"2019-04-27T13:38:04.92","Force":false,"Test":false},{"Id":23400,"Year":2019,"Location":90,"Card":3385,"Time":"2019-04-27T13:38:05.38","Force":false,"Test":false},{"Id":23401,"Year":2019,"Location":90,"Card":3451,"Time":"2019-04-27T13:38:17.4","Force":false,"Test":false},{"Id":23402,"Year":2019,"Location":90,"Card":3332,"Time":"2019-04-27T13:38:28.64","Force":false,"Test":false},{"Id":23403,"Year":2019,"Location":90,"Card":3477,"Time":"2019-04-27T13:38:39.17","Force":false,"Test":false},{"Id":23404,"Year":2019,"Location":91,"Card":3400,"Time":"2019-04-27T13:38:48.68","Force":false,"Test":false},{"Id":23405,"Year":2019,"Location":90,"Card":3357,"Time":"2019-04-27T13:38:49.35","Force":false,"Test":false},{"Id":23406,"Year":2019,"Location":90,"Card":3336,"Time":"2019-04-27T13:39:00.47","Force":false,"Test":false},{"Id":23407,"Year":2019,"Location":91,"Card":3456,"Time":"2019-04-27T13:39:08.1","Force":false,"Test":false},{"Id":23408,"Year":2019,"Location":91,"Card":3392,"Time":"2019-04-27T13:39:12.52","Force":false,"Test":false},{"Id":23409,"Year":2019,"Location":90,"Card":3358,"Time":"2019-04-27T13:39:14.05","Force":false,"Test":false},{"Id":23410,"Year":2019,"Location":91,"Card":3435,"Time":"2019-04-27T13:39:15.87","Force":false,"Test":false},{"Id":23411,"Year":2019,"Location":91,"Card":3414,"Time":"2019-04-27T13:39:18.59","Force":false,"Test":false},{"Id":23412,"Year":2019,"Location":90,"Card":3318,"Time":"2019-04-27T13:39:19.42","Force":false,"Test":false},{"Id":23413,"Year":2019,"Location":91,"Card":3406,"Time":"2019-04-27T13:39:19.81","Force":false,"Test":false},{"Id":23414,"Year":2019,"Location":91,"Card":3407,"Time":"2019-04-27T13:39:19.78","Force":false,"Test":false},{"Id":23415,"Year":2019,"Location":91,"Card":3303,"Time":"2019-04-27T13:39:21.75","Force":false,"Test":false},{"Id":23416,"Year":2019,"Location":90,"Card":3386,"Time":"2019-04-27T13:39:27.46","Force":false,"Test":false},{"Id":23417,"Year":2019,"Location":90,"Card":3387,"Time":"2019-04-27T13:39:27.92","Force":false,"Test":false},{"Id":23418,"Year":2019,"Location":90,"Card":3445,"Time":"2019-04-27T13:39:32.14","Force":false,"Test":false},{"Id":23419,"Year":2019,"Location":90,"Card":3444,"Time":"2019-04-27T13:39:31.94","Force":false,"Test":false},{"Id":23420,"Year":2019,"Location":90,"Card":3439,"Time":"2019-04-27T13:39:39.55","Force":false,"Test":false},{"Id":23421,"Year":2019,"Location":90,"Card":3391,"Time":"2019-04-27T13:39:39.78","Force":false,"Test":false},{"Id":23422,"Year":2019,"Location":91,"Card":3349,"Time":"2019-04-27T13:39:56.65","Force":false,"Test":false},{"Id":23423,"Year":2019,"Location":91,"Card":3370,"Time":"2019-04-27T13:39:58.61","Force":false,"Test":false},{"Id":23424,"Year":2019,"Location":90,"Card":3393,"Time":"2019-04-27T13:40:00.23","Force":false,"Test":false},{"Id":23425,"Year":2019,"Location":91,"Card":3454,"Time":"2019-04-27T13:40:07.78","Force":false,"Test":false},{"Id":23426,"Year":2019,"Location":91,"Card":3417,"Time":"2019-04-27T13:40:08.29","Force":false,"Test":false},{"Id":23427,"Year":2019,"Location":91,"Card":3348,"Time":"2019-04-27T13:40:10.1","Force":false,"Test":false},{"Id":23428,"Year":2019,"Location":91,"Card":3359,"Time":"2019-04-27T13:40:16.06","Force":false,"Test":false},{"Id":23429,"Year":2019,"Location":90,"Card":3428,"Time":"2019-04-27T13:40:16.12","Force":false,"Test":false},{"Id":23430,"Year":2019,"Location":90,"Card":3429,"Time":"2019-04-27T13:40:16.33","Force":false,"Test":false},{"Id":23431,"Year":2019,"Location":91,"Card":3408,"Time":"2019-04-27T13:40:27.99","Force":false,"Test":false},{"Id":23432,"Year":2019,"Location":91,"Card":3413,"Time":"2019-04-27T13:40:29.8","Force":false,"Test":false},{"Id":23433,"Year":2019,"Location":91,"Card":3361,"Time":"2019-04-27T13:40:32.18","Force":false,"Test":false},{"Id":23434,"Year":2019,"Location":90,"Card":3401,"Time":"2019-04-27T13:40:33.12","Force":false,"Test":false},{"Id":23435,"Year":2019,"Location":90,"Card":3344,"Time":"2019-04-27T13:40:34.32","Force":false,"Test":false},{"Id":23436,"Year":2019,"Location":91,"Card":3311,"Time":"2019-04-27T13:40:36.18","Force":false,"Test":false},{"Id":23437,"Year":2019,"Location":91,"Card":3415,"Time":"2019-04-27T13:40:38.56","Force":false,"Test":false},{"Id":23438,"Year":2019,"Location":90,"Card":3447,"Time":"2019-04-27T13:40:52.57","Force":false,"Test":false},{"Id":23439,"Year":2019,"Location":91,"Card":3399,"Time":"2019-04-27T13:40:57.89","Force":false,"Test":false},{"Id":23440,"Year":2019,"Location":91,"Card":3398,"Time":"2019-04-27T13:40:57.92","Force":false,"Test":false},{"Id":23441,"Year":2019,"Location":90,"Card":3442,"Time":"2019-04-27T13:41:01.02","Force":false,"Test":false},{"Id":23442,"Year":2019,"Location":91,"Card":3404,"Time":"2019-04-27T13:41:04.47","Force":false,"Test":false},{"Id":23443,"Year":2019,"Location":90,"Card":3461,"Time":"2019-04-27T13:41:09.75","Force":false,"Test":false},{"Id":23444,"Year":2019,"Location":90,"Card":3460,"Time":"2019-04-27T13:41:09.98","Force":false,"Test":false},{"Id":23445,"Year":2019,"Location":91,"Card":3380,"Time":"2019-04-27T13:41:16.6","Force":false,"Test":false},{"Id":23446,"Year":2019,"Location":90,"Card":3367,"Time":"2019-04-27T13:41:18.41","Force":false,"Test":false},{"Id":23447,"Year":2019,"Location":90,"Card":3405,"Time":"2019-04-27T13:41:22.3","Force":false,"Test":false},{"Id":23448,"Year":2019,"Location":91,"Card":3465,"Time":"2019-04-27T13:41:32.43","Force":false,"Test":false},{"Id":23449,"Year":2019,"Location":90,"Card":3446,"Time":"2019-04-27T13:41:33.34","Force":false,"Test":false},{"Id":23450,"Year":2019,"Location":90,"Card":3326,"Time":"2019-04-27T13:41:34.71","Force":false,"Test":false},{"Id":23451,"Year":2019,"Location":91,"Card":3315,"Time":"2019-04-27T13:41:37.73","Force":false,"Test":false},{"Id":23452,"Year":2019,"Location":90,"Card":3383,"Time":"2019-04-27T13:41:39.73","Force":false,"Test":false},{"Id":23453,"Year":2019,"Location":91,"Card":3340,"Time":"2019-04-27T13:41:41.16","Force":false,"Test":false},{"Id":23454,"Year":2019,"Location":91,"Card":3437,"Time":"2019-04-27T13:41:42.99","Force":false,"Test":false},{"Id":23455,"Year":2019,"Location":91,"Card":3324,"Time":"2019-04-27T13:41:46.89","Force":false,"Test":false},{"Id":23456,"Year":2019,"Location":91,"Card":3464,"Time":"2019-04-27T13:41:52.98","Force":false,"Test":false},{"Id":23457,"Year":2019,"Location":91,"Card":3350,"Time":"2019-04-27T13:42:03.13","Force":false,"Test":false},{"Id":23458,"Year":2019,"Location":91,"Card":3390,"Time":"2019-04-27T13:42:12.46","Force":false,"Test":false},{"Id":23459,"Year":2019,"Location":91,"Card":3416,"Time":"2019-04-27T13:42:22.47","Force":false,"Test":false},{"Id":23460,"Year":2019,"Location":90,"Card":3476,"Time":"2019-04-27T13:42:22.26","Force":false,"Test":false},{"Id":23461,"Year":2019,"Location":91,"Card":3339,"Time":"2019-04-27T13:42:27.8","Force":false,"Test":false},{"Id":23462,"Year":2019,"Location":91,"Card":3368,"Time":"2019-04-27T13:42:29.43","Force":false,"Test":false},{"Id":23463,"Year":2019,"Location":90,"Card":3323,"Time":"2019-04-27T13:42:34.1","Force":false,"Test":false},{"Id":23464,"Year":2019,"Location":91,"Card":3371,"Time":"2019-04-27T13:42:40.88","Force":false,"Test":false},{"Id":23465,"Year":2019,"Location":90,"Card":3378,"Time":"2019-04-27T13:42:40.99","Force":false,"Test":false},{"Id":23466,"Year":2019,"Location":91,"Card":3352,"Time":"2019-04-27T13:42:49.56","Force":false,"Test":false},{"Id":23467,"Year":2019,"Location":90,"Card":3422,"Time":"2019-04-27T13:42:52.79","Force":false,"Test":false},{"Id":23468,"Year":2019,"Location":90,"Card":3421,"Time":"2019-04-27T13:42:52.85","Force":false,"Test":false},{"Id":23469,"Year":2019,"Location":90,"Card":3457,"Time":"2019-04-27T13:43:19.55","Force":false,"Test":false},{"Id":23470,"Year":2019,"Location":91,"Card":3440,"Time":"2019-04-27T13:43:20.68","Force":false,"Test":false},{"Id":23471,"Year":2019,"Location":90,"Card":3458,"Time":"2019-04-27T13:43:19.93","Force":false,"Test":false},{"Id":23472,"Year":2019,"Location":91,"Card":3441,"Time":"2019-04-27T13:43:26.86","Force":false,"Test":false},{"Id":23473,"Year":2019,"Location":90,"Card":3426,"Time":"2019-04-27T13:43:34.43","Force":false,"Test":false},{"Id":23474,"Year":2019,"Location":90,"Card":3425,"Time":"2019-04-27T13:43:35.08","Force":false,"Test":false},{"Id":23475,"Year":2019,"Location":90,"Card":3327,"Time":"2019-04-27T13:43:40.98","Force":false,"Test":false},{"Id":23476,"Year":2019,"Location":91,"Card":3355,"Time":"2019-04-27T13:43:45.72","Force":false,"Test":false},{"Id":23477,"Year":2019,"Location":91,"Card":3463,"Time":"2019-04-27T13:43:46.66","Force":false,"Test":false},{"Id":23478,"Year":2019,"Location":90,"Card":3450,"Time":"2019-04-27T13:44:00.89","Force":false,"Test":false},{"Id":23479,"Year":2019,"Location":92,"Card":3351,"Time":"2019-04-27T13:44:02.37","Force":false,"Test":false},{"Id":23480,"Year":2019,"Location":90,"Card":3328,"Time":"2019-04-27T13:44:28.73","Force":false,"Test":false},{"Id":23481,"Year":2019,"Location":90,"Card":3356,"Time":"2019-04-27T13:44:30.17","Force":false,"Test":false},{"Id":23482,"Year":2019,"Location":91,"Card":3459,"Time":"2019-04-27T13:44:38.05","Force":false,"Test":false},{"Id":23483,"Year":2019,"Location":91,"Card":3452,"Time":"2019-04-27T13:44:41.46","Force":false,"Test":false},{"Id":23484,"Year":2019,"Location":92,"Card":3335,"Time":"2019-04-27T13:44:44.78","Force":false,"Test":false},{"Id":23485,"Year":2019,"Location":92,"Card":3453,"Time":"2019-04-27T13:44:47.39","Force":false,"Test":false},{"Id":23486,"Year":2019,"Location":90,"Card":3302,"Time":"2019-04-27T13:45:01.97","Force":false,"Test":false},{"Id":23487,"Year":2019,"Location":91,"Card":3304,"Time":"2019-04-27T13:45:12.09","Force":false,"Test":false},{"Id":23488,"Year":2019,"Location":91,"Card":3388,"Time":"2019-04-27T13:45:14.29","Force":false,"Test":false},{"Id":23489,"Year":2019,"Location":91,"Card":3397,"Time":"2019-04-27T13:45:20.25","Force":false,"Test":false},{"Id":23490,"Year":2019,"Location":90,"Card":3403,"Time":"2019-04-27T13:45:23.14","Force":false,"Test":false},{"Id":23491,"Year":2019,"Location":90,"Card":3402,"Time":"2019-04-27T13:45:23.17","Force":false,"Test":false},{"Id":23492,"Year":2019,"Location":91,"Card":3312,"Time":"2019-04-27T13:45:35.29","Force":false,"Test":false},{"Id":23493,"Year":2019,"Location":91,"Card":3434,"Time":"2019-04-27T13:45:42.67","Force":false,"Test":false},{"Id":23494,"Year":2019,"Location":91,"Card":3394,"Time":"2019-04-27T13:45:45.09","Force":false,"Test":false},{"Id":23495,"Year":2019,"Location":91,"Card":3424,"Time":"2019-04-27T13:45:51.44","Force":false,"Test":false},{"Id":23496,"Year":2019,"Location":90,"Card":3438,"Time":"2019-04-27T13:45:51.96","Force":false,"Test":false},{"Id":23497,"Year":2019,"Location":91,"Card":3471,"Time":"2019-04-27T13:45:56.51","Force":false,"Test":false},{"Id":23498,"Year":2019,"Location":90,"Card":3317,"Time":"2019-04-27T13:45:56.75","Force":false,"Test":false},{"Id":23499,"Year":2019,"Location":91,"Card":3322,"Time":"2019-04-27T13:46:03.25","Force":false,"Test":false},{"Id":23500,"Year":2019,"Location":91,"Card":3346,"Time":"2019-04-27T13:46:04.36","Force":false,"Test":false},{"Id":23501,"Year":2019,"Location":91,"Card":3385,"Time":"2019-04-27T13:46:07.54","Force":false,"Test":false},{"Id":23502,"Year":2019,"Location":92,"Card":3479,"Time":"2019-04-27T13:46:25.27","Force":false,"Test":false},{"Id":23503,"Year":2019,"Location":91,"Card":3472,"Time":"2019-04-27T13:46:25.87","Force":false,"Test":false},{"Id":23504,"Year":2019,"Location":91,"Card":3467,"Time":"2019-04-27T13:46:30.43","Force":false,"Test":false},{"Id":23505,"Year":2019,"Location":91,"Card":3466,"Time":"2019-04-27T13:46:30.53","Force":false,"Test":false},{"Id":23506,"Year":2019,"Location":92,"Card":3341,"Time":"2019-04-27T13:46:36.27","Force":false,"Test":false},{"Id":23507,"Year":2019,"Location":91,"Card":3443,"Time":"2019-04-27T13:46:37.24","Force":false,"Test":false},{"Id":23508,"Year":2019,"Location":92,"Card":3468,"Time":"2019-04-27T13:46:37.3","Force":false,"Test":false},{"Id":23509,"Year":2019,"Location":91,"Card":3423,"Time":"2019-04-27T13:46:41.19","Force":false,"Test":false},{"Id":23510,"Year":2019,"Location":91,"Card":3360,"Time":"2019-04-27T13:46:45.5","Force":false,"Test":false},{"Id":23511,"Year":2019,"Location":91,"Card":3462,"Time":"2019-04-27T13:46:47.86","Force":false,"Test":false},{"Id":23512,"Year":2019,"Location":91,"Card":3474,"Time":"2019-04-27T13:46:48.53","Force":false,"Test":false},{"Id":23513,"Year":2019,"Location":90,"Card":3325,"Time":"2019-04-27T13:47:04.98","Force":false,"Test":false},{"Id":23514,"Year":2019,"Location":91,"Card":3473,"Time":"2019-04-27T13:47:09.03","Force":false,"Test":false},{"Id":23515,"Year":2019,"Location":91,"Card":3418,"Time":"2019-04-27T13:47:12.73","Force":false,"Test":false},{"Id":23516,"Year":2019,"Location":90,"Card":3330,"Time":"2019-04-27T13:47:19.4","Force":false,"Test":false},{"Id":23517,"Year":2019,"Location":91,"Card":3455,"Time":"2019-04-27T13:47:20.7","Force":false,"Test":false},{"Id":23518,"Year":2019,"Location":92,"Card":3369,"Time":"2019-04-27T13:47:24.63","Force":false,"Test":false},{"Id":23519,"Year":2019,"Location":91,"Card":3384,"Time":"2019-04-27T13:47:37.21","Force":false,"Test":false},{"Id":23520,"Year":2019,"Location":91,"Card":3389,"Time":"2019-04-27T13:47:40.8","Force":false,"Test":false},{"Id":23521,"Year":2019,"Location":92,"Card":3366,"Time":"2019-04-27T13:47:43.65","Force":false,"Test":false},{"Id":23522,"Year":2019,"Location":91,"Card":3357,"Time":"2019-04-27T13:47:45.07","Force":false,"Test":false},{"Id":23523,"Year":2019,"Location":91,"Card":3354,"Time":"2019-04-27T13:48:03.13","Force":false,"Test":false},{"Id":23524,"Year":2019,"Location":92,"Card":3337,"Time":"2019-04-27T13:48:07.54","Force":false,"Test":false},{"Id":23525,"Year":2019,"Location":91,"Card":3444,"Time":"2019-04-27T13:48:11.67","Force":false,"Test":false},{"Id":23526,"Year":2019,"Location":92,"Card":3436,"Time":"2019-04-27T13:48:13.32","Force":false,"Test":false},{"Id":23527,"Year":2019,"Location":92,"Card":3470,"Time":"2019-04-27T13:48:13.96","Force":false,"Test":false},{"Id":23528,"Year":2019,"Location":92,"Card":3314,"Time":"2019-04-27T13:48:20.72","Force":false,"Test":false},{"Id":23529,"Year":2019,"Location":91,"Card":3412,"Time":"2019-04-27T13:48:27.31","Force":false,"Test":false},{"Id":23530,"Year":2019,"Location":91,"Card":3411,"Time":"2019-04-27T13:48:27.61","Force":false,"Test":false},{"Id":23531,"Year":2019,"Location":92,"Card":3448,"Time":"2019-04-27T13:48:31.75","Force":false,"Test":false},{"Id":23532,"Year":2019,"Location":92,"Card":3449,"Time":"2019-04-27T13:48:35.61","Force":false,"Test":false},{"Id":23533,"Year":2019,"Location":91,"Card":3336,"Time":"2019-04-27T13:48:37.33","Force":false,"Test":false},{"Id":23534,"Year":2019,"Location":90,"Card":3382,"Time":"2019-04-27T13:48:39.12","Force":false,"Test":false},{"Id":23535,"Year":2019,"Location":91,"Card":3451,"Time":"2019-04-27T13:48:45.31","Force":false,"Test":false},{"Id":23536,"Year":2019,"Location":91,"Card":3401,"Time":"2019-04-27T13:48:49.16","Force":false,"Test":false},{"Id":23537,"Year":2019,"Location":91,"Card":3477,"Time":"2019-04-27T13:48:52.52","Force":false,"Test":false},{"Id":23538,"Year":2019,"Location":92,"Card":3347,"Time":"2019-04-27T13:48:54.1","Force":false,"Test":false},{"Id":23539,"Year":2019,"Location":91,"Card":3338,"Time":"2019-04-27T13:48:59.19","Force":false,"Test":false},{"Id":23540,"Year":2019,"Location":92,"Card":3414,"Time":"2019-04-27T13:49:07.69","Force":false,"Test":false},{"Id":23541,"Year":2019,"Location":91,"Card":3420,"Time":"2019-04-27T13:49:18.64","Force":false,"Test":false},{"Id":23542,"Year":2019,"Location":91,"Card":3419,"Time":"2019-04-27T13:49:18.73","Force":false,"Test":false},{"Id":23543,"Year":2019,"Location":91,"Card":3428,"Time":"2019-04-27T13:49:20.22","Force":false,"Test":false},{"Id":23544,"Year":2019,"Location":91,"Card":3429,"Time":"2019-04-27T13:49:20.31","Force":false,"Test":false},{"Id":23545,"Year":2019,"Location":91,"Card":3387,"Time":"2019-04-27T13:49:20.33","Force":false,"Test":false},{"Id":23546,"Year":2019,"Location":91,"Card":3445,"Time":"2019-04-27T13:49:28.75","Force":false,"Test":false},{"Id":23547,"Year":2019,"Location":91,"Card":3446,"Time":"2019-04-27T13:49:42.63","Force":false,"Test":false},{"Id":23548,"Year":2019,"Location":91,"Card":3358,"Time":"2019-04-27T13:49:52.27","Force":false,"Test":false},{"Id":23549,"Year":2019,"Location":92,"Card":3469,"Time":"2019-04-27T13:49:54.83","Force":false,"Test":false},{"Id":23550,"Year":2019,"Location":91,"Card":3344,"Time":"2019-04-27T13:50:14.48","Force":false,"Test":false},{"Id":23551,"Year":2019,"Location":91,"Card":3332,"Time":"2019-04-27T13:50:16.18","Force":false,"Test":false},{"Id":23552,"Year":2019,"Location":91,"Card":3460,"Time":"2019-04-27T13:50:24.76","Force":false,"Test":false},{"Id":23553,"Year":2019,"Location":91,"Card":3391,"Time":"2019-04-27T13:50:29.14","Force":false,"Test":false},{"Id":23554,"Year":2019,"Location":91,"Card":3318,"Time":"2019-04-27T13:50:31.58","Force":false,"Test":false},{"Id":23555,"Year":2019,"Location":92,"Card":3349,"Time":"2019-04-27T13:50:37.88","Force":false,"Test":false},{"Id":23556,"Year":2019,"Location":92,"Card":3435,"Time":"2019-04-27T13:50:48.41","Force":false,"Test":false},{"Id":23557,"Year":2019,"Location":91,"Card":3439,"Time":"2019-04-27T13:50:54.4","Force":false,"Test":false},{"Id":23558,"Year":2019,"Location":92,"Card":3404,"Time":"2019-04-27T13:50:55.65","Force":false,"Test":false},{"Id":23559,"Year":2019,"Location":91,"Card":3442,"Time":"2019-04-27T13:50:56.81","Force":false,"Test":false},{"Id":23560,"Year":2019,"Location":91,"Card":3461,"Time":"2019-04-27T13:50:58.22","Force":false,"Test":false},{"Id":23561,"Year":2019,"Location":91,"Card":3447,"Time":"2019-04-27T13:50:58.43","Force":false,"Test":false},{"Id":23562,"Year":2019,"Location":91,"Card":3386,"Time":"2019-04-27T13:51:02.68","Force":false,"Test":false},{"Id":23563,"Year":2019,"Location":91,"Card":3383,"Time":"2019-04-27T13:51:09.89","Force":false,"Test":false},{"Id":23564,"Year":2019,"Location":92,"Card":3348,"Time":"2019-04-27T13:51:15.63","Force":false,"Test":false},{"Id":23565,"Year":2019,"Location":92,"Card":3406,"Time":"2019-04-27T13:51:16.66","Force":false,"Test":false},{"Id":23566,"Year":2019,"Location":90,"Card":3381,"Time":"2019-04-27T13:51:17.03","Force":false,"Test":false},{"Id":23567,"Year":2019,"Location":92,"Card":3392,"Time":"2019-04-27T13:51:38.25","Force":false,"Test":false},{"Id":23568,"Year":2019,"Location":92,"Card":3456,"Time":"2019-04-27T13:51:39.89","Force":false,"Test":false},{"Id":23569,"Year":2019,"Location":90,"Card":3475,"Time":"2019-04-27T13:51:47.43","Force":false,"Test":false},{"Id":23570,"Year":2019,"Location":92,"Card":3454,"Time":"2019-04-27T13:51:54.32","Force":false,"Test":false},{"Id":23571,"Year":2019,"Location":92,"Card":3400,"Time":"2019-04-27T13:52:03.59","Force":false,"Test":false},{"Id":23572,"Year":2019,"Location":92,"Card":3417,"Time":"2019-04-27T13:52:18.39","Force":false,"Test":false},{"Id":23573,"Year":2019,"Location":92,"Card":3359,"Time":"2019-04-27T13:52:23.86","Force":false,"Test":false},{"Id":23574,"Year":2019,"Location":92,"Card":3399,"Time":"2019-04-27T13:52:25.49","Force":false,"Test":false},{"Id":23575,"Year":2019,"Location":91,"Card":3405,"Time":"2019-04-27T13:52:31.15","Force":false,"Test":false},{"Id":23576,"Year":2019,"Location":92,"Card":3303,"Time":"2019-04-27T13:52:51.4","Force":false,"Test":false},{"Id":23577,"Year":2019,"Location":92,"Card":3361,"Time":"2019-04-27T13:53:07.9","Force":false,"Test":false},{"Id":23578,"Year":2019,"Location":90,"Card":3396,"Time":"2019-04-27T13:53:08.91","Force":false,"Test":false},{"Id":23579,"Year":2019,"Location":91,"Card":3421,"Time":"2019-04-27T13:53:15.57","Force":false,"Test":false},{"Id":23580,"Year":2019,"Location":91,"Card":3393,"Time":"2019-04-27T13:53:19.02","Force":false,"Test":false},{"Id":23581,"Year":2019,"Location":92,"Card":3311,"Time":"2019-04-27T13:53:27.03","Force":false,"Test":false},{"Id":23582,"Year":2019,"Location":91,"Card":3367,"Time":"2019-04-27T13:53:30.51","Force":false,"Test":false},{"Id":23583,"Year":2019,"Location":91,"Card":3422,"Time":"2019-04-27T13:53:31.26","Force":false,"Test":false},{"Id":23584,"Year":2019,"Location":92,"Card":3368,"Time":"2019-04-27T13:53:33.28","Force":false,"Test":false},{"Id":23585,"Year":2019,"Location":92,"Card":3407,"Time":"2019-04-27T13:53:35.68","Force":false,"Test":false},{"Id":23586,"Year":2019,"Location":92,"Card":3413,"Time":"2019-04-27T13:53:37.21","Force":false,"Test":false},{"Id":23587,"Year":2019,"Location":91,"Card":3356,"Time":"2019-04-27T13:53:40.58","Force":false,"Test":false},{"Id":23588,"Year":2019,"Location":92,"Card":3398,"Time":"2019-04-27T13:53:49.91","Force":false,"Test":false},{"Id":23589,"Year":2019,"Location":91,"Card":3323,"Time":"2019-04-27T13:53:58.96","Force":false,"Test":false},{"Id":23590,"Year":2019,"Location":92,"Card":3339,"Time":"2019-04-27T13:54:04.77","Force":false,"Test":false},{"Id":23591,"Year":2019,"Location":92,"Card":3350,"Time":"2019-04-27T13:54:05.61","Force":false,"Test":false},{"Id":23592,"Year":2019,"Location":92,"Card":3415,"Time":"2019-04-27T13:54:14.98","Force":false,"Test":false},{"Id":23593,"Year":2019,"Location":92,"Card":3437,"Time":"2019-04-27T13:54:17.09","Force":false,"Test":false},{"Id":23594,"Year":2019,"Location":92,"Card":3465,"Time":"2019-04-27T13:54:20.72","Force":false,"Test":false},{"Id":23595,"Year":2019,"Location":92,"Card":3370,"Time":"2019-04-27T13:54:21.6","Force":false,"Test":false},{"Id":23596,"Year":2019,"Location":92,"Card":3315,"Time":"2019-04-27T13:54:23.7","Force":false,"Test":false},{"Id":23597,"Year":2019,"Location":91,"Card":3425,"Time":"2019-04-27T13:54:23.62","Force":false,"Test":false},{"Id":23598,"Year":2019,"Location":90,"Card":3353,"Time":"2019-04-27T13:54:21.12","Force":false,"Test":false},{"Id":23599,"Year":2019,"Location":91,"Card":3378,"Time":"2019-04-27T13:54:30.03","Force":false,"Test":false},{"Id":23600,"Year":2019,"Location":91,"Card":3403,"Time":"2019-04-27T13:54:35.62","Force":false,"Test":false},{"Id":23601,"Year":2019,"Location":91,"Card":3426,"Time":"2019-04-27T13:54:59.22","Force":false,"Test":false},{"Id":23602,"Year":2019,"Location":92,"Card":3324,"Time":"2019-04-27T13:55:15.31","Force":false,"Test":false},{"Id":23603,"Year":2019,"Location":92,"Card":3340,"Time":"2019-04-27T13:55:27.95","Force":false,"Test":false},{"Id":23604,"Year":2019,"Location":92,"Card":3459,"Time":"2019-04-27T13:55:38.33","Force":false,"Test":false},{"Id":23605,"Year":2019,"Location":91,"Card":3458,"Time":"2019-04-27T13:55:42.52","Force":false,"Test":false},{"Id":23606,"Year":2019,"Location":91,"Card":3457,"Time":"2019-04-27T13:55:42.59","Force":false,"Test":false},{"Id":23607,"Year":2019,"Location":92,"Card":3440,"Time":"2019-04-27T13:55:43.47","Force":false,"Test":false},{"Id":23608,"Year":2019,"Location":91,"Card":3402,"Time":"2019-04-27T13:55:45.64","Force":false,"Test":false},{"Id":23609,"Year":2019,"Location":92,"Card":3380,"Time":"2019-04-27T13:55:49","Force":false,"Test":false},{"Id":23610,"Year":2019,"Location":92,"Card":3463,"Time":"2019-04-27T13:55:52.69","Force":false,"Test":false},{"Id":23611,"Year":2019,"Location":91,"Card":3476,"Time":"2019-04-27T13:55:55.36","Force":false,"Test":false},{"Id":23612,"Year":2019,"Location":92,"Card":3390,"Time":"2019-04-27T13:56:02.05","Force":false,"Test":false},{"Id":23613,"Year":2019,"Location":92,"Card":3464,"Time":"2019-04-27T13:56:22.58","Force":false,"Test":false},{"Id":23614,"Year":2019,"Location":91,"Card":3382,"Time":"2019-04-27T13:56:27.05","Force":false,"Test":false},{"Id":23615,"Year":2019,"Location":92,"Card":3355,"Time":"2019-04-27T13:56:34.76","Force":false,"Test":false},{"Id":23616,"Year":2019,"Location":91,"Card":3317,"Time":"2019-04-27T13:56:47.04","Force":false,"Test":false},{"Id":23617,"Year":2019,"Location":92,"Card":3408,"Time":"2019-04-27T13:56:47.96","Force":false,"Test":false},{"Id":23618,"Year":2019,"Location":92,"Card":3352,"Time":"2019-04-27T13:56:51.54","Force":false,"Test":false},{"Id":23619,"Year":2019,"Location":92,"Card":3416,"Time":"2019-04-27T13:57:04.56","Force":false,"Test":false},{"Id":23620,"Year":2019,"Location":92,"Card":3388,"Time":"2019-04-27T13:57:16.77","Force":false,"Test":false},{"Id":23621,"Year":2019,"Location":92,"Card":3397,"Time":"2019-04-27T13:57:16.91","Force":false,"Test":false},{"Id":23622,"Year":2019,"Location":92,"Card":3443,"Time":"2019-04-27T13:57:31.84","Force":false,"Test":false},{"Id":23623,"Year":2019,"Location":91,"Card":3438,"Time":"2019-04-27T13:57:57.75","Force":false,"Test":false},{"Id":23624,"Year":2019,"Location":92,"Card":3371,"Time":"2019-04-27T13:57:58.29","Force":false,"Test":false},{"Id":23625,"Year":2019,"Location":92,"Card":3441,"Time":"2019-04-27T13:58:04.52","Force":false,"Test":false},{"Id":23626,"Year":2019,"Location":92,"Card":3394,"Time":"2019-04-27T13:58:44.31","Force":false,"Test":false},{"Id":23627,"Year":2019,"Location":92,"Card":3304,"Time":"2019-04-27T13:58:48.63","Force":false,"Test":false},{"Id":23628,"Year":2019,"Location":92,"Card":3322,"Time":"2019-04-27T13:58:47.72","Force":false,"Test":false},{"Id":23629,"Year":2019,"Location":91,"Card":3450,"Time":"2019-04-27T13:58:53.43","Force":false,"Test":false},{"Id":23630,"Year":2019,"Location":248,"Card":3453,"Time":"2019-04-27T13:59:14.46","Force":false,"Test":false},{"Id":23631,"Year":2019,"Location":92,"Card":3357,"Time":"2019-04-27T13:59:45.61","Force":false,"Test":false},{"Id":23632,"Year":2019,"Location":248,"Card":3351,"Time":"2019-04-27T13:59:53.27","Force":false,"Test":false},{"Id":23633,"Year":2019,"Location":92,"Card":3385,"Time":"2019-04-27T14:00:00.08","Force":false,"Test":false},{"Id":23634,"Year":2019,"Location":91,"Card":3330,"Time":"2019-04-27T14:00:01.82","Force":false,"Test":false},{"Id":23635,"Year":2019,"Location":91,"Card":3326,"Time":"2019-04-27T14:00:06.18","Force":false,"Test":false},{"Id":23636,"Year":2019,"Location":248,"Card":3335,"Time":"2019-04-27T14:00:08.66","Force":false,"Test":false},{"Id":23637,"Year":2019,"Location":91,"Card":3328,"Time":"2019-04-27T14:00:09.01","Force":false,"Test":false},{"Id":23638,"Year":2019,"Location":92,"Card":3452,"Time":"2019-04-27T14:00:09.68","Force":false,"Test":false},{"Id":23639,"Year":2019,"Location":92,"Card":3471,"Time":"2019-04-27T14:00:13.86","Force":false,"Test":false},{"Id":23640,"Year":2019,"Location":92,"Card":3460,"Time":"2019-04-27T14:00:18.99","Force":false,"Test":false},{"Id":23641,"Year":2019,"Location":92,"Card":3424,"Time":"2019-04-27T14:00:24.8","Force":false,"Test":false},{"Id":23642,"Year":2019,"Location":91,"Card":3327,"Time":"2019-04-27T14:00:27.69","Force":false,"Test":false},{"Id":23643,"Year":2019,"Location":92,"Card":3472,"Time":"2019-04-27T14:00:29.28","Force":false,"Test":false},{"Id":23644,"Year":2019,"Location":91,"Card":3381,"Time":"2019-04-27T14:00:46.44","Force":false,"Test":false},{"Id":23645,"Year":2019,"Location":92,"Card":3434,"Time":"2019-04-27T14:00:52.83","Force":false,"Test":false},{"Id":23646,"Year":2019,"Location":92,"Card":3389,"Time":"2019-04-27T14:01:12.58","Force":false,"Test":false},{"Id":23647,"Year":2019,"Location":92,"Card":3444,"Time":"2019-04-27T14:01:25.77","Force":false,"Test":false},{"Id":23648,"Year":2019,"Location":92,"Card":3418,"Time":"2019-04-27T14:01:28.21","Force":false,"Test":false},{"Id":23649,"Year":2019,"Location":92,"Card":3312,"Time":"2019-04-27T14:01:40.83","Force":false,"Test":false},{"Id":23650,"Year":2019,"Location":92,"Card":3467,"Time":"2019-04-27T14:01:45.84","Force":false,"Test":false},{"Id":23651,"Year":2019,"Location":92,"Card":3420,"Time":"2019-04-27T14:01:51.56","Force":false,"Test":false},{"Id":23652,"Year":2019,"Location":248,"Card":3468,"Time":"2019-04-27T14:01:55.43","Force":false,"Test":false},{"Id":23653,"Year":2019,"Location":248,"Card":3341,"Time":"2019-04-27T14:01:55.67","Force":false,"Test":false},{"Id":23654,"Year":2019,"Location":92,"Card":3474,"Time":"2019-04-27T14:01:56.13","Force":false,"Test":false},{"Id":23655,"Year":2019,"Location":92,"Card":3384,"Time":"2019-04-27T14:01:57.12","Force":false,"Test":false},{"Id":23656,"Year":2019,"Location":92,"Card":3466,"Time":"2019-04-27T14:01:58.94","Force":false,"Test":false},{"Id":23657,"Year":2019,"Location":92,"Card":3455,"Time":"2019-04-27T14:02:00.48","Force":false,"Test":false},{"Id":23658,"Year":2019,"Location":92,"Card":3360,"Time":"2019-04-27T14:02:27.18","Force":false,"Test":false},{"Id":23659,"Year":2019,"Location":92,"Card":3387,"Time":"2019-04-27T14:02:30.43","Force":false,"Test":false},{"Id":23660,"Year":2019,"Location":92,"Card":3423,"Time":"2019-04-27T14:02:49.22","Force":false,"Test":false},{"Id":23661,"Year":2019,"Location":248,"Card":3337,"Time":"2019-04-27T14:02:51.02","Force":false,"Test":false},{"Id":23662,"Year":2019,"Location":91,"Card":3475,"Time":"2019-04-27T14:02:55.65","Force":false,"Test":false},{"Id":23663,"Year":2019,"Location":248,"Card":3479,"Time":"2019-04-27T14:03:01.86","Force":false,"Test":false},{"Id":23664,"Year":2019,"Location":92,"Card":3473,"Time":"2019-04-27T14:03:01.31","Force":false,"Test":false},{"Id":23665,"Year":2019,"Location":92,"Card":3354,"Time":"2019-04-27T14:03:06.54","Force":false,"Test":false},{"Id":23666,"Year":2019,"Location":92,"Card":3446,"Time":"2019-04-27T14:03:09.48","Force":false,"Test":false},{"Id":23667,"Year":2019,"Location":248,"Card":3366,"Time":"2019-04-27T14:03:12","Force":false,"Test":false},{"Id":23668,"Year":2019,"Location":92,"Card":3346,"Time":"2019-04-27T14:03:11.96","Force":false,"Test":false},{"Id":23669,"Year":2019,"Location":92,"Card":3477,"Time":"2019-04-27T14:03:14.43","Force":false,"Test":false},{"Id":23670,"Year":2019,"Location":92,"Card":3412,"Time":"2019-04-27T14:03:21.91","Force":false,"Test":false},{"Id":23671,"Year":2019,"Location":91,"Card":3396,"Time":"2019-04-27T14:03:25.38","Force":false,"Test":false},{"Id":23672,"Year":2019,"Location":92,"Card":3451,"Time":"2019-04-27T14:03:31.91","Force":false,"Test":false},{"Id":23673,"Year":2019,"Location":248,"Card":3369,"Time":"2019-04-27T14:03:36.74","Force":false,"Test":false},{"Id":23674,"Year":2019,"Location":92,"Card":3445,"Time":"2019-04-27T14:03:38.42","Force":false,"Test":false},{"Id":23675,"Year":2019,"Location":248,"Card":3314,"Time":"2019-04-27T14:03:48.82","Force":false,"Test":false},{"Id":23676,"Year":2019,"Location":92,"Card":3429,"Time":"2019-04-27T14:03:51.66","Force":false,"Test":false},{"Id":23677,"Year":2019,"Location":92,"Card":3428,"Time":"2019-04-27T14:03:51.89","Force":false,"Test":false},{"Id":23678,"Year":2019,"Location":92,"Card":3462,"Time":"2019-04-27T14:04:11.9","Force":false,"Test":false},{"Id":23679,"Year":2019,"Location":92,"Card":3442,"Time":"2019-04-27T14:04:31.73","Force":false,"Test":false},{"Id":23680,"Year":2019,"Location":92,"Card":3336,"Time":"2019-04-27T14:04:37.31","Force":false,"Test":false},{"Id":23681,"Year":2019,"Location":248,"Card":3449,"Time":"2019-04-27T14:04:42.11","Force":false,"Test":false},{"Id":23682,"Year":2019,"Location":92,"Card":3344,"Time":"2019-04-27T14:04:44.33","Force":false,"Test":false},{"Id":23683,"Year":2019,"Location":248,"Card":3436,"Time":"2019-04-27T14:04:53.63","Force":false,"Test":false},{"Id":23684,"Year":2019,"Location":248,"Card":3347,"Time":"2019-04-27T14:04:54.95","Force":false,"Test":false},{"Id":23685,"Year":2019,"Location":248,"Card":3470,"Time":"2019-04-27T14:04:55.02","Force":false,"Test":false},{"Id":23686,"Year":2019,"Location":92,"Card":3393,"Time":"2019-04-27T14:05:01.8","Force":false,"Test":false},{"Id":23687,"Year":2019,"Location":248,"Card":3414,"Time":"2019-04-27T14:05:16.48","Force":false,"Test":false},{"Id":23688,"Year":2019,"Location":91,"Card":3302,"Time":"2019-04-27T14:05:39","Force":false,"Test":false},{"Id":23689,"Year":2019,"Location":92,"Card":3338,"Time":"2019-04-27T14:05:41.1","Force":false,"Test":false},{"Id":23690,"Year":2019,"Location":92,"Card":3401,"Time":"2019-04-27T14:06:13.87","Force":false,"Test":false},{"Id":23691,"Year":2019,"Location":91,"Card":3325,"Time":"2019-04-27T14:06:16.7","Force":false,"Test":false},{"Id":23692,"Year":2019,"Location":248,"Card":3469,"Time":"2019-04-27T14:06:18.58","Force":false,"Test":false},{"Id":23693,"Year":2019,"Location":92,"Card":3461,"Time":"2019-04-27T14:06:27.39","Force":false,"Test":false},{"Id":23694,"Year":2019,"Location":92,"Card":3447,"Time":"2019-04-27T14:06:34.05","Force":false,"Test":false},{"Id":23695,"Year":2019,"Location":248,"Card":3348,"Time":"2019-04-27T14:06:42.94","Force":false,"Test":false},{"Id":23696,"Year":2019,"Location":92,"Card":3386,"Time":"2019-04-27T14:06:43.15","Force":false,"Test":false},{"Id":23697,"Year":2019,"Location":92,"Card":3439,"Time":"2019-04-27T14:06:51.44","Force":false,"Test":false},{"Id":23698,"Year":2019,"Location":92,"Card":3358,"Time":"2019-04-27T14:07:14.31","Force":false,"Test":false},{"Id":23699,"Year":2019,"Location":92,"Card":3426,"Time":"2019-04-27T14:07:15.45","Force":false,"Test":false},{"Id":23700,"Year":2019,"Location":92,"Card":3391,"Time":"2019-04-27T14:07:20.3","Force":false,"Test":false},{"Id":23701,"Year":2019,"Location":92,"Card":3403,"Time":"2019-04-27T14:07:27.1","Force":false,"Test":false},{"Id":23702,"Year":2019,"Location":92,"Card":3419,"Time":"2019-04-27T14:07:27.26","Force":false,"Test":false},{"Id":23703,"Year":2019,"Location":248,"Card":3404,"Time":"2019-04-27T14:07:30.76","Force":false,"Test":false},{"Id":23704,"Year":2019,"Location":248,"Card":3406,"Time":"2019-04-27T14:07:39.29","Force":false,"Test":false},{"Id":23705,"Year":2019,"Location":92,"Card":3421,"Time":"2019-04-27T14:07:42.73","Force":false,"Test":false},{"Id":23706,"Year":2019,"Location":248,"Card":3435,"Time":"2019-04-27T14:07:51.09","Force":false,"Test":false},{"Id":23707,"Year":2019,"Location":92,"Card":3356,"Time":"2019-04-27T14:07:55.18","Force":false,"Test":false},{"Id":23708,"Year":2019,"Location":92,"Card":3332,"Time":"2019-04-27T14:07:59.15","Force":false,"Test":false},{"Id":23709,"Year":2019,"Location":92,"Card":3318,"Time":"2019-04-27T14:08:06.61","Force":false,"Test":false},{"Id":23710,"Year":2019,"Location":92,"Card":3457,"Time":"2019-04-27T14:08:16.5","Force":false,"Test":false},{"Id":23711,"Year":2019,"Location":92,"Card":3382,"Time":"2019-04-27T14:08:21.41","Force":false,"Test":false},{"Id":23712,"Year":2019,"Location":248,"Card":3349,"Time":"2019-04-27T14:08:37.16","Force":false,"Test":false},{"Id":23713,"Year":2019,"Location":248,"Card":3399,"Time":"2019-04-27T14:08:37.72","Force":false,"Test":false},{"Id":23714,"Year":2019,"Location":248,"Card":3456,"Time":"2019-04-27T14:08:41.48","Force":false,"Test":false},{"Id":23715,"Year":2019,"Location":248,"Card":3454,"Time":"2019-04-27T14:08:42.86","Force":false,"Test":false},{"Id":23716,"Year":2019,"Location":92,"Card":3425,"Time":"2019-04-27T14:08:42.46","Force":false,"Test":false},{"Id":23717,"Year":2019,"Location":248,"Card":3417,"Time":"2019-04-27T14:09:00.28","Force":false,"Test":false},{"Id":23718,"Year":2019,"Location":92,"Card":3411,"Time":"2019-04-27T14:09:04.22","Force":false,"Test":false},{"Id":23719,"Year":2019,"Location":248,"Card":3448,"Time":"2019-04-27T14:09:11.43","Force":false,"Test":false},{"Id":23720,"Year":2019,"Location":92,"Card":3402,"Time":"2019-04-27T14:09:40.49","Force":false,"Test":false},{"Id":23721,"Year":2019,"Location":248,"Card":3400,"Time":"2019-04-27T14:10:07.61","Force":false,"Test":false},{"Id":23722,"Year":2019,"Location":92,"Card":3383,"Time":"2019-04-27T14:10:07.24","Force":false,"Test":false},{"Id":23723,"Year":2019,"Location":248,"Card":3303,"Time":"2019-04-27T14:10:12.55","Force":false,"Test":false},{"Id":23724,"Year":2019,"Location":248,"Card":3413,"Time":"2019-04-27T14:10:13.03","Force":false,"Test":false},{"Id":23725,"Year":2019,"Location":248,"Card":3359,"Time":"2019-04-27T14:10:13.13","Force":false,"Test":false},{"Id":23726,"Year":2019,"Location":248,"Card":3398,"Time":"2019-04-27T14:10:13.19","Force":false,"Test":false},{"Id":23727,"Year":2019,"Location":92,"Card":3405,"Time":"2019-04-27T14:10:27.49","Force":false,"Test":false},{"Id":23728,"Year":2019,"Location":92,"Card":3378,"Time":"2019-04-27T14:10:34.68","Force":false,"Test":false},{"Id":23729,"Year":2019,"Location":92,"Card":3323,"Time":"2019-04-27T14:10:44.14","Force":false,"Test":false},{"Id":23730,"Year":2019,"Location":248,"Card":3370,"Time":"2019-04-27T14:11:07.69","Force":false,"Test":false},{"Id":23731,"Year":2019,"Location":248,"Card":3392,"Time":"2019-04-27T14:11:10.15","Force":false,"Test":false},{"Id":23732,"Year":2019,"Location":248,"Card":3311,"Time":"2019-04-27T14:11:19.34","Force":false,"Test":false},{"Id":23733,"Year":2019,"Location":91,"Card":3353,"Time":"2019-04-27T14:11:22.46","Force":false,"Test":false},{"Id":23734,"Year":2019,"Location":248,"Card":3315,"Time":"2019-04-27T14:11:28.1","Force":false,"Test":false},{"Id":23735,"Year":2019,"Location":248,"Card":3368,"Time":"2019-04-27T14:11:32.1","Force":false,"Test":false},{"Id":23736,"Year":2019,"Location":248,"Card":3361,"Time":"2019-04-27T14:11:32.7","Force":false,"Test":false},{"Id":23737,"Year":2019,"Location":248,"Card":3380,"Time":"2019-04-27T14:11:38.42","Force":false,"Test":false},{"Id":23738,"Year":2019,"Location":92,"Card":3422,"Time":"2019-04-27T14:11:43.79","Force":false,"Test":false},{"Id":23739,"Year":2019,"Location":248,"Card":3415,"Time":"2019-04-27T14:11:46.29","Force":false,"Test":false},{"Id":23740,"Year":2019,"Location":248,"Card":3390,"Time":"2019-04-27T14:11:55.87","Force":false,"Test":false},{"Id":23741,"Year":2019,"Location":248,"Card":3324,"Time":"2019-04-27T14:11:56.25","Force":false,"Test":false},{"Id":23742,"Year":2019,"Location":248,"Card":3339,"Time":"2019-04-27T14:12:06.62","Force":false,"Test":false},{"Id":23743,"Year":2019,"Location":248,"Card":3340,"Time":"2019-04-27T14:12:13.63","Force":false,"Test":false},{"Id":23744,"Year":2019,"Location":248,"Card":3437,"Time":"2019-04-27T14:12:13.99","Force":false,"Test":false},{"Id":23745,"Year":2019,"Location":248,"Card":3350,"Time":"2019-04-27T14:12:15.88","Force":false,"Test":false},{"Id":23746,"Year":2019,"Location":92,"Card":3367,"Time":"2019-04-27T14:12:19.42","Force":false,"Test":false},{"Id":23747,"Year":2019,"Location":92,"Card":3317,"Time":"2019-04-27T14:12:21.82","Force":false,"Test":false},{"Id":23748,"Year":2019,"Location":248,"Card":3465,"Time":"2019-04-27T14:13:00.53","Force":false,"Test":false},{"Id":23749,"Year":2019,"Location":92,"Card":3458,"Time":"2019-04-27T14:13:42.18","Force":false,"Test":false},{"Id":23750,"Year":2019,"Location":248,"Card":3463,"Time":"2019-04-27T14:14:45.92","Force":false,"Test":false},{"Id":23751,"Year":2019,"Location":92,"Card":3476,"Time":"2019-04-27T14:14:47.33","Force":false,"Test":false},{"Id":23752,"Year":2019,"Location":248,"Card":3459,"Time":"2019-04-27T14:15:24.9","Force":false,"Test":false},{"Id":23753,"Year":2019,"Location":248,"Card":3355,"Time":"2019-04-27T14:16:01.95","Force":false,"Test":false},{"Id":23754,"Year":2019,"Location":248,"Card":3416,"Time":"2019-04-27T14:16:04.88","Force":false,"Test":false},{"Id":23755,"Year":2019,"Location":248,"Card":3440,"Time":"2019-04-27T14:16:35.99","Force":false,"Test":false},{"Id":23756,"Year":2019,"Location":248,"Card":3388,"Time":"2019-04-27T14:16:45.81","Force":false,"Test":false},{"Id":23757,"Year":2019,"Location":248,"Card":3304,"Time":"2019-04-27T14:17:00.65","Force":false,"Test":false},{"Id":23758,"Year":2019,"Location":248,"Card":3394,"Time":"2019-04-27T14:17:02.83","Force":false,"Test":false},{"Id":23759,"Year":2019,"Location":248,"Card":3385,"Time":"2019-04-27T14:17:04.88","Force":false,"Test":false},{"Id":23760,"Year":2019,"Location":92,"Card":3438,"Time":"2019-04-27T14:17:23.21","Force":false,"Test":false},{"Id":23761,"Year":2019,"Location":92,"Card":3330,"Time":"2019-04-27T14:17:28.99","Force":false,"Test":false},{"Id":23762,"Year":2019,"Location":248,"Card":3322,"Time":"2019-04-27T14:17:57.7","Force":false,"Test":false},{"Id":23763,"Year":2019,"Location":248,"Card":3371,"Time":"2019-04-27T14:18:10.42","Force":false,"Test":false},{"Id":23764,"Year":2019,"Location":92,"Card":3381,"Time":"2019-04-27T14:18:22.54","Force":false,"Test":false},{"Id":23765,"Year":2019,"Location":248,"Card":3420,"Time":"2019-04-27T14:18:25.04","Force":false,"Test":false},{"Id":23766,"Year":2019,"Location":248,"Card":3443,"Time":"2019-04-27T14:18:25.06","Force":false,"Test":false},{"Id":23767,"Year":2019,"Location":248,"Card":3464,"Time":"2019-04-27T14:18:27.03","Force":false,"Test":false},{"Id":23768,"Year":2019,"Location":248,"Card":3472,"Time":"2019-04-27T14:18:28.97","Force":false,"Test":false},{"Id":23769,"Year":2019,"Location":248,"Card":3441,"Time":"2019-04-27T14:18:31.49","Force":false,"Test":false},{"Id":23770,"Year":2019,"Location":92,"Card":3475,"Time":"2019-04-27T14:18:46.43","Force":false,"Test":false},{"Id":23771,"Year":2019,"Location":248,"Card":3389,"Time":"2019-04-27T14:18:53.06","Force":false,"Test":false},{"Id":23772,"Year":2019,"Location":248,"Card":3418,"Time":"2019-04-27T14:18:55.11","Force":false,"Test":false},{"Id":23773,"Year":2019,"Location":248,"Card":3397,"Time":"2019-04-27T14:18:57.25","Force":false,"Test":false},{"Id":23774,"Year":2019,"Location":248,"Card":3460,"Time":"2019-04-27T14:19:32.1","Force":false,"Test":false},{"Id":23775,"Year":2019,"Location":248,"Card":3474,"Time":"2019-04-27T14:19:39.75","Force":false,"Test":false},{"Id":23776,"Year":2019,"Location":248,"Card":3471,"Time":"2019-04-27T14:20:19.09","Force":false,"Test":false},{"Id":23777,"Year":2019,"Location":248,"Card":3452,"Time":"2019-04-27T14:20:22.51","Force":false,"Test":false},{"Id":23778,"Year":2019,"Location":248,"Card":3357,"Time":"2019-04-27T14:20:24.85","Force":false,"Test":false},{"Id":23779,"Year":2019,"Location":248,"Card":3424,"Time":"2019-04-27T14:20:36.06","Force":false,"Test":false},{"Id":23780,"Year":2019,"Location":248,"Card":3434,"Time":"2019-04-27T14:20:36.2","Force":false,"Test":false},{"Id":23781,"Year":2019,"Location":248,"Card":3407,"Time":"2019-04-27T14:21:27.08","Force":false,"Test":false},{"Id":23782,"Year":2019,"Location":248,"Card":3312,"Time":"2019-04-27T14:21:37.45","Force":false,"Test":false},{"Id":23783,"Year":2019,"Location":248,"Card":3387,"Time":"2019-04-27T14:21:37.73","Force":false,"Test":false},{"Id":23784,"Year":2019,"Location":92,"Card":3396,"Time":"2019-04-27T14:22:04.55","Force":false,"Test":false},{"Id":23785,"Year":2019,"Location":248,"Card":3473,"Time":"2019-04-27T14:22:14.85","Force":false,"Test":false},{"Id":23786,"Year":2019,"Location":248,"Card":3360,"Time":"2019-04-27T14:22:35.1","Force":false,"Test":false},{"Id":23787,"Year":2019,"Location":248,"Card":3466,"Time":"2019-04-27T14:22:36.61","Force":false,"Test":false},{"Id":23788,"Year":2019,"Location":92,"Card":3328,"Time":"2019-04-27T14:22:44.23","Force":false,"Test":false},{"Id":23789,"Year":2019,"Location":248,"Card":3384,"Time":"2019-04-27T14:22:46.51","Force":false,"Test":false},{"Id":23790,"Year":2019,"Location":92,"Card":3327,"Time":"2019-04-27T14:22:49.41","Force":false,"Test":false},{"Id":23791,"Year":2019,"Location":248,"Card":3451,"Time":"2019-04-27T14:22:50.79","Force":false,"Test":false},{"Id":23792,"Year":2019,"Location":248,"Card":3423,"Time":"2019-04-27T14:22:52.86","Force":false,"Test":false},{"Id":23793,"Year":2019,"Location":248,"Card":3455,"Time":"2019-04-27T14:22:53.81","Force":false,"Test":false},{"Id":23794,"Year":2019,"Location":248,"Card":3393,"Time":"2019-04-27T14:23:16","Force":false,"Test":false},{"Id":23795,"Year":2019,"Location":248,"Card":3352,"Time":"2019-04-27T14:23:20.13","Force":false,"Test":false},{"Id":23796,"Year":2019,"Location":248,"Card":3467,"Time":"2019-04-27T14:23:25.15","Force":false,"Test":false},{"Id":23797,"Year":2019,"Location":248,"Card":3354,"Time":"2019-04-27T14:23:37.13","Force":false,"Test":false},{"Id":23798,"Year":2019,"Location":92,"Card":3326,"Time":"2019-04-27T14:23:38.21","Force":false,"Test":false},{"Id":23799,"Year":2019,"Location":92,"Card":3450,"Time":"2019-04-27T14:23:47.2","Force":false,"Test":false},{"Id":23800,"Year":2019,"Location":248,"Card":3477,"Time":"2019-04-27T14:23:55.94","Force":false,"Test":false},{"Id":23801,"Year":2019,"Location":248,"Card":3412,"Time":"2019-04-27T14:24:17.85","Force":false,"Test":false},{"Id":23802,"Year":2019,"Location":248,"Card":3428,"Time":"2019-04-27T14:24:17.9","Force":false,"Test":false},{"Id":23803,"Year":2019,"Location":248,"Card":3391,"Time":"2019-04-27T14:24:24.78","Force":false,"Test":false},{"Id":23804,"Year":2019,"Location":248,"Card":3336,"Time":"2019-04-27T14:24:31.6","Force":false,"Test":false},{"Id":23805,"Year":2019,"Location":248,"Card":3318,"Time":"2019-04-27T14:24:51.85","Force":false,"Test":false},{"Id":23806,"Year":2019,"Location":248,"Card":3401,"Time":"2019-04-27T14:25:03.28","Force":false,"Test":false},{"Id":23807,"Year":2019,"Location":248,"Card":3429,"Time":"2019-04-27T14:25:11.73","Force":false,"Test":false},{"Id":23808,"Year":2019,"Location":248,"Card":3344,"Time":"2019-04-27T14:25:21.56","Force":false,"Test":false},{"Id":23809,"Year":2019,"Location":248,"Card":3444,"Time":"2019-04-27T14:25:32","Force":false,"Test":false},{"Id":23810,"Year":2019,"Location":248,"Card":3346,"Time":"2019-04-27T14:25:49.85","Force":false,"Test":false},{"Id":23811,"Year":2019,"Location":248,"Card":3446,"Time":"2019-04-27T14:26:05.17","Force":false,"Test":false},{"Id":23812,"Year":2019,"Location":248,"Card":3338,"Time":"2019-04-27T14:26:07.93","Force":false,"Test":false},{"Id":23813,"Year":2019,"Location":248,"Card":3461,"Time":"2019-04-27T14:26:08.13","Force":false,"Test":false},{"Id":23814,"Year":2019,"Location":248,"Card":3378,"Time":"2019-04-27T14:26:56.43","Force":false,"Test":false},{"Id":23815,"Year":2019,"Location":248,"Card":3447,"Time":"2019-04-27T14:27:16.03","Force":false,"Test":false},{"Id":23816,"Year":2019,"Location":248,"Card":3426,"Time":"2019-04-27T14:27:19.4","Force":false,"Test":false},{"Id":23817,"Year":2019,"Location":248,"Card":3442,"Time":"2019-04-27T14:27:22.68","Force":false,"Test":false},{"Id":23818,"Year":2019,"Location":248,"Card":3462,"Time":"2019-04-27T14:27:27.79","Force":false,"Test":false},{"Id":23819,"Year":2019,"Location":248,"Card":3356,"Time":"2019-04-27T14:27:42.98","Force":false,"Test":false},{"Id":23820,"Year":2019,"Location":248,"Card":3419,"Time":"2019-04-27T14:27:45.24","Force":false,"Test":false},{"Id":23821,"Year":2019,"Location":248,"Card":3332,"Time":"2019-04-27T14:28:07.09","Force":false,"Test":false},{"Id":23822,"Year":2019,"Location":248,"Card":3403,"Time":"2019-04-27T14:28:11.53","Force":false,"Test":false},{"Id":23823,"Year":2019,"Location":248,"Card":3439,"Time":"2019-04-27T14:28:22.03","Force":false,"Test":false},{"Id":23824,"Year":2019,"Location":248,"Card":3445,"Time":"2019-04-27T14:28:37.14","Force":false,"Test":false},{"Id":23825,"Year":2019,"Location":248,"Card":3358,"Time":"2019-04-27T14:28:39.15","Force":false,"Test":false},{"Id":23826,"Year":2019,"Location":248,"Card":3382,"Time":"2019-04-27T14:29:09.77","Force":false,"Test":false},{"Id":23827,"Year":2019,"Location":248,"Card":3457,"Time":"2019-04-27T14:29:22.27","Force":false,"Test":false},{"Id":23828,"Year":2019,"Location":248,"Card":3386,"Time":"2019-04-27T14:29:35.15","Force":false,"Test":false},{"Id":23829,"Year":2019,"Location":248,"Card":3408,"Time":"2019-04-27T14:29:39.52","Force":false,"Test":false},{"Id":23830,"Year":2019,"Location":248,"Card":3402,"Time":"2019-04-27T14:30:54.47","Force":false,"Test":false},{"Id":23831,"Year":2019,"Location":248,"Card":3421,"Time":"2019-04-27T14:31:09.49","Force":false,"Test":false},{"Id":23832,"Year":2019,"Location":248,"Card":3425,"Time":"2019-04-27T14:31:15.86","Force":false,"Test":false},{"Id":23833,"Year":2019,"Location":248,"Card":3405,"Time":"2019-04-27T14:31:20.74","Force":false,"Test":false},{"Id":23834,"Year":2019,"Location":92,"Card":3325,"Time":"2019-04-27T14:32:25.16","Force":false,"Test":false},{"Id":23835,"Year":2019,"Location":248,"Card":3411,"Time":"2019-04-27T14:32:45.07","Force":false,"Test":false},{"Id":23836,"Year":2019,"Location":248,"Card":3323,"Time":"2019-04-27T14:32:48.04","Force":false,"Test":false},{"Id":23837,"Year":2019,"Location":248,"Card":3367,"Time":"2019-04-27T14:34:28.95","Force":false,"Test":false},{"Id":23838,"Year":2019,"Location":248,"Card":3317,"Time":"2019-04-27T14:35:11.36","Force":false,"Test":false},{"Id":23839,"Year":2019,"Location":248,"Card":3422,"Time":"2019-04-27T14:35:34.48","Force":false,"Test":false},{"Id":23840,"Year":2019,"Location":92,"Card":3302,"Time":"2019-04-27T14:37:01.03","Force":false,"Test":false},{"Id":23841,"Year":2019,"Location":92,"Card":3353,"Time":"2019-04-27T14:37:08.85","Force":false,"Test":false},{"Id":23842,"Year":2019,"Location":248,"Card":3381,"Time":"2019-04-27T14:37:54.25","Force":false,"Test":false},{"Id":23843,"Year":2019,"Location":248,"Card":3383,"Time":"2019-04-27T14:38:05.46","Force":false,"Test":false},{"Id":23844,"Year":2019,"Location":248,"Card":3458,"Time":"2019-04-27T14:38:54.1","Force":false,"Test":false},{"Id":23845,"Year":2019,"Location":248,"Card":3476,"Time":"2019-04-27T14:39:06.31","Force":false,"Test":false},{"Id":23846,"Year":2019,"Location":248,"Card":3330,"Time":"2019-04-27T14:39:41.49","Force":false,"Test":false},{"Id":23847,"Year":2019,"Location":248,"Card":3396,"Time":"2019-04-27T14:40:44.46","Force":false,"Test":false},{"Id":23848,"Year":2019,"Location":248,"Card":3438,"Time":"2019-04-27T14:41:30.93","Force":false,"Test":false},{"Id":23849,"Year":2019,"Location":248,"Card":3450,"Time":"2019-04-27T14:42:02.28","Force":false,"Test":false},{"Id":23850,"Year":2019,"Location":248,"Card":3475,"Time":"2019-04-27T14:44:15.86","Force":false,"Test":false},{"Id":23851,"Year":2019,"Location":248,"Card":3326,"Time":"2019-04-27T14:48:47.64","Force":false,"Test":false},{"Id":23852,"Year":2019,"Location":248,"Card":3327,"Time":"2019-04-27T14:48:49.07","Force":false,"Test":false},{"Id":23853,"Year":2019,"Location":248,"Card":3328,"Time":"2019-04-27T14:48:49.39","Force":false,"Test":false},{"Id":23854,"Year":2019,"Location":248,"Card":3325,"Time":"2019-04-27T14:59:35.04","Force":false,"Test":false},{"Id":23855,"Year":2019,"Location":248,"Card":3302,"Time":"2019-04-27T15:12:29.61","Force":false,"Test":false},{"Id":23859,"Year":2019,"Location":93,"Card":3302,"Time":"2019-04-27T15:07:01","Force":false,"Test":false},{"Id":23860,"Year":2019,"Location":93,"Card":3325,"Time":"2019-04-27T14:56:00","Force":false,"Test":false},{"Id":23861,"Year":2019,"Location":93,"Card":3328,"Time":"2019-04-27T14:44:51","Force":false,"Test":false},{"Id":23862,"Year":2019,"Location":93,"Card":3327,"Time":"2019-04-27T14:44:48","Force":false,"Test":false},{"Id":23863,"Year":2019,"Location":93,"Card":3326,"Time":"2019-04-27T14:44:48","Force":false,"Test":false},{"Id":23864,"Year":2019,"Location":93,"Card":3475,"Time":"2019-04-27T14:40:43","Force":false,"Test":false},{"Id":23865,"Year":2019,"Location":93,"Card":3450,"Time":"2019-04-27T14:39:25","Force":false,"Test":false},{"Id":23866,"Year":2019,"Location":93,"Card":3438,"Time":"2019-04-27T14:38:14","Force":false,"Test":false},{"Id":23867,"Year":2019,"Location":93,"Card":3396,"Time":"2019-04-27T14:38:09","Force":false,"Test":false},{"Id":23868,"Year":2019,"Location":93,"Card":3330,"Time":"2019-04-27T14:36:09","Force":false,"Test":false},{"Id":23869,"Year":2019,"Location":93,"Card":3476,"Time":"2019-04-27T14:35:29","Force":false,"Test":false},{"Id":23870,"Year":2019,"Location":93,"Card":3458,"Time":"2019-04-27T14:35:24","Force":false,"Test":false},{"Id":23871,"Year":2019,"Location":93,"Card":3381,"Time":"2019-04-27T14:35:03","Force":false,"Test":false},{"Id":23872,"Year":2019,"Location":93,"Card":3383,"Time":"2019-04-27T14:34:11","Force":false,"Test":false},{"Id":23873,"Year":2019,"Location":93,"Card":3422,"Time":"2019-04-27T14:31:53","Force":false,"Test":false},{"Id":23874,"Year":2019,"Location":93,"Card":3317,"Time":"2019-04-27T14:31:48","Force":false,"Test":false},{"Id":23875,"Year":2019,"Location":93,"Card":3367,"Time":"2019-04-27T14:30:56","Force":false,"Test":false},{"Id":23876,"Year":2019,"Location":93,"Card":3323,"Time":"2019-04-27T14:29:22","Force":false,"Test":false},{"Id":23877,"Year":2019,"Location":93,"Card":3411,"Time":"2019-04-27T14:28:59","Force":false,"Test":false},{"Id":23878,"Year":2019,"Location":93,"Card":3425,"Time":"2019-04-27T14:28:06","Force":false,"Test":false},{"Id":23879,"Year":2019,"Location":93,"Card":3405,"Time":"2019-04-27T14:28:06","Force":false,"Test":false},{"Id":23880,"Year":2019,"Location":93,"Card":3402,"Time":"2019-04-27T14:27:45","Force":false,"Test":false},{"Id":23881,"Year":2019,"Location":93,"Card":3421,"Time":"2019-04-27T14:27:45","Force":false,"Test":false},{"Id":23882,"Year":2019,"Location":93,"Card":3457,"Time":"2019-04-27T14:26:10","Force":false,"Test":false},{"Id":23883,"Year":2019,"Location":93,"Card":3386,"Time":"2019-04-27T14:26:06","Force":false,"Test":false},{"Id":23884,"Year":2019,"Location":93,"Card":3382,"Time":"2019-04-27T14:25:49","Force":false,"Test":false},{"Id":23885,"Year":2019,"Location":93,"Card":3358,"Time":"2019-04-27T14:25:20","Force":false,"Test":false},{"Id":23886,"Year":2019,"Location":93,"Card":3332,"Time":"2019-04-27T14:25:05","Force":false,"Test":false},{"Id":23887,"Year":2019,"Location":93,"Card":3403,"Time":"2019-04-27T14:25:00","Force":false,"Test":false},{"Id":23888,"Year":2019,"Location":93,"Card":3439,"Time":"2019-04-27T14:25:00","Force":false,"Test":false},{"Id":23889,"Year":2019,"Location":93,"Card":3419,"Time":"2019-04-27T14:24:40","Force":false,"Test":false},{"Id":23890,"Year":2019,"Location":93,"Card":3445,"Time":"2019-04-27T14:24:40","Force":false,"Test":false},{"Id":23891,"Year":2019,"Location":93,"Card":3356,"Time":"2019-04-27T14:24:35","Force":false,"Test":false},{"Id":23892,"Year":2019,"Location":93,"Card":3378,"Time":"2019-04-27T14:24:30","Force":false,"Test":false},{"Id":23893,"Year":2019,"Location":93,"Card":3346,"Time":"2019-04-27T14:24:11","Force":false,"Test":false},{"Id":23894,"Year":2019,"Location":93,"Card":3426,"Time":"2019-04-27T14:24:10","Force":false,"Test":false},{"Id":23895,"Year":2019,"Location":93,"Card":3447,"Time":"2019-04-27T14:24:06","Force":false,"Test":false},{"Id":23896,"Year":2019,"Location":93,"Card":3462,"Time":"2019-04-27T14:23:54","Force":false,"Test":false},{"Id":23897,"Year":2019,"Location":93,"Card":3408,"Time":"2019-04-27T14:23:49","Force":false,"Test":false},{"Id":23898,"Year":2019,"Location":93,"Card":3442,"Time":"2019-04-27T14:23:37","Force":false,"Test":false},{"Id":23899,"Year":2019,"Location":93,"Card":3338,"Time":"2019-04-27T14:23:17","Force":false,"Test":false},{"Id":23900,"Year":2019,"Location":93,"Card":3461,"Time":"2019-04-27T14:23:12","Force":false,"Test":false},{"Id":23901,"Year":2019,"Location":93,"Card":3344,"Time":"2019-04-27T14:22:31","Force":false,"Test":false},{"Id":23902,"Year":2019,"Location":93,"Card":3446,"Time":"2019-04-27T14:22:22","Force":false,"Test":false},{"Id":23903,"Year":2019,"Location":93,"Card":3318,"Time":"2019-04-27T14:22:22","Force":false,"Test":false},{"Id":23904,"Year":2019,"Location":93,"Card":3401,"Time":"2019-04-27T14:21:51","Force":false,"Test":false},{"Id":23905,"Year":2019,"Location":93,"Card":3391,"Time":"2019-04-27T14:21:46","Force":false,"Test":false},{"Id":23906,"Year":2019,"Location":93,"Card":3444,"Time":"2019-04-27T14:21:43","Force":false,"Test":false},{"Id":23907,"Year":2019,"Location":93,"Card":3429,"Time":"2019-04-27T14:21:43","Force":false,"Test":false},{"Id":23908,"Year":2019,"Location":93,"Card":3336,"Time":"2019-04-27T14:21:30","Force":false,"Test":false},{"Id":23909,"Year":2019,"Location":93,"Card":3428,"Time":"2019-04-27T14:21:25","Force":false,"Test":false},{"Id":23910,"Year":2019,"Location":93,"Card":3412,"Time":"2019-04-27T14:21:10","Force":false,"Test":false},{"Id":23911,"Year":2019,"Location":93,"Card":3477,"Time":"2019-04-27T14:20:46","Force":false,"Test":false},{"Id":23912,"Year":2019,"Location":93,"Card":3354,"Time":"2019-04-27T14:20:29","Force":false,"Test":false},{"Id":23913,"Year":2019,"Location":93,"Card":3393,"Time":"2019-04-27T14:20:29","Force":false,"Test":false},{"Id":23914,"Year":2019,"Location":93,"Card":3467,"Time":"2019-04-27T14:20:25","Force":false,"Test":false},{"Id":23915,"Year":2019,"Location":93,"Card":3423,"Time":"2019-04-27T14:20:02","Force":false,"Test":false},{"Id":23916,"Year":2019,"Location":93,"Card":3352,"Time":"2019-04-27T14:19:58","Force":false,"Test":false},{"Id":23917,"Year":2019,"Location":93,"Card":3451,"Time":"2019-04-27T14:19:58","Force":false,"Test":false},{"Id":23918,"Year":2019,"Location":93,"Card":3455,"Time":"2019-04-27T14:19:58","Force":false,"Test":false},{"Id":23919,"Year":2019,"Location":93,"Card":3360,"Time":"2019-04-27T14:19:36","Force":false,"Test":false},{"Id":23920,"Year":2019,"Location":93,"Card":3384,"Time":"2019-04-27T14:19:36","Force":false,"Test":false},{"Id":23921,"Year":2019,"Location":93,"Card":3466,"Time":"2019-04-27T14:19:15","Force":false,"Test":false},{"Id":23922,"Year":2019,"Location":93,"Card":3473,"Time":"2019-04-27T14:19:14","Force":false,"Test":false},{"Id":23923,"Year":2019,"Location":93,"Card":3387,"Time":"2019-04-27T14:18:48","Force":false,"Test":false},{"Id":23924,"Year":2019,"Location":93,"Card":3312,"Time":"2019-04-27T14:18:48","Force":false,"Test":false},{"Id":23925,"Year":2019,"Location":93,"Card":3434,"Time":"2019-04-27T14:17:45","Force":false,"Test":false},{"Id":23926,"Year":2019,"Location":93,"Card":3424,"Time":"2019-04-27T14:17:29","Force":false,"Test":false},{"Id":23927,"Year":2019,"Location":93,"Card":3407,"Time":"2019-04-27T14:17:29","Force":false,"Test":false},{"Id":23928,"Year":2019,"Location":93,"Card":3357,"Time":"2019-04-27T14:17:15","Force":false,"Test":false},{"Id":23929,"Year":2019,"Location":93,"Card":3471,"Time":"2019-04-27T14:17:15","Force":false,"Test":false},{"Id":23930,"Year":2019,"Location":93,"Card":3452,"Time":"2019-04-27T14:17:00","Force":false,"Test":false},{"Id":23931,"Year":2019,"Location":93,"Card":3474,"Time":"2019-04-27T14:16:56","Force":false,"Test":false},{"Id":23932,"Year":2019,"Location":93,"Card":3460,"Time":"2019-04-27T14:16:42","Force":false,"Test":false},{"Id":23933,"Year":2019,"Location":93,"Card":3418,"Time":"2019-04-27T14:16:13","Force":false,"Test":false},{"Id":23934,"Year":2019,"Location":93,"Card":3389,"Time":"2019-04-27T14:16:00","Force":false,"Test":false},{"Id":23935,"Year":2019,"Location":93,"Card":3472,"Time":"2019-04-27T14:15:49","Force":false,"Test":false},{"Id":23936,"Year":2019,"Location":93,"Card":3420,"Time":"2019-04-27T14:15:49","Force":false,"Test":false},{"Id":23937,"Year":2019,"Location":93,"Card":3397,"Time":"2019-04-27T14:15:45","Force":false,"Test":false},{"Id":23938,"Year":2019,"Location":93,"Card":3441,"Time":"2019-04-27T14:15:31","Force":false,"Test":false},{"Id":23939,"Year":2019,"Location":93,"Card":3464,"Time":"2019-04-27T14:15:20","Force":false,"Test":false},{"Id":23940,"Year":2019,"Location":93,"Card":3443,"Time":"2019-04-27T14:15:20","Force":false,"Test":false},{"Id":23941,"Year":2019,"Location":93,"Card":3322,"Time":"2019-04-27T14:15:10","Force":false,"Test":false},{"Id":23942,"Year":2019,"Location":93,"Card":3371,"Time":"2019-04-27T14:15:10","Force":false,"Test":false},{"Id":23943,"Year":2019,"Location":93,"Card":3304,"Time":"2019-04-27T14:14:23","Force":false,"Test":false},{"Id":23944,"Year":2019,"Location":93,"Card":3385,"Time":"2019-04-27T14:14:21","Force":false,"Test":false},{"Id":23945,"Year":2019,"Location":93,"Card":3394,"Time":"2019-04-27T14:14:21","Force":false,"Test":false},{"Id":23946,"Year":2019,"Location":93,"Card":3388,"Time":"2019-04-27T14:13:37","Force":false,"Test":false},{"Id":23947,"Year":2019,"Location":93,"Card":3416,"Time":"2019-04-27T14:13:09","Force":false,"Test":false},{"Id":23948,"Year":2019,"Location":93,"Card":3440,"Time":"2019-04-27T14:13:05","Force":false,"Test":false},{"Id":23949,"Year":2019,"Location":93,"Card":3355,"Time":"2019-04-27T14:13:05","Force":false,"Test":false},{"Id":23950,"Year":2019,"Location":93,"Card":3459,"Time":"2019-04-27T14:12:32","Force":false,"Test":false},{"Id":23951,"Year":2019,"Location":93,"Card":3463,"Time":"2019-04-27T14:11:46","Force":false,"Test":false},{"Id":23952,"Year":2019,"Location":93,"Card":3465,"Time":"2019-04-27T14:10:02","Force":false,"Test":false},{"Id":23953,"Year":2019,"Location":93,"Card":3340,"Time":"2019-04-27T14:09:28","Force":false,"Test":false},{"Id":23954,"Year":2019,"Location":93,"Card":3350,"Time":"2019-04-27T14:09:28","Force":false,"Test":false},{"Id":23955,"Year":2019,"Location":93,"Card":3437,"Time":"2019-04-27T14:09:27","Force":false,"Test":false},{"Id":23956,"Year":2019,"Location":93,"Card":3339,"Time":"2019-04-27T14:09:22","Force":false,"Test":false},{"Id":23957,"Year":2019,"Location":93,"Card":3324,"Time":"2019-04-27T14:09:11","Force":false,"Test":false},{"Id":23958,"Year":2019,"Location":93,"Card":3390,"Time":"2019-04-27T14:09:07","Force":false,"Test":false},{"Id":23959,"Year":2019,"Location":93,"Card":3380,"Time":"2019-04-27T14:09:06","Force":false,"Test":false},{"Id":23960,"Year":2019,"Location":93,"Card":3415,"Time":"2019-04-27T14:09:01","Force":false,"Test":false},{"Id":23961,"Year":2019,"Location":93,"Card":3361,"Time":"2019-04-27T14:08:44","Force":false,"Test":false},{"Id":23962,"Year":2019,"Location":93,"Card":3315,"Time":"2019-04-27T14:08:39","Force":false,"Test":false},{"Id":23963,"Year":2019,"Location":93,"Card":3368,"Time":"2019-04-27T14:08:39","Force":false,"Test":false},{"Id":23964,"Year":2019,"Location":93,"Card":3311,"Time":"2019-04-27T14:08:32","Force":false,"Test":false},{"Id":23965,"Year":2019,"Location":93,"Card":3370,"Time":"2019-04-27T14:08:26","Force":false,"Test":false},{"Id":23966,"Year":2019,"Location":93,"Card":3392,"Time":"2019-04-27T14:07:49","Force":false,"Test":false},{"Id":23967,"Year":2019,"Location":93,"Card":3413,"Time":"2019-04-27T14:07:45","Force":false,"Test":false},{"Id":23968,"Year":2019,"Location":93,"Card":3359,"Time":"2019-04-27T14:07:44","Force":false,"Test":false},{"Id":23969,"Year":2019,"Location":93,"Card":3398,"Time":"2019-04-27T14:07:39","Force":false,"Test":false},{"Id":23970,"Year":2019,"Location":93,"Card":3303,"Time":"2019-04-27T14:07:34","Force":false,"Test":false},{"Id":23971,"Year":2019,"Location":93,"Card":3400,"Time":"2019-04-27T14:07:14","Force":false,"Test":false},{"Id":23972,"Year":2019,"Location":93,"Card":3417,"Time":"2019-04-27T14:06:12","Force":false,"Test":false},{"Id":23973,"Year":2019,"Location":93,"Card":3456,"Time":"2019-04-27T14:06:07","Force":false,"Test":false},{"Id":23974,"Year":2019,"Location":93,"Card":3454,"Time":"2019-04-27T14:06:02","Force":false,"Test":false},{"Id":23975,"Year":2019,"Location":93,"Card":3349,"Time":"2019-04-27T14:05:57","Force":false,"Test":false},{"Id":23976,"Year":2019,"Location":93,"Card":3399,"Time":"2019-04-27T14:05:57","Force":false,"Test":false},{"Id":23977,"Year":2019,"Location":93,"Card":3448,"Time":"2019-04-27T14:05:57","Force":false,"Test":false},{"Id":23978,"Year":2019,"Location":93,"Card":3435,"Time":"2019-04-27T14:05:15","Force":false,"Test":false},{"Id":23979,"Year":2019,"Location":93,"Card":3406,"Time":"2019-04-27T14:04:59","Force":false,"Test":false},{"Id":23980,"Year":2019,"Location":93,"Card":3404,"Time":"2019-04-27T14:04:54","Force":false,"Test":false},{"Id":23981,"Year":2019,"Location":93,"Card":3348,"Time":"2019-04-27T14:04:12","Force":false,"Test":false},{"Id":23982,"Year":2019,"Location":93,"Card":3469,"Time":"2019-04-27T14:03:39","Force":false,"Test":false},{"Id":23983,"Year":2019,"Location":93,"Card":3414,"Time":"2019-04-27T14:02:43","Force":false,"Test":false},{"Id":23984,"Year":2019,"Location":93,"Card":3347,"Time":"2019-04-27T14:02:35","Force":false,"Test":false},{"Id":23985,"Year":2019,"Location":93,"Card":3436,"Time":"2019-04-27T14:02:13","Force":false,"Test":false},{"Id":23986,"Year":2019,"Location":93,"Card":3470,"Time":"2019-04-27T14:02:13","Force":false,"Test":false},{"Id":23987,"Year":2019,"Location":93,"Card":3449,"Time":"2019-04-27T14:01:56","Force":false,"Test":false},{"Id":23988,"Year":2019,"Location":93,"Card":3314,"Time":"2019-04-27T14:01:25","Force":false,"Test":false},{"Id":23989,"Year":2019,"Location":93,"Card":3369,"Time":"2019-04-27T14:01:09","Force":false,"Test":false},{"Id":23990,"Year":2019,"Location":93,"Card":3366,"Time":"2019-04-27T14:00:33","Force":false,"Test":false},{"Id":23991,"Year":2019,"Location":93,"Card":3337,"Time":"2019-04-27T14:00:26","Force":false,"Test":false},{"Id":23992,"Year":2019,"Location":93,"Card":3479,"Time":"2019-04-27T14:00:21","Force":false,"Test":false},{"Id":23993,"Year":2019,"Location":93,"Card":3468,"Time":"2019-04-27T13:59:25","Force":false,"Test":false},{"Id":23994,"Year":2019,"Location":93,"Card":3341,"Time":"2019-04-27T13:59:25","Force":false,"Test":false},{"Id":23995,"Year":2019,"Location":93,"Card":3335,"Time":"2019-04-27T13:57:37","Force":false,"Test":false},{"Id":23996,"Year":2019,"Location":93,"Card":3351,"Time":"2019-04-27T13:57:27","Force":false,"Test":false},{"Id":23997,"Year":2019,"Location":93,"Card":3453,"Time":"2019-04-27T13:56:56","Force":false,"Test":false}]
+[
+  {
+    "Id": 23297,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3335,
+    "Time": "2019-04-27T13:26:59.33",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23298,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3448,
+    "Time": "2019-04-27T13:27:20.87",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23299,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3449,
+    "Time": "2019-04-27T13:27:21.01",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23300,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3453,
+    "Time": "2019-04-27T13:27:42.25",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23301,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3351,
+    "Time": "2019-04-27T13:27:43.17",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23302,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3369,
+    "Time": "2019-04-27T13:28:05.18",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23303,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3366,
+    "Time": "2019-04-27T13:28:27.94",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23304,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3470,
+    "Time": "2019-04-27T13:28:57.32",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23305,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3469,
+    "Time": "2019-04-27T13:29:20.57",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23306,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3468,
+    "Time": "2019-04-27T13:30:05.03",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23307,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3479,
+    "Time": "2019-04-27T13:30:06",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23308,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3370,
+    "Time": "2019-04-27T13:30:06.44",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23309,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3314,
+    "Time": "2019-04-27T13:30:08.02",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23310,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3436,
+    "Time": "2019-04-27T13:30:11.12",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23311,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3341,
+    "Time": "2019-04-27T13:30:12.76",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23312,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3311,
+    "Time": "2019-04-27T13:30:16.08",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23313,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3400,
+    "Time": "2019-04-27T13:30:16.71",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23314,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3337,
+    "Time": "2019-04-27T13:30:17.4",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23315,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3347,
+    "Time": "2019-04-27T13:30:33.15",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23316,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3435,
+    "Time": "2019-04-27T13:30:38.65",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23317,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3361,
+    "Time": "2019-04-27T13:30:40.32",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23318,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3456,
+    "Time": "2019-04-27T13:30:39.62",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23319,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3324,
+    "Time": "2019-04-27T13:30:41.23",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23320,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3348,
+    "Time": "2019-04-27T13:30:50.62",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23321,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3392,
+    "Time": "2019-04-27T13:30:46.61",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23322,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3303,
+    "Time": "2019-04-27T13:30:58.95",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23323,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3406,
+    "Time": "2019-04-27T13:31:29.77",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23324,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3408,
+    "Time": "2019-04-27T13:31:30.02",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23325,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3407,
+    "Time": "2019-04-27T13:31:29.86",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23326,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3415,
+    "Time": "2019-04-27T13:31:44.46",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23327,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3414,
+    "Time": "2019-04-27T13:31:55.24",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23328,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3413,
+    "Time": "2019-04-27T13:31:54.94",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23329,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3416,
+    "Time": "2019-04-27T13:32:09.93",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23330,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3417,
+    "Time": "2019-04-27T13:32:10.44",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23331,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3398,
+    "Time": "2019-04-27T13:32:17.81",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23332,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3399,
+    "Time": "2019-04-27T13:32:18.41",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23333,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3359,
+    "Time": "2019-04-27T13:32:22.15",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23334,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3349,
+    "Time": "2019-04-27T13:32:44.05",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23335,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3437,
+    "Time": "2019-04-27T13:32:50.27",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23336,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3390,
+    "Time": "2019-04-27T13:32:53.85",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23337,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3454,
+    "Time": "2019-04-27T13:32:55.06",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23338,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3340,
+    "Time": "2019-04-27T13:32:56.44",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23339,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3312,
+    "Time": "2019-04-27T13:32:59.25",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23340,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3465,
+    "Time": "2019-04-27T13:33:04.26",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23341,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3464,
+    "Time": "2019-04-27T13:33:05.56",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23342,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3315,
+    "Time": "2019-04-27T13:33:16.13",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23343,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3380,
+    "Time": "2019-04-27T13:33:31.25",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23344,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3404,
+    "Time": "2019-04-27T13:33:37.67",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23345,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3352,
+    "Time": "2019-04-27T13:33:42.97",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23346,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3339,
+    "Time": "2019-04-27T13:33:44.57",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23347,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3371,
+    "Time": "2019-04-27T13:33:46.16",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23348,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3350,
+    "Time": "2019-04-27T13:33:46.91",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23349,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3346,
+    "Time": "2019-04-27T13:33:49.89",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23350,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3440,
+    "Time": "2019-04-27T13:34:01.01",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23351,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3441,
+    "Time": "2019-04-27T13:34:01.07",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23352,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3351,
+    "Time": "2019-04-27T13:34:02.33",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23353,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3453,
+    "Time": "2019-04-27T13:34:12.29",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23354,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3335,
+    "Time": "2019-04-27T13:34:18.3",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23355,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3368,
+    "Time": "2019-04-27T13:34:37.95",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23356,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3463,
+    "Time": "2019-04-27T13:34:58.75",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23357,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3452,
+    "Time": "2019-04-27T13:34:59.29",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23358,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3355,
+    "Time": "2019-04-27T13:35:28.8",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23359,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3466,
+    "Time": "2019-04-27T13:35:31.8",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23360,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3467,
+    "Time": "2019-04-27T13:35:31.96",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23361,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3369,
+    "Time": "2019-04-27T13:35:37.1",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23362,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3424,
+    "Time": "2019-04-27T13:35:41.16",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23363,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3423,
+    "Time": "2019-04-27T13:35:41.71",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23364,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3449,
+    "Time": "2019-04-27T13:35:50.56",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23365,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3462,
+    "Time": "2019-04-27T13:35:50.26",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23366,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3322,
+    "Time": "2019-04-27T13:35:54.4",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23367,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3434,
+    "Time": "2019-04-27T13:35:56.14",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23368,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3304,
+    "Time": "2019-04-27T13:35:59.37",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23369,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3459,
+    "Time": "2019-04-27T13:36:01.08",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23370,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3354,
+    "Time": "2019-04-27T13:36:05.53",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23371,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3366,
+    "Time": "2019-04-27T13:36:06.98",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23372,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3418,
+    "Time": "2019-04-27T13:36:07.99",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23373,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3448,
+    "Time": "2019-04-27T13:36:15.53",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23374,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3473,
+    "Time": "2019-04-27T13:36:14.74",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23375,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3474,
+    "Time": "2019-04-27T13:36:14.93",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23376,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3479,
+    "Time": "2019-04-27T13:36:30.98",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23377,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3412,
+    "Time": "2019-04-27T13:36:34.53",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23378,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3411,
+    "Time": "2019-04-27T13:36:34.76",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23379,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3470,
+    "Time": "2019-04-27T13:36:37.17",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23380,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3469,
+    "Time": "2019-04-27T13:36:37.61",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23381,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3468,
+    "Time": "2019-04-27T13:36:38.45",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23382,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3341,
+    "Time": "2019-04-27T13:36:46.48",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23383,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3471,
+    "Time": "2019-04-27T13:36:49.91",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23384,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3472,
+    "Time": "2019-04-27T13:36:50.15",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23385,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3360,
+    "Time": "2019-04-27T13:36:55.39",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23386,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3420,
+    "Time": "2019-04-27T13:37:07.48",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23387,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3419,
+    "Time": "2019-04-27T13:37:08.19",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23388,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3443,
+    "Time": "2019-04-27T13:37:11.63",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23389,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3389,
+    "Time": "2019-04-27T13:37:12.32",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23390,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3388,
+    "Time": "2019-04-27T13:37:12.37",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23391,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3337,
+    "Time": "2019-04-27T13:37:21.25",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23392,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3314,
+    "Time": "2019-04-27T13:37:26.12",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23393,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3397,
+    "Time": "2019-04-27T13:37:25.46",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23394,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3394,
+    "Time": "2019-04-27T13:37:33.49",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23395,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3436,
+    "Time": "2019-04-27T13:37:38.41",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23396,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3347,
+    "Time": "2019-04-27T13:37:40.24",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23397,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3455,
+    "Time": "2019-04-27T13:37:48.28",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23398,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3338,
+    "Time": "2019-04-27T13:37:58.15",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23399,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3384,
+    "Time": "2019-04-27T13:38:04.92",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23400,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3385,
+    "Time": "2019-04-27T13:38:05.38",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23401,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3451,
+    "Time": "2019-04-27T13:38:17.4",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23402,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3332,
+    "Time": "2019-04-27T13:38:28.64",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23403,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3477,
+    "Time": "2019-04-27T13:38:39.17",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23404,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3400,
+    "Time": "2019-04-27T13:38:48.68",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23405,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3357,
+    "Time": "2019-04-27T13:38:49.35",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23406,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3336,
+    "Time": "2019-04-27T13:39:00.47",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23407,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3456,
+    "Time": "2019-04-27T13:39:08.1",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23408,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3392,
+    "Time": "2019-04-27T13:39:12.52",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23409,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3358,
+    "Time": "2019-04-27T13:39:14.05",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23410,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3435,
+    "Time": "2019-04-27T13:39:15.87",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23411,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3414,
+    "Time": "2019-04-27T13:39:18.59",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23412,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3318,
+    "Time": "2019-04-27T13:39:19.42",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23413,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3406,
+    "Time": "2019-04-27T13:39:19.81",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23414,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3407,
+    "Time": "2019-04-27T13:39:19.78",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23415,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3303,
+    "Time": "2019-04-27T13:39:21.75",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23416,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3386,
+    "Time": "2019-04-27T13:39:27.46",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23417,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3387,
+    "Time": "2019-04-27T13:39:27.92",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23418,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3445,
+    "Time": "2019-04-27T13:39:32.14",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23419,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3444,
+    "Time": "2019-04-27T13:39:31.94",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23420,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3439,
+    "Time": "2019-04-27T13:39:39.55",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23421,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3391,
+    "Time": "2019-04-27T13:39:39.78",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23422,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3349,
+    "Time": "2019-04-27T13:39:56.65",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23423,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3370,
+    "Time": "2019-04-27T13:39:58.61",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23424,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3393,
+    "Time": "2019-04-27T13:40:00.23",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23425,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3454,
+    "Time": "2019-04-27T13:40:07.78",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23426,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3417,
+    "Time": "2019-04-27T13:40:08.29",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23427,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3348,
+    "Time": "2019-04-27T13:40:10.1",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23428,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3359,
+    "Time": "2019-04-27T13:40:16.06",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23429,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3428,
+    "Time": "2019-04-27T13:40:16.12",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23430,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3429,
+    "Time": "2019-04-27T13:40:16.33",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23431,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3408,
+    "Time": "2019-04-27T13:40:27.99",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23432,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3413,
+    "Time": "2019-04-27T13:40:29.8",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23433,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3361,
+    "Time": "2019-04-27T13:40:32.18",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23434,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3401,
+    "Time": "2019-04-27T13:40:33.12",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23435,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3344,
+    "Time": "2019-04-27T13:40:34.32",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23436,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3311,
+    "Time": "2019-04-27T13:40:36.18",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23437,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3415,
+    "Time": "2019-04-27T13:40:38.56",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23438,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3447,
+    "Time": "2019-04-27T13:40:52.57",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23439,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3399,
+    "Time": "2019-04-27T13:40:57.89",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23440,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3398,
+    "Time": "2019-04-27T13:40:57.92",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23441,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3442,
+    "Time": "2019-04-27T13:41:01.02",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23442,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3404,
+    "Time": "2019-04-27T13:41:04.47",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23443,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3461,
+    "Time": "2019-04-27T13:41:09.75",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23444,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3460,
+    "Time": "2019-04-27T13:41:09.98",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23445,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3380,
+    "Time": "2019-04-27T13:41:16.6",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23446,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3367,
+    "Time": "2019-04-27T13:41:18.41",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23447,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3405,
+    "Time": "2019-04-27T13:41:22.3",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23448,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3465,
+    "Time": "2019-04-27T13:41:32.43",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23449,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3446,
+    "Time": "2019-04-27T13:41:33.34",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23450,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3326,
+    "Time": "2019-04-27T13:41:34.71",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23451,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3315,
+    "Time": "2019-04-27T13:41:37.73",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23452,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3383,
+    "Time": "2019-04-27T13:41:39.73",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23453,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3340,
+    "Time": "2019-04-27T13:41:41.16",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23454,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3437,
+    "Time": "2019-04-27T13:41:42.99",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23455,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3324,
+    "Time": "2019-04-27T13:41:46.89",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23456,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3464,
+    "Time": "2019-04-27T13:41:52.98",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23457,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3350,
+    "Time": "2019-04-27T13:42:03.13",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23458,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3390,
+    "Time": "2019-04-27T13:42:12.46",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23459,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3416,
+    "Time": "2019-04-27T13:42:22.47",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23460,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3476,
+    "Time": "2019-04-27T13:42:22.26",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23461,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3339,
+    "Time": "2019-04-27T13:42:27.8",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23462,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3368,
+    "Time": "2019-04-27T13:42:29.43",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23463,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3323,
+    "Time": "2019-04-27T13:42:34.1",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23464,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3371,
+    "Time": "2019-04-27T13:42:40.88",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23465,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3378,
+    "Time": "2019-04-27T13:42:40.99",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23466,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3352,
+    "Time": "2019-04-27T13:42:49.56",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23467,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3422,
+    "Time": "2019-04-27T13:42:52.79",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23468,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3421,
+    "Time": "2019-04-27T13:42:52.85",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23469,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3457,
+    "Time": "2019-04-27T13:43:19.55",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23470,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3440,
+    "Time": "2019-04-27T13:43:20.68",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23471,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3458,
+    "Time": "2019-04-27T13:43:19.93",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23472,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3441,
+    "Time": "2019-04-27T13:43:26.86",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23473,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3426,
+    "Time": "2019-04-27T13:43:34.43",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23474,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3425,
+    "Time": "2019-04-27T13:43:35.08",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23475,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3327,
+    "Time": "2019-04-27T13:43:40.98",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23476,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3355,
+    "Time": "2019-04-27T13:43:45.72",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23477,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3463,
+    "Time": "2019-04-27T13:43:46.66",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23478,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3450,
+    "Time": "2019-04-27T13:44:00.89",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23479,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3351,
+    "Time": "2019-04-27T13:44:02.37",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23480,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3328,
+    "Time": "2019-04-27T13:44:28.73",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23481,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3356,
+    "Time": "2019-04-27T13:44:30.17",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23482,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3459,
+    "Time": "2019-04-27T13:44:38.05",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23483,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3452,
+    "Time": "2019-04-27T13:44:41.46",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23484,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3335,
+    "Time": "2019-04-27T13:44:44.78",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23485,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3453,
+    "Time": "2019-04-27T13:44:47.39",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23486,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3302,
+    "Time": "2019-04-27T13:45:01.97",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23487,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3304,
+    "Time": "2019-04-27T13:45:12.09",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23488,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3388,
+    "Time": "2019-04-27T13:45:14.29",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23489,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3397,
+    "Time": "2019-04-27T13:45:20.25",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23490,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3403,
+    "Time": "2019-04-27T13:45:23.14",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23491,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3402,
+    "Time": "2019-04-27T13:45:23.17",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23492,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3312,
+    "Time": "2019-04-27T13:45:35.29",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23493,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3434,
+    "Time": "2019-04-27T13:45:42.67",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23494,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3394,
+    "Time": "2019-04-27T13:45:45.09",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23495,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3424,
+    "Time": "2019-04-27T13:45:51.44",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23496,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3438,
+    "Time": "2019-04-27T13:45:51.96",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23497,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3471,
+    "Time": "2019-04-27T13:45:56.51",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23498,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3317,
+    "Time": "2019-04-27T13:45:56.75",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23499,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3322,
+    "Time": "2019-04-27T13:46:03.25",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23500,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3346,
+    "Time": "2019-04-27T13:46:04.36",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23501,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3385,
+    "Time": "2019-04-27T13:46:07.54",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23502,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3479,
+    "Time": "2019-04-27T13:46:25.27",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23503,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3472,
+    "Time": "2019-04-27T13:46:25.87",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23504,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3467,
+    "Time": "2019-04-27T13:46:30.43",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23505,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3466,
+    "Time": "2019-04-27T13:46:30.53",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23506,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3341,
+    "Time": "2019-04-27T13:46:36.27",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23507,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3443,
+    "Time": "2019-04-27T13:46:37.24",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23508,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3468,
+    "Time": "2019-04-27T13:46:37.3",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23509,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3423,
+    "Time": "2019-04-27T13:46:41.19",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23510,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3360,
+    "Time": "2019-04-27T13:46:45.5",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23511,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3462,
+    "Time": "2019-04-27T13:46:47.86",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23512,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3474,
+    "Time": "2019-04-27T13:46:48.53",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23513,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3325,
+    "Time": "2019-04-27T13:47:04.98",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23514,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3473,
+    "Time": "2019-04-27T13:47:09.03",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23515,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3418,
+    "Time": "2019-04-27T13:47:12.73",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23516,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3330,
+    "Time": "2019-04-27T13:47:19.4",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23517,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3455,
+    "Time": "2019-04-27T13:47:20.7",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23518,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3369,
+    "Time": "2019-04-27T13:47:24.63",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23519,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3384,
+    "Time": "2019-04-27T13:47:37.21",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23520,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3389,
+    "Time": "2019-04-27T13:47:40.8",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23521,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3366,
+    "Time": "2019-04-27T13:47:43.65",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23522,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3357,
+    "Time": "2019-04-27T13:47:45.07",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23523,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3354,
+    "Time": "2019-04-27T13:48:03.13",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23524,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3337,
+    "Time": "2019-04-27T13:48:07.54",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23525,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3444,
+    "Time": "2019-04-27T13:48:11.67",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23526,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3436,
+    "Time": "2019-04-27T13:48:13.32",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23527,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3470,
+    "Time": "2019-04-27T13:48:13.96",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23528,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3314,
+    "Time": "2019-04-27T13:48:20.72",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23529,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3412,
+    "Time": "2019-04-27T13:48:27.31",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23530,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3411,
+    "Time": "2019-04-27T13:48:27.61",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23531,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3448,
+    "Time": "2019-04-27T13:48:31.75",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23532,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3449,
+    "Time": "2019-04-27T13:48:35.61",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23533,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3336,
+    "Time": "2019-04-27T13:48:37.33",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23534,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3382,
+    "Time": "2019-04-27T13:48:39.12",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23535,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3451,
+    "Time": "2019-04-27T13:48:45.31",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23536,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3401,
+    "Time": "2019-04-27T13:48:49.16",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23537,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3477,
+    "Time": "2019-04-27T13:48:52.52",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23538,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3347,
+    "Time": "2019-04-27T13:48:54.1",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23539,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3338,
+    "Time": "2019-04-27T13:48:59.19",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23540,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3414,
+    "Time": "2019-04-27T13:49:07.69",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23541,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3420,
+    "Time": "2019-04-27T13:49:18.64",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23542,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3419,
+    "Time": "2019-04-27T13:49:18.73",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23543,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3428,
+    "Time": "2019-04-27T13:49:20.22",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23544,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3429,
+    "Time": "2019-04-27T13:49:20.31",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23545,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3387,
+    "Time": "2019-04-27T13:49:20.33",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23546,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3445,
+    "Time": "2019-04-27T13:49:28.75",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23547,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3446,
+    "Time": "2019-04-27T13:49:42.63",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23548,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3358,
+    "Time": "2019-04-27T13:49:52.27",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23549,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3469,
+    "Time": "2019-04-27T13:49:54.83",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23550,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3344,
+    "Time": "2019-04-27T13:50:14.48",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23551,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3332,
+    "Time": "2019-04-27T13:50:16.18",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23552,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3460,
+    "Time": "2019-04-27T13:50:24.76",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23553,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3391,
+    "Time": "2019-04-27T13:50:29.14",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23554,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3318,
+    "Time": "2019-04-27T13:50:31.58",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23555,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3349,
+    "Time": "2019-04-27T13:50:37.88",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23556,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3435,
+    "Time": "2019-04-27T13:50:48.41",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23557,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3439,
+    "Time": "2019-04-27T13:50:54.4",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23558,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3404,
+    "Time": "2019-04-27T13:50:55.65",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23559,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3442,
+    "Time": "2019-04-27T13:50:56.81",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23560,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3461,
+    "Time": "2019-04-27T13:50:58.22",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23561,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3447,
+    "Time": "2019-04-27T13:50:58.43",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23562,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3386,
+    "Time": "2019-04-27T13:51:02.68",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23563,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3383,
+    "Time": "2019-04-27T13:51:09.89",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23564,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3348,
+    "Time": "2019-04-27T13:51:15.63",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23565,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3406,
+    "Time": "2019-04-27T13:51:16.66",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23566,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3381,
+    "Time": "2019-04-27T13:51:17.03",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23567,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3392,
+    "Time": "2019-04-27T13:51:38.25",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23568,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3456,
+    "Time": "2019-04-27T13:51:39.89",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23569,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3475,
+    "Time": "2019-04-27T13:51:47.43",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23570,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3454,
+    "Time": "2019-04-27T13:51:54.32",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23571,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3400,
+    "Time": "2019-04-27T13:52:03.59",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23572,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3417,
+    "Time": "2019-04-27T13:52:18.39",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23573,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3359,
+    "Time": "2019-04-27T13:52:23.86",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23574,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3399,
+    "Time": "2019-04-27T13:52:25.49",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23575,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3405,
+    "Time": "2019-04-27T13:52:31.15",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23576,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3303,
+    "Time": "2019-04-27T13:52:51.4",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23577,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3361,
+    "Time": "2019-04-27T13:53:07.9",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23578,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3396,
+    "Time": "2019-04-27T13:53:08.91",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23579,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3421,
+    "Time": "2019-04-27T13:53:15.57",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23580,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3393,
+    "Time": "2019-04-27T13:53:19.02",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23581,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3311,
+    "Time": "2019-04-27T13:53:27.03",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23582,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3367,
+    "Time": "2019-04-27T13:53:30.51",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23583,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3422,
+    "Time": "2019-04-27T13:53:31.26",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23584,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3368,
+    "Time": "2019-04-27T13:53:33.28",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23585,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3407,
+    "Time": "2019-04-27T13:53:35.68",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23586,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3413,
+    "Time": "2019-04-27T13:53:37.21",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23587,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3356,
+    "Time": "2019-04-27T13:53:40.58",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23588,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3398,
+    "Time": "2019-04-27T13:53:49.91",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23589,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3323,
+    "Time": "2019-04-27T13:53:58.96",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23590,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3339,
+    "Time": "2019-04-27T13:54:04.77",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23591,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3350,
+    "Time": "2019-04-27T13:54:05.61",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23592,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3415,
+    "Time": "2019-04-27T13:54:14.98",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23593,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3437,
+    "Time": "2019-04-27T13:54:17.09",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23594,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3465,
+    "Time": "2019-04-27T13:54:20.72",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23595,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3370,
+    "Time": "2019-04-27T13:54:21.6",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23596,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3315,
+    "Time": "2019-04-27T13:54:23.7",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23597,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3425,
+    "Time": "2019-04-27T13:54:23.62",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23598,
+    "Year": 2019,
+    "Location": 90,
+    "Card": 3353,
+    "Time": "2019-04-27T13:54:21.12",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23599,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3378,
+    "Time": "2019-04-27T13:54:30.03",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23600,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3403,
+    "Time": "2019-04-27T13:54:35.62",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23601,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3426,
+    "Time": "2019-04-27T13:54:59.22",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23602,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3324,
+    "Time": "2019-04-27T13:55:15.31",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23603,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3340,
+    "Time": "2019-04-27T13:55:27.95",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23604,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3459,
+    "Time": "2019-04-27T13:55:38.33",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23605,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3458,
+    "Time": "2019-04-27T13:55:42.52",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23606,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3457,
+    "Time": "2019-04-27T13:55:42.59",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23607,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3440,
+    "Time": "2019-04-27T13:55:43.47",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23608,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3402,
+    "Time": "2019-04-27T13:55:45.64",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23609,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3380,
+    "Time": "2019-04-27T13:55:49",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23610,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3463,
+    "Time": "2019-04-27T13:55:52.69",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23611,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3476,
+    "Time": "2019-04-27T13:55:55.36",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23612,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3390,
+    "Time": "2019-04-27T13:56:02.05",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23613,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3464,
+    "Time": "2019-04-27T13:56:22.58",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23614,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3382,
+    "Time": "2019-04-27T13:56:27.05",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23615,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3355,
+    "Time": "2019-04-27T13:56:34.76",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23616,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3317,
+    "Time": "2019-04-27T13:56:47.04",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23617,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3408,
+    "Time": "2019-04-27T13:56:47.96",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23618,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3352,
+    "Time": "2019-04-27T13:56:51.54",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23619,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3416,
+    "Time": "2019-04-27T13:57:04.56",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23620,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3388,
+    "Time": "2019-04-27T13:57:16.77",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23621,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3397,
+    "Time": "2019-04-27T13:57:16.91",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23622,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3443,
+    "Time": "2019-04-27T13:57:31.84",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23623,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3438,
+    "Time": "2019-04-27T13:57:57.75",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23624,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3371,
+    "Time": "2019-04-27T13:57:58.29",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23625,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3441,
+    "Time": "2019-04-27T13:58:04.52",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23626,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3394,
+    "Time": "2019-04-27T13:58:44.31",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23627,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3304,
+    "Time": "2019-04-27T13:58:48.63",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23628,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3322,
+    "Time": "2019-04-27T13:58:47.72",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23629,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3450,
+    "Time": "2019-04-27T13:58:53.43",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23630,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3453,
+    "Time": "2019-04-27T13:59:14.46",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23631,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3357,
+    "Time": "2019-04-27T13:59:45.61",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23632,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3351,
+    "Time": "2019-04-27T13:59:53.27",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23633,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3385,
+    "Time": "2019-04-27T14:00:00.08",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23634,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3330,
+    "Time": "2019-04-27T14:00:01.82",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23635,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3326,
+    "Time": "2019-04-27T14:00:06.18",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23636,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3335,
+    "Time": "2019-04-27T14:00:08.66",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23637,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3328,
+    "Time": "2019-04-27T14:00:09.01",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23638,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3452,
+    "Time": "2019-04-27T14:00:09.68",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23639,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3471,
+    "Time": "2019-04-27T14:00:13.86",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23640,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3460,
+    "Time": "2019-04-27T14:00:18.99",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23641,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3424,
+    "Time": "2019-04-27T14:00:24.8",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23642,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3327,
+    "Time": "2019-04-27T14:00:27.69",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23643,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3472,
+    "Time": "2019-04-27T14:00:29.28",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23644,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3381,
+    "Time": "2019-04-27T14:00:46.44",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23645,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3434,
+    "Time": "2019-04-27T14:00:52.83",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23646,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3389,
+    "Time": "2019-04-27T14:01:12.58",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23647,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3444,
+    "Time": "2019-04-27T14:01:25.77",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23648,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3418,
+    "Time": "2019-04-27T14:01:28.21",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23649,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3312,
+    "Time": "2019-04-27T14:01:40.83",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23650,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3467,
+    "Time": "2019-04-27T14:01:45.84",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23651,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3420,
+    "Time": "2019-04-27T14:01:51.56",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23652,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3468,
+    "Time": "2019-04-27T14:01:55.43",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23653,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3341,
+    "Time": "2019-04-27T14:01:55.67",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23654,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3474,
+    "Time": "2019-04-27T14:01:56.13",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23655,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3384,
+    "Time": "2019-04-27T14:01:57.12",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23656,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3466,
+    "Time": "2019-04-27T14:01:58.94",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23657,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3455,
+    "Time": "2019-04-27T14:02:00.48",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23658,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3360,
+    "Time": "2019-04-27T14:02:27.18",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23659,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3387,
+    "Time": "2019-04-27T14:02:30.43",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23660,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3423,
+    "Time": "2019-04-27T14:02:49.22",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23661,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3337,
+    "Time": "2019-04-27T14:02:51.02",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23662,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3475,
+    "Time": "2019-04-27T14:02:55.65",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23663,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3479,
+    "Time": "2019-04-27T14:03:01.86",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23664,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3473,
+    "Time": "2019-04-27T14:03:01.31",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23665,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3354,
+    "Time": "2019-04-27T14:03:06.54",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23666,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3446,
+    "Time": "2019-04-27T14:03:09.48",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23667,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3366,
+    "Time": "2019-04-27T14:03:12",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23668,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3346,
+    "Time": "2019-04-27T14:03:11.96",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23669,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3477,
+    "Time": "2019-04-27T14:03:14.43",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23670,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3412,
+    "Time": "2019-04-27T14:03:21.91",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23671,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3396,
+    "Time": "2019-04-27T14:03:25.38",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23672,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3451,
+    "Time": "2019-04-27T14:03:31.91",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23673,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3369,
+    "Time": "2019-04-27T14:03:36.74",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23674,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3445,
+    "Time": "2019-04-27T14:03:38.42",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23675,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3314,
+    "Time": "2019-04-27T14:03:48.82",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23676,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3429,
+    "Time": "2019-04-27T14:03:51.66",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23677,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3428,
+    "Time": "2019-04-27T14:03:51.89",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23678,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3462,
+    "Time": "2019-04-27T14:04:11.9",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23679,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3442,
+    "Time": "2019-04-27T14:04:31.73",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23680,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3336,
+    "Time": "2019-04-27T14:04:37.31",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23681,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3449,
+    "Time": "2019-04-27T14:04:42.11",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23682,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3344,
+    "Time": "2019-04-27T14:04:44.33",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23683,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3436,
+    "Time": "2019-04-27T14:04:53.63",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23684,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3347,
+    "Time": "2019-04-27T14:04:54.95",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23685,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3470,
+    "Time": "2019-04-27T14:04:55.02",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23686,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3393,
+    "Time": "2019-04-27T14:05:01.8",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23687,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3414,
+    "Time": "2019-04-27T14:05:16.48",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23688,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3302,
+    "Time": "2019-04-27T14:05:39",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23689,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3338,
+    "Time": "2019-04-27T14:05:41.1",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23690,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3401,
+    "Time": "2019-04-27T14:06:13.87",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23691,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3325,
+    "Time": "2019-04-27T14:06:16.7",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23692,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3469,
+    "Time": "2019-04-27T14:06:18.58",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23693,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3461,
+    "Time": "2019-04-27T14:06:27.39",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23694,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3447,
+    "Time": "2019-04-27T14:06:34.05",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23695,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3348,
+    "Time": "2019-04-27T14:06:42.94",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23696,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3386,
+    "Time": "2019-04-27T14:06:43.15",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23697,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3439,
+    "Time": "2019-04-27T14:06:51.44",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23698,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3358,
+    "Time": "2019-04-27T14:07:14.31",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23699,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3426,
+    "Time": "2019-04-27T14:07:15.45",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23700,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3391,
+    "Time": "2019-04-27T14:07:20.3",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23701,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3403,
+    "Time": "2019-04-27T14:07:27.1",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23702,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3419,
+    "Time": "2019-04-27T14:07:27.26",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23703,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3404,
+    "Time": "2019-04-27T14:07:30.76",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23704,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3406,
+    "Time": "2019-04-27T14:07:39.29",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23705,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3421,
+    "Time": "2019-04-27T14:07:42.73",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23706,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3435,
+    "Time": "2019-04-27T14:07:51.09",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23707,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3356,
+    "Time": "2019-04-27T14:07:55.18",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23708,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3332,
+    "Time": "2019-04-27T14:07:59.15",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23709,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3318,
+    "Time": "2019-04-27T14:08:06.61",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23710,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3457,
+    "Time": "2019-04-27T14:08:16.5",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23711,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3382,
+    "Time": "2019-04-27T14:08:21.41",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23712,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3349,
+    "Time": "2019-04-27T14:08:37.16",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23713,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3399,
+    "Time": "2019-04-27T14:08:37.72",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23714,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3456,
+    "Time": "2019-04-27T14:08:41.48",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23715,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3454,
+    "Time": "2019-04-27T14:08:42.86",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23716,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3425,
+    "Time": "2019-04-27T14:08:42.46",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23717,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3417,
+    "Time": "2019-04-27T14:09:00.28",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23718,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3411,
+    "Time": "2019-04-27T14:09:04.22",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23719,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3448,
+    "Time": "2019-04-27T14:09:11.43",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23720,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3402,
+    "Time": "2019-04-27T14:09:40.49",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23721,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3400,
+    "Time": "2019-04-27T14:10:07.61",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23722,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3383,
+    "Time": "2019-04-27T14:10:07.24",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23723,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3303,
+    "Time": "2019-04-27T14:10:12.55",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23724,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3413,
+    "Time": "2019-04-27T14:10:13.03",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23725,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3359,
+    "Time": "2019-04-27T14:10:13.13",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23726,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3398,
+    "Time": "2019-04-27T14:10:13.19",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23727,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3405,
+    "Time": "2019-04-27T14:10:27.49",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23728,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3378,
+    "Time": "2019-04-27T14:10:34.68",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23729,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3323,
+    "Time": "2019-04-27T14:10:44.14",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23730,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3370,
+    "Time": "2019-04-27T14:11:07.69",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23731,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3392,
+    "Time": "2019-04-27T14:11:10.15",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23732,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3311,
+    "Time": "2019-04-27T14:11:19.34",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23733,
+    "Year": 2019,
+    "Location": 91,
+    "Card": 3353,
+    "Time": "2019-04-27T14:11:22.46",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23734,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3315,
+    "Time": "2019-04-27T14:11:28.1",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23735,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3368,
+    "Time": "2019-04-27T14:11:32.1",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23736,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3361,
+    "Time": "2019-04-27T14:11:32.7",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23737,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3380,
+    "Time": "2019-04-27T14:11:38.42",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23738,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3422,
+    "Time": "2019-04-27T14:11:43.79",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23739,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3415,
+    "Time": "2019-04-27T14:11:46.29",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23740,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3390,
+    "Time": "2019-04-27T14:11:55.87",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23741,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3324,
+    "Time": "2019-04-27T14:11:56.25",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23742,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3339,
+    "Time": "2019-04-27T14:12:06.62",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23743,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3340,
+    "Time": "2019-04-27T14:12:13.63",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23744,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3437,
+    "Time": "2019-04-27T14:12:13.99",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23745,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3350,
+    "Time": "2019-04-27T14:12:15.88",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23746,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3367,
+    "Time": "2019-04-27T14:12:19.42",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23747,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3317,
+    "Time": "2019-04-27T14:12:21.82",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23748,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3465,
+    "Time": "2019-04-27T14:13:00.53",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23749,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3458,
+    "Time": "2019-04-27T14:13:42.18",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23750,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3463,
+    "Time": "2019-04-27T14:14:45.92",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23751,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3476,
+    "Time": "2019-04-27T14:14:47.33",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23752,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3459,
+    "Time": "2019-04-27T14:15:24.9",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23753,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3355,
+    "Time": "2019-04-27T14:16:01.95",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23754,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3416,
+    "Time": "2019-04-27T14:16:04.88",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23755,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3440,
+    "Time": "2019-04-27T14:16:35.99",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23756,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3388,
+    "Time": "2019-04-27T14:16:45.81",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23757,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3304,
+    "Time": "2019-04-27T14:17:00.65",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23758,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3394,
+    "Time": "2019-04-27T14:17:02.83",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23759,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3385,
+    "Time": "2019-04-27T14:17:04.88",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23760,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3438,
+    "Time": "2019-04-27T14:17:23.21",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23761,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3330,
+    "Time": "2019-04-27T14:17:28.99",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23762,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3322,
+    "Time": "2019-04-27T14:17:57.7",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23763,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3371,
+    "Time": "2019-04-27T14:18:10.42",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23764,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3381,
+    "Time": "2019-04-27T14:18:22.54",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23765,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3420,
+    "Time": "2019-04-27T14:18:25.04",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23766,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3443,
+    "Time": "2019-04-27T14:18:25.06",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23767,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3464,
+    "Time": "2019-04-27T14:18:27.03",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23768,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3472,
+    "Time": "2019-04-27T14:18:28.97",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23769,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3441,
+    "Time": "2019-04-27T14:18:31.49",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23770,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3475,
+    "Time": "2019-04-27T14:18:46.43",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23771,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3389,
+    "Time": "2019-04-27T14:18:53.06",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23772,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3418,
+    "Time": "2019-04-27T14:18:55.11",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23773,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3397,
+    "Time": "2019-04-27T14:18:57.25",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23774,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3460,
+    "Time": "2019-04-27T14:19:32.1",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23775,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3474,
+    "Time": "2019-04-27T14:19:39.75",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23776,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3471,
+    "Time": "2019-04-27T14:20:19.09",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23777,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3452,
+    "Time": "2019-04-27T14:20:22.51",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23778,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3357,
+    "Time": "2019-04-27T14:20:24.85",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23779,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3424,
+    "Time": "2019-04-27T14:20:36.06",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23780,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3434,
+    "Time": "2019-04-27T14:20:36.2",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23781,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3407,
+    "Time": "2019-04-27T14:21:27.08",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23782,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3312,
+    "Time": "2019-04-27T14:21:37.45",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23783,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3387,
+    "Time": "2019-04-27T14:21:37.73",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23784,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3396,
+    "Time": "2019-04-27T14:22:04.55",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23785,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3473,
+    "Time": "2019-04-27T14:22:14.85",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23786,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3360,
+    "Time": "2019-04-27T14:22:35.1",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23787,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3466,
+    "Time": "2019-04-27T14:22:36.61",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23788,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3328,
+    "Time": "2019-04-27T14:22:44.23",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23789,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3384,
+    "Time": "2019-04-27T14:22:46.51",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23790,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3327,
+    "Time": "2019-04-27T14:22:49.41",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23791,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3451,
+    "Time": "2019-04-27T14:22:50.79",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23792,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3423,
+    "Time": "2019-04-27T14:22:52.86",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23793,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3455,
+    "Time": "2019-04-27T14:22:53.81",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23794,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3393,
+    "Time": "2019-04-27T14:23:16",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23795,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3352,
+    "Time": "2019-04-27T14:23:20.13",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23796,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3467,
+    "Time": "2019-04-27T14:23:25.15",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23797,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3354,
+    "Time": "2019-04-27T14:23:37.13",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23798,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3326,
+    "Time": "2019-04-27T14:23:38.21",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23799,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3450,
+    "Time": "2019-04-27T14:23:47.2",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23800,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3477,
+    "Time": "2019-04-27T14:23:55.94",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23801,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3412,
+    "Time": "2019-04-27T14:24:17.85",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23802,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3428,
+    "Time": "2019-04-27T14:24:17.9",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23803,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3391,
+    "Time": "2019-04-27T14:24:24.78",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23804,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3336,
+    "Time": "2019-04-27T14:24:31.6",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23805,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3318,
+    "Time": "2019-04-27T14:24:51.85",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23806,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3401,
+    "Time": "2019-04-27T14:25:03.28",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23807,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3429,
+    "Time": "2019-04-27T14:25:11.73",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23808,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3344,
+    "Time": "2019-04-27T14:25:21.56",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23809,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3444,
+    "Time": "2019-04-27T14:25:32",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23810,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3346,
+    "Time": "2019-04-27T14:25:49.85",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23811,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3446,
+    "Time": "2019-04-27T14:26:05.17",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23812,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3338,
+    "Time": "2019-04-27T14:26:07.93",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23813,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3461,
+    "Time": "2019-04-27T14:26:08.13",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23814,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3378,
+    "Time": "2019-04-27T14:26:56.43",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23815,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3447,
+    "Time": "2019-04-27T14:27:16.03",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23816,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3426,
+    "Time": "2019-04-27T14:27:19.4",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23817,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3442,
+    "Time": "2019-04-27T14:27:22.68",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23818,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3462,
+    "Time": "2019-04-27T14:27:27.79",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23819,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3356,
+    "Time": "2019-04-27T14:27:42.98",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23820,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3419,
+    "Time": "2019-04-27T14:27:45.24",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23821,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3332,
+    "Time": "2019-04-27T14:28:07.09",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23822,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3403,
+    "Time": "2019-04-27T14:28:11.53",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23823,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3439,
+    "Time": "2019-04-27T14:28:22.03",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23824,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3445,
+    "Time": "2019-04-27T14:28:37.14",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23825,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3358,
+    "Time": "2019-04-27T14:28:39.15",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23826,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3382,
+    "Time": "2019-04-27T14:29:09.77",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23827,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3457,
+    "Time": "2019-04-27T14:29:22.27",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23828,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3386,
+    "Time": "2019-04-27T14:29:35.15",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23829,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3408,
+    "Time": "2019-04-27T14:29:39.52",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23830,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3402,
+    "Time": "2019-04-27T14:30:54.47",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23831,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3421,
+    "Time": "2019-04-27T14:31:09.49",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23832,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3425,
+    "Time": "2019-04-27T14:31:15.86",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23833,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3405,
+    "Time": "2019-04-27T14:31:20.74",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23834,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3325,
+    "Time": "2019-04-27T14:32:25.16",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23835,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3411,
+    "Time": "2019-04-27T14:32:45.07",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23836,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3323,
+    "Time": "2019-04-27T14:32:48.04",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23837,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3367,
+    "Time": "2019-04-27T14:34:28.95",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23838,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3317,
+    "Time": "2019-04-27T14:35:11.36",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23839,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3422,
+    "Time": "2019-04-27T14:35:34.48",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23840,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3302,
+    "Time": "2019-04-27T14:37:01.03",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23841,
+    "Year": 2019,
+    "Location": 92,
+    "Card": 3353,
+    "Time": "2019-04-27T14:37:08.85",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23842,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3381,
+    "Time": "2019-04-27T14:37:54.25",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23843,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3383,
+    "Time": "2019-04-27T14:38:05.46",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23844,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3458,
+    "Time": "2019-04-27T14:38:54.1",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23845,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3476,
+    "Time": "2019-04-27T14:39:06.31",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23846,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3330,
+    "Time": "2019-04-27T14:39:41.49",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23847,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3396,
+    "Time": "2019-04-27T14:40:44.46",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23848,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3438,
+    "Time": "2019-04-27T14:41:30.93",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23849,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3450,
+    "Time": "2019-04-27T14:42:02.28",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23850,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3475,
+    "Time": "2019-04-27T14:44:15.86",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23851,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3326,
+    "Time": "2019-04-27T14:48:47.64",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23852,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3327,
+    "Time": "2019-04-27T14:48:49.07",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23853,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3328,
+    "Time": "2019-04-27T14:48:49.39",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23854,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3325,
+    "Time": "2019-04-27T14:59:35.04",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23855,
+    "Year": 2019,
+    "Location": 248,
+    "Card": 3302,
+    "Time": "2019-04-27T15:12:29.61",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23859,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3302,
+    "Time": "2019-04-27T15:07:01",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23860,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3325,
+    "Time": "2019-04-27T14:56:00",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23861,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3328,
+    "Time": "2019-04-27T14:44:51",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23862,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3327,
+    "Time": "2019-04-27T14:44:48",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23863,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3326,
+    "Time": "2019-04-27T14:44:48",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23864,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3475,
+    "Time": "2019-04-27T14:40:43",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23865,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3450,
+    "Time": "2019-04-27T14:39:25",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23866,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3438,
+    "Time": "2019-04-27T14:38:14",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23867,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3396,
+    "Time": "2019-04-27T14:38:09",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23868,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3330,
+    "Time": "2019-04-27T14:36:09",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23869,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3476,
+    "Time": "2019-04-27T14:35:29",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23870,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3458,
+    "Time": "2019-04-27T14:35:24",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23871,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3381,
+    "Time": "2019-04-27T14:35:03",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23872,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3383,
+    "Time": "2019-04-27T14:34:11",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23873,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3422,
+    "Time": "2019-04-27T14:31:53",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23874,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3317,
+    "Time": "2019-04-27T14:31:48",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23875,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3367,
+    "Time": "2019-04-27T14:30:56",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23876,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3323,
+    "Time": "2019-04-27T14:29:22",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23877,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3411,
+    "Time": "2019-04-27T14:28:59",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23878,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3425,
+    "Time": "2019-04-27T14:28:06",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23879,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3405,
+    "Time": "2019-04-27T14:28:06",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23880,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3402,
+    "Time": "2019-04-27T14:27:45",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23881,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3421,
+    "Time": "2019-04-27T14:27:45",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23882,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3457,
+    "Time": "2019-04-27T14:26:10",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23883,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3386,
+    "Time": "2019-04-27T14:26:06",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23884,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3382,
+    "Time": "2019-04-27T14:25:49",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23885,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3358,
+    "Time": "2019-04-27T14:25:20",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23886,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3332,
+    "Time": "2019-04-27T14:25:05",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23887,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3403,
+    "Time": "2019-04-27T14:25:00",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23888,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3439,
+    "Time": "2019-04-27T14:25:00",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23889,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3419,
+    "Time": "2019-04-27T14:24:40",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23890,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3445,
+    "Time": "2019-04-27T14:24:40",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23891,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3356,
+    "Time": "2019-04-27T14:24:35",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23892,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3378,
+    "Time": "2019-04-27T14:24:30",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23893,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3346,
+    "Time": "2019-04-27T14:24:11",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23894,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3426,
+    "Time": "2019-04-27T14:24:10",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23895,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3447,
+    "Time": "2019-04-27T14:24:06",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23896,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3462,
+    "Time": "2019-04-27T14:23:54",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23897,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3408,
+    "Time": "2019-04-27T14:23:49",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23898,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3442,
+    "Time": "2019-04-27T14:23:37",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23899,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3338,
+    "Time": "2019-04-27T14:23:17",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23900,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3461,
+    "Time": "2019-04-27T14:23:12",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23901,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3344,
+    "Time": "2019-04-27T14:22:31",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23902,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3446,
+    "Time": "2019-04-27T14:22:22",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23903,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3318,
+    "Time": "2019-04-27T14:22:22",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23904,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3401,
+    "Time": "2019-04-27T14:21:51",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23905,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3391,
+    "Time": "2019-04-27T14:21:46",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23906,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3444,
+    "Time": "2019-04-27T14:21:43",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23907,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3429,
+    "Time": "2019-04-27T14:21:43",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23908,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3336,
+    "Time": "2019-04-27T14:21:30",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23909,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3428,
+    "Time": "2019-04-27T14:21:25",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23910,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3412,
+    "Time": "2019-04-27T14:21:10",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23911,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3477,
+    "Time": "2019-04-27T14:20:46",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23912,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3354,
+    "Time": "2019-04-27T14:20:29",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23913,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3393,
+    "Time": "2019-04-27T14:20:29",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23914,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3467,
+    "Time": "2019-04-27T14:20:25",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23915,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3423,
+    "Time": "2019-04-27T14:20:02",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23916,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3352,
+    "Time": "2019-04-27T14:19:58",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23917,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3451,
+    "Time": "2019-04-27T14:19:58",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23918,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3455,
+    "Time": "2019-04-27T14:19:58",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23919,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3360,
+    "Time": "2019-04-27T14:19:36",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23920,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3384,
+    "Time": "2019-04-27T14:19:36",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23921,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3466,
+    "Time": "2019-04-27T14:19:15",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23922,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3473,
+    "Time": "2019-04-27T14:19:14",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23923,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3387,
+    "Time": "2019-04-27T14:18:48",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23924,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3312,
+    "Time": "2019-04-27T14:18:48",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23925,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3434,
+    "Time": "2019-04-27T14:17:45",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23926,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3424,
+    "Time": "2019-04-27T14:17:29",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23927,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3407,
+    "Time": "2019-04-27T14:17:29",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23928,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3357,
+    "Time": "2019-04-27T14:17:15",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23929,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3471,
+    "Time": "2019-04-27T14:17:15",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23930,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3452,
+    "Time": "2019-04-27T14:17:00",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23931,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3474,
+    "Time": "2019-04-27T14:16:56",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23932,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3460,
+    "Time": "2019-04-27T14:16:42",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23933,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3418,
+    "Time": "2019-04-27T14:16:13",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23934,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3389,
+    "Time": "2019-04-27T14:16:00",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23935,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3472,
+    "Time": "2019-04-27T14:15:49",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23936,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3420,
+    "Time": "2019-04-27T14:15:49",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23937,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3397,
+    "Time": "2019-04-27T14:15:45",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23938,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3441,
+    "Time": "2019-04-27T14:15:31",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23939,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3464,
+    "Time": "2019-04-27T14:15:20",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23940,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3443,
+    "Time": "2019-04-27T14:15:20",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23941,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3322,
+    "Time": "2019-04-27T14:15:10",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23942,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3371,
+    "Time": "2019-04-27T14:15:10",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23943,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3304,
+    "Time": "2019-04-27T14:14:23",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23944,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3385,
+    "Time": "2019-04-27T14:14:21",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23945,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3394,
+    "Time": "2019-04-27T14:14:21",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23946,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3388,
+    "Time": "2019-04-27T14:13:37",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23947,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3416,
+    "Time": "2019-04-27T14:13:09",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23948,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3440,
+    "Time": "2019-04-27T14:13:05",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23949,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3355,
+    "Time": "2019-04-27T14:13:05",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23950,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3459,
+    "Time": "2019-04-27T14:12:32",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23951,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3463,
+    "Time": "2019-04-27T14:11:46",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23952,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3465,
+    "Time": "2019-04-27T14:10:02",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23953,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3340,
+    "Time": "2019-04-27T14:09:28",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23954,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3350,
+    "Time": "2019-04-27T14:09:28",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23955,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3437,
+    "Time": "2019-04-27T14:09:27",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23956,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3339,
+    "Time": "2019-04-27T14:09:22",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23957,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3324,
+    "Time": "2019-04-27T14:09:11",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23958,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3390,
+    "Time": "2019-04-27T14:09:07",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23959,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3380,
+    "Time": "2019-04-27T14:09:06",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23960,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3415,
+    "Time": "2019-04-27T14:09:01",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23961,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3361,
+    "Time": "2019-04-27T14:08:44",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23962,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3315,
+    "Time": "2019-04-27T14:08:39",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23963,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3368,
+    "Time": "2019-04-27T14:08:39",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23964,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3311,
+    "Time": "2019-04-27T14:08:32",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23965,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3370,
+    "Time": "2019-04-27T14:08:26",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23966,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3392,
+    "Time": "2019-04-27T14:07:49",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23967,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3413,
+    "Time": "2019-04-27T14:07:45",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23968,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3359,
+    "Time": "2019-04-27T14:07:44",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23969,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3398,
+    "Time": "2019-04-27T14:07:39",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23970,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3303,
+    "Time": "2019-04-27T14:07:34",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23971,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3400,
+    "Time": "2019-04-27T14:07:14",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23972,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3417,
+    "Time": "2019-04-27T14:06:12",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23973,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3456,
+    "Time": "2019-04-27T14:06:07",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23974,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3454,
+    "Time": "2019-04-27T14:06:02",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23975,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3349,
+    "Time": "2019-04-27T14:05:57",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23976,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3399,
+    "Time": "2019-04-27T14:05:57",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23977,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3448,
+    "Time": "2019-04-27T14:05:57",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23978,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3435,
+    "Time": "2019-04-27T14:05:15",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23979,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3406,
+    "Time": "2019-04-27T14:04:59",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23980,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3404,
+    "Time": "2019-04-27T14:04:54",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23981,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3348,
+    "Time": "2019-04-27T14:04:12",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23982,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3469,
+    "Time": "2019-04-27T14:03:39",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23983,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3414,
+    "Time": "2019-04-27T14:02:43",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23984,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3347,
+    "Time": "2019-04-27T14:02:35",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23985,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3436,
+    "Time": "2019-04-27T14:02:13",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23986,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3470,
+    "Time": "2019-04-27T14:02:13",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23987,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3449,
+    "Time": "2019-04-27T14:01:56",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23988,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3314,
+    "Time": "2019-04-27T14:01:25",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23989,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3369,
+    "Time": "2019-04-27T14:01:09",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23990,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3366,
+    "Time": "2019-04-27T14:00:33",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23991,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3337,
+    "Time": "2019-04-27T14:00:26",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23992,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3479,
+    "Time": "2019-04-27T14:00:21",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23993,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3468,
+    "Time": "2019-04-27T13:59:25",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23994,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3341,
+    "Time": "2019-04-27T13:59:25",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23995,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3335,
+    "Time": "2019-04-27T13:57:37",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23996,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3351,
+    "Time": "2019-04-27T13:57:27",
+    "Force": false,
+    "Test": false
+  },
+  {
+    "Id": 23997,
+    "Year": 2019,
+    "Location": 93,
+    "Card": 3453,
+    "Time": "2019-04-27T13:56:56",
+    "Force": false,
+    "Test": false
+  }
+]

@@ -185,14 +185,14 @@ namespace EmitReaderLib
         public ICollection<Participant> GetBySplits(int stationId, int ageClass, int gender)
         {
             int split = 0;
-            if (stationId == 91)
+            if (stationId % 10  == 1)
                 split = 1;
-            else if (stationId == 92)
+            else if (stationId % 10 == 2)
                 split = 2;
             else if (stationId == 248)
                 split = 3;
 
-            List<Participant> res = Participants.Where(p => p.Finished && !p.Classes.Exists(pc => pc.Id.Equals("TEST")))
+            List<Participant> res = Participants.Where(p => p.Finished && p._splits.Count > 3)
                 .OrderBy(p => p._splits[split * p.Classes.Count].Ticks).ToList<Participant>();
 
             if (ageClass == 1) // Junior 10-16
@@ -249,32 +249,37 @@ namespace EmitReaderLib
             var race = JsonConvert.DeserializeObject<Race>(json);
 
             // Create correct connection string
-            //String t = Environment.GetEnvironmentVariable("MYSQLCONNSTR_localdb");
-            String t = NormalizeAzureInAppConnString(System.Configuration.ConfigurationManager.ConnectionStrings["localdb"].ConnectionString);
-
-            if (String.IsNullOrEmpty(t))
-                t = System.Configuration.ConfigurationManager.ConnectionStrings["Kjeringi"].ConnectionString;
+            //String t = NormalizeAzureInAppConnString(System.Configuration.ConfigurationManager.ConnectionStrings["localdb"].ConnectionString);
+            //String t = System.Configuration.ConfigurationManager.ConnectionStrings["localdb"] != null ? 
+            //    NormalizeAzureInAppConnString(System.Configuration.ConfigurationManager.ConnectionStrings["localdb"].ConnectionString) :
+            //    System.Configuration.ConfigurationManager.ConnectionStrings["Kjeringi"].ConnectionString;
 
             race.InTestMode = true;
+
             switch (year)
-            {                
-                case 2013:
-                    (new EmitReaderLib.Builders.MySqlRaceBuilder2014(t + "Database=kop2015;", "2013")).BuildRace(race);
-                    break;
+            {
+                //case 2013:
+                //    (new EmitReaderLib.Builders.MySqlRaceBuilder2014(t + "Database=kop2015;", "2013")).BuildRace(race);
+                //    break;
+                //case 2014:
+                //    (new EmitReaderLib.Builders.MySqlRaceBuilder2014(t + "Database=kop2014;", "2014")).BuildRace(race);
+                //    //(new EmitReaderLib.Builders.MySqlRaceBuilder2015(t + "Database=kop2014;", new List<int>(), "2014", new DateTime(2014, 4, 18))).BuildRace(race);
+                //    break;
+                //case 2015:
+                //    (new EmitReaderLib.Builders.MySqlRaceBuilder2014(t + "Database=kop2015;", "2015")).BuildRace(race);
+                //    break;
+                //case 2016:
+                //    (new EmitReaderLib.Builders.MySqlRaceBuilder2015(t + "Database=kop2016;", Enumerable.Range(5001, 29).ToList<int>(), "2016", new DateTime(2016, 4, 16))).BuildRace(race);
+                //    break;
+                //case 2017:
+                //    (new EmitReaderLib.Builders.MySqlRaceBuilder2015(t + "Database=kop2017;", Enumerable.Range(5001, 29).ToList<int>(), "2017", new DateTime(2017, 4, 22))).BuildRace(race);
+                //    break;
                 case 2014:
-                    (new EmitReaderLib.Builders.MySqlRaceBuilder2014(t + "Database=kop2015;", "2014")).BuildRace(race);
-                    break;
                 case 2015:
-                    (new EmitReaderLib.Builders.MySqlRaceBuilder2015(t + "Database=kop2015;", new List<int>(), "2015", new DateTime(2015, 4, 18))).BuildRace(race);
-                    break;
                 case 2016:
-                    (new EmitReaderLib.Builders.MySqlRaceBuilder2015(t + "Database=kop2016;", Enumerable.Range(5001, 29).ToList<int>(), "2016", new DateTime(2016, 4, 16))).BuildRace(race);
-                    break;
                 case 2017:
-                    (new EmitReaderLib.Builders.MySqlRaceBuilder2015(t + "Database=kop2017;", Enumerable.Range(5001, 29).ToList<int>(), "2017", new DateTime(2017, 4, 22))).BuildRace(race);
-                    break;
                 case 2018:
-                    (new EmitReaderLib.Builders.JsonRaceBuilder(jsonFile.Replace(".json", "_%source%.json"), Enumerable.Range(4480, 20).ToList<int>(), "2018", new DateTime(2018, 4, 14))).BuildRace(race);
+                    (new EmitReaderLib.Builders.JsonRaceBuilder(jsonFile.Replace(".json", "_%source%.json"), Enumerable.Range(4480, 20).ToList<int>(), year.ToString(), new DateTime(year, 4, 14))).BuildRace(race);
                     break;
                 case 2019:
                     (new EmitReaderLib.Builders.JsonRaceBuilder(jsonFile.Replace(".json", "_%source%.json"), Enumerable.Range(3681, 20).ToList<int>(), "2019", new DateTime(2019, 4, 27))).BuildRace(race);
@@ -305,29 +310,9 @@ namespace EmitReaderLib
                     };
                     race.AddPass(d);
                 }
-
             }
-
-
-            //MySqlConnection conn = new MySqlConnection(t + "Database=timers;");
-            //MySqlCommand cmd = new MySqlCommand("SELECT card, location, time FROM LocationPasses WHERE year = " + year.ToString() + " ORDER BY time", conn);
-
-            //conn.Open();
-            //var data = cmd.ExecuteReader();
-
-            //while (data.Read())
-            //{
-            //    EmitData d = new EmitData()
-            //    {
-            //        Id = data.GetInt16("card"),
-            //        BoxId = data.GetInt16("location"),
-            //        Time = data.GetDateTime("time"),
-            //        Force = false
-            //    };
-            //    race.AddPass(d);
-            //}
-            //data.Close();
-            //conn.Close();
+            else
+                throw new Exception("No results file " + resultsFile);
 
             race.InTestMode = false;
             return race;

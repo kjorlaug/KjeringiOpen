@@ -40,7 +40,7 @@ namespace EmitReaderLib.Builders
 	                    when cupClass = 1 and (2015 - birthyear) in (17,18,19,20,21) then concat('NM', gender, '17')
 	                    when cupClass = 1 and (2015 - birthyear) > 21 then concat('NM', gender, '22')
 	                    else null
-                    end as cupClass
+                    end as cupClass, birthyear, gender, club
                 from 
 	                kop_person left join kop_team on kop_person.teamid = kop_team.id where superwife = 1 and kop_person.deleted = 0 and kop_person.startnumber is not null and kop_person.chipnumber is not null
                 order by startnumber", conn);
@@ -59,8 +59,11 @@ namespace EmitReaderLib.Builders
                     IsTeam = false,
                     IsSuper = true,
                     IsCompany = data.GetInt32("companyClass").Equals(1),
-                    CompanyName = data.IsDBNull(data.GetOrdinal("club")) ? "": data.GetString("club"),
-                    ShirtSizes = new List<String>() { data.GetString("tShirtName")}                 
+                    Club = data.IsDBNull(data.GetOrdinal("club")) ? "": data.GetString("club"),
+                    CompanyName = data.IsDBNull(data.GetOrdinal("companyName")) ? "" : data.GetString("companyName"),
+                    ShirtSizes = new List<String>() { data.GetString("tShirtName")},
+                    Ages = new List<int> { int.Parse(_year) - data.GetInt32("birthYear") },
+                    Gender = new List<int> { data.GetString("gender").Equals("J") ? 2 : 1 }
                 };
                 if (p.IsCompany)
                 {
@@ -95,7 +98,7 @@ namespace EmitReaderLib.Builders
 	                when cupClass = 1 and (2015 - birthyear) in (17,18,19,20,21) then concat('NM', gender, '17')
 	                when cupClass = 1 and (2015 - birthyear) > 21 then concat('NM', gender, '22')
 	                else null
-                end as cupClass
+                end as cupClass, birthyear, gender, club
                 from kop_person where superwife = 0 and cupClass = 1 and deleted = 0 and startnumber is not null and chipnumber is not null", conn);
 
             data = cmd.ExecuteReader();
@@ -112,7 +115,10 @@ namespace EmitReaderLib.Builders
                     IsTeam = false,
                     IsSuper = true,
                     IsCompany = data.GetInt32("companyClass").Equals(1),
-                    CompanyName = data.IsDBNull(data.GetOrdinal("companyName")) ? "" : data.GetString("companyName")
+                    Ages = new List<int> { int.Parse(_year) - data.GetInt32("birthYear") },
+                    Gender = new List<int> { data.GetString("gender").Equals("J") ? 2 : 1 },
+                    CompanyName = data.IsDBNull(data.GetOrdinal("companyName")) ? "" : data.GetString("companyName"),
+                    Club = data.IsDBNull(data.GetOrdinal("club")) ? "" : data.GetString("club")
                 };
                 if (p.IsCompany)
                 {
@@ -137,7 +143,7 @@ namespace EmitReaderLib.Builders
             data.Close();
 
             // Adding teams
-            cmd = new MySqlCommand(@"SELECT t.startNumber, t.chipNumber, t.name, t.teamClassCode, t.companyClass, p.firstname, p.surname, p.phoneNumber, p.sprintNumber, ifnull(p.tshirtName, '') as tshirtName FROM kop_team t inner join kop_person p on t.id = p.teamid where t.deleted = 0 and t.startNumber is not null and t.chipNumber is not null order by t.startNumber, p.sprintNumber", conn);
+            cmd = new MySqlCommand(@"SELECT t.startNumber, t.chipNumber, t.name, t.teamClassCode, t.companyClass, t.companyName, p.firstname, p.surname, p.phoneNumber, p.sprintNumber, ifnull(p.tshirtName, '') as tshirtName, p.birthyear, p.gender, p.club FROM kop_team t inner join kop_person p on t.id = p.teamid where t.deleted = 0 and t.startNumber is not null and t.chipNumber is not null order by t.startNumber, p.sprintNumber", conn);
 
             data = cmd.ExecuteReader();
             
@@ -156,7 +162,11 @@ namespace EmitReaderLib.Builders
                         Classes = new List<ParticipantClass> { race.Classes.Find(x => x.Id.Equals(data.GetString("teamClassCode"))) },
                         IsTeam = true,
                         IsSuper = false,
-                        IsCompany = data.GetInt32("companyClass").Equals(1)
+                        Ages = new List<int> { int.Parse(_year) - data.GetInt32("birthYear") },
+                        Gender = new List<int> { data.GetString("gender").Equals("J") ? 2 : 1 },
+                        IsCompany = data.GetInt32("companyClass").Equals(1),
+                        CompanyName = data.IsDBNull(data.GetOrdinal("companyName")) ? "" : data.GetString("companyName"),
+                        Club = data.IsDBNull(data.GetOrdinal("club")) ? "" : data.GetString("club")
                     };
 
                     if (p.IsCompany)
@@ -182,6 +192,9 @@ namespace EmitReaderLib.Builders
                         p.ShirtSizes.Add(data.GetString("tshirtName"));
                         if (!String.IsNullOrEmpty(data.GetString("phoneNumber")))
                             p.Telephone.Add(data.GetString("phoneNumber").Replace(" ", ""));
+                        p.Ages.Add(int.Parse(_year) - data.GetInt32("birthYear"));
+                        p.Gender.Add(data.GetString("gender").Equals("J") ? 2 : 1);
+
                         moreData = data.Read();
                     }
 

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using EmitReaderLib.Utils;
+using Newtonsoft.Json;
 
 namespace EmitReaderLib.Model
 {
@@ -39,6 +41,7 @@ namespace EmitReaderLib.Model
 
         public Boolean Star { get; set; }
 
+        [ScriptIgnore]
         public Dictionary<int, EmitData> Passes { get; set; }
 
         public bool PassedTimestation(int id)
@@ -51,10 +54,13 @@ namespace EmitReaderLib.Model
             return Splits(classId).Where(r => r.Location == location).FirstOrDefault();
         }
 
+        [ScriptIgnore]
         public List<Result> _splits { get; set; }
 
+        [ScriptIgnore]
         public List<String> LegSplits { get; set; }
 
+        [ScriptIgnore]
         public List<Boolean> LegEstimated { get; set; }
 
         public List<Result> Splits(String classId = "")
@@ -74,17 +80,25 @@ namespace EmitReaderLib.Model
             ShirtSizes = null;
         }
 
+        [ScriptIgnore]
         public String TotalTime { get; set; }
-        
+
+        [ScriptIgnore]
         public TimeSpan EstimatedArrival { get; set; }
+        [ScriptIgnore]
         public DateTime RealArrival { get; set; }
+        [ScriptIgnore]
         public long EstimatedTicks { get { return EstimatedArrival.Ticks; } }
+        [ScriptIgnore]
         public String EstimatedTime { get { return EstimatedArrival.ToString(@"hh\:mm\:ss"); } }
 
+        [ScriptIgnore]
         public Boolean Finished { get; set; }
 
+        [ScriptIgnore]
         public TimeSpan CurrentTime { get; internal set; }
 
+        [ScriptIgnore]
         public Race Race { get; set; }
         public bool ShouldSerializeRace() { return false; }
     }

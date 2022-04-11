@@ -53,6 +53,122 @@ namespace Web.Controllers
             return View();
         }
 
+        public ActionResult DataSupers(int? id)
+        {
+            EmitReaderLib.Race r = id.HasValue ? TheRace.Historical(id.Value) : TheRace.Instance;
+
+            return Json(
+                r.Participants.Where(p => p.IsSuper && !p.Classes.Exists(c => c.Id.Equals("TEST")))
+                .Select(p => new
+                {
+                    id = p.Id,
+                    classCode = p.Classes[0].Id,
+                    norwayCup = p.Classes.Exists(c => c.Name.StartsWith("NM")) ? 1 : 0,
+                    chipNumber = p.EmitID,
+                    startNumber = p.Startnumber,
+                    companyName = p.CompanyName,
+                    notASuper = 0,
+                    firstname = p.Name.Split(' ')[0],
+                    surname = p.Name.Substring(p.Name.IndexOf(" ")).TrimStart(),
+                    birthYear = int.Parse(r.Name) - p.Ages[0],
+                    gender = p.Gender[0] == 1 ? "G" : "J",
+                    //tshirtCode = p.ShirtSizes[0],
+                    phone = p.Telephone[0],
+                    club = p.Club
+                }).ToList(), JsonRequestBehavior.AllowGet);
+            
+        }
+
+        public ActionResult DataTeams(int? id)
+        {
+            EmitReaderLib.Race r = id.HasValue ? TheRace.Historical(id.Value) : TheRace.Instance;
+            /*         
+             "name": "1gongi\u00e5ret",
+            "club": "",
+            "id": "24",
+            "classCode": "LOV",
+            "companyName": "",
+            "chipNumber": "3378",
+            "startNumber": "31",
+*/
+            return Json(
+                r.Participants.Where(p => p.IsTeam && !p.Classes.Exists(c => c.Id.Equals("TEST")))
+                .Select(p => new
+                {
+                    name = p.Name,
+                    id = p.Id,
+                    classCode = p.Classes[0].Id,
+                    chipNumber = p.EmitID,
+                    startNumber = p.Startnumber,
+                    companyName = p.CompanyName,
+                    club = p.Club,
+                    members = new[]
+                    {
+                        new {
+                            id = p.Id,
+                            classCode = p.Classes[0].Id,
+                            norwayCup = p.Classes.Exists(c => c.Name.StartsWith("NM")) ? 1 : 0,
+                            chipNumber = p.EmitID,
+                            startNumber = p.Startnumber,
+                            companyName = p.CompanyName,
+                            notASuper = p.Startnumber > 99 ? 0 : 1,
+                            firstname = p.TeamMembers[0].Split(' ')[0],
+                            surname = p.TeamMembers[0].Substring(p.TeamMembers[0].IndexOf(" ")).TrimStart(),
+                            birthYear = int.Parse(r.Name) - p.Ages[0],
+                            gender = p.Gender[0] == 1 ? "G" : "J",
+                            phone = p.Telephone.Count > 0 ? p.Telephone[0] : "",
+                            club = p.Club
+                        }, 
+                        new {
+                            id = p.Id,
+                            classCode = p.Classes[0].Id,
+                            norwayCup = p.Classes.Exists(c => c.Name.StartsWith("NM")) ? 1 : 0,
+                            chipNumber = p.EmitID,
+                            startNumber = p.Startnumber,
+                            companyName = p.CompanyName,
+                            notASuper = 1,
+                            firstname = p.TeamMembers[1].Split(' ')[0],
+                            surname = p.TeamMembers[1].Substring(p.TeamMembers[1].IndexOf(" ")).TrimStart(),
+                            birthYear = int.Parse(r.Name) - p.Ages[1],
+                            gender = p.Gender[1] == 1 ? "G" : "J",
+                            phone = p.Telephone.Count > 1 ? p.Telephone[1] : "",
+                            club = p.Club
+                        },
+                        new {
+                            id = p.Id,
+                            classCode = p.Classes[0].Id,
+                            norwayCup = p.Classes.Exists(c => c.Name.StartsWith("NM")) ? 1 : 0,
+                            chipNumber = p.EmitID,
+                            startNumber = p.Startnumber,
+                            companyName = p.CompanyName,
+                            notASuper = 1,
+                            firstname = p.TeamMembers[2].Split(' ')[0],
+                            surname = p.TeamMembers[2].Substring(p.TeamMembers[2].IndexOf(" ")).TrimStart(),
+                            birthYear = int.Parse(r.Name) - p.Ages[2],
+                            gender = p.Gender[2] == 1 ? "G" : "J",
+                            phone = p.Telephone.Count > 2 ? p.Telephone[2] : "",
+                            club = p.Club
+                        },
+                        new {
+                            id = p.Id,
+                            classCode = p.Classes[0].Id,
+                            norwayCup = p.Classes.Exists(c => c.Name.StartsWith("NM")) ? 1 : 0,
+                            chipNumber = p.EmitID,
+                            startNumber = p.Startnumber,
+                            companyName = p.CompanyName,
+                            notASuper = 1,
+                            firstname = p.TeamMembers[3].Split(' ')[0],
+                            surname = p.TeamMembers[3].Substring(p.TeamMembers[3].IndexOf(" ")).TrimStart(),
+                            birthYear = int.Parse(r.Name) - p.Ages[3],
+                            gender = p.Gender[3] == 1 ? "G" : "J",
+                            phone = p.Telephone.Count > 3 ? p.Telephone[3] : "",
+                            club = p.Club
+                        }
+                    }
+                }).ToList(), JsonRequestBehavior.AllowGet);
+
+        }
+
         public ActionResult ResultsNM(int? id)
         {
             if (id.HasValue)
@@ -62,12 +178,16 @@ namespace Web.Controllers
 
             return View();
         }
-        public ActionResult TopSplits(int? name, int? ageclass, int? gender)
+        public ActionResult TopSplits(int? id, int? name, int? ageclass, int? gender)
         {
+            if (id.HasValue)
+                ViewBag.Race = TheRace.Historical(id.Value);
+            else
+                ViewBag.Race = TheRace.Instance;
+
             ViewBag.StationId = name ?? 90;
             ViewBag.ageclass = ageclass ?? 0;
             ViewBag.gender = gender ?? 0;
-            ViewBag.Race = TheRace.Instance;
 
             return View();
         }

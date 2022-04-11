@@ -30,7 +30,7 @@
             }
             else if (!c.Id.StartsWith("NM"))
             {
-                <span class="badge badge-warning">DNS</span>
+                <span class="badge badge-warning">DNS @p._splits.Count.ToString()</span>
             }
             @if (priceCount > pricesSoFar++ && p.Finished && !c.Id.StartsWith("NM"))
             {

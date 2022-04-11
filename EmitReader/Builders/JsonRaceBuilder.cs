@@ -40,7 +40,6 @@ namespace EmitReaderLib.Builders
                 var p = new Participant()
                 {
                     Id = t.id,
-                    Updated = (DateTime) t.updated,
                     Startnumber = t.startNumber == null ? -(int)t.id : (int)t.startNumber,
                     EmitID = t.chipNumber == null || t.chipNumber == 0 ? -(int)t.id - 1000 : (int)t.chipNumber,
                     Name = PrettyPrintName(t.firstname.ToString() + " " + t.surname.ToString()),
@@ -98,6 +97,9 @@ namespace EmitReaderLib.Builders
                 if (p.EmitID == 0)
                     throw new IndexOutOfRangeException();
 
+                if (p.Id == 0)
+                    p.Id = p.EmitID;
+
                 if (p.Startnumber > 0)
                     race.AddOrUpdateParticipant(p);
             }
@@ -110,7 +112,6 @@ namespace EmitReaderLib.Builders
                 var p = new Participant()
                 {
                     Id = (int)t.id + 2000,
-                    Updated = (DateTime)t.updated,
                     Startnumber = t.startNumber == null || t.startNumber == 0 ? -(int)t.id : (int)t.startNumber,
                     EmitID = t.chipNumber == null || t.chipNumber == 0 ? -(int)t.id - 5000 : (int)t.chipNumber,
                     Name = t.name,
@@ -154,6 +155,9 @@ namespace EmitReaderLib.Builders
                     p.Classes.Add(race.Classes.Find(x => x.Id.Equals(cn)));
                 }
 
+                if (p.Id == 2000)
+                    p.Id = p.EmitID;
+
                 race.AddOrUpdateParticipant(p);
 
             }
@@ -168,10 +172,10 @@ namespace EmitReaderLib.Builders
                     Startnumber = testId,
                     EmitID = testId,
                     Name = "Test " + testId.ToString(),
-                    Telephone = new List<String>() { "95116354", "41530965", "48021455", "90214619" },
+                    Telephone = new List<String>() { "95116354", "41530965", "95116354", "90214619" },
                     Classes = new List<ParticipantClass>() { race.Classes.Find(x => x.Id.Equals("TEST")) },
                     IsTeam = true,
-                    TeamMembers = new List<String>() { "Rune Kjørlaug", "Petter Stenstavold", "Even Østvold", "Bård Henjum" },
+                    TeamMembers = new List<String>() { "Rune Kjørlaug", "Petter Stenstavold", "Rune Kjørlaug", "Bård Henjum" },
                     ShirtSizes = new List<string>() { "m", "m", "m", "m" },
                     IsSuper = false,
                     IsCompany = false,
@@ -234,7 +238,7 @@ namespace EmitReaderLib.Builders
                 n = n.Replace("47", "");
 
             if (!(n.Length == 0 || n.Length == 8))
-                throw new Exception(n);
+                return "";
 
             return n;
         }
