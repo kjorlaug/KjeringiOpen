@@ -67,10 +67,10 @@ namespace EmitReaderLib
                     try
                     {
 
-                        _ = Http.Get($"https://kjeringiopen.azurewebsites.net/api/AddPass?card={dataToSend.Chip}&location={dataToSend.BoxId}&time={dataToSend.Time.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'")}");
+                        _ = Http.Get($"https://kjeringiopen.azurewebsites.net/api/AddPass?card={dataToSend.Id}&location={dataToSend.BoxId}&time={dataToSend.Time.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'")}");
 
                         if (LogEntry != null)
-                            LogEntry(this, new LogEventArgs($"{dataToSend.Chip} - {dataToSend.Time}"));
+                            LogEntry(this, new LogEventArgs($"{dataToSend.Id} - {dataToSend.Time}"));
 
                         lock (lockObj)
                             ToSend.Dequeue();
