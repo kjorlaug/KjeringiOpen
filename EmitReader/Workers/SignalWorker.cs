@@ -25,14 +25,12 @@ namespace EmitReaderLib
     }
 
 
-    public class SignalWorker : IWorker, IDisposable
+    public class SignalWorker : IWorker
     {
         public event EventHandler<LogEventArgs> LogEntry;
         public event EventHandler<KeyValuePair<Color, string>> StatusChange;
         public event EventHandler<Boolean> Ready;
 
-        private HubConnection myHubConn;
-        private IHubProxy myHub;
 
         private static Queue<EmitData> ToSend = new Queue<EmitData>();
         private static Boolean sending = false;
@@ -44,84 +42,53 @@ namespace EmitReaderLib
 
         public void StartWork()
         {
+            Ready(this, true);
+
+            _ = Http.Get("https://kjeringiopen.azurewebsites.net/2022");
+
             if (StatusChange != null)
-                StatusChange(this, new KeyValuePair<Color, string>(Color.Yellow, "Initiating SignalR - contacting hub " + Hub));
+                StatusChange(this, new KeyValuePair<Color, string>(Color.Green, "Ready "));
 
-            myHubConn = new HubConnection(Hub);
-            myHub = myHubConn.CreateHubProxy("resultatServiceHub");
-
-            myHubConn.Reconnected += myHubConn_Reconnected;
-            myHubConn.Reconnecting += myHubConn_Reconnecting;
-            myHubConn.ConnectionSlow += myHubConn_ConnectionSlow;
-            myHubConn.Closed += myHubConn_Closed;
-
-            myHub.On<dynamic>("NewPass", (data) =>
+            while (true)
             {
-                try
+                if (sending)
                 {
-                    var startNumber = data.GetProperty("startNumber").GetDouble();
-                    var chipNumber = data.GetProperty("startNumber").GetDouble();
-                    DateTime totalTime = data.GetProperty("totalTime").GetDatetime();
-
-                    if (LogEntry != null)
-                        LogEntry(this, new LogEventArgs($"{chipNumber} - startnummer {startNumber} - {totalTime}"));
+                    return;
                 }
-                catch (Exception ex)
+
+                lock (lockObj)
                 {
-                    Console.WriteLine(ex.Message);
+                    sending = true;
                 }
-            });
 
-            myHubConn.Start()
-                .ContinueWith((prevTask) =>  // Initialization
+                while (ToSend.Count > 0)
                 {
-                    if (StatusChange != null)
-                        StatusChange(this, new KeyValuePair<Color, string>(Color.Green, "Connected: " + myHubConn.State));
-                    myHub.Invoke("ListenToSplit", 1);
-                })
-                .ContinueWith((prevTask) => // Loop forever to process data registered
-                {
-                    if (Ready != null)
-                        Ready(this, true);
-
-                    while (true)
+                    EmitData dataToSend = ToSend.Peek();
+                    try
                     {
-                        if (sending)
-                        {
-                            return;
-                        }
+
+                        _ = Http.Get($"https://kjeringiopen.azurewebsites.net/api/AddPass?card={dataToSend.Chip}&location={dataToSend.BoxId}&time={dataToSend.Time.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'")}");
+
+                        if (LogEntry != null)
+                            LogEntry(this, new LogEventArgs($"{dataToSend.Chip} - {dataToSend.Time}"));
 
                         lock (lockObj)
-                        {
-                            sending = true;
-                        }
-
-                        while (ToSend.Count > 0)
-                        {
-                            EmitData dataToSend = ToSend.Peek();
-                            try
-                            {
-
-                                _ = Http.Get($"https://kjeringiopen.azurewebsites.net/api/AddPass?card={dataToSend.Chip}&location={dataToSend.BoxId}&time={dataToSend.Time.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'")}");
-
-                                lock (lockObj)
-                                    ToSend.Dequeue();
-                                Console.WriteLine("Successfully " + dataToSend.Id.ToString());
-                            }
-                            catch (Exception ex)
-                            {
-                                if (StatusChange != null)
-                                    StatusChange(this, new KeyValuePair<Color, string>(Color.Red, "Error sending, retry in 3 sec : " + ex.Message));
-                                System.Threading.Thread.Sleep(3000);
-                            }
-                        }
-                        lock (lockObj)
-                        {
-                            sending = false;
-                        }
-                        System.Threading.Thread.Sleep(1000);
+                            ToSend.Dequeue();
+                        Console.WriteLine("Successfully " + dataToSend.Id.ToString());
                     }
-                }).Wait();
+                    catch (Exception ex)
+                    {
+                        if (StatusChange != null)
+                            StatusChange(this, new KeyValuePair<Color, string>(Color.Red, "Error sending, retry in 3 sec : " + ex.Message));
+                        System.Threading.Thread.Sleep(3000);
+                    }
+                }
+                lock (lockObj)
+                {
+                    sending = false;
+                }
+                System.Threading.Thread.Sleep(1000);
+            }
         }
 
         public void ProcessData(EmitData data)
@@ -132,40 +99,5 @@ namespace EmitReaderLib
             }
         }
 
-        void myHubConn_Closed()
-        {
-            if (StatusChange != null)
-                StatusChange(this, new KeyValuePair<Color, string>(Color.Red, "myHubConn_Closed New State - retrying in 5 sec: " + myHubConn.State));
-
-            Console.WriteLine("myHubConn_Closed New State - retrying in 5 sec:" + myHubConn.State);
-            System.Threading.Thread.Sleep(5000);
-            myHubConn.Start().Wait();
-        }
-
-        void myHubConn_ConnectionSlow()
-        {
-            if (StatusChange != null)
-                StatusChange(this, new KeyValuePair<Color, string>(Color.Yellow, "myHubConn_ConnectionSlow New State: " + myHubConn.State));
-            Console.WriteLine("myHubConn_ConnectionSlow New State:" + myHubConn.State);
-        }
-
-        void myHubConn_Reconnecting()
-        {
-            if (StatusChange != null)
-                StatusChange(this, new KeyValuePair<Color, string>(Color.Yellow, "myHubConn_Reconnecting New State: " + myHubConn.State));
-            Console.WriteLine("myHubConn_Reconnecting New State:" + myHubConn.State);
-        }
-
-        void myHubConn_Reconnected()
-        {
-            if (StatusChange != null)
-                StatusChange(this, new KeyValuePair<Color, string>(Color.Green, "myHubConn_Reconnected New State: " + myHubConn.State));
-            Console.WriteLine("myHubConn_Reconnected New State:" + myHubConn.State);
-        }
-
-        public void Dispose()
-        {
-            myHubConn.Stop();
-        }
     }
 }

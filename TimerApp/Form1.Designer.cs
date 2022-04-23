@@ -70,7 +70,7 @@
             // 
             this.lblStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(0, 21);
+            this.lblStatus.Size = new System.Drawing.Size(0, 20);
             // 
             // toolStripSplitButton1
             // 
@@ -106,7 +106,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(33, 76);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 17);
+            this.label1.Size = new System.Drawing.Size(134, 16);
             this.label1.TabIndex = 6;
             this.label1.Text = "Data inn frå EQ timing";
             // 
@@ -115,7 +115,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(332, 76);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 17);
+            this.label2.Size = new System.Drawing.Size(104, 16);
             this.label2.TabIndex = 7;
             this.label2.Text = "Registrert online";
             // 
@@ -136,10 +136,10 @@
             this.ctlBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ctlBox.FormattingEnabled = true;
             this.ctlBox.Items.AddRange(new object[] {
-            "90 - Damefall",
-            "91 - Kleppa",
-            "92 - Barneskulen",
-            "93 - Hamre",
+            "70 - Damefall",
+            "71 - Kleppa",
+            "72 - Barneskulen",
+            "73 - Hamre",
             "248 - Mål"});
             this.ctlBox.Location = new System.Drawing.Point(215, 19);
             this.ctlBox.Name = "ctlBox";
