@@ -249,8 +249,8 @@ namespace EmitReaderLib
             var race = JsonConvert.DeserializeObject<Race>(json);
 
             // Create correct connection string
-            //String t = NormalizeAzureInAppConnString(System.Configuration.ConfigurationManager.ConnectionStrings["localdb"].ConnectionString);
-            //String t = System.Configuration.ConfigurationManager.ConnectionStrings["localdb"] != null ? 
+            String t = NormalizeAzureInAppConnString(System.Configuration.ConfigurationManager.ConnectionStrings["localdb"].ConnectionString);
+            //String t = System.Configuration.ConfigurationManager.ConnectionStrings["localdb"] != null ?
             //    NormalizeAzureInAppConnString(System.Configuration.ConfigurationManager.ConnectionStrings["localdb"].ConnectionString) :
             //    System.Configuration.ConfigurationManager.ConnectionStrings["Kjeringi"].ConnectionString;
 
@@ -265,9 +265,9 @@ namespace EmitReaderLib
                 //    (new EmitReaderLib.Builders.MySqlRaceBuilder2014(t + "Database=kop2014;", "2014")).BuildRace(race);
                 //    //(new EmitReaderLib.Builders.MySqlRaceBuilder2015(t + "Database=kop2014;", new List<int>(), "2014", new DateTime(2014, 4, 18))).BuildRace(race);
                 //    break;
-                //case 2015:
-                //    (new EmitReaderLib.Builders.MySqlRaceBuilder2014(t + "Database=kop2015;", "2015")).BuildRace(race);
-                //    break;
+                case 2015:
+                    (new EmitReaderLib.Builders.MySqlRaceBuilder2014(t + "Database=kop2015;", "2015")).BuildRace(race);
+                    break;
                 //case 2016:
                 //    (new EmitReaderLib.Builders.MySqlRaceBuilder2015(t + "Database=kop2016;", Enumerable.Range(5001, 29).ToList<int>(), "2016", new DateTime(2016, 4, 16))).BuildRace(race);
                 //    break;
@@ -275,7 +275,6 @@ namespace EmitReaderLib
                 //    (new EmitReaderLib.Builders.MySqlRaceBuilder2015(t + "Database=kop2017;", Enumerable.Range(5001, 29).ToList<int>(), "2017", new DateTime(2017, 4, 22))).BuildRace(race);
                 //    break;
                 case 2014:
-                case 2015:
                 case 2016:
                 case 2017:
                 case 2018:

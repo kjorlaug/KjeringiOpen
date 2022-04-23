@@ -4,9 +4,27 @@ using Microsoft.AspNet.SignalR.Client;
 using System.Drawing;
 
 using EmitReaderLib.Model;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace EmitReaderLib
 {
+    public class Http
+    {
+        static HttpClient _httpClient = new HttpClient();
+
+        public static async Task<string> Get(string url)
+        {
+            // The actual Get method
+            using (var result = await _httpClient.GetAsync(url))
+            {
+                string content = await result.Content.ReadAsStringAsync();
+                return content;
+            }
+        }
+    }
+
+
     public class SignalWorker : IWorker, IDisposable
     {
         public event EventHandler<LogEventArgs> LogEntry;
@@ -37,13 +55,16 @@ namespace EmitReaderLib
             myHubConn.ConnectionSlow += myHubConn_ConnectionSlow;
             myHubConn.Closed += myHubConn_Closed;
 
-            // Listen to newPass to give feedback on things registering.
-            myHub.On<Participant>("newPass", (data) =>
+            myHub.On<dynamic>("NewPass", (data) =>
             {
                 try
                 {
+                    var startNumber = data.GetProperty("startNumber").GetDouble();
+                    var chipNumber = data.GetProperty("startNumber").GetDouble();
+                    DateTime totalTime = data.GetProperty("totalTime").GetDatetime();
+
                     if (LogEntry != null)
-                        LogEntry(this, new LogEventArgs(data.EmitID.ToString() + " - startnummer " + data.Startnumber.ToString() + " - " + data.TotalTime));
+                        LogEntry(this, new LogEventArgs($"{chipNumber} - startnummer {startNumber} - {totalTime}"));
                 }
                 catch (Exception ex)
                 {
@@ -56,8 +77,7 @@ namespace EmitReaderLib
                 {
                     if (StatusChange != null)
                         StatusChange(this, new KeyValuePair<Color, string>(Color.Green, "Connected: " + myHubConn.State));
-                    myHub.Invoke("Join", "EmitReader - " + Name);
-                    myHub.Invoke("AddtoGroup", BoxId.ToString());
+                    myHub.Invoke("ListenToSplit", 1);
                 })
                 .ContinueWith((prevTask) => // Loop forever to process data registered
                 {
@@ -81,7 +101,9 @@ namespace EmitReaderLib
                             EmitData dataToSend = ToSend.Peek();
                             try
                             {
-                                myHub.Invoke("SendPassering", new object[] { dataToSend });
+
+                                _ = Http.Get($"https://kjeringiopen.azurewebsites.net/api/AddPass?card={dataToSend.Chip}&location={dataToSend.BoxId}&time={dataToSend.Time.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'")}");
+
                                 lock (lockObj)
                                     ToSend.Dequeue();
                                 Console.WriteLine("Successfully " + dataToSend.Id.ToString());
